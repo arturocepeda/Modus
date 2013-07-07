@@ -218,6 +218,8 @@ void* MusicTimerThread(void* lp)
         mTimer->update();
         pthread_mutex_unlock(&pMutex);
     }
+
+    return 0;
 }
 #endif
 
