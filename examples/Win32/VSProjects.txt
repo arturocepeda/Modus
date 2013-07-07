@@ -1,0 +1,25 @@
+
+
+ Output directory:
+
+   $(SolutionDir)bin\
+
+
+
+ Character set:
+
+   Multibyte
+
+
+
+ C/C++ Preprocessor:
+  
+   Add "_CRT_SECURE_NO_WARNINGS"
+
+
+ 
+ Additional include directories:
+   
+   .\..\..\..\include;.\..\..\..\extensions;.\..\..\..\soundgen;%(AdditionalIncludeDirectories)
+
+  

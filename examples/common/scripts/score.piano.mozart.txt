@@ -1,0 +1,4109 @@
+
+;-------------------------------------------------------------------------
+;
+; score.piano.mozart.txt (generated from mozart.mid)
+;
+;-------------------------------------------------------------------------
+
+mode:0
+bpm: 4
+
+[m:1 b:1 t:0]
+ch:0 i:50 d:47 p:72 mda:2 mdb:1 >
+
+[m:1 b:1 t:1]
+ch:1 i:16 d:21 p:60 mda:1 mdb:5 >
+
+[m:1 b:1 t:3]
+i:1 p:129 >  ; damper on
+
+[m:1 b:1 t:11]
+ch:2 i:18 d:9 p:67 mda:1 mdb:1 >
+
+[m:1 b:1 t:23]
+ch:3 i:19 d:6 p:64 mda:1 mdb:3 >
+
+[m:1 b:2 t:9]
+ch:2 i:36 d:7 p:67 mda:1 mdb:5 >
+
+[m:1 b:2 t:19]
+ch:4 i:58 d:24 p:76 mda:2 mdb:3 >
+
+[m:1 b:2 t:22]
+ch:1 i:19 d:41 p:60 mda:1 mdb:5 >
+i:0 p:129 >  ; damper off
+
+[m:1 b:3 t:7]
+ch:2 i:32 d:8 p:67 mda:1 mdb:1 >
+
+[m:1 b:3 t:17]
+ch:5 i:67 d:24 p:79 mda:2 mdb:5 >
+ch:3 i:29 d:8 p:64 mda:1 mdb:3 >
+
+[m:1 b:4 t:4]
+ch:2 i:39 d:9 p:67 mda:1 mdb:1 >
+
+[m:1 b:4 t:14]
+ch:6 i:58 d:35 p:71 mda:2 mdb:1 >
+
+[m:1 b:4 t:15]
+ch:7 i:27 d:43 p:62 mda:1 mdb:4 >
+
+[m:2 b:1 t:3]
+ch:2 i:31 d:8 p:67 mda:1 mdb:1 >
+
+[m:2 b:1 t:13]
+ch:8 i:31 d:5 p:65 mda:1 mdb:2 >
+
+[m:2 b:2 t:1]
+ch:0 i:26 d:3 p:72 mda:2 mdb:2 >
+ch:2 i:29 d:7 p:67 mda:1 mdb:1 >
+
+[m:2 b:2 t:5]
+ch:9 i:44 d:4 p:74 mda:2 mdb:3 >
+
+[m:2 b:2 t:11]
+ch:0 i:31 d:17 p:72 mda:2 mdb:1 >
+
+[m:2 b:2 t:12]
+ch:1 i:18 d:18 p:60 mda:1 mdb:5 >
+
+[m:2 b:2 t:22]
+ch:2 i:32 d:11 p:67 mda:1 mdb:1 >
+
+[m:2 b:3 t:6]
+i:1 p:129 >  ; damper on
+
+[m:2 b:3 t:9]
+ch:3 i:33 d:11 p:64 mda:1 mdb:3 >
+
+[m:2 b:3 t:13]
+i:0 p:129 >  ; damper off
+
+[m:2 b:3 t:20]
+ch:2 i:38 d:10 p:67 mda:1 mdb:1 >
+
+[m:2 b:4 t:6]
+ch:10 i:63 d:51 p:81 mda:2 mdb:3 >
+
+[m:2 b:4 t:9]
+ch:1 i:18 d:29 p:60 mda:1 mdb:5 >
+
+[m:2 b:4 t:17]
+ch:11 i:23 d:11 p:69 mda:1 mdb:1 >
+
+[m:3 b:1 t:4]
+ch:8 i:31 d:13 p:65 mda:1 mdb:2 >
+
+[m:3 b:1 t:15]
+ch:11 i:31 d:13 p:69 mda:1 mdb:1 >
+
+[m:3 b:2 t:3]
+ch:5 i:68 d:23 p:79 mda:2 mdb:2 >
+
+[m:3 b:2 t:6]
+ch:1 i:22 d:30 p:60 mda:1 mdb:5 >
+
+[m:3 b:2 t:15]
+ch:2 i:32 d:7 p:67 mda:1 mdb:1 >
+
+[m:3 b:3 t:0]
+ch:12 i:71 d:24 p:84 mda:2 mdb:5 >
+
+[m:3 b:3 t:1]
+ch:3 i:35 d:12 p:64 mda:1 mdb:3 >
+
+[m:3 b:3 t:12]
+ch:2 i:42 d:8 p:67 mda:1 mdb:1 >
+
+[m:3 b:3 t:21]
+ch:5 i:81 d:15 p:79 mda:2 mdb:3 >
+
+[m:3 b:3 t:23]
+ch:13 i:31 d:21 p:59 mda:1 mdb:5 >
+
+[m:3 b:4 t:8]
+ch:2 i:30 d:6 p:67 mda:1 mdb:1 >
+
+[m:3 b:4 t:14]
+ch:14 i:44 d:3 p:77 mda:2 mdb:2 >
+
+[m:3 b:4 t:16]
+ch:5 i:59 d:5 p:79 mda:2 mdb:3 >
+
+[m:3 b:4 t:17]
+ch:7 i:30 d:11 p:62 mda:1 mdb:3 >
+
+[m:3 b:4 t:20]
+ch:14 i:57 d:5 p:77 mda:2 mdb:2 >
+
+[m:4 b:1 t:2]
+ch:4 i:50 d:2 p:76 mda:2 mdb:1 >
+
+[m:4 b:1 t:4]
+ch:2 i:25 d:6 p:67 mda:1 mdb:1 >
+
+[m:4 b:1 t:5]
+ch:14 i:54 d:7 p:77 mda:2 mdb:2 >
+
+[m:4 b:1 t:13]
+ch:4 i:32 d:25 p:76 mda:2 mdb:1 >
+ch:1 i:23 d:19 p:60 mda:1 mdb:5 >
+
+[m:4 b:2 t:1]
+ch:2 i:30 d:8 p:67 mda:1 mdb:1 >
+
+[m:4 b:2 t:12]
+ch:3 i:34 d:7 p:64 mda:1 mdb:3 >
+
+[m:4 b:2 t:22]
+ch:2 i:30 d:12 p:67 mda:1 mdb:1 >
+
+[m:4 b:3 t:10]
+ch:11 i:45 d:12 p:69 mda:2 mdb:1 >
+ch:8 i:28 d:18 p:65 mda:1 mdb:2 >
+
+[m:4 b:3 t:22]
+ch:6 i:50 d:3 p:71 mda:2 mdb:2 >
+
+[m:4 b:4 t:3]
+ch:0 i:47 d:2 p:72 mda:2 mdb:3 >
+
+[m:4 b:4 t:7]
+ch:9 i:58 d:3 p:74 mda:2 mdb:1 >
+
+[m:4 b:4 t:12]
+ch:4 i:51 d:3 p:76 mda:2 mdb:2 >
+
+[m:4 b:4 t:16]
+ch:14 i:53 d:5 p:77 mda:2 mdb:3 >
+
+[m:4 b:4 t:21]
+ch:5 i:66 d:5 p:79 mda:2 mdb:4 >
+
+[m:5 b:1 t:2]
+ch:10 i:64 d:6 p:81 mda:2 mdb:5 >
+
+[m:5 b:1 t:7]
+ch:5 i:65 d:5 p:79 mda:2 mdb:4 >
+
+[m:5 b:1 t:12]
+ch:14 i:51 d:4 p:77 mda:2 mdb:3 >
+
+[m:5 b:1 t:17]
+ch:4 i:48 d:3 p:76 mda:2 mdb:2 >
+
+[m:5 b:1 t:22]
+ch:9 i:53 d:3 p:74 mda:2 mdb:1 >
+
+[m:5 b:1 t:23]
+ch:15 i:49 d:4 p:53 mda:1 mdb:5 >
+ch:1 i:31 d:5 p:60 mda:1 mdb:1 >
+
+[m:5 b:2 t:3]
+ch:0 i:42 d:5 p:72 mda:2 mdb:4 >
+
+[m:5 b:2 t:8]
+ch:6 i:52 d:4 p:71 mda:2 mdb:3 >
+
+[m:5 b:2 t:14]
+ch:11 i:34 d:4 p:69 mda:2 mdb:2 >
+
+[m:5 b:2 t:20]
+ch:2 i:48 d:11 p:67 mda:2 mdb:1 >
+ch:1 i:32 d:12 p:60 mda:1 mdb:1 >
+
+[m:5 b:2 t:21]
+ch:16 i:32 d:11 p:52 mda:1 mdb:5 >
+
+[m:5 b:3 t:6]
+i:1 p:129 >  ; damper on
+
+[m:5 b:3 t:7]
+ch:11 i:43 d:3 p:69 mda:2 mdb:2 >
+
+[m:5 b:3 t:12]
+ch:6 i:59 d:2 p:71 mda:2 mdb:3 >
+i:0 p:129 >  ; damper off
+
+[m:5 b:3 t:16]
+ch:0 i:60 d:3 p:72 mda:2 mdb:1 >
+
+[m:5 b:3 t:21]
+ch:9 i:65 d:4 p:74 mda:2 mdb:2 >
+
+[m:5 b:4 t:2]
+ch:4 i:48 d:5 p:76 mda:2 mdb:3 >
+
+[m:5 b:4 t:7]
+ch:14 i:60 d:6 p:77 mda:2 mdb:4 >
+
+[m:5 b:4 t:12]
+ch:5 i:73 d:8 p:79 mda:2 mdb:5 >
+
+[m:5 b:4 t:17]
+ch:14 i:59 d:6 p:77 mda:2 mdb:4 >
+
+[m:5 b:4 t:23]
+ch:4 i:50 d:4 p:76 mda:2 mdb:3 >
+
+[m:6 b:1 t:4]
+ch:9 i:58 d:2 p:74 mda:2 mdb:2 >
+
+[m:6 b:1 t:8]
+ch:1 i:42 d:3 p:60 mda:1 mdb:1 >
+ch:0 i:51 d:4 p:72 mda:2 mdb:1 >
+
+[m:6 b:1 t:9]
+ch:16 i:54 d:2 p:52 mda:1 mdb:5 >
+
+[m:6 b:1 t:13]
+ch:6 i:59 d:4 p:71 mda:2 mdb:4 >
+
+[m:6 b:1 t:18]
+ch:11 i:45 d:4 p:69 mda:2 mdb:3 >
+
+[m:6 b:1 t:23]
+ch:2 i:53 d:4 p:67 mda:2 mdb:2 >
+
+[m:6 b:2 t:6]
+ch:8 i:47 d:11 p:65 mda:2 mdb:1 >
+ch:1 i:36 d:12 p:60 mda:1 mdb:1 >
+ch:17 i:26 d:12 p:50 mda:1 mdb:5 >
+
+[m:6 b:2 t:18]
+i:1 p:129 >  ; damper on
+
+ch:2 i:46 d:3 p:67 mda:2 mdb:2 >
+
+[m:6 b:2 t:23]
+ch:11 i:46 d:3 p:69 mda:2 mdb:3 >
+
+[m:6 b:3 t:1]
+i:0 p:129 >  ; damper off
+
+[m:6 b:3 t:4]
+ch:6 i:63 d:2 p:71 mda:2 mdb:1 >
+
+[m:6 b:3 t:9]
+ch:0 i:46 d:3 p:72 mda:2 mdb:2 >
+
+[m:6 b:3 t:13]
+ch:9 i:57 d:4 p:74 mda:2 mdb:3 >
+
+[m:6 b:3 t:19]
+ch:4 i:53 d:4 p:76 mda:2 mdb:4 >
+
+[m:6 b:3 t:23]
+ch:14 i:69 d:6 p:77 mda:2 mdb:5 >
+
+[m:6 b:4 t:4]
+ch:4 i:54 d:6 p:76 mda:2 mdb:4 >
+
+[m:6 b:4 t:10]
+ch:9 i:63 d:4 p:74 mda:2 mdb:3 >
+
+[m:6 b:4 t:15]
+ch:0 i:55 d:3 p:72 mda:2 mdb:2 >
+
+[m:6 b:4 t:20]
+ch:6 i:61 d:3 p:71 mda:2 mdb:1 >
+ch:13 i:31 d:6 p:59 mda:1 mdb:1 >
+ch:17 i:34 d:3 p:50 mda:1 mdb:5 >
+
+[m:7 b:1 t:1]
+ch:11 i:40 d:4 p:69 mda:2 mdb:4 >
+
+[m:7 b:1 t:6]
+ch:2 i:40 d:4 p:67 mda:2 mdb:3 >
+
+[m:7 b:1 t:11]
+ch:8 i:50 d:2 p:65 mda:2 mdb:2 >
+
+[m:7 b:1 t:17]
+ch:3 i:61 d:11 p:64 mda:2 mdb:1 >
+ch:1 i:34 d:15 p:60 mda:1 mdb:1 >
+
+[m:7 b:1 t:18]
+ch:18 i:18 d:16 p:48 mda:1 mdb:5 >
+
+[m:7 b:2 t:3]
+i:1 p:129 >  ; damper on
+
+[m:7 b:2 t:5]
+ch:8 i:44 d:3 p:65 mda:2 mdb:2 >
+
+[m:7 b:2 t:9]
+ch:2 i:55 d:3 p:67 mda:2 mdb:3 >
+
+[m:7 b:2 t:14]
+ch:11 i:51 d:3 p:69 mda:2 mdb:1 >
+i:0 p:129 >  ; damper off
+
+[m:7 b:2 t:19]
+ch:6 i:59 d:4 p:71 mda:2 mdb:2 >
+
+[m:7 b:2 t:23]
+ch:0 i:51 d:5 p:72 mda:2 mdb:3 >
+
+[m:7 b:3 t:5]
+ch:9 i:58 d:6 p:74 mda:2 mdb:4 >
+
+[m:7 b:3 t:10]
+ch:4 i:56 d:6 p:76 mda:2 mdb:5 >
+
+[m:7 b:3 t:15]
+ch:9 i:53 d:6 p:74 mda:2 mdb:4 >
+
+[m:7 b:3 t:20]
+ch:0 i:47 d:4 p:72 mda:2 mdb:3 >
+
+[m:7 b:4 t:2]
+ch:6 i:36 d:3 p:71 mda:2 mdb:2 >
+
+[m:7 b:4 t:6]
+ch:11 i:39 d:4 p:69 mda:2 mdb:1 >
+
+[m:7 b:4 t:7]
+ch:18 i:26 d:5 p:48 mda:1 mdb:5 >
+
+[m:7 b:4 t:8]
+ch:16 i:27 d:4 p:52 mda:1 mdb:3 >
+
+[m:7 b:4 t:12]
+ch:2 i:37 d:5 p:67 mda:2 mdb:4 >
+
+[m:7 b:4 t:17]
+ch:8 i:31 d:3 p:65 mda:2 mdb:3 >
+
+[m:7 b:4 t:22]
+ch:3 i:35 d:3 p:64 mda:2 mdb:2 >
+
+[m:8 b:1 t:5]
+ch:7 i:48 d:10 p:62 mda:2 mdb:1 >
+ch:15 i:37 d:25 p:53 mda:1 mdb:2 >
+
+[m:8 b:1 t:6]
+ch:19 i:33 d:23 p:57 mda:1 mdb:1 >
+
+[m:8 b:1 t:18]
+ch:3 i:45 d:3 p:64 mda:2 mdb:2 >
+
+[m:8 b:1 t:22]
+ch:8 i:54 d:3 p:65 mda:2 mdb:3 >
+
+[m:8 b:2 t:3]
+ch:2 i:59 d:4 p:67 mda:2 mdb:1 >
+
+[m:8 b:2 t:8]
+ch:11 i:56 d:6 p:69 mda:2 mdb:2 >
+
+[m:8 b:2 t:13]
+ch:6 i:63 d:5 p:71 mda:2 mdb:3 >
+
+[m:8 b:2 t:18]
+ch:20 i:62 d:7 p:73 mda:2 mdb:4 >
+
+[m:8 b:3 t:0]
+ch:9 i:78 d:6 p:74 mda:2 mdb:5 >
+
+[m:8 b:3 t:5]
+ch:11 i:62 d:5 p:69 mda:2 mdb:1 >
+
+[m:8 b:3 t:9]
+ch:6 i:79 d:6 p:71 mda:2 mdb:2 >
+
+[m:8 b:3 t:14]
+ch:20 i:78 d:5 p:73 mda:2 mdb:3 >
+
+[m:8 b:3 t:19]
+ch:9 i:88 d:3 p:74 mda:2 mdb:1 >
+
+[m:8 b:4 t:0]
+ch:4 i:74 d:5 p:76 mda:2 mdb:2 >
+
+[m:8 b:4 t:5]
+ch:14 i:82 d:3 p:77 mda:2 mdb:3 >
+
+[m:8 b:4 t:10]
+ch:5 i:81 d:3 p:79 mda:2 mdb:4 >
+
+[m:8 b:4 t:15]
+ch:15 i:71 d:23 p:53 mda:1 mdb:3 >
+
+[m:8 b:4 t:16]
+ch:10 i:79 d:6 p:81 mda:2 mdb:1 >
+
+[m:8 b:4 t:21]
+ch:21 i:89 d:6 p:83 mda:2 mdb:2 >
+
+[m:9 b:1 t:3]
+ch:12 i:74 d:7 p:84 mda:2 mdb:3 >
+
+[m:9 b:1 t:8]
+ch:21 i:76 d:6 p:83 mda:2 mdb:2 >
+
+[m:9 b:1 t:13]
+ch:10 i:60 d:3 p:81 mda:2 mdb:1 >
+
+[m:9 b:1 t:18]
+ch:5 i:66 d:3 p:79 mda:2 mdb:3 >
+
+[m:9 b:2 t:0]
+ch:14 i:63 d:4 p:77 mda:2 mdb:2 >
+ch:22 i:70 d:7 p:55 mda:1 mdb:2 >
+
+[m:9 b:2 t:5]
+ch:4 i:56 d:3 p:76 mda:2 mdb:1 >
+
+[m:9 b:2 t:10]
+ch:14 i:62 d:7 p:77 mda:2 mdb:2 >
+
+[m:9 b:2 t:11]
+ch:19 i:74 d:28 p:57 mda:1 mdb:1 >
+
+[m:9 b:2 t:15]
+ch:5 i:88 d:5 p:79 mda:2 mdb:3 >
+
+[m:9 b:2 t:20]
+ch:10 i:70 d:7 p:81 mda:2 mdb:4 >
+
+[m:9 b:3 t:1]
+ch:5 i:65 d:6 p:79 mda:2 mdb:3 >
+
+[m:9 b:3 t:7]
+ch:14 i:72 d:6 p:77 mda:2 mdb:2 >
+
+[m:9 b:3 t:12]
+ch:4 i:63 d:3 p:76 mda:2 mdb:1 >
+
+[m:9 b:3 t:16]
+ch:23 i:70 d:3 p:54 mda:1 mdb:2 >
+
+[m:9 b:3 t:17]
+ch:9 i:64 d:3 p:74 mda:2 mdb:3 >
+
+[m:9 b:3 t:21]
+i:1 p:129 >  ; damper on
+
+ch:0 i:66 d:3 p:72 mda:2 mdb:2 >
+
+[m:9 b:4 t:0]
+i:0 p:129 >  ; damper off
+
+[m:9 b:4 t:2]
+ch:6 i:83 d:11 p:71 mda:2 mdb:1 >
+
+[m:9 b:4 t:3]
+ch:24 i:58 d:5 p:43 mda:1 mdb:5 >
+
+[m:9 b:4 t:8]
+ch:25 i:55 d:4 p:47 mda:1 mdb:3 >
+
+[m:9 b:4 t:12]
+ch:17 i:59 d:4 p:50 mda:1 mdb:2 >
+
+[m:9 b:4 t:13]
+ch:5 i:77 d:3 p:79 mda:2 mdb:5 >
+
+[m:9 b:4 t:17]
+ch:22 i:63 d:3 p:55 mda:1 mdb:1 >
+
+[m:9 b:4 t:23]
+ch:24 i:69 d:6 p:43 mda:1 mdb:5 >
+ch:4 i:73 d:3 p:76 mda:2 mdb:3 >
+
+[m:10 b:1 t:4]
+ch:18 i:62 d:6 p:48 mda:1 mdb:3 >
+
+[m:10 b:1 t:9]
+ch:0 i:73 d:3 p:72 mda:2 mdb:1 >
+
+[m:10 b:1 t:10]
+ch:16 i:78 d:5 p:52 mda:1 mdb:2 >
+
+[m:10 b:1 t:15]
+ch:22 i:56 d:4 p:55 mda:1 mdb:1 >
+
+[m:10 b:1 t:20]
+ch:9 i:87 d:10 p:74 mda:2 mdb:2 >
+
+[m:10 b:1 t:21]
+ch:24 i:73 d:6 p:43 mda:1 mdb:5 >
+
+[m:10 b:2 t:2]
+ch:25 i:65 d:6 p:47 mda:1 mdb:3 >
+
+[m:10 b:2 t:6]
+ch:17 i:76 d:7 p:50 mda:1 mdb:2 >
+
+[m:10 b:2 t:7]
+ch:5 i:91 d:4 p:79 mda:2 mdb:5 >
+
+[m:10 b:2 t:13]
+ch:22 i:47 d:3 p:55 mda:1 mdb:1 >
+
+[m:10 b:2 t:18]
+ch:4 i:78 d:2 p:76 mda:2 mdb:3 >
+ch:24 i:78 d:5 p:43 mda:1 mdb:5 >
+
+[m:10 b:2 t:22]
+ch:18 i:73 d:7 p:48 mda:1 mdb:3 >
+
+[m:10 b:3 t:4]
+ch:16 i:79 d:5 p:52 mda:1 mdb:2 >
+ch:0 i:78 d:5 p:72 mda:2 mdb:1 >
+
+[m:10 b:3 t:9]
+ch:22 i:73 d:4 p:55 mda:1 mdb:1 >
+
+[m:10 b:3 t:15]
+ch:9 i:92 d:7 p:74 mda:2 mdb:2 >
+ch:24 i:91 d:2 p:43 mda:1 mdb:5 >
+
+[m:10 b:4 t:13]
+ch:6 i:81 d:3 p:71 mda:2 mdb:1 >
+ch:5 i:91 d:7 p:79 mda:2 mdb:5 >
+
+[m:10 b:4 t:14]
+ch:9 i:76 d:5 p:74 mda:2 mdb:2 >
+ch:22 i:73 d:4 p:55 mda:1 mdb:1 >
+
+[m:11 b:1 t:14]
+ch:2 i:80 d:16 p:67 mda:2 mdb:1 >
+ch:24 i:55 d:16 p:43 mda:1 mdb:5 >
+
+
+
+
+; Theme B
+
+[m:11 b:3 t:20]
+ch:26 i:46 d:6 p:61 mda:1 mdb:3 >
+
+[m:11 b:4 t:3]
+ch:7 i:39 d:4 p:62 mda:1 mdb:1 >
+
+[m:11 b:4 t:7]
+ch:26 i:26 d:6 p:61 mda:1 mdb:2 >
+
+[m:11 b:4 t:14]
+ch:7 i:29 d:3 p:62 mda:1 mdb:1 >
+
+[m:11 b:4 t:18]
+ch:26 i:35 d:6 p:61 mda:1 mdb:2 >
+
+[m:12 b:1 t:0]
+ch:7 i:32 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:1 t:4]
+ch:26 i:41 d:5 p:61 mda:1 mdb:2 >
+
+[m:12 b:1 t:10]
+ch:7 i:41 d:4 p:62 mda:1 mdb:1 >
+
+[m:12 b:1 t:16]
+ch:1 i:58 d:3 p:60 mda:1 mdb:3 >
+
+[m:12 b:1 t:21]
+ch:7 i:47 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:2 t:2]
+ch:1 i:41 d:4 p:60 mda:1 mdb:2 >
+
+[m:12 b:2 t:8]
+ch:7 i:43 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:2 t:13]
+ch:1 i:33 d:3 p:60 mda:1 mdb:2 >
+
+[m:12 b:2 t:18]
+ch:7 i:44 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:3 t:0]
+ch:1 i:23 d:4 p:60 mda:1 mdb:2 >
+
+[m:12 b:3 t:6]
+ch:7 i:41 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:3 t:12]
+ch:27 i:60 d:14 p:86 mda:2 mdb:5 >
+
+[m:12 b:3 t:13]
+ch:13 i:28 d:3 p:59 mda:1 mdb:3 >
+
+[m:12 b:3 t:18]
+ch:7 i:34 d:4 p:62 mda:1 mdb:1 >
+
+[m:12 b:3 t:23]
+ch:21 i:85 d:12 p:83 mda:2 mdb:3 >
+
+[m:12 b:4 t:0]
+ch:13 i:27 d:3 p:59 mda:1 mdb:3 >
+
+[m:12 b:4 t:6]
+ch:7 i:33 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:4 t:10]
+ch:5 i:79 d:34 p:79 mda:2 mdb:1 >
+
+[m:12 b:4 t:11]
+ch:13 i:29 d:3 p:59 mda:1 mdb:3 >
+
+[m:12 b:4 t:17]
+ch:7 i:31 d:3 p:62 mda:1 mdb:1 >
+
+[m:12 b:4 t:21]
+ch:13 i:33 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:1 t:3]
+ch:7 i:26 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:1 t:9]
+ch:13 i:31 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:1 t:14]
+ch:7 i:36 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:1 t:20]
+ch:10 i:45 d:2 p:81 mda:2 mdb:2 >
+ch:13 i:30 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:2 t:0]
+ch:21 i:65 d:4 p:83 mda:2 mdb:3 >
+
+[m:13 b:2 t:1]
+ch:7 i:33 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:2 t:4]
+ch:10 i:43 d:6 p:81 mda:2 mdb:2 >
+
+[m:13 b:2 t:5]
+ch:13 i:32 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:2 t:10]
+ch:7 i:26 d:4 p:62 mda:1 mdb:1 >
+
+[m:13 b:2 t:16]
+ch:13 i:10 d:3 p:59 mda:1 mdb:3 >
+ch:5 i:60 d:6 p:79 mda:2 mdb:1 >
+
+[m:13 b:2 t:20]
+ch:7 i:30 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:3 t:1]
+ch:5 i:30 d:3 p:79 mda:2 mdb:1 >
+
+[m:13 b:3 t:2]
+ch:1 i:33 d:4 p:60 mda:1 mdb:2 >
+
+[m:13 b:3 t:3]
+ch:10 i:63 d:3 p:81 mda:2 mdb:3 >
+
+[m:13 b:3 t:6]
+ch:5 i:59 d:11 p:79 mda:2 mdb:1 >
+
+[m:13 b:3 t:8]
+ch:7 i:32 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:3 t:13]
+ch:13 i:36 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:3 t:19]
+ch:7 i:24 d:3 p:62 mda:1 mdb:1 >
+ch:28 i:60 d:2 p:78 mda:2 mdb:3 >
+
+[m:13 b:4 t:0]
+ch:19 i:36 d:4 p:57 mda:1 mdb:4 >
+ch:28 i:52 d:40 p:78 mda:2 mdb:2 >
+
+[m:13 b:4 t:5]
+ch:7 i:34 d:3 p:62 mda:1 mdb:1 >
+
+[m:13 b:4 t:10]
+ch:13 i:37 d:3 p:59 mda:1 mdb:3 >
+
+[m:13 b:4 t:13]
+ch:7 i:38 d:5 p:62 mda:1 mdb:1 >
+
+[m:13 b:4 t:20]
+ch:1 i:52 d:4 p:60 mda:1 mdb:2 >
+
+[m:14 b:1 t:2]
+ch:7 i:45 d:3 p:62 mda:1 mdb:1 >
+
+[m:14 b:1 t:7]
+ch:13 i:49 d:3 p:59 mda:1 mdb:3 >
+
+[m:14 b:1 t:12]
+ch:7 i:41 d:4 p:62 mda:1 mdb:1 >
+
+[m:14 b:1 t:17]
+ch:1 i:52 d:5 p:60 mda:1 mdb:2 >
+
+[m:14 b:1 t:22]
+ch:7 i:44 d:4 p:62 mda:1 mdb:1 >
+
+[m:14 b:2 t:5]
+ch:19 i:32 d:3 p:57 mda:1 mdb:4 >
+
+[m:14 b:2 t:10]
+ch:7 i:33 d:3 p:62 mda:1 mdb:1 >
+
+[m:14 b:2 t:16]
+ch:27 i:54 d:15 p:86 mda:2 mdb:5 >
+
+[m:14 b:2 t:17]
+i:1 p:129 >  ; damper on
+
+ch:13 i:21 d:4 p:59 mda:1 mdb:3 >
+
+[m:14 b:2 t:23]
+ch:7 i:36 d:3 p:62 mda:1 mdb:1 >
+
+[m:14 b:3 t:3]
+i:0 p:129 >  ; damper off
+
+
+[m:14 b:3 t:4]
+ch:21 i:69 d:12 p:83 mda:2 mdb:3 >
+
+[m:14 b:3 t:6]
+ch:13 i:17 d:4 p:59 mda:1 mdb:3 >
+
+[m:14 b:3 t:10]
+ch:7 i:42 d:4 p:62 mda:1 mdb:1 >
+
+[m:14 b:3 t:15]
+ch:5 i:68 d:33 p:79 mda:2 mdb:1 >
+ch:13 i:37 d:4 p:59 mda:1 mdb:3 >
+
+ch:7 i:31 d:3 p:62 mda:1 mdb:1 >
+
+[m:14 b:4 t:3]
+ch:13 i:48 d:3 p:59 mda:1 mdb:3 >
+
+[m:14 b:4 t:7]
+ch:7 i:29 d:5 p:62 mda:1 mdb:1 >
+
+[m:14 b:4 t:13]
+ch:13 i:49 d:3 p:59 mda:1 mdb:3 >
+
+[m:14 b:4 t:18]
+ch:7 i:39 d:4 p:62 mda:1 mdb:1 >
+
+[m:14 b:4 t:23]
+ch:10 i:75 d:4 p:81 mda:2 mdb:2 >
+ch:13 i:50 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:1 t:4]
+ch:21 i:88 d:6 p:83 mda:2 mdb:3 >
+ch:7 i:44 d:4 p:62 mda:1 mdb:1 >
+
+[m:15 b:1 t:9]
+ch:10 i:79 d:6 p:81 mda:2 mdb:2 >
+
+[m:15 b:1 t:10]
+ch:13 i:40 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:1 t:15]
+ch:7 i:44 d:3 p:62 mda:1 mdb:1 >
+
+[m:15 b:1 t:19]
+ch:5 i:81 d:4 p:79 mda:2 mdb:1 >
+ch:13 i:46 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:2 t:0]
+ch:7 i:44 d:3 p:62 mda:1 mdb:1 >
+
+[m:15 b:2 t:4]
+ch:5 i:66 d:3 p:79 mda:2 mdb:1 >
+
+[m:15 b:2 t:6]
+ch:1 i:46 d:4 p:60 mda:1 mdb:2 >
+
+[m:15 b:2 t:7]
+ch:10 i:59 d:3 p:81 mda:2 mdb:3 >
+
+[m:15 b:2 t:11]
+ch:7 i:45 d:3 p:62 mda:1 mdb:1 >
+ch:5 i:58 d:11 p:79 mda:2 mdb:1 >
+
+[m:15 b:2 t:17]
+ch:13 i:39 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:2 t:22]
+ch:28 i:58 d:2 p:78 mda:2 mdb:3 >
+ch:7 i:45 d:4 p:62 mda:1 mdb:1 >
+
+[m:15 b:3 t:3]
+ch:28 i:66 d:46 p:78 mda:2 mdb:2 >
+
+[m:15 b:3 t:4]
+ch:19 i:43 d:3 p:57 mda:1 mdb:4 >
+
+[m:15 b:3 t:10]
+ch:7 i:39 d:3 p:62 mda:1 mdb:1 >
+
+[m:15 b:3 t:14]
+ch:13 i:54 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:3 t:18]
+ch:7 i:34 d:5 p:62 mda:1 mdb:1 >
+
+[m:15 b:4 t:0]
+ch:1 i:60 d:6 p:60 mda:1 mdb:2 >
+
+[m:15 b:4 t:6]
+ch:7 i:52 d:3 p:62 mda:1 mdb:1 >
+
+[m:15 b:4 t:11]
+ch:13 i:46 d:3 p:59 mda:1 mdb:3 >
+
+[m:15 b:4 t:17]
+ch:7 i:32 d:3 p:62 mda:1 mdb:1 >
+
+[m:15 b:4 t:22]
+ch:1 i:45 d:4 p:60 mda:1 mdb:2 >
+
+[m:16 b:1 t:3]
+ch:7 i:35 d:4 p:62 mda:1 mdb:1 >
+
+[m:16 b:1 t:9]
+ch:19 i:19 d:4 p:57 mda:1 mdb:4 >
+
+[m:16 b:1 t:14]
+ch:7 i:44 d:3 p:62 mda:1 mdb:1 >
+
+[m:16 b:1 t:20]
+ch:27 i:61 d:22 p:86 mda:2 mdb:5 >
+
+[m:16 b:2 t:2]
+ch:13 i:37 d:3 p:59 mda:1 mdb:5 >
+
+[m:16 b:2 t:6]
+i:1 p:129 >  ; damper on
+
+
+[m:16 b:2 t:8]
+ch:7 i:30 d:3 p:62 mda:1 mdb:4 >
+
+[m:16 b:2 t:12]
+ch:2 i:50 d:3 p:67 mda:1 mdb:2 >
+
+[m:16 b:2 t:19]
+ch:6 i:66 d:5 p:71 mda:1 mdb:1 >
+
+[m:16 b:3 t:0]
+ch:27 i:62 d:6 p:86 mda:2 mdb:5 >
+
+[m:16 b:3 t:5]
+i:0 p:129 >  ; damper off
+
+
+[m:16 b:3 t:6]
+ch:21 i:84 d:6 p:83 mda:2 mdb:3 >
+
+[m:16 b:3 t:11]
+ch:5 i:74 d:6 p:79 mda:2 mdb:2 >
+
+[m:16 b:3 t:17]
+ch:4 i:66 d:20 p:76 mda:2 mdb:1 >
+
+[m:16 b:3 t:22]
+ch:1 i:54 d:6 p:60 mda:1 mdb:5 >
+
+[m:16 b:4 t:4]
+ch:3 i:61 d:4 p:64 mda:1 mdb:3 >
+
+[m:16 b:4 t:7]
+i:1 p:129 >  ; damper on
+
+
+[m:16 b:4 t:10]
+ch:2 i:50 d:3 p:67 mda:1 mdb:2 >
+
+[m:16 b:4 t:15]
+ch:0 i:61 d:7 p:72 mda:1 mdb:1 >
+
+[m:16 b:4 t:20]
+ch:4 i:70 d:5 p:76 mda:2 mdb:1 >
+
+[m:16 b:4 t:22]
+i:0 p:129 >  ; damper off
+
+
+[m:17 b:1 t:1]
+ch:5 i:69 d:6 p:79 mda:2 mdb:2 >
+
+[m:17 b:1 t:7]
+ch:4 i:62 d:7 p:76 mda:2 mdb:1 >
+
+[m:17 b:1 t:14]
+ch:12 i:78 d:20 p:84 mda:2 mdb:5 >
+
+[m:17 b:1 t:19]
+ch:19 i:44 d:6 p:57 mda:1 mdb:5 >
+
+[m:17 b:2 t:1]
+ch:1 i:50 d:5 p:60 mda:1 mdb:4 >
+
+[m:17 b:2 t:2]
+i:1 p:129 >  ; damper on
+
+
+[m:17 b:2 t:7]
+ch:29 i:34 d:5 p:66 mda:1 mdb:2 >
+
+[m:17 b:2 t:14]
+ch:11 i:37 d:5 p:69 mda:1 mdb:1 >
+
+[m:17 b:2 t:19]
+ch:12 i:64 d:4 p:84 mda:2 mdb:5 >
+
+[m:17 b:2 t:21]
+i:0 p:129 >  ; damper off
+
+
+[m:17 b:3 t:1]
+ch:10 i:47 d:7 p:81 mda:2 mdb:3 >
+
+[m:17 b:3 t:7]
+ch:28 i:50 d:5 p:78 mda:2 mdb:2 >
+
+[m:17 b:3 t:14]
+ch:9 i:56 d:19 p:74 mda:2 mdb:1 >
+
+[m:17 b:3 t:18]
+ch:13 i:35 d:5 p:59 mda:1 mdb:5 >
+
+[m:17 b:4 t:0]
+ch:7 i:48 d:4 p:62 mda:1 mdb:3 >
+
+[m:17 b:4 t:2]
+i:1 p:129 >  ; damper on
+
+
+[m:17 b:4 t:5]
+ch:29 i:39 d:4 p:66 mda:1 mdb:2 >
+
+[m:17 b:4 t:11]
+ch:6 i:58 d:11 p:71 mda:1 mdb:1 >
+
+[m:17 b:4 t:16]
+ch:9 i:71 d:6 p:74 mda:2 mdb:1 >
+
+[m:17 b:4 t:20]
+i:0 p:129 >  ; damper off
+
+
+[m:17 b:4 t:22]
+ch:28 i:70 d:5 p:78 mda:2 mdb:2 >
+
+[m:18 b:1 t:3]
+ch:9 i:59 d:7 p:74 mda:2 mdb:1 >
+
+[m:18 b:1 t:10]
+ch:21 i:92 d:19 p:83 mda:2 mdb:5 >
+
+[m:18 b:1 t:16]
+ch:22 i:45 d:6 p:55 mda:1 mdb:5 >
+
+[m:18 b:1 t:21]
+ch:13 i:57 d:6 p:59 mda:1 mdb:4 >
+
+[m:18 b:1 t:23]
+i:1 p:129 >  ; damper on
+
+
+[m:18 b:2 t:2]
+ch:3 i:52 d:5 p:64 mda:1 mdb:2 >
+
+[m:18 b:2 t:9]
+ch:2 i:58 d:6 p:67 mda:1 mdb:1 >
+
+[m:18 b:2 t:15]
+ch:21 i:77 d:6 p:83 mda:2 mdb:5 >
+
+[m:18 b:2 t:19]
+i:0 p:129 >  ; damper off
+
+
+[m:18 b:2 t:20]
+ch:5 i:68 d:7 p:79 mda:2 mdb:3 >
+
+[m:18 b:3 t:2]
+ch:4 i:63 d:7 p:76 mda:2 mdb:2 >
+
+[m:18 b:3 t:8]
+ch:0 i:60 d:18 p:72 mda:2 mdb:1 >
+
+[m:18 b:3 t:14]
+ch:19 i:48 d:6 p:57 mda:1 mdb:5 >
+
+[m:18 b:3 t:19]
+ch:1 i:58 d:4 p:60 mda:1 mdb:3 >
+
+[m:18 b:3 t:23]
+i:1 p:129 >  ; damper on
+
+
+[m:18 b:4 t:1]
+ch:3 i:55 d:3 p:64 mda:1 mdb:2 >
+
+[m:18 b:4 t:6]
+ch:11 i:50 d:9 p:69 mda:1 mdb:1 >
+
+[m:18 b:4 t:12]
+ch:0 i:63 d:4 p:72 mda:2 mdb:1 >
+
+[m:18 b:4 t:17]
+ch:4 i:65 d:6 p:76 mda:2 mdb:2 >
+
+[m:18 b:4 t:19]
+i:0 p:129 >  ; damper off
+
+
+[m:18 b:4 t:23]
+ch:0 i:68 d:6 p:72 mda:2 mdb:1 >
+
+[m:19 b:1 t:6]
+ch:10 i:57 d:18 p:81 mda:2 mdb:5 >
+
+[m:19 b:1 t:12]
+ch:23 i:37 d:5 p:54 mda:1 mdb:5 >
+
+[m:19 b:1 t:17]
+ch:19 i:28 d:4 p:57 mda:1 mdb:4 >
+
+[m:19 b:1 t:20]
+i:1 p:129 >  ; damper on
+
+
+[m:19 b:1 t:22]
+ch:7 i:36 d:4 p:62 mda:1 mdb:2 >
+
+[m:19 b:2 t:5]
+ch:29 i:34 d:9 p:66 mda:1 mdb:1 >
+
+[m:19 b:2 t:11]
+ch:10 i:48 d:5 p:81 mda:2 mdb:5 >
+
+[m:19 b:2 t:16]
+ch:28 i:43 d:5 p:78 mda:2 mdb:3 >
+i:0 p:129 >  ; damper off
+
+
+[m:19 b:2 t:23]
+ch:9 i:38 d:4 p:74 mda:2 mdb:2 >
+
+[m:19 b:3 t:5]
+ch:6 i:55 d:23 p:71 mda:2 mdb:1 >
+
+[m:19 b:3 t:10]
+ch:22 i:40 d:6 p:55 mda:1 mdb:5 >
+
+[m:19 b:3 t:16]
+ch:13 i:28 d:4 p:59 mda:1 mdb:3 >
+
+[m:19 b:3 t:20]
+ch:7 i:42 d:4 p:62 mda:1 mdb:2 >
+
+[m:19 b:4 t:3]
+ch:2 i:49 d:5 p:67 mda:1 mdb:1 >
+
+[m:19 b:4 t:8]
+i:1 p:129 >  ; damper on
+
+
+[m:19 b:4 t:10]
+ch:5 i:65 d:4 p:79 mda:2 mdb:5 >
+
+[m:19 b:4 t:15]
+ch:9 i:57 d:4 p:74 mda:2 mdb:3 >
+
+[m:19 b:4 t:21]
+ch:6 i:43 d:3 p:71 mda:2 mdb:2 >
+
+[m:20 b:1 t:0]
+i:0 p:129 >  ; damper off
+
+
+[m:20 b:1 t:2]
+ch:1 i:45 d:3 p:60 mda:1 mdb:3 >
+ch:3 i:44 d:2 p:64 mda:1 mdb:1 >
+ch:11 i:51 d:35 p:69 mda:2 mdb:1 >
+
+[m:20 b:1 t:13]
+ch:3 i:51 d:3 p:64 mda:1 mdb:1 >
+ch:1 i:46 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:2 t:0]
+ch:3 i:47 d:3 p:64 mda:1 mdb:1 >
+
+[m:20 b:2 t:1]
+ch:1 i:42 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:2 t:12]
+ch:3 i:29 d:4 p:64 mda:1 mdb:1 >
+
+[m:20 b:2 t:13]
+ch:1 i:27 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:2 t:22]
+ch:6 i:49 d:3 p:71 mda:2 mdb:2 >
+ch:0 i:78 d:5 p:72 mda:2 mdb:3 >
+
+[m:20 b:2 t:23]
+ch:3 i:60 d:3 p:64 mda:1 mdb:1 >
+ch:1 i:43 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:3 t:10]
+ch:3 i:50 d:3 p:64 mda:1 mdb:1 >
+ch:1 i:53 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:3 t:20]
+ch:30 i:52 d:3 p:75 mda:2 mdb:3 >
+
+[m:20 b:3 t:21]
+ch:4 i:78 d:5 p:76 mda:2 mdb:1 >
+ch:3 i:54 d:2 p:64 mda:1 mdb:1 >
+
+[m:20 b:3 t:22]
+ch:1 i:40 d:3 p:60 mda:1 mdb:3 >
+
+[m:20 b:4 t:8]
+ch:3 i:51 d:3 p:64 mda:1 mdb:1 >
+ch:1 i:25 d:4 p:60 mda:1 mdb:3 >
+
+[m:20 b:4 t:18]
+ch:31 i:67 d:3 p:80 mda:2 mdb:3 >
+
+[m:20 b:4 t:19]
+ch:3 i:50 d:3 p:64 mda:1 mdb:1 >
+ch:1 i:47 d:3 p:60 mda:1 mdb:3 >
+ch:10 i:82 d:25 p:81 mda:2 mdb:1 >
+
+[m:21 b:1 t:6]
+ch:3 i:52 d:3 p:64 mda:1 mdb:1 >
+
+[m:21 b:1 t:7]
+ch:1 i:51 d:2 p:60 mda:1 mdb:3 >
+
+[m:21 b:1 t:17]
+ch:3 i:42 d:3 p:64 mda:1 mdb:1 >
+
+[m:21 b:1 t:18]
+ch:1 i:37 d:3 p:60 mda:1 mdb:3 >
+
+[m:21 b:1 t:23]
+ch:21 i:84 d:3 p:83 mda:2 mdb:3 >
+
+[m:21 b:2 t:3]
+ch:10 i:60 d:2 p:81 mda:2 mdb:2 >
+
+[m:21 b:2 t:4]
+ch:1 i:33 d:4 p:60 mda:1 mdb:3 >
+
+[m:21 b:2 t:5]
+ch:3 i:49 d:2 p:64 mda:1 mdb:1 >
+ch:31 i:66 d:6 p:80 mda:2 mdb:1 >
+
+[m:21 b:2 t:10]
+ch:10 i:49 d:6 p:81 mda:2 mdb:2 >
+
+[m:21 b:2 t:15]
+ch:1 i:41 d:3 p:60 mda:1 mdb:3 >
+ch:3 i:50 d:3 p:64 mda:1 mdb:1 >
+
+[m:21 b:2 t:16]
+ch:12 i:93 d:7 p:84 mda:2 mdb:4 >
+
+[m:21 b:3 t:2]
+ch:10 i:76 d:2 p:81 mda:2 mdb:2 >
+ch:1 i:57 d:3 p:60 mda:1 mdb:3 >
+ch:3 i:50 d:3 p:64 mda:1 mdb:1 >
+
+[m:21 b:3 t:13]
+ch:12 i:92 d:8 p:84 mda:2 mdb:4 >
+
+[m:21 b:3 t:14]
+ch:1 i:56 d:3 p:60 mda:1 mdb:3 >
+ch:3 i:56 d:2 p:64 mda:1 mdb:1 >
+
+[m:21 b:4 t:0]
+ch:10 i:79 d:5 p:81 mda:2 mdb:2 >
+
+[m:21 b:4 t:1]
+ch:1 i:67 d:2 p:60 mda:1 mdb:3 >
+
+[m:21 b:4 t:2]
+ch:3 i:49 d:2 p:64 mda:1 mdb:1 >
+
+[m:21 b:4 t:12]
+ch:21 i:108 d:4 p:83 mda:2 mdb:3 >
+ch:7 i:60 d:3 p:62 mda:1 mdb:5 >
+
+[m:21 b:4 t:18]
+ch:6 i:42 d:4 p:71 mda:1 mdb:1 >
+
+[m:21 b:4 t:22]
+ch:5 i:89 d:4 p:79 mda:2 mdb:1 >
+
+[m:21 b:4 t:23]
+ch:2 i:44 d:4 p:67 mda:1 mdb:2 >
+
+[m:22 b:1 t:6]
+ch:6 i:48 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:1 t:11]
+ch:27 i:90 d:46 p:86 mda:2 mdb:5 >
+
+[m:22 b:1 t:12]
+ch:7 i:37 d:3 p:62 mda:1 mdb:5 >
+
+[m:22 b:1 t:14]
+i:1 p:129 >  ; damper on
+
+
+[m:22 b:1 t:18]
+ch:6 i:49 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:1 t:23]
+ch:2 i:30 d:4 p:67 mda:1 mdb:2 >
+
+[m:22 b:2 t:6]
+ch:6 i:32 d:4 p:71 mda:1 mdb:1 >
+
+[m:22 b:2 t:11]
+ch:7 i:39 d:3 p:62 mda:1 mdb:5 >
+
+[m:22 b:2 t:16]
+ch:6 i:31 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:2 t:22]
+ch:2 i:29 d:3 p:67 mda:1 mdb:2 >
+
+[m:22 b:3 t:3]
+ch:6 i:48 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:3 t:8]
+ch:12 i:63 d:7 p:84 mda:2 mdb:4 >
+
+[m:22 b:3 t:10]
+ch:7 i:25 d:3 p:62 mda:1 mdb:5 >
+
+[m:22 b:3 t:14]
+ch:21 i:76 d:3 p:83 mda:2 mdb:3 >
+
+[m:22 b:3 t:15]
+ch:6 i:44 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:3 t:19]
+ch:10 i:55 d:3 p:81 mda:2 mdb:2 >
+
+[m:22 b:3 t:20]
+ch:2 i:29 d:3 p:67 mda:1 mdb:2 >
+
+[m:22 b:3 t:23]
+ch:5 i:69 d:3 p:79 mda:2 mdb:1 >
+
+[m:22 b:4 t:0]
+ch:6 i:39 d:3 p:71 mda:1 mdb:1 >
+
+[m:22 b:4 t:1]
+i:0 p:129 >  ; damper off
+
+
+[m:22 b:4 t:5]
+ch:10 i:70 d:2 p:81 mda:2 mdb:2 >
+
+[m:22 b:4 t:6]
+ch:7 i:38 d:4 p:62 mda:1 mdb:5 >
+
+[m:22 b:4 t:10]
+ch:0 i:42 d:4 p:72 mda:1 mdb:1 >
+
+[m:22 b:4 t:11]
+ch:21 i:80 d:2 p:83 mda:2 mdb:3 >
+
+[m:22 b:4 t:13]
+i:1 p:129 >  ; damper on
+
+
+[m:22 b:4 t:15]
+ch:10 i:66 d:2 p:81 mda:2 mdb:2 >
+
+[m:22 b:4 t:17]
+ch:29 i:22 d:4 p:66 mda:1 mdb:3 >
+ch:21 i:75 d:3 p:83 mda:2 mdb:3 >
+
+[m:22 b:4 t:22]
+ch:10 i:61 d:3 p:81 mda:2 mdb:2 >
+
+[m:22 b:4 t:23]
+ch:0 i:32 d:3 p:72 mda:1 mdb:1 >
+
+[m:23 b:1 t:0]
+ch:21 i:76 d:3 p:83 mda:2 mdb:3 >
+
+[m:23 b:1 t:5]
+ch:10 i:66 d:3 p:81 mda:2 mdb:2 >
+ch:7 i:25 d:3 p:62 mda:1 mdb:5 >
+
+[m:23 b:1 t:9]
+ch:21 i:77 d:3 p:83 mda:2 mdb:3 >
+
+[m:23 b:1 t:10]
+ch:0 i:37 d:3 p:72 mda:1 mdb:1 >
+
+[m:23 b:1 t:13]
+ch:10 i:65 d:3 p:81 mda:2 mdb:2 >
+
+[m:23 b:1 t:14]
+ch:29 i:32 d:3 p:66 mda:1 mdb:3 >
+
+[m:23 b:1 t:17]
+ch:21 i:76 d:2 p:83 mda:2 mdb:3 >
+
+[m:23 b:1 t:20]
+ch:0 i:29 d:3 p:72 mda:1 mdb:1 >
+
+[m:23 b:1 t:22]
+ch:10 i:70 d:2 p:81 mda:2 mdb:2 >
+
+[m:23 b:2 t:1]
+ch:7 i:52 d:3 p:62 mda:1 mdb:5 >
+ch:21 i:81 d:2 p:83 mda:2 mdb:3 >
+
+[m:23 b:2 t:6]
+ch:10 i:67 d:2 p:81 mda:2 mdb:2 >
+ch:0 i:47 d:3 p:72 mda:1 mdb:1 >
+
+[m:23 b:2 t:9]
+ch:21 i:79 d:2 p:83 mda:2 mdb:3 >
+
+[m:23 b:2 t:10]
+ch:29 i:44 d:3 p:66 mda:1 mdb:3 >
+
+[m:23 b:2 t:14]
+ch:10 i:66 d:2 p:81 mda:2 mdb:2 >
+
+[m:23 b:2 t:17]
+ch:0 i:25 d:3 p:72 mda:1 mdb:1 >
+ch:21 i:79 d:3 p:83 mda:2 mdb:3 >
+
+[m:23 b:2 t:21]
+ch:7 i:51 d:3 p:62 mda:1 mdb:5 >
+ch:10 i:65 d:3 p:81 mda:2 mdb:2 >
+
+[m:23 b:3 t:0]
+ch:21 i:82 d:3 p:83 mda:2 mdb:3 >
+
+[m:23 b:3 t:3]
+ch:0 i:40 d:3 p:72 mda:1 mdb:1 >
+
+[m:23 b:3 t:4]
+ch:10 i:66 d:3 p:81 mda:2 mdb:2 >
+
+[m:23 b:3 t:7]
+ch:21 i:82 d:6 p:83 mda:2 mdb:3 >
+
+[m:23 b:3 t:9]
+ch:29 i:36 d:5 p:66 mda:1 mdb:3 >
+
+[m:23 b:3 t:11]
+ch:10 i:68 d:3 p:81 mda:2 mdb:2 >
+
+[m:23 b:3 t:15]
+ch:5 i:71 d:2 p:79 mda:2 mdb:1 >
+ch:0 i:35 d:5 p:72 mda:1 mdb:1 >
+
+[m:23 b:3 t:16]
+i:0 p:129 >  ; damper off
+
+
+[m:23 b:3 t:19]
+ch:10 i:69 d:4 p:81 mda:2 mdb:2 >
+
+[m:23 b:4 t:0]
+ch:5 i:84 d:12 p:79 mda:2 mdb:1 >
+ch:2 i:73 d:15 p:67 mda:1 mdb:4 >
+ch:6 i:50 d:14 p:71 mda:1 mdb:2 >
+
+[m:23 b:4 t:12]
+i:1 p:129 >  ; damper on
+
+
+[m:23 b:4 t:22]
+ch:5 i:89 d:3 p:79 mda:2 mdb:2 >
+
+[m:24 b:1 t:0]
+i:0 p:129 >  ; damper off
+
+
+[m:24 b:1 t:3]
+ch:9 i:79 d:3 p:74 mda:2 mdb:1 >
+
+[m:24 b:1 t:9]
+ch:5 i:76 d:5 p:79 mda:2 mdb:2 >
+
+[m:24 b:1 t:14]
+ch:21 i:87 d:6 p:83 mda:2 mdb:3 >
+
+[m:24 b:1 t:20]
+ch:27 i:80 d:7 p:86 mda:2 mdb:5 >
+
+[m:24 b:2 t:1]
+ch:21 i:90 d:5 p:83 mda:2 mdb:3 >
+
+[m:24 b:2 t:7]
+ch:5 i:80 d:3 p:79 mda:2 mdb:1 >
+
+[m:24 b:2 t:12]
+ch:21 i:81 d:6 p:83 mda:2 mdb:3 >
+
+[m:24 b:2 t:18]
+ch:12 i:69 d:6 p:84 mda:2 mdb:4 >
+ch:0 i:54 d:4 p:72 mda:1 mdb:1 >
+
+[m:24 b:2 t:19]
+ch:7 i:35 d:4 p:62 mda:1 mdb:5 >
+ch:11 i:22 d:4 p:69 mda:1 mdb:2 >
+
+[m:24 b:2 t:23]
+ch:10 i:71 d:2 p:81 mda:2 mdb:2 >
+
+[m:24 b:3 t:4]
+ch:28 i:61 d:4 p:78 mda:2 mdb:1 >
+
+[m:24 b:3 t:10]
+ch:10 i:57 d:3 p:81 mda:2 mdb:2 >
+
+[m:24 b:3 t:17]
+ch:6 i:32 d:6 p:71 mda:1 mdb:1 >
+ch:5 i:48 d:6 p:79 mda:2 mdb:1 >
+
+[m:24 b:3 t:18]
+ch:2 i:19 d:6 p:67 mda:1 mdb:3 >
+
+[m:24 b:3 t:22]
+i:1 p:129 >  ; damper on
+
+
+[m:24 b:4 t:14]
+ch:2 i:53 d:3 p:67 mda:2 mdb:2 >
+
+[m:24 b:4 t:17]
+i:0 p:129 >  ; damper off
+
+
+[m:24 b:4 t:19]
+ch:7 i:61 d:3 p:62 mda:2 mdb:1 >
+
+[m:25 b:1 t:1]
+ch:2 i:59 d:3 p:67 mda:2 mdb:2 >
+
+[m:25 b:1 t:6]
+ch:6 i:61 d:4 p:71 mda:2 mdb:3 >
+
+[m:25 b:1 t:11]
+ch:9 i:63 d:6 p:74 mda:2 mdb:5 >
+
+[m:25 b:1 t:17]
+ch:6 i:45 d:3 p:71 mda:2 mdb:3 >
+
+[m:25 b:1 t:21]
+ch:2 i:39 d:4 p:67 mda:2 mdb:1 >
+
+[m:25 b:2 t:2]
+ch:6 i:52 d:6 p:71 mda:2 mdb:3 >
+
+[m:25 b:2 t:9]
+ch:1 i:41 d:3 p:60 mda:1 mdb:1 >
+ch:0 i:46 d:4 p:72 mda:2 mdb:4 >
+ch:17 i:40 d:4 p:50 mda:1 mdb:5 >
+ch:19 i:31 d:4 p:57 mda:1 mdb:2 >
+
+[m:25 b:2 t:14]
+ch:11 i:40 d:3 p:69 mda:2 mdb:2 >
+
+[m:25 b:2 t:18]
+ch:29 i:42 d:5 p:66 mda:2 mdb:1 >
+
+[m:25 b:3 t:0]
+ch:11 i:39 d:4 p:69 mda:2 mdb:2 >
+
+[m:25 b:3 t:7]
+ch:2 i:60 d:6 p:67 mda:2 mdb:1 >
+
+[m:25 b:3 t:8]
+ch:13 i:34 d:4 p:59 mda:1 mdb:5 >
+ch:22 i:33 d:4 p:55 mda:1 mdb:3 >
+
+[m:25 b:4 t:8]
+ch:24 i:30 d:6 p:43 mda:1 mdb:5 >
+ch:22 i:34 d:5 p:55 mda:1 mdb:1 >
+ch:9 i:42 d:6 p:74 mda:2 mdb:2 >
+ch:21 i:60 d:6 p:83 mda:2 mdb:5 >
+
+[m:26 b:1 t:10]
+ch:6 i:28 d:10 p:71 mda:2 mdb:1 >
+ch:5 i:24 d:13 p:79 mda:2 mdb:4 >
+
+[m:26 b:1 t:11]
+ch:24 i:25 d:5 p:43 mda:1 mdb:5 >
+ch:22 i:19 d:6 p:55 mda:1 mdb:1 >
+
+
+
+
+
+
+
+;
+; Development
+;
+
+[m:26 b:3 t:21]
+ch:2 i:62 d:5 p:67 mda:2 mdb:1 >
+ch:22 i:59 d:6 p:55 mda:1 mdb:1 >
+ch:24 i:50 d:6 p:43 mda:1 mdb:5 >
+
+[m:26 b:3 t:23]
+i:1 p:129 >  ; damper on
+
+
+[m:26 b:4 t:19]
+ch:5 i:63 d:3 p:79 mda:2 mdb:2 >
+
+[m:27 b:1 t:0]
+ch:9 i:51 d:3 p:74 mda:2 mdb:1 >
+
+[m:27 b:1 t:6]
+ch:5 i:75 d:3 p:79 mda:2 mdb:2 >
+
+[m:27 b:1 t:10]
+ch:32 i:59 d:6 p:82 mda:2 mdb:3 >
+
+[m:27 b:1 t:11]
+i:0 p:129 >  ; damper off
+
+
+[m:27 b:1 t:16]
+ch:27 i:82 d:7 p:86 mda:2 mdb:5 >
+
+[m:27 b:1 t:20]
+ch:32 i:56 d:7 p:82 mda:2 mdb:3 >
+
+[m:27 b:2 t:2]
+ch:5 i:71 d:7 p:79 mda:2 mdb:1 >
+
+[m:27 b:2 t:7]
+ch:32 i:55 d:9 p:82 mda:2 mdb:3 >
+
+[m:27 b:2 t:14]
+ch:12 i:73 d:6 p:84 mda:2 mdb:4 >
+ch:0 i:42 d:7 p:72 mda:1 mdb:1 >
+
+[m:27 b:2 t:15]
+ch:7 i:27 d:5 p:62 mda:1 mdb:5 >
+ch:11 i:23 d:7 p:69 mda:1 mdb:2 >
+
+[m:27 b:2 t:20]
+ch:10 i:51 d:3 p:81 mda:2 mdb:2 >
+
+[m:27 b:3 t:0]
+ch:28 i:68 d:4 p:78 mda:2 mdb:1 >
+
+[m:27 b:3 t:6]
+ch:10 i:71 d:3 p:81 mda:2 mdb:2 >
+
+[m:27 b:3 t:12]
+ch:5 i:79 d:6 p:79 mda:2 mdb:1 >
+ch:33 i:29 d:7 p:70 mda:1 mdb:1 >
+
+[m:27 b:3 t:14]
+ch:2 i:30 d:6 p:67 mda:1 mdb:3 >
+
+[m:27 b:3 t:18]
+i:1 p:129 >  ; damper on
+
+[m:27 b:4 t:10]
+ch:2 i:60 d:3 p:67 mda:2 mdb:2 >
+
+[m:27 b:4 t:13]
+i:0 p:129 >  ; damper off
+
+[m:27 b:4 t:15]
+ch:7 i:61 d:4 p:62 mda:2 mdb:1 >
+
+[m:27 b:4 t:20]
+ch:2 i:63 d:4 p:67 mda:2 mdb:2 >
+
+[m:28 b:1 t:1]
+ch:33 i:54 d:6 p:70 mda:2 mdb:3 >
+
+[m:28 b:1 t:6]
+ch:9 i:60 d:6 p:74 mda:2 mdb:5 >
+
+[m:28 b:1 t:11]
+ch:33 i:50 d:6 p:70 mda:2 mdb:3 >
+
+[m:28 b:1 t:17]
+ch:2 i:59 d:3 p:67 mda:2 mdb:1 >
+
+[m:28 b:1 t:20]
+ch:33 i:49 d:10 p:70 mda:2 mdb:3 >
+
+[m:28 b:2 t:3]
+ch:17 i:30 d:8 p:50 mda:1 mdb:5 >
+ch:1 i:20 d:5 p:60 mda:1 mdb:1 >
+ch:0 i:55 d:3 p:72 mda:2 mdb:4 >
+
+[m:28 b:2 t:4]
+ch:19 i:20 d:4 p:57 mda:1 mdb:2 >
+
+[m:28 b:2 t:8]
+ch:11 i:33 d:3 p:69 mda:2 mdb:2 >
+
+[m:28 b:2 t:12]
+ch:29 i:41 d:4 p:66 mda:2 mdb:1 >
+
+[m:28 b:2 t:17]
+ch:11 i:33 d:4 p:69 mda:2 mdb:2 >
+
+[m:28 b:3 t:1]
+ch:2 i:51 d:25 p:67 mda:2 mdb:1 >
+
+[m:28 b:3 t:6]
+ch:24 i:42 d:5 p:43 mda:1 mdb:5 >
+
+[m:28 b:3 t:11]
+ch:34 i:54 d:6 p:45 mda:1 mdb:4 >
+
+[m:28 b:3 t:16]
+ch:35 i:62 d:6 p:46 mda:1 mdb:3 >
+
+[m:28 b:3 t:21]
+ch:18 i:62 d:5 p:48 mda:1 mdb:2 >
+
+[m:28 b:4 t:3]
+ch:17 i:67 d:6 p:50 mda:1 mdb:1 >
+
+[m:28 b:4 t:8]
+ch:16 i:72 d:6 p:52 mda:1 mdb:3 >
+
+[m:28 b:4 t:13]
+ch:23 i:73 d:6 p:54 mda:1 mdb:2 >
+
+[m:28 b:4 t:19]
+ch:22 i:73 d:19 p:55 mda:1 mdb:1 >
+
+[m:29 b:1 t:1]
+ch:5 i:81 d:6 p:79 mda:2 mdb:2 >
+
+[m:29 b:1 t:6]
+ch:32 i:66 d:9 p:82 mda:2 mdb:4 >
+
+[m:29 b:1 t:11]
+ch:10 i:79 d:7 p:81 mda:2 mdb:3 >
+
+[m:29 b:1 t:17]
+ch:5 i:86 d:6 p:79 mda:2 mdb:2 >
+
+[m:29 b:1 t:23]
+ch:14 i:75 d:6 p:77 mda:2 mdb:1 >
+
+[m:29 b:2 t:4]
+ch:4 i:67 d:7 p:76 mda:2 mdb:3 >
+
+[m:29 b:2 t:10]
+ch:9 i:72 d:6 p:74 mda:2 mdb:2 >
+
+[m:29 b:2 t:16]
+ch:20 i:56 d:29 p:73 mda:2 mdb:1 >
+
+[m:29 b:2 t:21]
+ch:34 i:51 d:7 p:45 mda:1 mdb:5 >
+
+[m:29 b:3 t:2]
+ch:25 i:65 d:6 p:47 mda:1 mdb:4 >
+
+[m:29 b:3 t:7]
+ch:36 i:68 d:7 p:49 mda:1 mdb:3 >
+
+[m:29 b:3 t:12]
+ch:17 i:73 d:4 p:50 mda:1 mdb:2 >
+
+[m:29 b:3 t:17]
+ch:16 i:74 d:6 p:52 mda:1 mdb:1 >
+
+[m:29 b:3 t:22]
+ch:23 i:75 d:7 p:54 mda:1 mdb:3 >
+
+[m:29 b:4 t:4]
+ch:37 i:75 d:5 p:56 mda:1 mdb:2 >
+
+[m:29 b:4 t:10]
+ch:19 i:75 d:16 p:57 mda:1 mdb:1 >
+
+[m:29 b:4 t:16]
+ch:38 i:76 d:6 p:85 mda:2 mdb:3 >
+
+[m:29 b:4 t:21]
+ch:39 i:81 d:9 p:88 mda:2 mdb:5 >
+
+[m:29 b:4 t:23]
+i:1 p:129 >  ; damper on
+
+[m:30 b:1 t:3]
+ch:27 i:82 d:7 p:86 mda:2 mdb:4 >
+i:0 p:129 >  ; damper off
+
+[m:30 b:1 t:7]
+ch:38 i:78 d:10 p:85 mda:2 mdb:3 >
+
+[m:30 b:1 t:13]
+ch:32 i:75 d:5 p:82 mda:2 mdb:2 >
+
+[m:30 b:1 t:18]
+ch:10 i:66 d:6 p:81 mda:2 mdb:1 >
+
+[m:30 b:1 t:23]
+ch:5 i:83 d:5 p:79 mda:2 mdb:2 >
+
+[m:30 b:2 t:6]
+ch:14 i:75 d:14 p:77 mda:2 mdb:1 >
+ch:17 i:45 d:12 p:50 mda:1 mdb:1 >
+ch:40 i:53 d:9 p:38 mda:1 mdb:5 >
+
+[m:30 b:2 t:14]
+i:1 p:129 >  ; damper on
+
+[m:30 b:3 t:4]
+ch:9 i:70 d:3 p:74 mda:2 mdb:2 >
+
+[m:30 b:3 t:8]
+ch:11 i:54 d:5 p:69 mda:2 mdb:1 >
+
+[m:30 b:3 t:9]
+i:0 p:129 >  ; damper off
+
+[m:30 b:3 t:14]
+ch:9 i:81 d:7 p:74 mda:2 mdb:2 >
+
+[m:30 b:3 t:19]
+ch:14 i:74 d:6 p:77 mda:2 mdb:3 >
+
+[m:30 b:4 t:1]
+ch:10 i:81 d:7 p:81 mda:2 mdb:5 >
+
+[m:30 b:4 t:5]
+ch:14 i:60 d:6 p:77 mda:2 mdb:3 >
+
+[m:30 b:4 t:11]
+ch:9 i:78 d:5 p:74 mda:2 mdb:1 >
+
+[m:30 b:4 t:16]
+ch:14 i:61 d:8 p:77 mda:2 mdb:3 >
+
+[m:30 b:4 t:22]
+ch:2 i:56 d:5 p:67 mda:1 mdb:1 >
+
+[m:30 b:4 t:23]
+ch:5 i:83 d:5 p:79 mda:2 mdb:4 >
+ch:19 i:36 d:5 p:57 mda:1 mdb:5 >
+ch:3 i:40 d:3 p:64 mda:1 mdb:2 >
+
+[m:31 b:1 t:3]
+ch:4 i:65 d:4 p:76 mda:2 mdb:2 >
+
+[m:31 b:1 t:9]
+ch:20 i:62 d:6 p:73 mda:2 mdb:1 >
+
+[m:31 b:1 t:14]
+ch:4 i:72 d:6 p:76 mda:2 mdb:2 >
+
+[m:31 b:1 t:21]
+ch:9 i:79 d:5 p:74 mda:2 mdb:1 >
+ch:8 i:34 d:6 p:65 mda:1 mdb:1 >
+ch:7 i:33 d:7 p:62 mda:1 mdb:3 >
+
+[m:31 b:2 t:18]
+ch:7 i:54 d:4 p:62 mda:2 mdb:2 >
+
+[m:31 b:2 t:23]
+ch:19 i:48 d:4 p:57 mda:2 mdb:1 >
+
+[m:31 b:3 t:4]
+ch:7 i:41 d:3 p:62 mda:2 mdb:2 >
+
+[m:31 b:3 t:9]
+ch:8 i:47 d:5 p:65 mda:2 mdb:3 >
+
+[m:31 b:3 t:14]
+ch:11 i:45 d:5 p:69 mda:2 mdb:5 >
+
+[m:31 b:3 t:19]
+ch:8 i:39 d:4 p:65 mda:2 mdb:3 >
+
+[m:31 b:4 t:0]
+ch:7 i:58 d:3 p:62 mda:2 mdb:1 >
+
+[m:31 b:4 t:5]
+ch:8 i:38 d:7 p:65 mda:2 mdb:3 >
+
+[m:31 b:4 t:10]
+ch:34 i:23 d:6 p:45 mda:1 mdb:5 >
+ch:22 i:28 d:6 p:55 mda:1 mdb:1 >
+
+[m:31 b:4 t:11]
+ch:2 i:50 d:4 p:67 mda:2 mdb:4 >
+ch:16 i:29 d:4 p:52 mda:1 mdb:2 >
+
+[m:31 b:4 t:17]
+ch:3 i:32 d:2 p:64 mda:2 mdb:2 >
+
+[m:31 b:4 t:19]
+ch:26 i:55 d:5 p:61 mda:2 mdb:1 >
+
+[m:32 b:1 t:1]
+ch:3 i:35 d:4 p:64 mda:2 mdb:2 >
+
+[m:32 b:1 t:8]
+ch:17 i:42 d:20 p:50 mda:1 mdb:3 >
+ch:15 i:62 d:20 p:53 mda:1 mdb:1 >
+
+[m:32 b:1 t:14]
+ch:7 i:42 d:3 p:62 mda:2 mdb:1 >
+
+[m:32 b:1 t:19]
+ch:3 i:55 d:3 p:64 mda:2 mdb:2 >
+
+[m:32 b:1 t:23]
+ch:8 i:61 d:4 p:65 mda:2 mdb:3 >
+
+[m:32 b:2 t:1]
+i:1 p:129 >  ; damper on
+
+[m:32 b:2 t:5]
+ch:2 i:72 d:3 p:67 mda:2 mdb:1 >
+
+[m:32 b:2 t:8]
+i:0 p:129 >  ; damper off
+
+
+[m:32 b:2 t:10]
+ch:11 i:66 d:7 p:69 mda:2 mdb:2 >
+
+[m:32 b:2 t:15]
+ch:6 i:79 d:6 p:71 mda:2 mdb:3 >
+
+[m:32 b:2 t:20]
+ch:20 i:67 d:8 p:73 mda:2 mdb:4 >
+
+[m:32 b:3 t:2]
+ch:9 i:80 d:33 p:74 mda:2 mdb:5 >
+
+[m:32 b:3 t:8]
+ch:7 i:62 d:5 p:62 mda:1 mdb:3 >
+
+[m:32 b:3 t:14]
+ch:8 i:46 d:5 p:65 mda:1 mdb:1 >
+
+[m:32 b:3 t:19]
+ch:3 i:61 d:6 p:64 mda:1 mdb:2 >
+
+[m:32 b:4 t:0]
+ch:7 i:66 d:3 p:62 mda:1 mdb:1 >
+
+[m:32 b:4 t:6]
+ch:1 i:59 d:4 p:60 mda:1 mdb:2 >
+
+[m:32 b:4 t:11]
+ch:13 i:65 d:5 p:59 mda:1 mdb:3 >
+
+[m:32 b:4 t:16]
+ch:19 i:51 d:6 p:57 mda:1 mdb:4 >
+
+[m:32 b:4 t:22]
+ch:37 i:53 d:18 p:56 mda:1 mdb:5 >
+
+[m:33 b:1 t:4]
+ch:6 i:64 d:3 p:71 mda:2 mdb:1 >
+
+[m:33 b:1 t:9]
+ch:0 i:69 d:4 p:72 mda:2 mdb:2 >
+
+[m:33 b:1 t:14]
+ch:9 i:70 d:3 p:74 mda:2 mdb:3 >
+
+[m:33 b:1 t:19]
+ch:4 i:67 d:8 p:76 mda:2 mdb:1 >
+
+[m:33 b:2 t:1]
+ch:28 i:79 d:7 p:78 mda:2 mdb:2 >
+
+[m:33 b:2 t:6]
+ch:31 i:81 d:8 p:80 mda:2 mdb:3 >
+
+[m:33 b:2 t:11]
+ch:10 i:75 d:8 p:81 mda:2 mdb:4 >
+
+[m:33 b:2 t:18]
+ch:21 i:103 d:32 p:83 mda:2 mdb:5 >
+
+[m:33 b:3 t:0]
+ch:37 i:65 d:5 p:56 mda:1 mdb:3 >
+
+[m:33 b:3 t:6]
+ch:13 i:57 d:6 p:59 mda:1 mdb:1 >
+
+[m:33 b:3 t:11]
+ch:19 i:57 d:6 p:57 mda:1 mdb:2 >
+
+[m:33 b:3 t:16]
+ch:37 i:64 d:6 p:56 mda:1 mdb:3 >
+
+[m:33 b:3 t:21]
+ch:15 i:64 d:5 p:53 mda:1 mdb:1 >
+
+[m:33 b:4 t:4]
+ch:16 i:62 d:5 p:52 mda:1 mdb:2 >
+
+[m:33 b:4 t:9]
+ch:17 i:62 d:6 p:50 mda:1 mdb:3 >
+
+[m:33 b:4 t:15]
+ch:18 i:59 d:21 p:48 mda:1 mdb:4 >
+
+[m:33 b:4 t:21]
+ch:10 i:67 d:6 p:81 mda:2 mdb:1 >
+
+[m:34 b:1 t:4]
+ch:39 i:82 d:9 p:88 mda:2 mdb:5 >
+
+[m:34 b:1 t:9]
+ch:27 i:80 d:8 p:86 mda:2 mdb:4 >
+
+[m:34 b:1 t:12]
+i:1 p:129 >  ; damper on
+
+[m:34 b:1 t:14]
+ch:12 i:81 d:8 p:84 mda:2 mdb:3 >
+
+[m:34 b:1 t:16]
+i:0 p:129 >  ; damper off
+
+[m:34 b:1 t:20]
+ch:21 i:100 d:6 p:83 mda:2 mdb:2 >
+
+[m:34 b:2 t:1]
+ch:10 i:72 d:7 p:81 mda:2 mdb:1 >
+
+[m:34 b:2 t:6]
+ch:5 i:80 d:8 p:79 mda:2 mdb:2 >
+
+[m:34 b:2 t:13]
+ch:14 i:71 d:36 p:77 mda:2 mdb:1 >
+
+[m:34 b:2 t:19]
+ch:7 i:57 d:6 p:62 mda:1 mdb:5 >
+
+[m:34 b:3 t:0]
+ch:11 i:55 d:5 p:69 mda:1 mdb:1 >
+
+[m:34 b:3 t:6]
+ch:2 i:56 d:6 p:67 mda:1 mdb:2 >
+
+[m:34 b:3 t:12]
+ch:8 i:59 d:2 p:65 mda:1 mdb:1 >
+
+[m:34 b:3 t:13]
+i:1 p:129 >  ; damper on
+
+[m:34 b:3 t:17]
+ch:3 i:57 d:3 p:64 mda:1 mdb:2 >
+
+[m:34 b:3 t:22]
+i:0 p:129 >  ; damper off
+
+ch:7 i:65 d:5 p:62 mda:1 mdb:3 >
+
+[m:34 b:4 t:3]
+ch:1 i:63 d:7 p:60 mda:1 mdb:4 >
+
+[m:34 b:4 t:11]
+ch:13 i:47 d:15 p:59 mda:1 mdb:5 >
+
+[m:34 b:4 t:15]
+ch:5 i:63 d:4 p:79 mda:2 mdb:1 >
+
+[m:34 b:4 t:22]
+ch:27 i:62 d:7 p:86 mda:2 mdb:5 >
+
+[m:35 b:1 t:3]
+ch:12 i:68 d:7 p:84 mda:2 mdb:4 >
+
+[m:35 b:1 t:9]
+ch:21 i:72 d:5 p:83 mda:2 mdb:3 >
+
+[m:35 b:1 t:14]
+ch:10 i:59 d:5 p:81 mda:2 mdb:2 >
+
+[m:35 b:1 t:20]
+ch:5 i:62 d:6 p:79 mda:2 mdb:1 >
+
+[m:35 b:2 t:2]
+ch:14 i:49 d:3 p:77 mda:2 mdb:2 >
+
+[m:35 b:2 t:8]
+ch:4 i:34 d:39 p:76 mda:2 mdb:1 >
+
+[m:35 b:2 t:13]
+ch:1 i:37 d:6 p:60 mda:1 mdb:5 >
+
+[m:35 b:2 t:19]
+ch:2 i:44 d:4 p:67 mda:1 mdb:1 >
+
+[m:35 b:2 t:23]
+i:1 p:129 >  ; damper on
+
+[m:35 b:3 t:1]
+ch:8 i:41 d:3 p:65 mda:1 mdb:2 >
+
+[m:35 b:3 t:6]
+ch:3 i:49 d:3 p:64 mda:1 mdb:1 >
+
+[m:35 b:3 t:11]
+ch:7 i:52 d:4 p:62 mda:1 mdb:2 >
+
+[m:35 b:3 t:15]
+i:0 p:129 >  ; damper off
+
+[m:35 b:3 t:17]
+ch:1 i:55 d:5 p:60 mda:1 mdb:3 >
+
+[m:35 b:3 t:22]
+ch:13 i:47 d:7 p:59 mda:1 mdb:4 >
+
+[m:35 b:4 t:5]
+ch:19 i:34 d:15 p:57 mda:1 mdb:5 >
+
+[m:35 b:4 t:12]
+ch:14 i:44 d:3 p:77 mda:2 mdb:1 >
+
+[m:35 b:4 t:17]
+ch:12 i:64 d:7 p:84 mda:2 mdb:5 >
+
+[m:35 b:4 t:23]
+i:1 p:129 >  ; damper on
+
+ch:21 i:76 d:5 p:83 mda:2 mdb:4 >
+
+[m:36 b:1 t:4]
+ch:10 i:54 d:6 p:81 mda:2 mdb:3 >
+
+[m:36 b:1 t:6]
+i:0 p:129 >  ; damper off
+
+[m:36 b:1 t:10]
+ch:5 i:70 d:6 p:79 mda:2 mdb:2 >
+
+[m:36 b:1 t:15]
+ch:14 i:54 d:7 p:77 mda:2 mdb:1 >
+
+[m:36 b:1 t:21]
+ch:4 i:40 d:5 p:76 mda:2 mdb:2 >
+
+[m:36 b:2 t:4]
+ch:9 i:43 d:36 p:74 mda:2 mdb:1 >
+
+[m:36 b:2 t:10]
+ch:13 i:16 d:4 p:59 mda:1 mdb:5 >
+
+[m:36 b:2 t:16]
+ch:8 i:39 d:4 p:65 mda:1 mdb:1 >
+
+[m:36 b:2 t:22]
+ch:3 i:41 d:3 p:64 mda:1 mdb:2 >
+
+[m:36 b:3 t:2]
+ch:7 i:47 d:3 p:62 mda:1 mdb:1 >
+
+[m:36 b:3 t:4]
+i:1 p:129 >  ; damper on
+
+[m:36 b:3 t:8]
+ch:1 i:42 d:4 p:60 mda:1 mdb:2 >
+
+[m:36 b:3 t:14]
+ch:13 i:45 d:4 p:59 mda:1 mdb:3 >
+
+[m:36 b:3 t:18]
+i:0 p:129 >  ; damper off
+
+[m:36 b:3 t:19]
+ch:19 i:35 d:6 p:57 mda:1 mdb:4 >
+
+[m:36 b:4 t:2]
+ch:37 i:39 d:18 p:56 mda:1 mdb:5 >
+
+[m:36 b:4 t:10]
+ch:4 i:34 d:4 p:76 mda:2 mdb:1 >
+
+[m:36 b:4 t:15]
+ch:21 i:67 d:4 p:83 mda:2 mdb:5 >
+
+[m:36 b:4 t:20]
+ch:10 i:51 d:4 p:81 mda:2 mdb:4 >
+
+[m:37 b:1 t:1]
+ch:31 i:56 d:8 p:80 mda:2 mdb:3 >
+
+[m:37 b:1 t:7]
+ch:14 i:54 d:5 p:77 mda:2 mdb:2 >
+
+[m:37 b:1 t:13]
+ch:4 i:38 d:7 p:76 mda:2 mdb:1 >
+
+[m:37 b:1 t:19]
+ch:9 i:36 d:4 p:74 mda:2 mdb:2 >
+
+[m:37 b:2 t:2]
+ch:0 i:35 d:37 p:72 mda:2 mdb:1 >
+
+[m:37 b:2 t:7]
+ch:19 i:28 d:4 p:57 mda:1 mdb:3 >
+
+[m:37 b:2 t:13]
+ch:1 i:41 d:5 p:60 mda:1 mdb:1 >
+
+[m:37 b:2 t:19]
+ch:13 i:45 d:5 p:59 mda:1 mdb:2 >
+i:1 p:129 >  ; damper on
+
+[m:37 b:3 t:1]
+ch:19 i:46 d:3 p:57 mda:1 mdb:1 >
+
+[m:37 b:3 t:7]
+ch:22 i:59 d:3 p:55 mda:1 mdb:2 >
+
+[m:37 b:3 t:12]
+ch:15 i:59 d:4 p:53 mda:1 mdb:3 >
+
+[m:37 b:3 t:18]
+ch:16 i:52 d:6 p:52 mda:1 mdb:4 >
+
+[m:37 b:3 t:21]
+i:0 p:129 >  ; damper off
+
+[m:37 b:4 t:2]
+ch:17 i:61 d:49 p:50 mda:1 mdb:5 >
+
+[m:37 b:4 t:10]
+ch:33 i:41 d:4 p:70 mda:2 mdb:3 >
+
+[m:37 b:4 t:16]
+ch:9 i:55 d:4 p:74 mda:2 mdb:5 >
+
+[m:37 b:4 t:21]
+ch:0 i:52 d:5 p:72 mda:2 mdb:4 >
+
+[m:38 b:1 t:2]
+ch:33 i:54 d:8 p:70 mda:2 mdb:3 >
+
+[m:38 b:1 t:8]
+ch:11 i:54 d:6 p:69 mda:2 mdb:2 >
+
+[m:38 b:1 t:14]
+ch:2 i:57 d:6 p:67 mda:2 mdb:1 >
+
+[m:38 b:1 t:20]
+ch:8 i:52 d:5 p:65 mda:2 mdb:2 >
+
+[m:38 b:2 t:3]
+ch:41 i:21 d:38 p:58 mda:1 mdb:1 >
+ch:3 i:55 d:7 p:64 mda:2 mdb:1 >
+
+[m:38 b:2 t:4]
+ch:18 i:26 d:32 p:48 mda:1 mdb:5 >
+
+[m:38 b:2 t:5]
+ch:22 i:32 d:31 p:55 mda:1 mdb:2 >
+
+[m:38 b:2 t:10]
+ch:8 i:47 d:6 p:65 mda:2 mdb:2 >
+
+[m:38 b:2 t:17]
+ch:2 i:56 d:6 p:67 mda:2 mdb:1 >
+
+[m:38 b:2 t:23]
+ch:11 i:44 d:6 p:69 mda:2 mdb:2 >
+
+[m:38 b:3 t:5]
+ch:33 i:43 d:7 p:70 mda:2 mdb:3 >
+
+[m:38 b:3 t:12]
+ch:0 i:42 d:4 p:72 mda:2 mdb:1 >
+
+[m:38 b:3 t:13]
+i:1 p:129 >  ; damper on
+
+[m:38 b:3 t:18]
+ch:9 i:47 d:4 p:74 mda:2 mdb:2 >
+
+[m:38 b:4 t:1]
+ch:4 i:44 d:12 p:76 mda:2 mdb:3 >
+
+
+
+
+
+;
+; Reexposition
+;
+
+[m:38 b:4 t:12]
+ch:14 i:61 d:55 p:77 mda:2 mdb:1 >
+
+[m:38 b:4 t:14]
+i:0 p:129 >  ; damper off
+
+[m:38 b:4 t:15]
+ch:8 i:14 d:30 p:65 mda:1 mdb:5 >
+
+[m:39 b:1 t:4]
+ch:0 i:28 d:11 p:72 mda:1 mdb:1 >
+
+[m:39 b:1 t:15]
+i:1 p:129 >  ; damper on
+
+[m:39 b:1 t:16]
+ch:11 i:23 d:12 p:69 mda:1 mdb:3 >
+
+[m:39 b:2 t:4]
+ch:0 i:32 d:6 p:72 mda:1 mdb:1 >
+
+[m:39 b:2 t:15]
+ch:10 i:55 d:27 p:81 mda:2 mdb:3 >
+
+[m:39 b:2 t:17]
+ch:8 i:27 d:42 p:65 mda:1 mdb:5 >
+
+[m:39 b:2 t:20]
+i:0 p:129 >  ; damper off
+
+[m:39 b:3 t:4]
+ch:0 i:29 d:6 p:72 mda:1 mdb:1 >
+
+[m:39 b:3 t:11]
+i:1 p:129 >  ; damper on
+
+[m:39 b:3 t:15]
+ch:12 i:79 d:30 p:84 mda:2 mdb:5 >
+
+[m:39 b:3 t:16]
+ch:11 i:11 d:15 p:69 mda:1 mdb:3 >
+
+[m:39 b:3 t:17]
+i:0 p:129 >  ; damper off
+
+[m:39 b:4 t:3]
+ch:0 i:33 d:7 p:72 mda:1 mdb:1 >
+
+[m:39 b:4 t:9]
+i:1 p:129 >  ; damper on
+
+[m:39 b:4 t:14]
+ch:4 i:51 d:37 p:76 mda:2 mdb:1 >
+
+[m:39 b:4 t:16]
+ch:2 i:10 d:43 p:67 mda:1 mdb:4 >
+
+[m:39 b:4 t:17]
+i:0 p:129 >  ; damper off
+
+[m:40 b:1 t:3]
+ch:0 i:30 d:7 p:72 mda:1 mdb:1 >
+
+[m:40 b:1 t:14]
+ch:33 i:25 d:25 p:70 mda:1 mdb:2 >
+
+[m:40 b:1 t:18]
+i:1 p:129 >  ; damper on
+
+[m:40 b:2 t:3]
+ch:14 i:33 d:3 p:77 mda:2 mdb:2 >
+ch:0 i:19 d:5 p:72 mda:1 mdb:1 >
+
+[m:40 b:2 t:6]
+i:0 p:129 >  ; damper off
+
+[m:40 b:2 t:8]
+ch:5 i:41 d:4 p:79 mda:2 mdb:3 >
+
+[m:40 b:2 t:14]
+ch:14 i:39 d:30 p:77 mda:2 mdb:1 >
+
+[m:40 b:2 t:15]
+ch:8 i:16 d:29 p:65 mda:1 mdb:5 >
+
+[m:40 b:3 t:1]
+ch:0 i:30 d:9 p:72 mda:1 mdb:1 >
+
+[m:40 b:3 t:14]
+ch:11 i:21 d:13 p:69 mda:1 mdb:3 >
+
+[m:40 b:3 t:15]
+i:1 p:129 >  ; damper on
+
+[m:40 b:4 t:2]
+ch:0 i:33 d:10 p:72 mda:1 mdb:1 >
+
+[m:40 b:4 t:14]
+ch:27 i:63 d:52 p:86 mda:2 mdb:3 >
+
+[m:40 b:4 t:16]
+ch:8 i:23 d:29 p:65 mda:1 mdb:5 >
+
+[m:40 b:4 t:22]
+i:0 p:129 >  ; damper off
+
+
+[m:41 b:1 t:2]
+ch:9 i:34 d:10 p:74 mda:1 mdb:1 >
+
+[m:41 b:1 t:14]
+ch:33 i:30 d:14 p:70 mda:1 mdb:2 >
+i:1 p:129 >  ; damper on
+
+[m:41 b:2 t:2]
+ch:9 i:44 d:9 p:74 mda:1 mdb:1 >
+
+[m:41 b:2 t:13]
+ch:12 i:73 d:26 p:84 mda:2 mdb:2 >
+
+[m:41 b:2 t:15]
+ch:8 i:24 d:43 p:65 mda:1 mdb:5 >
+
+[m:41 b:2 t:20]
+i:0 p:129 >  ; damper off
+
+[m:41 b:3 t:1]
+ch:0 i:32 d:9 p:72 mda:1 mdb:1 >
+
+[m:41 b:3 t:9]
+i:1 p:129 >  ; damper on
+
+[m:41 b:3 t:13]
+ch:42 i:69 d:26 p:89 mda:2 mdb:5 >
+ch:11 i:26 d:14 p:69 mda:1 mdb:3 >
+
+[m:41 b:3 t:18]
+i:0 p:129 >  ; damper off
+
+[m:41 b:4 t:1]
+ch:0 i:33 d:8 p:72 mda:1 mdb:1 >
+
+[m:41 b:4 t:7]
+i:1 p:129 >  ; damper on
+
+[m:41 b:4 t:13]
+ch:12 i:78 d:17 p:84 mda:2 mdb:3 >
+
+[m:41 b:4 t:15]
+ch:3 i:25 d:43 p:64 mda:1 mdb:5 >
+
+[m:42 b:1 t:0]
+i:0 p:129 >  ; damper off
+
+[m:42 b:1 t:1]
+ch:0 i:29 d:8 p:72 mda:1 mdb:1 >
+
+[m:42 b:1 t:10]
+i:1 p:129 >  ; damper on
+
+[m:42 b:1 t:13]
+ch:2 i:27 d:8 p:67 mda:1 mdb:3 >
+
+[m:42 b:1 t:14]
+ch:32 i:48 d:2 p:82 mda:2 mdb:2 >
+
+[m:42 b:1 t:18]
+ch:12 i:51 d:3 p:84 mda:2 mdb:3 >
+
+[m:42 b:1 t:21]
+ch:32 i:56 d:4 p:82 mda:2 mdb:2 >
+
+[m:42 b:1 t:23]
+ch:0 i:26 d:5 p:72 mda:1 mdb:1 >
+
+[m:42 b:2 t:2]
+ch:10 i:45 d:4 p:81 mda:2 mdb:1 >
+
+[m:42 b:2 t:8]
+ch:32 i:42 d:4 p:82 mda:2 mdb:2 >
+
+[m:42 b:2 t:9]
+i:0 p:129 >  ; damper off
+
+[m:42 b:2 t:11]
+ch:10 i:40 d:27 p:81 mda:2 mdb:1 >
+
+[m:42 b:2 t:13]
+ch:8 i:32 d:28 p:65 mda:1 mdb:5 >
+
+[m:42 b:2 t:23]
+ch:0 i:29 d:4 p:72 mda:1 mdb:1 >
+
+[m:42 b:3 t:2]
+i:1 p:129 >  ; damper on
+
+[m:42 b:3 t:9]
+ch:11 i:24 d:6 p:69 mda:1 mdb:3 >
+
+[m:42 b:3 t:21]
+ch:0 i:35 d:8 p:72 mda:1 mdb:1 >
+
+[m:42 b:4 t:6]
+i:0 p:129 >  ; damper off
+
+
+[m:42 b:4 t:8]
+ch:9 i:61 d:15 p:74 mda:2 mdb:1 >
+
+[m:42 b:4 t:9]
+ch:33 i:43 d:14 p:70 mda:1 mdb:2 >
+
+[m:42 b:4 t:21]
+i:1 p:129 >  ; damper on
+
+[m:42 b:4 t:23]
+ch:4 i:41 d:3 p:76 mda:2 mdb:2 >
+
+[m:43 b:1 t:5]
+ch:14 i:56 d:2 p:77 mda:2 mdb:3 >
+
+[m:43 b:1 t:6]
+i:0 p:129 >  ; damper off
+
+[m:43 b:1 t:8]
+ch:5 i:67 d:4 p:79 mda:2 mdb:1 >
+
+[m:43 b:1 t:13]
+ch:10 i:59 d:4 p:81 mda:2 mdb:2 >
+
+[m:43 b:1 t:17]
+ch:32 i:54 d:7 p:82 mda:2 mdb:3 >
+
+[m:43 b:1 t:23]
+ch:12 i:65 d:6 p:84 mda:2 mdb:4 >
+
+[m:43 b:2 t:4]
+ch:27 i:69 d:8 p:86 mda:2 mdb:5 >
+
+[m:43 b:2 t:9]
+ch:12 i:51 d:7 p:84 mda:2 mdb:4 >
+
+[m:43 b:2 t:14]
+ch:32 i:58 d:7 p:82 mda:2 mdb:3 >
+
+[m:43 b:2 t:20]
+ch:10 i:54 d:3 p:81 mda:2 mdb:2 >
+
+[m:43 b:3 t:1]
+ch:5 i:65 d:3 p:79 mda:2 mdb:1 >
+ch:41 i:22 d:4 p:58 mda:1 mdb:4 >
+ch:8 i:26 d:4 p:65 mda:1 mdb:1 >
+
+[m:43 b:3 t:7]
+ch:14 i:49 d:4 p:77 mda:2 mdb:4 >
+
+[m:43 b:3 t:11]
+ch:4 i:37 d:4 p:76 mda:2 mdb:3 >
+
+[m:43 b:3 t:16]
+ch:9 i:51 d:3 p:74 mda:2 mdb:2 >
+
+[m:43 b:3 t:22]
+ch:0 i:50 d:11 p:72 mda:2 mdb:1 >
+
+[m:43 b:3 t:23]
+ch:8 i:24 d:11 p:65 mda:1 mdb:1 >
+ch:19 i:31 d:13 p:57 mda:1 mdb:5 >
+
+[m:43 b:4 t:8]
+i:1 p:129 >  ; damper on
+
+[m:43 b:4 t:10]
+ch:9 i:45 d:4 p:74 mda:2 mdb:2 >
+
+[m:43 b:4 t:15]
+ch:4 i:47 d:3 p:76 mda:2 mdb:3 >
+
+[m:43 b:4 t:17]
+i:0 p:129 >  ; damper off
+
+[m:43 b:4 t:20]
+ch:14 i:57 d:3 p:77 mda:2 mdb:1 >
+
+[m:44 b:1 t:1]
+ch:5 i:68 d:5 p:79 mda:2 mdb:2 >
+
+[m:44 b:1 t:7]
+ch:10 i:51 d:4 p:81 mda:2 mdb:3 >
+
+[m:44 b:1 t:12]
+ch:32 i:48 d:6 p:82 mda:2 mdb:4 >
+
+[m:44 b:1 t:18]
+ch:12 i:61 d:6 p:84 mda:2 mdb:5 >
+
+[m:44 b:1 t:23]
+ch:32 i:39 d:7 p:82 mda:2 mdb:4 >
+
+[m:44 b:2 t:5]
+ch:10 i:42 d:3 p:81 mda:2 mdb:3 >
+
+[m:44 b:2 t:10]
+ch:5 i:48 d:3 p:79 mda:2 mdb:2 >
+
+[m:44 b:2 t:14]
+ch:8 i:36 d:3 p:65 mda:1 mdb:1 >
+
+[m:44 b:2 t:15]
+ch:19 i:28 d:4 p:57 mda:1 mdb:5 >
+ch:14 i:41 d:4 p:77 mda:2 mdb:1 >
+
+[m:44 b:2 t:20]
+ch:4 i:37 d:4 p:76 mda:2 mdb:4 >
+
+[m:44 b:3 t:1]
+ch:9 i:51 d:3 p:74 mda:2 mdb:3 >
+
+[m:44 b:3 t:6]
+ch:0 i:44 d:7 p:72 mda:2 mdb:2 >
+
+[m:44 b:3 t:12]
+ch:33 i:48 d:12 p:70 mda:2 mdb:1 >
+
+[m:44 b:3 t:14]
+ch:8 i:25 d:12 p:65 mda:1 mdb:5 >
+
+[m:44 b:3 t:15]
+ch:22 i:24 d:11 p:55 mda:1 mdb:1 >
+
+[m:44 b:4 t:0]
+i:1 p:129 >  ; damper on
+
+[m:44 b:4 t:1]
+ch:0 i:47 d:3 p:72 mda:2 mdb:2 >
+
+[m:44 b:4 t:6]
+i:0 p:129 >  ; damper off
+
+ch:9 i:64 d:3 p:74 mda:2 mdb:3 >
+
+[m:44 b:4 t:11]
+ch:4 i:61 d:3 p:76 mda:2 mdb:1 >
+
+[m:44 b:4 t:16]
+ch:14 i:67 d:2 p:77 mda:2 mdb:2 >
+
+[m:44 b:4 t:21]
+ch:5 i:67 d:3 p:79 mda:2 mdb:3 >
+
+[m:45 b:1 t:1]
+ch:10 i:69 d:5 p:81 mda:2 mdb:4 >
+
+[m:45 b:1 t:7]
+ch:32 i:56 d:7 p:82 mda:2 mdb:5 >
+
+[m:45 b:1 t:12]
+ch:10 i:50 d:4 p:81 mda:2 mdb:4 >
+
+[m:45 b:1 t:18]
+ch:5 i:64 d:2 p:79 mda:2 mdb:3 >
+
+[m:45 b:1 t:23]
+ch:14 i:56 d:5 p:77 mda:2 mdb:2 >
+
+[m:45 b:2 t:4]
+ch:22 i:33 d:4 p:55 mda:1 mdb:5 >
+ch:3 i:31 d:5 p:64 mda:1 mdb:1 >
+
+[m:45 b:2 t:5]
+ch:4 i:52 d:3 p:76 mda:2 mdb:1 >
+
+[m:45 b:2 t:9]
+ch:9 i:53 d:3 p:74 mda:2 mdb:4 >
+
+[m:45 b:2 t:14]
+ch:0 i:48 d:3 p:72 mda:2 mdb:3 >
+
+[m:45 b:2 t:19]
+ch:33 i:34 d:6 p:70 mda:2 mdb:2 >
+
+[m:45 b:3 t:1]
+ch:11 i:45 d:11 p:69 mda:2 mdb:1 >
+
+[m:45 b:3 t:2]
+ch:8 i:28 d:13 p:65 mda:1 mdb:1 >
+
+[m:45 b:3 t:4]
+ch:15 i:40 d:11 p:53 mda:1 mdb:5 >
+
+[m:45 b:3 t:13]
+ch:33 i:39 d:4 p:70 mda:2 mdb:1 >
+
+[m:45 b:3 t:15]
+i:1 p:129 >  ; damper on
+
+[m:45 b:3 t:18]
+ch:0 i:57 d:2 p:72 mda:2 mdb:2 >
+
+[m:45 b:3 t:23]
+ch:9 i:58 d:2 p:74 mda:2 mdb:1 >
+
+[m:45 b:4 t:0]
+i:0 p:129 >  ; damper off
+
+[m:45 b:4 t:4]
+ch:4 i:47 d:4 p:76 mda:2 mdb:2 >
+
+[m:45 b:4 t:9]
+ch:14 i:49 d:6 p:77 mda:2 mdb:3 >
+
+[m:45 b:4 t:14]
+ch:5 i:65 d:5 p:79 mda:2 mdb:4 >
+
+[m:45 b:4 t:19]
+ch:10 i:60 d:7 p:81 mda:2 mdb:5 >
+
+[m:46 b:1 t:0]
+ch:5 i:60 d:6 p:79 mda:2 mdb:4 >
+
+[m:46 b:1 t:5]
+ch:14 i:62 d:4 p:77 mda:2 mdb:3 >
+
+[m:46 b:1 t:11]
+ch:4 i:52 d:3 p:76 mda:2 mdb:2 >
+
+[m:46 b:1 t:16]
+ch:9 i:55 d:5 p:74 mda:2 mdb:1 >
+
+[m:46 b:1 t:19]
+ch:0 i:62 d:4 p:72 mda:2 mdb:3 >
+
+[m:46 b:2 t:1]
+ch:33 i:58 d:5 p:70 mda:2 mdb:2 >
+
+[m:46 b:2 t:6]
+ch:11 i:52 d:5 p:69 mda:2 mdb:1 >
+
+[m:46 b:2 t:12]
+ch:10 i:87 d:21 p:81 mda:2 mdb:5 >
+
+[m:46 b:2 t:13]
+ch:15 i:68 d:10 p:53 mda:1 mdb:5 >
+
+[m:46 b:2 t:21]
+i:1 p:129 >  ; damper on
+
+[m:46 b:2 t:23]
+ch:22 i:67 d:6 p:55 mda:1 mdb:4 >
+
+[m:46 b:3 t:3]
+ch:19 i:59 d:5 p:57 mda:1 mdb:3 >
+
+[m:46 b:3 t:5]
+i:0 p:129 >  ; damper off
+
+[m:46 b:3 t:8]
+ch:41 i:59 d:6 p:58 mda:1 mdb:2 >
+
+[m:46 b:3 t:13]
+ch:1 i:70 d:5 p:60 mda:1 mdb:1 >
+
+[m:46 b:3 t:18]
+ch:7 i:75 d:6 p:62 mda:1 mdb:3 >
+
+[m:46 b:4 t:0]
+ch:3 i:69 d:3 p:64 mda:1 mdb:2 >
+
+[m:46 b:4 t:4]
+ch:8 i:67 d:4 p:65 mda:1 mdb:1 >
+
+[m:46 b:4 t:11]
+ch:3 i:58 d:3 p:64 mda:1 mdb:2 >
+
+[m:46 b:4 t:15]
+ch:7 i:57 d:2 p:62 mda:1 mdb:1 >
+
+[m:46 b:4 t:20]
+ch:1 i:58 d:4 p:60 mda:1 mdb:2 >
+
+[m:47 b:1 t:1]
+ch:10 i:65 d:9 p:81 mda:2 mdb:5 >
+
+[m:47 b:1 t:2]
+ch:41 i:55 d:3 p:58 mda:1 mdb:3 >
+ch:0 i:42 d:4 p:72 mda:2 mdb:1 >
+
+[m:47 b:1 t:6]
+ch:19 i:48 d:3 p:57 mda:1 mdb:1 >
+
+[m:47 b:1 t:11]
+ch:22 i:69 d:3 p:55 mda:1 mdb:3 >
+
+[m:47 b:1 t:17]
+ch:15 i:61 d:3 p:53 mda:1 mdb:4 >
+
+[m:47 b:1 t:22]
+ch:16 i:58 d:13 p:52 mda:1 mdb:5 >
+
+[m:47 b:1 t:23]
+ch:5 i:81 d:32 p:79 mda:2 mdb:4 >
+ch:0 i:49 d:33 p:72 mda:2 mdb:1 >
+
+[m:47 b:2 t:13]
+ch:15 i:56 d:2 p:53 mda:1 mdb:4 >
+
+[m:47 b:2 t:16]
+i:1 p:129 >  ; damper on
+
+[m:47 b:2 t:17]
+ch:22 i:56 d:4 p:55 mda:1 mdb:3 >
+
+[m:47 b:2 t:23]
+ch:19 i:58 d:6 p:57 mda:1 mdb:2 >
+
+[m:47 b:3 t:4]
+ch:13 i:63 d:5 p:59 mda:1 mdb:1 >
+
+[m:47 b:3 t:6]
+i:0 p:129 >  ; damper off
+
+[m:47 b:3 t:9]
+ch:1 i:71 d:3 p:60 mda:1 mdb:3 >
+
+[m:47 b:3 t:14]
+ch:7 i:63 d:3 p:62 mda:1 mdb:2 >
+
+[m:47 b:3 t:19]
+ch:3 i:79 d:3 p:64 mda:1 mdb:1 >
+
+[m:47 b:4 t:1]
+ch:7 i:64 d:3 p:62 mda:1 mdb:2 >
+
+[m:47 b:4 t:5]
+ch:1 i:65 d:6 p:60 mda:1 mdb:3 >
+
+[m:47 b:4 t:10]
+ch:13 i:70 d:3 p:59 mda:1 mdb:4 >
+
+[m:47 b:4 t:16]
+ch:5 i:77 d:12 p:79 mda:2 mdb:5 >
+ch:0 i:55 d:7 p:72 mda:2 mdb:1 >
+ch:19 i:64 d:6 p:57 mda:1 mdb:1 >
+
+[m:47 b:4 t:22]
+ch:22 i:70 d:5 p:55 mda:1 mdb:2 >
+
+[m:48 b:1 t:3]
+ch:15 i:70 d:5 p:53 mda:1 mdb:3 >
+
+[m:48 b:1 t:9]
+ch:16 i:68 d:4 p:52 mda:1 mdb:4 >
+
+[m:48 b:1 t:14]
+ch:0 i:64 d:25 p:72 mda:2 mdb:1 >
+ch:14 i:79 d:22 p:77 mda:2 mdb:4 >
+ch:17 i:72 d:12 p:50 mda:1 mdb:5 >
+
+[m:48 b:2 t:2]
+ch:16 i:70 d:6 p:52 mda:1 mdb:4 >
+
+[m:48 b:2 t:7]
+ch:15 i:68 d:4 p:53 mda:1 mdb:3 >
+
+[m:48 b:2 t:11]
+ch:22 i:70 d:3 p:55 mda:1 mdb:2 >
+
+[m:48 b:2 t:16]
+ch:19 i:65 d:4 p:57 mda:1 mdb:1 >
+
+[m:48 b:2 t:21]
+ch:13 i:68 d:4 p:59 mda:1 mdb:3 >
+
+[m:48 b:3 t:2]
+ch:1 i:69 d:5 p:60 mda:1 mdb:2 >
+
+[m:48 b:3 t:7]
+ch:7 i:70 d:5 p:62 mda:1 mdb:1 >
+
+[m:48 b:3 t:12]
+ch:1 i:51 d:6 p:60 mda:1 mdb:2 >
+
+[m:48 b:3 t:18]
+ch:13 i:59 d:2 p:59 mda:1 mdb:3 >
+
+[m:48 b:3 t:22]
+ch:19 i:65 d:4 p:57 mda:1 mdb:4 >
+
+[m:48 b:4 t:5]
+ch:22 i:71 d:6 p:55 mda:1 mdb:1 >
+ch:14 i:45 d:5 p:77 mda:2 mdb:5 >
+ch:6 i:44 d:6 p:71 mda:2 mdb:1 >
+
+[m:48 b:4 t:11]
+ch:15 i:70 d:5 p:53 mda:1 mdb:2 >
+
+[m:48 b:4 t:16]
+i:1 p:129 >  ; damper on
+ch:16 i:51 d:3 p:52 mda:1 mdb:3 >
+
+[m:48 b:4 t:21]
+ch:17 i:62 d:2 p:50 mda:1 mdb:4 >
+
+[m:49 b:1 t:3]
+i:0 p:129 >  ; damper off
+
+[m:49 b:1 t:4]
+ch:0 i:50 d:20 p:72 mda:2 mdb:2 >
+ch:4 i:53 d:24 p:76 mda:2 mdb:4 >
+ch:18 i:67 d:13 p:48 mda:1 mdb:5 >
+
+[m:49 b:1 t:16]
+ch:17 i:64 d:4 p:50 mda:1 mdb:4 >
+
+[m:49 b:1 t:20]
+ch:16 i:74 d:6 p:52 mda:1 mdb:3 >
+
+[m:49 b:2 t:2]
+ch:15 i:75 d:4 p:53 mda:1 mdb:2 >
+
+[m:49 b:2 t:6]
+ch:22 i:72 d:5 p:55 mda:1 mdb:1 >
+
+[m:49 b:2 t:11]
+ch:19 i:65 d:7 p:57 mda:1 mdb:3 >
+
+[m:49 b:2 t:17]
+ch:13 i:70 d:5 p:59 mda:1 mdb:2 >
+
+[m:49 b:2 t:22]
+ch:1 i:70 d:6 p:60 mda:1 mdb:1 >
+
+[m:49 b:3 t:3]
+ch:13 i:59 d:6 p:59 mda:1 mdb:2 >
+
+[m:49 b:3 t:8]
+ch:19 i:68 d:4 p:57 mda:1 mdb:3 >
+
+[m:49 b:3 t:14]
+ch:22 i:60 d:3 p:55 mda:1 mdb:1 >
+
+[m:49 b:3 t:19]
+ch:15 i:60 d:3 p:53 mda:1 mdb:2 >
+
+[m:49 b:3 t:20]
+ch:0 i:50 d:5 p:72 mda:2 mdb:3 >
+
+[m:49 b:3 t:21]
+ch:4 i:40 d:12 p:76 mda:2 mdb:5 >
+
+[m:49 b:4 t:1]
+ch:16 i:61 d:4 p:52 mda:1 mdb:3 >
+
+[m:49 b:4 t:6]
+ch:17 i:63 d:4 p:50 mda:1 mdb:4 >
+
+[m:49 b:4 t:11]
+ch:18 i:51 d:5 p:48 mda:1 mdb:5 >
+
+[m:49 b:4 t:16]
+ch:9 i:63 d:5 p:74 mda:2 mdb:5 >
+
+[m:49 b:4 t:17]
+ch:19 i:40 d:78 p:57 mda:1 mdb:1 >
+
+[m:49 b:4 t:18]
+ch:15 i:45 d:74 p:53 mda:1 mdb:2 >
+
+[m:49 b:4 t:23]
+ch:7 i:54 d:3 p:62 mda:2 mdb:1 >
+
+[m:50 b:1 t:4]
+ch:3 i:57 d:4 p:64 mda:2 mdb:2 >
+
+[m:50 b:1 t:9]
+ch:8 i:60 d:3 p:65 mda:2 mdb:3 >
+
+[m:50 b:1 t:14]
+ch:2 i:60 d:3 p:67 mda:2 mdb:1 >
+
+[m:50 b:1 t:19]
+ch:11 i:57 d:5 p:69 mda:2 mdb:2 >
+
+[m:50 b:2 t:0]
+ch:6 i:58 d:4 p:71 mda:2 mdb:3 >
+
+[m:50 b:2 t:6]
+ch:20 i:50 d:7 p:73 mda:2 mdb:4 >
+
+[m:50 b:2 t:11]
+ch:9 i:80 d:6 p:74 mda:2 mdb:5 >
+
+[m:50 b:2 t:16]
+ch:11 i:64 d:7 p:69 mda:2 mdb:1 >
+
+[m:50 b:2 t:21]
+ch:6 i:72 d:5 p:71 mda:2 mdb:2 >
+
+[m:50 b:3 t:2]
+ch:20 i:68 d:5 p:73 mda:2 mdb:3 >
+
+[m:50 b:3 t:7]
+ch:9 i:84 d:5 p:74 mda:2 mdb:1 >
+
+[m:50 b:3 t:12]
+ch:4 i:81 d:6 p:76 mda:2 mdb:2 >
+
+[m:50 b:3 t:17]
+ch:14 i:87 d:5 p:77 mda:2 mdb:3 >
+
+[m:50 b:3 t:22]
+ch:5 i:88 d:6 p:79 mda:2 mdb:4 >
+
+[m:50 b:4 t:4]
+ch:10 i:89 d:8 p:81 mda:2 mdb:1 >
+ch:15 i:92 d:29 p:53 mda:1 mdb:3 >
+
+[m:50 b:4 t:9]
+ch:21 i:100 d:6 p:83 mda:2 mdb:2 >
+
+[m:50 b:4 t:14]
+ch:12 i:88 d:9 p:84 mda:2 mdb:3 >
+
+[m:50 b:4 t:20]
+ch:21 i:91 d:7 p:83 mda:2 mdb:2 >
+
+[m:51 b:1 t:2]
+ch:10 i:75 d:6 p:81 mda:2 mdb:1 >
+
+[m:51 b:1 t:7]
+ch:5 i:75 d:3 p:79 mda:2 mdb:3 >
+
+[m:51 b:1 t:12]
+ch:14 i:66 d:5 p:77 mda:2 mdb:2 >
+
+[m:51 b:1 t:13]
+ch:22 i:64 d:4 p:55 mda:1 mdb:2 >
+
+[m:51 b:1 t:17]
+ch:4 i:66 d:2 p:76 mda:2 mdb:1 >
+
+[m:51 b:1 t:22]
+ch:14 i:71 d:9 p:77 mda:2 mdb:2 >
+
+[m:51 b:1 t:23]
+ch:19 i:76 d:28 p:57 mda:1 mdb:1 >
+
+[m:51 b:2 t:4]
+ch:5 i:85 d:7 p:79 mda:2 mdb:3 >
+
+[m:51 b:2 t:9]
+ch:10 i:84 d:9 p:81 mda:2 mdb:4 >
+
+[m:51 b:2 t:15]
+ch:5 i:72 d:7 p:79 mda:2 mdb:3 >
+
+[m:51 b:2 t:20]
+ch:14 i:73 d:6 p:77 mda:2 mdb:2 >
+
+[m:51 b:3 t:2]
+ch:4 i:61 d:3 p:76 mda:2 mdb:1 >
+
+[m:51 b:3 t:7]
+ch:23 i:70 d:2 p:54 mda:1 mdb:2 >
+ch:9 i:61 d:4 p:74 mda:2 mdb:3 >
+
+[m:51 b:3 t:12]
+ch:0 i:66 d:3 p:72 mda:2 mdb:2 >
+
+[m:51 b:3 t:16]
+ch:24 i:71 d:7 p:43 mda:1 mdb:5 >
+
+[m:51 b:3 t:17]
+ch:6 i:80 d:8 p:71 mda:2 mdb:1 >
+
+[m:51 b:3 t:23]
+ch:25 i:66 d:5 p:47 mda:1 mdb:3 >
+
+[m:51 b:4 t:4]
+ch:17 i:70 d:3 p:50 mda:1 mdb:2 >
+ch:5 i:84 d:3 p:79 mda:2 mdb:5 >
+
+[m:51 b:4 t:9]
+ch:22 i:56 d:4 p:55 mda:1 mdb:1 >
+
+[m:51 b:4 t:14]
+ch:4 i:81 d:3 p:76 mda:2 mdb:3 >
+
+[m:51 b:4 t:15]
+ch:24 i:60 d:3 p:43 mda:1 mdb:5 >
+
+[m:51 b:4 t:20]
+ch:18 i:62 d:6 p:48 mda:1 mdb:3 >
+
+[m:52 b:1 t:1]
+ch:0 i:69 d:3 p:72 mda:2 mdb:1 >
+
+[m:52 b:1 t:2]
+ch:16 i:74 d:4 p:52 mda:1 mdb:2 >
+
+[m:52 b:1 t:7]
+ch:22 i:63 d:3 p:55 mda:1 mdb:1 >
+
+[m:52 b:1 t:12]
+ch:9 i:91 d:11 p:74 mda:2 mdb:2 >
+ch:24 i:73 d:7 p:43 mda:1 mdb:5 >
+
+[m:52 b:1 t:17]
+ch:25 i:68 d:6 p:47 mda:1 mdb:3 >
+
+[m:52 b:1 t:22]
+ch:17 i:75 d:4 p:50 mda:1 mdb:2 >
+
+[m:52 b:1 t:23]
+ch:5 i:91 d:4 p:79 mda:2 mdb:5 >
+
+[m:52 b:2 t:3]
+ch:22 i:62 d:4 p:55 mda:1 mdb:1 >
+
+[m:52 b:2 t:9]
+ch:24 i:70 d:5 p:43 mda:1 mdb:5 >
+
+[m:52 b:2 t:10]
+ch:4 i:76 d:4 p:76 mda:2 mdb:3 >
+
+[m:52 b:2 t:13]
+ch:18 i:67 d:6 p:48 mda:1 mdb:3 >
+
+[m:52 b:2 t:19]
+ch:16 i:71 d:4 p:52 mda:1 mdb:2 >
+
+[m:52 b:2 t:20]
+ch:0 i:79 d:5 p:72 mda:2 mdb:1 >
+
+[m:52 b:3 t:0]
+ch:22 i:68 d:3 p:55 mda:1 mdb:1 >
+
+[m:52 b:3 t:7]
+ch:9 i:95 d:7 p:74 mda:2 mdb:2 >
+ch:24 i:84 d:2 p:43 mda:1 mdb:5 >
+
+[m:52 b:4 t:5]
+ch:5 i:94 d:7 p:79 mda:2 mdb:5 >
+ch:6 i:71 d:3 p:71 mda:2 mdb:1 >
+
+[m:52 b:4 t:6]
+ch:9 i:57 d:2 p:74 mda:2 mdb:2 >
+ch:22 i:55 d:4 p:55 mda:1 mdb:1 >
+
+[m:53 b:1 t:4]
+ch:24 i:65 d:3 p:43 mda:1 mdb:5 >
+
+[m:53 b:1 t:5]
+ch:2 i:69 d:6 p:67 mda:2 mdb:1 >
+i:1 p:129 >  ; damper on
+
+[m:53 b:2 t:0]
+i:0 p:129 >  ; damper off
+
+[m:53 b:3 t:11]
+ch:29 i:35 d:5 p:66 mda:1 mdb:3 >
+
+[m:53 b:3 t:16]
+ch:2 i:37 d:5 p:67 mda:1 mdb:1 >
+
+[m:53 b:3 t:21]
+ch:29 i:34 d:6 p:66 mda:1 mdb:2 >
+
+[m:53 b:4 t:3]
+ch:2 i:35 d:4 p:67 mda:1 mdb:1 >
+
+[m:53 b:4 t:8]
+ch:29 i:38 d:4 p:66 mda:1 mdb:2 >
+
+[m:53 b:4 t:13]
+ch:2 i:35 d:3 p:67 mda:1 mdb:1 >
+
+[m:53 b:4 t:17]
+ch:29 i:37 d:6 p:66 mda:1 mdb:2 >
+
+[m:53 b:4 t:23]
+ch:2 i:43 d:4 p:67 mda:1 mdb:1 >
+
+[m:54 b:1 t:5]
+ch:8 i:30 d:4 p:65 mda:1 mdb:3 >
+
+[m:54 b:1 t:11]
+ch:2 i:34 d:4 p:67 mda:1 mdb:1 >
+
+[m:54 b:1 t:16]
+ch:8 i:27 d:4 p:65 mda:1 mdb:2 >
+
+[m:54 b:1 t:21]
+ch:2 i:37 d:4 p:67 mda:1 mdb:1 >
+
+[m:54 b:2 t:4]
+ch:8 i:35 d:3 p:65 mda:1 mdb:2 >
+
+[m:54 b:2 t:10]
+ch:2 i:41 d:3 p:67 mda:1 mdb:1 >
+
+[m:54 b:2 t:16]
+ch:8 i:18 d:3 p:65 mda:1 mdb:2 >
+
+[m:54 b:2 t:21]
+ch:2 i:37 d:5 p:67 mda:1 mdb:1 >
+
+[m:54 b:3 t:4]
+ch:5 i:58 d:16 p:79 mda:2 mdb:5 >
+
+[m:54 b:3 t:6]
+ch:3 i:36 d:3 p:64 mda:1 mdb:3 >
+
+[m:54 b:3 t:13]
+ch:2 i:36 d:3 p:67 mda:1 mdb:1 >
+
+[m:54 b:3 t:17]
+ch:4 i:58 d:13 p:76 mda:2 mdb:3 >
+
+[m:54 b:3 t:18]
+ch:3 i:36 d:3 p:64 mda:1 mdb:3 >
+
+[m:54 b:4 t:1]
+ch:2 i:35 d:3 p:67 mda:1 mdb:1 >
+
+[m:54 b:4 t:5]
+ch:0 i:61 d:35 p:72 mda:2 mdb:1 >
+
+[m:54 b:4 t:6]
+ch:3 i:36 d:3 p:64 mda:1 mdb:3 >
+
+[m:54 b:4 t:12]
+ch:2 i:36 d:3 p:67 mda:1 mdb:1 >
+
+[m:54 b:4 t:18]
+ch:3 i:19 d:3 p:64 mda:1 mdb:3 >
+
+[m:54 b:4 t:23]
+ch:2 i:33 d:3 p:67 mda:1 mdb:1 >
+
+[m:55 b:1 t:4]
+ch:3 i:24 d:3 p:64 mda:1 mdb:3 >
+
+[m:55 b:1 t:11]
+ch:2 i:22 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:1 t:16]
+ch:9 i:42 d:3 p:74 mda:2 mdb:2 >
+ch:3 i:33 d:3 p:64 mda:1 mdb:3 >
+
+[m:55 b:1 t:20]
+ch:4 i:44 d:4 p:76 mda:2 mdb:3 >
+
+[m:55 b:1 t:21]
+ch:2 i:17 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:2 t:1]
+ch:9 i:45 d:6 p:74 mda:2 mdb:2 >
+
+[m:55 b:2 t:3]
+ch:3 i:21 d:3 p:64 mda:1 mdb:3 >
+
+[m:55 b:2 t:8]
+ch:2 i:20 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:2 t:12]
+ch:3 i:40 d:3 p:64 mda:1 mdb:3 >
+ch:0 i:46 d:3 p:72 mda:2 mdb:1 >
+
+[m:55 b:2 t:16]
+ch:2 i:36 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:2 t:19]
+ch:0 i:36 d:3 p:72 mda:2 mdb:2 >
+
+[m:55 b:2 t:23]
+ch:9 i:49 d:2 p:74 mda:2 mdb:3 >
+ch:8 i:22 d:4 p:65 mda:1 mdb:2 >
+
+[m:55 b:3 t:2]
+ch:0 i:39 d:11 p:72 mda:2 mdb:2 >
+
+[m:55 b:3 t:4]
+ch:2 i:41 d:3 p:67 mda:1 mdb:1 >
+
+[m:55 b:3 t:9]
+ch:3 i:43 d:3 p:64 mda:1 mdb:3 >
+
+[m:55 b:3 t:14]
+ch:6 i:42 d:3 p:71 mda:2 mdb:1 >
+
+[m:55 b:3 t:15]
+ch:2 i:27 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:3 t:20]
+ch:6 i:22 d:44 p:71 mda:2 mdb:3 >
+ch:7 i:45 d:3 p:62 mda:1 mdb:4 >
+
+[m:55 b:4 t:1]
+ch:2 i:29 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:4 t:7]
+ch:3 i:43 d:2 p:64 mda:1 mdb:3 >
+
+[m:55 b:4 t:11]
+ch:2 i:29 d:4 p:67 mda:1 mdb:1 >
+
+[m:55 b:4 t:17]
+ch:8 i:31 d:4 p:65 mda:1 mdb:2 >
+
+[m:55 b:4 t:23]
+ch:2 i:30 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:1 t:4]
+ch:3 i:44 d:3 p:64 mda:1 mdb:3 >
+
+[m:56 b:1 t:10]
+ch:2 i:29 d:3 p:67 mda:1 mdb:1 >
+
+[m:56 b:1 t:15]
+ch:8 i:30 d:4 p:65 mda:1 mdb:2 >
+
+[m:56 b:1 t:21]
+ch:2 i:25 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:2 t:3]
+ch:7 i:27 d:4 p:62 mda:1 mdb:4 >
+
+[m:56 b:2 t:8]
+ch:2 i:27 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:2 t:13]
+ch:5 i:56 d:14 p:79 mda:2 mdb:5 >
+
+[m:56 b:2 t:15]
+ch:3 i:24 d:3 p:64 mda:1 mdb:3 >
+
+[m:56 b:2 t:21]
+ch:2 i:35 d:3 p:67 mda:1 mdb:1 >
+
+[m:56 b:3 t:2]
+ch:4 i:37 d:13 p:76 mda:2 mdb:3 >
+
+[m:56 b:3 t:3]
+ch:3 i:38 d:3 p:64 mda:1 mdb:3 >
+
+[m:56 b:3 t:8]
+ch:2 i:38 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:3 t:13]
+ch:0 i:50 d:34 p:72 mda:2 mdb:1 >
+
+[m:56 b:3 t:16]
+ch:3 i:9 d:2 p:64 mda:1 mdb:3 >
+
+[m:56 b:3 t:20]
+ch:2 i:39 d:3 p:67 mda:1 mdb:1 >
+
+[m:56 b:3 t:23]
+ch:3 i:39 d:4 p:64 mda:1 mdb:3 >
+
+[m:56 b:4 t:5]
+ch:2 i:22 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:4 t:12]
+ch:3 i:37 d:2 p:64 mda:1 mdb:3 >
+
+[m:56 b:4 t:16]
+ch:2 i:30 d:4 p:67 mda:1 mdb:1 >
+
+[m:56 b:4 t:22]
+ch:9 i:53 d:3 p:74 mda:2 mdb:2 >
+
+[m:56 b:4 t:23]
+ch:3 i:26 d:4 p:64 mda:1 mdb:3 >
+
+[m:57 b:1 t:3]
+ch:4 i:54 d:7 p:76 mda:2 mdb:3 >
+
+[m:57 b:1 t:4]
+ch:2 i:42 d:3 p:67 mda:1 mdb:1 >
+
+[m:57 b:1 t:8]
+ch:9 i:69 d:4 p:74 mda:2 mdb:2 >
+ch:3 i:37 d:3 p:64 mda:1 mdb:3 >
+
+[m:57 b:1 t:15]
+ch:2 i:25 d:3 p:67 mda:1 mdb:1 >
+
+[m:57 b:1 t:19]
+ch:0 i:50 d:2 p:72 mda:2 mdb:1 >
+ch:3 i:47 d:3 p:64 mda:1 mdb:3 >
+
+[m:57 b:1 t:23]
+ch:2 i:32 d:4 p:67 mda:1 mdb:1 >
+
+[m:57 b:2 t:1]
+ch:0 i:45 d:3 p:72 mda:2 mdb:2 >
+
+[m:57 b:2 t:4]
+ch:9 i:36 d:3 p:74 mda:2 mdb:3 >
+
+[m:57 b:2 t:6]
+ch:8 i:30 d:3 p:65 mda:1 mdb:2 >
+
+[m:57 b:2 t:7]
+ch:0 i:59 d:14 p:72 mda:2 mdb:2 >
+
+[m:57 b:2 t:12]
+ch:2 i:37 d:3 p:67 mda:1 mdb:1 >
+
+[m:57 b:2 t:16]
+ch:3 i:44 d:3 p:64 mda:1 mdb:3 >
+
+[m:57 b:2 t:21]
+ch:6 i:41 d:3 p:71 mda:2 mdb:1 >
+i:1 p:129 >  ; damper on
+
+[m:57 b:3 t:0]
+ch:2 i:28 d:3 p:67 mda:1 mdb:1 >
+
+[m:57 b:3 t:3]
+i:0 p:129 >  ; damper off
+
+[m:57 b:3 t:4]
+ch:6 i:60 d:37 p:71 mda:2 mdb:3 >
+
+[m:57 b:3 t:5]
+ch:7 i:46 d:3 p:62 mda:1 mdb:4 >
+
+[m:57 b:3 t:9]
+ch:2 i:20 d:5 p:67 mda:1 mdb:1 >
+
+[m:57 b:3 t:15]
+ch:3 i:46 d:3 p:64 mda:1 mdb:3 >
+
+[m:57 b:3 t:20]
+ch:2 i:37 d:4 p:67 mda:1 mdb:1 >
+
+[m:57 b:4 t:2]
+ch:8 i:48 d:4 p:65 mda:1 mdb:2 >
+
+[m:57 b:4 t:8]
+ch:2 i:47 d:3 p:67 mda:1 mdb:1 >
+
+[m:57 b:4 t:13]
+ch:3 i:44 d:4 p:64 mda:1 mdb:3 >
+
+[m:57 b:4 t:19]
+ch:2 i:37 d:4 p:67 mda:1 mdb:1 >
+
+[m:58 b:1 t:0]
+ch:8 i:46 d:3 p:65 mda:1 mdb:2 >
+
+[m:58 b:1 t:6]
+ch:2 i:32 d:4 p:67 mda:1 mdb:1 >
+
+[m:58 b:1 t:11]
+ch:7 i:36 d:4 p:62 mda:1 mdb:4 >
+
+[m:58 b:1 t:17]
+ch:2 i:36 d:3 p:67 mda:1 mdb:1 >
+
+[m:58 b:2 t:1]
+ch:5 i:66 d:20 p:79 mda:2 mdb:5 >
+
+[m:58 b:2 t:6]
+ch:16 i:47 d:4 p:52 mda:1 mdb:5 >
+
+[m:58 b:2 t:12]
+ch:22 i:45 d:4 p:55 mda:1 mdb:4 >
+
+[m:58 b:2 t:17]
+i:1 p:129 >  ; damper on
+
+ch:1 i:42 d:6 p:60 mda:1 mdb:2 >
+
+[m:58 b:3 t:0]
+ch:3 i:56 d:12 p:64 mda:1 mdb:1 >
+
+[m:58 b:3 t:4]
+i:0 p:129 >  ; damper off
+
+[m:58 b:3 t:6]
+ch:5 i:63 d:7 p:79 mda:2 mdb:5 >
+
+[m:58 b:3 t:12]
+ch:4 i:59 d:8 p:76 mda:2 mdb:3 >
+
+[m:58 b:3 t:17]
+ch:0 i:62 d:7 p:72 mda:2 mdb:2 >
+
+[m:58 b:3 t:23]
+ch:11 i:55 d:21 p:69 mda:2 mdb:1 >
+
+[m:58 b:4 t:4]
+ch:15 i:46 d:5 p:53 mda:1 mdb:5 >
+
+[m:58 b:4 t:9]
+ch:19 i:48 d:6 p:57 mda:1 mdb:3 >
+
+[m:58 b:4 t:15]
+ch:1 i:57 d:6 p:60 mda:1 mdb:2 >
+
+[m:58 b:4 t:22]
+ch:8 i:54 d:11 p:65 mda:1 mdb:1 >
+
+[m:59 b:1 t:3]
+ch:11 i:49 d:4 p:69 mda:2 mdb:1 >
+
+[m:59 b:1 t:6]
+i:1 p:129 >  ; damper on
+
+[m:59 b:1 t:9]
+ch:0 i:72 d:5 p:72 mda:2 mdb:2 >
+
+[m:59 b:1 t:12]
+i:0 p:129 >  ; damper off
+
+[m:59 b:1 t:15]
+ch:11 i:64 d:8 p:69 mda:2 mdb:1 >
+
+[m:59 b:1 t:21]
+ch:14 i:66 d:23 p:77 mda:2 mdb:5 >
+
+[m:59 b:2 t:3]
+ch:17 i:48 d:5 p:50 mda:1 mdb:5 >
+
+[m:59 b:2 t:8]
+ch:15 i:55 d:5 p:53 mda:1 mdb:4 >
+
+[m:59 b:2 t:13]
+ch:13 i:48 d:7 p:59 mda:1 mdb:2 >
+
+[m:59 b:2 t:18]
+i:1 p:129 >  ; damper on
+
+[m:59 b:2 t:20]
+ch:7 i:60 d:11 p:62 mda:1 mdb:1 >
+
+[m:59 b:3 t:1]
+ch:14 i:57 d:7 p:77 mda:2 mdb:5 >
+
+[m:59 b:3 t:4]
+i:0 p:129 >  ; damper off
+
+[m:59 b:3 t:8]
+ch:9 i:69 d:6 p:74 mda:2 mdb:3 >
+
+[m:59 b:3 t:13]
+ch:6 i:74 d:7 p:71 mda:2 mdb:2 >
+
+[m:59 b:3 t:20]
+ch:2 i:72 d:13 p:67 mda:2 mdb:1 >
+
+[m:59 b:4 t:1]
+ch:16 i:62 d:3 p:52 mda:1 mdb:5 >
+
+[m:59 b:4 t:6]
+ch:22 i:54 d:4 p:55 mda:1 mdb:3 >
+
+[m:59 b:4 t:8]
+i:1 p:129 >  ; damper on
+
+[m:59 b:4 t:11]
+ch:13 i:55 d:6 p:59 mda:1 mdb:2 >
+
+[m:59 b:4 t:18]
+ch:3 i:68 d:7 p:64 mda:1 mdb:1 >
+
+[m:59 b:4 t:23]
+i:0 p:129 >  ; damper off
+ch:5 i:76 d:5 p:79 mda:2 mdb:1 >
+
+[m:60 b:1 t:4]
+ch:21 i:101 d:7 p:83 mda:2 mdb:2 >
+
+[m:60 b:1 t:10]
+ch:5 i:82 d:7 p:79 mda:2 mdb:1 >
+
+[m:60 b:1 t:17]
+ch:39 i:84 d:16 p:88 mda:2 mdb:5 >
+
+[m:60 b:1 t:22]
+ch:1 i:50 d:4 p:60 mda:1 mdb:5 >
+
+[m:60 b:2 t:3]
+ch:3 i:55 d:4 p:64 mda:1 mdb:4 >
+
+[m:60 b:2 t:4]
+i:1 p:129 >  ; damper on
+
+[m:60 b:2 t:8]
+ch:11 i:46 d:7 p:69 mda:1 mdb:2 >
+
+[m:60 b:2 t:15]
+ch:0 i:63 d:6 p:72 mda:1 mdb:1 >
+
+[m:60 b:2 t:20]
+ch:39 i:72 d:7 p:88 mda:2 mdb:5 >
+
+[m:60 b:3 t:1]
+i:0 p:129 >  ; damper off
+
+[m:60 b:3 t:2]
+ch:12 i:87 d:7 p:84 mda:2 mdb:3 >
+
+[m:60 b:3 t:8]
+ch:10 i:77 d:7 p:81 mda:2 mdb:2 >
+
+[m:60 b:3 t:14]
+ch:14 i:74 d:18 p:77 mda:2 mdb:1 >
+
+[m:60 b:3 t:19]
+ch:7 i:59 d:4 p:62 mda:1 mdb:5 >
+
+[m:60 b:3 t:23]
+i:1 p:129 >  ; damper on
+ch:8 i:57 d:6 p:65 mda:1 mdb:3 >
+
+[m:60 b:4 t:5]
+ch:11 i:48 d:4 p:69 mda:1 mdb:2 >
+
+[m:60 b:4 t:11]
+ch:9 i:68 d:9 p:74 mda:1 mdb:1 >
+
+[m:60 b:4 t:17]
+ch:14 i:74 d:4 p:77 mda:2 mdb:1 >
+
+[m:60 b:4 t:20]
+i:0 p:129 >  ; damper off
+
+[m:60 b:4 t:22]
+ch:10 i:81 d:7 p:81 mda:2 mdb:2 >
+
+[m:61 b:1 t:4]
+ch:14 i:85 d:7 p:77 mda:2 mdb:1 >
+
+[m:61 b:1 t:12]
+ch:27 i:74 d:17 p:86 mda:2 mdb:5 >
+
+[m:61 b:1 t:17]
+ch:13 i:38 d:7 p:59 mda:1 mdb:5 >
+
+[m:61 b:1 t:23]
+ch:7 i:39 d:4 p:62 mda:1 mdb:4 >
+i:1 p:129 >  ; damper on
+
+[m:61 b:2 t:5]
+ch:2 i:40 d:4 p:67 mda:1 mdb:2 >
+
+[m:61 b:2 t:11]
+ch:6 i:60 d:6 p:71 mda:1 mdb:1 >
+
+[m:61 b:2 t:16]
+ch:27 i:66 d:7 p:86 mda:2 mdb:5 >
+
+[m:61 b:2 t:21]
+i:0 p:129 >  ; damper off
+
+[m:61 b:2 t:22]
+ch:21 i:81 d:6 p:83 mda:2 mdb:3 >
+
+[m:61 b:3 t:3]
+ch:5 i:72 d:7 p:79 mda:2 mdb:2 >
+
+[m:61 b:3 t:10]
+ch:4 i:44 d:25 p:76 mda:2 mdb:1 >
+
+[m:61 b:3 t:15]
+ch:1 i:44 d:5 p:60 mda:1 mdb:5 >
+
+[m:61 b:3 t:20]
+ch:3 i:47 d:5 p:64 mda:1 mdb:3 >
+
+[m:61 b:4 t:2]
+ch:2 i:49 d:5 p:67 mda:1 mdb:2 >
+
+[m:61 b:4 t:6]
+i:1 p:129 >  ; damper on
+
+[m:61 b:4 t:9]
+ch:0 i:51 d:9 p:72 mda:1 mdb:1 >
+
+[m:61 b:4 t:15]
+ch:12 i:54 d:6 p:84 mda:2 mdb:5 >
+
+[m:61 b:4 t:22]
+ch:5 i:53 d:6 p:79 mda:2 mdb:3 >
+
+[m:62 b:1 t:0]
+i:0 p:129 >  ; damper off
+
+[m:62 b:1 t:3]
+ch:4 i:36 d:6 p:76 mda:2 mdb:2 >
+
+[m:62 b:1 t:9]
+ch:9 i:55 d:37 p:74 mda:2 mdb:1 >
+
+[m:62 b:1 t:21]
+ch:8 i:44 d:3 p:65 mda:1 mdb:3 >
+ch:11 i:34 d:4 p:69 mda:1 mdb:1 >
+
+[m:62 b:2 t:9]
+ch:11 i:38 d:3 p:69 mda:1 mdb:1 >
+ch:8 i:44 d:3 p:65 mda:1 mdb:3 >
+
+[m:62 b:2 t:20]
+ch:11 i:34 d:4 p:69 mda:1 mdb:1 >
+ch:8 i:45 d:3 p:65 mda:1 mdb:3 >
+
+[m:62 b:3 t:6]
+ch:20 i:45 d:3 p:73 mda:2 mdb:2 >
+
+[m:62 b:3 t:8]
+ch:9 i:55 d:13 p:74 mda:2 mdb:1 >
+
+[m:62 b:3 t:19]
+ch:11 i:49 d:4 p:69 mda:1 mdb:1 >
+
+[m:62 b:3 t:20]
+ch:8 i:35 d:3 p:65 mda:1 mdb:3 >
+
+[m:62 b:4 t:6]
+ch:20 i:46 d:3 p:73 mda:2 mdb:2 >
+
+[m:62 b:4 t:7]
+ch:9 i:78 d:8 p:74 mda:2 mdb:1 >
+
+[m:62 b:4 t:18]
+ch:11 i:41 d:3 p:69 mda:1 mdb:1 >
+
+[m:62 b:4 t:19]
+ch:8 i:41 d:2 p:65 mda:1 mdb:3 >
+
+[m:63 b:1 t:6]
+ch:10 i:63 d:36 p:81 mda:2 mdb:5 >
+
+[m:63 b:1 t:17]
+ch:43 i:48 d:4 p:63 mda:1 mdb:1 >
+
+[m:63 b:1 t:18]
+ch:23 i:52 d:3 p:54 mda:1 mdb:5 >
+
+[m:63 b:1 t:19]
+ch:1 i:40 d:2 p:60 mda:1 mdb:2 >
+
+[m:63 b:2 t:5]
+ch:43 i:55 d:3 p:63 mda:1 mdb:1 >
+
+[m:63 b:2 t:6]
+ch:23 i:46 d:3 p:54 mda:1 mdb:5 >
+ch:1 i:30 d:3 p:60 mda:1 mdb:2 >
+
+[m:63 b:2 t:16]
+ch:43 i:42 d:3 p:63 mda:1 mdb:1 >
+
+[m:63 b:2 t:17]
+ch:23 i:35 d:4 p:54 mda:1 mdb:5 >
+
+[m:63 b:2 t:18]
+ch:1 i:37 d:3 p:60 mda:1 mdb:2 >
+
+[m:63 b:3 t:2]
+ch:31 i:56 d:4 p:80 mda:2 mdb:2 >
+
+[m:63 b:3 t:4]
+ch:10 i:75 d:9 p:81 mda:2 mdb:3 >
+
+[m:63 b:3 t:15]
+ch:43 i:49 d:3 p:63 mda:1 mdb:1 >
+ch:23 i:57 d:3 p:54 mda:1 mdb:5 >
+ch:1 i:54 d:3 p:60 mda:1 mdb:2 >
+
+[m:63 b:4 t:0]
+ch:31 i:61 d:4 p:80 mda:2 mdb:2 >
+
+[m:63 b:4 t:1]
+ch:10 i:88 d:6 p:81 mda:2 mdb:3 >
+
+[m:63 b:4 t:12]
+ch:43 i:69 d:3 p:63 mda:1 mdb:1 >
+
+[m:63 b:4 t:13]
+ch:23 i:73 d:2 p:54 mda:1 mdb:5 >
+ch:1 i:55 d:3 p:60 mda:1 mdb:2 >
+
+[m:64 b:1 t:0]
+ch:5 i:93 d:14 p:79 mda:2 mdb:2 >
+
+[m:64 b:1 t:1]
+ch:22 i:59 d:7 p:55 mda:1 mdb:5 >
+
+[m:64 b:1 t:7]
+ch:3 i:45 d:4 p:64 mda:1 mdb:1 >
+
+[m:64 b:1 t:13]
+ch:1 i:48 d:4 p:60 mda:1 mdb:2 >
+
+[m:64 b:1 t:14]
+ch:10 i:76 d:3 p:81 mda:2 mdb:1 >
+
+[m:64 b:1 t:18]
+ch:21 i:104 d:4 p:83 mda:2 mdb:2 >
+
+[m:64 b:1 t:19]
+ch:3 i:55 d:3 p:64 mda:1 mdb:1 >
+
+[m:64 b:2 t:0]
+ch:22 i:63 d:3 p:55 mda:1 mdb:5 >
+ch:12 i:89 d:5 p:84 mda:2 mdb:3 >
+
+[m:64 b:2 t:5]
+ch:27 i:87 d:5 p:86 mda:2 mdb:4 >
+
+[m:64 b:2 t:6]
+ch:3 i:39 d:2 p:64 mda:1 mdb:1 >
+
+[m:64 b:2 t:10]
+ch:39 i:82 d:6 p:88 mda:2 mdb:5 >
+ch:1 i:50 d:3 p:60 mda:1 mdb:2 >
+
+[m:64 b:2 t:15]
+ch:27 i:75 d:5 p:86 mda:2 mdb:4 >
+
+[m:64 b:2 t:16]
+ch:3 i:37 d:3 p:64 mda:1 mdb:1 >
+
+[m:64 b:2 t:20]
+ch:22 i:51 d:3 p:55 mda:1 mdb:5 >
+
+[m:64 b:2 t:21]
+ch:12 i:82 d:4 p:84 mda:2 mdb:1 >
+
+[m:64 b:3 t:1]
+ch:3 i:39 d:3 p:64 mda:1 mdb:1 >
+
+[m:64 b:3 t:2]
+ch:21 i:98 d:6 p:83 mda:2 mdb:4 >
+
+[m:64 b:3 t:4]
+i:1 p:129 >  ; damper on
+
+[m:64 b:3 t:7]
+ch:1 i:41 d:3 p:60 mda:1 mdb:2 >
+ch:10 i:59 d:5 p:81 mda:2 mdb:3 >
+
+[m:64 b:3 t:12]
+ch:3 i:41 d:3 p:64 mda:1 mdb:1 >
+ch:5 i:62 d:3 p:79 mda:2 mdb:2 >
+
+[m:64 b:3 t:16]
+i:0 p:129 >  ; damper off
+
+
+[m:64 b:3 t:17]
+ch:14 i:68 d:3 p:77 mda:2 mdb:1 >
+ch:22 i:63 d:3 p:55 mda:1 mdb:5 >
+
+[m:64 b:3 t:22]
+ch:4 i:58 d:5 p:76 mda:2 mdb:3 >
+
+[m:64 b:3 t:23]
+ch:3 i:32 d:3 p:64 mda:1 mdb:1 >
+
+[m:64 b:4 t:3]
+ch:1 i:50 d:4 p:60 mda:1 mdb:2 >
+ch:9 i:66 d:3 p:74 mda:2 mdb:2 >
+
+[m:64 b:4 t:4]
+i:1 p:129 >  ; damper on
+
+[m:64 b:4 t:8]
+ch:0 i:58 d:2 p:72 mda:2 mdb:1 >
+
+[m:64 b:4 t:9]
+ch:3 i:39 d:3 p:64 mda:1 mdb:1 >
+
+[m:64 b:4 t:10]
+i:0 p:129 >  ; damper off
+
+[m:64 b:4 t:13]
+ch:22 i:57 d:4 p:55 mda:1 mdb:5 >
+ch:9 i:57 d:3 p:74 mda:2 mdb:2 >
+
+[m:64 b:4 t:18]
+ch:8 i:44 d:4 p:65 mda:1 mdb:1 >
+ch:4 i:46 d:3 p:76 mda:2 mdb:3 >
+
+[m:64 b:4 t:23]
+i:1 p:129 >  ; damper on
+ch:9 i:42 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:1 t:0]
+ch:13 i:39 d:3 p:59 mda:1 mdb:3 >
+
+[m:65 b:1 t:2]
+ch:4 i:48 d:2 p:76 mda:2 mdb:3 >
+
+[m:65 b:1 t:6]
+ch:8 i:34 d:3 p:65 mda:1 mdb:1 >
+ch:9 i:45 d:2 p:74 mda:2 mdb:2 >
+
+[m:65 b:1 t:8]
+ch:4 i:49 d:3 p:76 mda:2 mdb:3 >
+
+[m:65 b:1 t:11]
+ch:22 i:55 d:2 p:55 mda:1 mdb:5 >
+
+[m:65 b:1 t:12]
+ch:9 i:47 d:4 p:74 mda:2 mdb:2 >
+
+[m:65 b:1 t:16]
+ch:8 i:41 d:3 p:65 mda:1 mdb:1 >
+ch:4 i:47 d:3 p:76 mda:2 mdb:3 >
+
+[m:65 b:1 t:19]
+ch:9 i:57 d:4 p:74 mda:2 mdb:2 >
+
+[m:65 b:1 t:21]
+ch:13 i:49 d:2 p:59 mda:1 mdb:3 >
+
+[m:65 b:1 t:23]
+ch:4 i:48 d:3 p:76 mda:2 mdb:3 >
+
+[m:65 b:2 t:3]
+ch:8 i:38 d:3 p:65 mda:1 mdb:1 >
+ch:9 i:58 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:2 t:6]
+i:0 p:129 >  ; damper off
+
+[m:65 b:2 t:7]
+ch:4 i:51 d:2 p:76 mda:2 mdb:3 >
+ch:22 i:69 d:3 p:55 mda:1 mdb:5 >
+
+[m:65 b:2 t:11]
+ch:9 i:74 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:2 t:13]
+ch:8 i:39 d:3 p:65 mda:1 mdb:1 >
+
+[m:65 b:2 t:14]
+ch:4 i:55 d:3 p:76 mda:2 mdb:3 >
+
+[m:65 b:2 t:15]
+i:1 p:129 >  ; damper on
+
+[m:65 b:2 t:17]
+ch:13 i:49 d:2 p:59 mda:1 mdb:3 >
+
+[m:65 b:2 t:18]
+ch:9 i:66 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:2 t:22]
+ch:8 i:32 d:3 p:65 mda:1 mdb:1 >
+ch:4 i:50 d:2 p:76 mda:2 mdb:3 >
+
+[m:65 b:3 t:1]
+ch:9 i:66 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:3 t:3]
+ch:22 i:68 d:3 p:55 mda:1 mdb:5 >
+i:0 p:129 >  ; damper off
+
+[m:65 b:3 t:4]
+ch:4 i:54 d:3 p:76 mda:2 mdb:3 >
+
+[m:65 b:3 t:8]
+ch:8 i:44 d:3 p:65 mda:1 mdb:1 >
+ch:9 i:55 d:3 p:74 mda:2 mdb:2 >
+
+[m:65 b:3 t:10]
+i:1 p:129 >  ; damper on
+
+[m:65 b:3 t:11]
+ch:4 i:64 d:6 p:76 mda:2 mdb:3 >
+
+[m:65 b:3 t:14]
+i:0 p:129 >  ; damper off
+ch:13 i:46 d:3 p:59 mda:1 mdb:3 >
+
+[m:65 b:3 t:15]
+ch:9 i:59 d:4 p:74 mda:2 mdb:2 >
+
+[m:65 b:3 t:19]
+ch:0 i:62 d:2 p:72 mda:2 mdb:1 >
+
+[m:65 b:3 t:20]
+ch:8 i:41 d:3 p:65 mda:1 mdb:1 >
+
+[m:65 b:3 t:22]
+ch:9 i:85 d:4 p:74 mda:2 mdb:2 >
+
+[m:65 b:4 t:2]
+ch:3 i:45 d:17 p:64 mda:1 mdb:2 >
+
+[m:65 b:4 t:3]
+ch:1 i:31 d:20 p:60 mda:1 mdb:4 >
+
+[m:65 b:4 t:4]
+ch:0 i:77 d:11 p:72 mda:2 mdb:1 >
+
+[m:65 b:4 t:14]
+i:1 p:129 >  ; damper on
+
+[m:66 b:1 t:4]
+ch:0 i:56 d:3 p:72 mda:2 mdb:2 >
+
+[m:66 b:1 t:7]
+i:0 p:129 >  ; damper off
+
+[m:66 b:1 t:9]
+ch:2 i:66 d:4 p:67 mda:2 mdb:1 >
+
+[m:66 b:1 t:14]
+ch:0 i:70 d:5 p:72 mda:2 mdb:2 >
+
+[m:66 b:1 t:20]
+ch:4 i:67 d:7 p:76 mda:2 mdb:3 >
+
+[m:66 b:2 t:1]
+ch:5 i:85 d:7 p:79 mda:2 mdb:5 >
+
+[m:66 b:2 t:7]
+ch:4 i:57 d:5 p:76 mda:2 mdb:3 >
+
+[m:66 b:2 t:12]
+ch:0 i:66 d:3 p:72 mda:2 mdb:1 >
+
+[m:66 b:2 t:17]
+ch:4 i:57 d:7 p:76 mda:2 mdb:3 >
+
+[m:66 b:2 t:23]
+ch:8 i:45 d:3 p:65 mda:1 mdb:1 >
+
+[m:66 b:3 t:0]
+ch:22 i:47 d:3 p:55 mda:1 mdb:5 >
+ch:14 i:54 d:4 p:77 mda:2 mdb:4 >
+ch:7 i:37 d:4 p:62 mda:1 mdb:2 >
+
+[m:66 b:3 t:5]
+ch:9 i:49 d:4 p:74 mda:2 mdb:2 >
+
+[m:66 b:3 t:11]
+ch:6 i:52 d:3 p:71 mda:2 mdb:1 >
+
+[m:66 b:3 t:17]
+ch:9 i:55 d:2 p:74 mda:2 mdb:2 >
+
+[m:66 b:3 t:23]
+ch:0 i:51 d:6 p:72 mda:2 mdb:1 >
+
+[m:66 b:4 t:0]
+ch:3 i:27 d:5 p:64 mda:1 mdb:1 >
+ch:1 i:21 d:8 p:60 mda:1 mdb:3 >
+
+[m:66 b:4 t:4]
+i:1 p:129 >  ; damper on
+
+[m:66 b:4 t:21]
+i:0 p:129 >  ; damper off
+
+[m:66 b:4 t:22]
+ch:1 i:39 d:3 p:60 mda:2 mdb:2 >
+
+[m:67 b:1 t:2]
+ch:22 i:54 d:4 p:55 mda:2 mdb:1 >
+
+[m:67 b:1 t:8]
+ch:1 i:30 d:4 p:60 mda:2 mdb:2 >
+
+[m:67 b:1 t:14]
+ch:3 i:57 d:5 p:64 mda:2 mdb:3 >
+
+[m:67 b:1 t:19]
+ch:2 i:61 d:6 p:67 mda:2 mdb:5 >
+
+[m:67 b:2 t:0]
+ch:3 i:51 d:3 p:64 mda:2 mdb:3 >
+
+[m:67 b:2 t:5]
+ch:1 i:55 d:3 p:60 mda:2 mdb:1 >
+
+[m:67 b:2 t:10]
+ch:3 i:53 d:6 p:64 mda:2 mdb:3 >
+
+[m:67 b:2 t:16]
+ch:15 i:65 d:3 p:53 mda:1 mdb:1 >
+ch:24 i:41 d:5 p:43 mda:1 mdb:5 >
+
+[m:67 b:2 t:17]
+ch:17 i:39 d:3 p:50 mda:1 mdb:2 >
+ch:8 i:45 d:4 p:65 mda:2 mdb:4 >
+
+[m:67 b:2 t:22]
+ch:7 i:50 d:3 p:62 mda:2 mdb:2 >
+
+[m:67 b:3 t:3]
+ch:13 i:45 d:4 p:59 mda:2 mdb:1 >
+
+[m:67 b:3 t:8]
+ch:7 i:62 d:4 p:62 mda:2 mdb:2 >
+
+[m:67 b:3 t:15]
+ch:16 i:47 d:5 p:52 mda:1 mdb:1 >
+ch:1 i:75 d:5 p:60 mda:2 mdb:1 >
+ch:18 i:31 d:4 p:48 mda:1 mdb:3 >
+
+[m:67 b:3 t:18]
+i:1 p:129 >  ; damper on
+
+[m:67 b:3 t:23]
+i:0 p:129 >  ; damper off
+
+[m:67 b:4 t:14]
+ch:12 i:98 d:5 p:84 mda:2 mdb:5 >
+ch:4 i:78 d:3 p:76 mda:2 mdb:1 >
+ch:1 i:66 d:3 p:60 mda:1 mdb:1 >
+ch:5 i:83 d:3 p:79 mda:2 mdb:2 >
+
+[m:67 b:4 t:15]
+ch:18 i:52 d:3 p:48 mda:1 mdb:5 >
+
+[m:67 b:4 t:20]
+i:1 p:129 >  ; damper on
+
+[m:68 b:1 t:5]
+i:0 p:129 >  ; damper off
+
+[m:68 b:1 t:21]
+ch:0 i:81 d:13 p:72 mda:2 mdb:1 >
+ch:18 i:53 d:10 p:48 mda:1 mdb:1 >
+
+[m:68 b:1 t:22]
+ch:44 i:53 d:10 p:36 mda:1 mdb:5 >
+
+[m:68 b:2 t:3]
+i:1 p:129 >  ; damper on
+
+[m:68 b:3 t:4]
+i:0 p:129 >  ; damper off

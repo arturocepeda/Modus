@@ -1,0 +1,71 @@
+
+;-------------------------------
+;
+; Bag's groove: harmony pattern
+;
+;-------------------------------
+
+
+[m:1]
+root:5  chord:9 tensions:14,21 >
+
+[m:2]
+root:10 chord:9 tensions:14,21 >
+
+[m:3]
+root:5  chord:9 tensions:14,21 >
+
+[m:5]
+root:10 chord:9 tensions:14,21 >
+
+[m:7]
+root:5  chord:9 tensions:14,21 >
+
+[m:9]
+root:7  chord:5 >
+
+[m:10]
+root:0  chord:9 tensions:14,21 >
+
+[m:11]
+root:5  chord:9 tensions:14,21 >
+
+[m:12]
+root:7  chord:5 >
+[b:3]
+root:0  chord:9 tensions:15 >
+
+
+[m:13]
+root:5  chord:9 tensions:14,21 >
+
+[m:14]
+root:10 chord:9 tensions:14,21 >
+
+[m:15]
+root:5  chord:9 tensions:14,21 >
+
+[m:17]
+root:10 chord:9 tensions:14,21 >
+
+[m:19]
+root:5  chord:9 tensions:14,21 >
+
+[m:21]
+root:7  chord:5 >
+
+[m:22]
+root:0  chord:9 tensions:14,21 >
+
+[m:23]
+root:5  chord:9 tensions:14,21 >
+
+[m:24]
+root:7  chord:5 >
+[b:3]
+root:0  chord:9 tensions:15 >
+
+
+[m:25]
+root:5  chord:9 tensions:14,21 >
+

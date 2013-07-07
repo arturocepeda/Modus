@@ -1,0 +1,17 @@
+
+ FMOD
+   v4.42.00
+
+ irrKlang
+   v1.4.0
+
+ OggVorbis
+   libogg v1.3.0
+   libvorbis v1.3.3
+
+ OpenAL
+   v1.1
+
+ RtMidi
+   v2.0.1
+

@@ -1,0 +1,13 @@
+
+ In any Debian distribution, follow these steps to install the Ogg Vorbis libraries:
+
+  1) Open a terminal
+
+  2) Enter "sudo apt-get install libogg-dev"
+
+  3) Enter "sudo apt-get install libvorbis-dev"
+
+
+ To compile and link with g++, add the parameters "-logg -lvorbis -lvorbisfile"
+
+

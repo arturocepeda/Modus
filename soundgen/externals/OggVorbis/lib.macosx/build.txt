@@ -1,0 +1,15 @@
+
+ These are 64-bit libraries. If you need to build a 32-bit application and would
+ like to use OpenAL/OggVorbis, you will have to create the 32-bit library files.
+
+ How to build 32-bit libraries on a 64-bit machine with MacOSX:
+ 
+   ./configure "CFLAGS=-m32" "CXXFLAGS=-m32" "LDFLAGS=-m32"
+   make
+   sudo make install
+   make clean all install
+ 
+ This way the .a files will be generated in /usr/local/lib
+
+ Feel free to contact me in case you need some help: acepeda@usal.es
+

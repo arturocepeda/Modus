@@ -1,0 +1,76 @@
+
+
+
+  v0.53 (July 2013)
+ =======================
+
+ * Sample applications have been improved and cleaned. Now there is a common code for
+   all the platforms
+ 
+ * New timer based on std::chrono (platform-independent code)
+
+ * Score scripts can be saved and loaded from binary files
+ 
+ * All the projects and scripts are configured to compile with C++11
+ 
+ * Now the clang compiler is used in MacOSX instead of gcc
+
+
+
+
+  v0.52 (December 2012)
+ =======================
+
+ * Added support and examples for iOS
+
+ * Added vibrato() method for instrumet objects
+
+ * Added control pitch 132 to assign vibrato
+
+ * Now it is possible to track the progress when loading sample-packs throgh a callback
+   function that can be passed to the method loadSamplePack()
+
+   NOTE: do not use this feature with the sample-packs included with an older version of
+   Modus or sample-packs generated with an older version of the msamplepack tool, since 
+   they do not include the total number of samples at the end of the file
+
+ * Default value (NULL) set for the parameter Data when specifying callback funtions for
+   MCTimer and MCInstrument objects
+
+
+
+
+  v0.51 (October 2012)
+ ======================
+
+ * Added external libraries and examples for MacOSX and Linux
+
+ * Instrument objects and sound generators have been optimized: their update() methods
+   don't have loops throughout all the channels anymore, but now they use dynamic vectors 
+   which store only the channels that must be checked
+
+ * MCList has become a class template 
+
+ * The addEntry() method in the MCScore class finds now the position through the 
+   binary search algorithm instead of the linear search algorithm
+
+ * The class hierarchy of the sound generators has now a more detailed structure. All 
+   the included audio sound generators are derived from MCSoundGenAudioDoubleChannel
+
+ * The damper pedal has now influence on the notes that are being released but still
+   sound in the sound generators (handled as "resonance")
+
+ * Added control pitch 131 to adjust sound generator's release time
+
+ * For control pitch 128 (bending) the fields MDB and MDC are now free for the user
+
+ * MCMIDIReceiver can now receive MIDI messages through byte vectors too
+
+
+
+
+  v0.50 (August 2012)
+ =====================
+
+ * First release
+

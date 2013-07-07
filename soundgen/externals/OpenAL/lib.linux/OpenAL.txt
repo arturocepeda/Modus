@@ -1,0 +1,11 @@
+
+ In any Debian distribution, follow these steps to install OpenAL:
+
+  1) Open a terminal
+
+  2) Enter "sudo apt-get install libopenal-dev"
+
+
+ To compile and link with g++, add the parameter "-lopenal"
+
+

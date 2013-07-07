@@ -1,0 +1,64 @@
+
+;-------------------------------
+;
+; Bag's groove: scales pattern
+;
+;-------------------------------
+
+
+[m:1]
+root:5 scale:13 >
+
+[m:2]
+root:5 scale:13 >
+
+[m:3]
+root:5 scale:13 >
+
+[m:5]
+root:5 scale:13 >
+
+[m:7]
+root:5 scale:13 >
+
+[m:9]
+root:5 scale:13 >
+
+[m:10]
+root:5 scale:13 >
+
+[m:11]
+root:5 scale:13 >
+
+[m:12]
+root:5 scale:13 >
+
+
+
+[m:13]
+root:5 scale:13 >
+
+[m:14]
+root:5 scale:13 >
+
+[m:15]
+root:5 scale:13 >
+
+[m:17]
+root:5 scale:13 >
+
+[m:19]
+root:5 scale:13 >
+
+[m:21]
+root:5 scale:13 >
+
+[m:22]
+root:5 scale:13 >
+
+[m:23]
+root:5 scale:13 >
+
+[m:24]
+root:5 scale:13 >
+
