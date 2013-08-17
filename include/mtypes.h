@@ -110,6 +110,9 @@ struct MSTimePosition
     unsigned int Tick;
 
     MSTimePosition();
+    MSTimePosition(int Measure);
+    MSTimePosition(int Measure, unsigned int Beat);
+    MSTimePosition(int Measure, unsigned int Beat, unsigned int Tick);
 
     bool operator == (const MSTimePosition& TimePosition) const;
     bool operator < (const MSTimePosition& TimePosition) const;
@@ -134,6 +137,9 @@ struct MSRange
 {
     MTNote LowestNote;
     MTNote HighestNote;
+
+    MSRange();
+    MSRange(MTNote LowestNote, MTNote HighestNote);
 
     unsigned char getSize() const;
 };
@@ -163,6 +169,9 @@ struct MSNote
     unsigned char MDC;
 
     MSNote();
+    MSNote(MTNote Pitch, unsigned char Intensity, unsigned char Mode, unsigned char Channel, unsigned char Duration);
+    MSNote(MTNote Pitch, unsigned char Intensity, unsigned char Mode, unsigned char Channel, unsigned char Duration,
+           unsigned char MDA, unsigned char MDB, unsigned char MDC);
 };
 
 

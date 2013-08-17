@@ -43,6 +43,10 @@
 
 #define PI 3.14159f
 
+/**
+ *  @brief Represents a progressive change that is applied to a note. Concretely, this is
+ *         used for bending, vibrato and intensity changes
+ */
 struct MSNoteChange
 {
     unsigned char Channel;

@@ -4,7 +4,7 @@
 //  Modus v0.53
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2013 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -36,7 +36,12 @@
 #ifndef _MTIMER_H_
 #define _MTIMER_H_
 
-#include <chrono>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <sys/time.h>
+#endif
+
 #include "mtypes.h"
 #include "mutils.h"
 #include "msong.h"
@@ -44,10 +49,18 @@
 class Timer
 {
 private:
+    double dStartTime;
+    double dEndTime;
     bool bRunning;
 
-    std::chrono::steady_clock::time_point tStartCount;
-    std::chrono::steady_clock::time_point tEndCount;
+#ifdef WIN32
+    LARGE_INTEGER iFrequency;
+    LARGE_INTEGER iStartCount;
+    LARGE_INTEGER iEndCount;
+#else
+    timeval iStartCount;
+    timeval iEndCount;
+#endif
 
 public:
     Timer();
@@ -55,7 +68,7 @@ public:
 
     void start();
     void stop();
-    long long getTime();
+    double getTime();    // microseconds
 };
 
 /**
@@ -78,7 +91,7 @@ private:
     float fTempo;
     unsigned int iTicksPerBeat;
     unsigned int iBeatsPerMeasure;
-    long long iTick;
+    double dTick;
 
     void (*fCallbackTick)(const MSTimePosition& TimePosition, void* Data);
     void (*fCallbackSection)(unsigned int NewSection, void* Data);
@@ -88,9 +101,9 @@ private:
     void* fCallbackSectionData;
     void* fCallbackEndData;
 
-    long long iTimeNow;
-    long long iTimeBefore;
-    long long iTimeDelta;
+    double dTimeNow;
+    double dTimeBefore;
+    double dTimeDelta;
 
     void setSectionSettings(int iIndex);
     void locateSection();

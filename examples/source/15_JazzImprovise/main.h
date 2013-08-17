@@ -13,7 +13,7 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_
 
-#include <Windows.h>
+#include <windows.h>
 #include "modus.h"
 #include "./../moduslib.win32.h"
 
@@ -50,25 +50,25 @@ struct SGlobal
     MCTimer* mMusicTimer;
     MCSongStructure* mStructure;
 
-    MCHarmonyPattern* mHarmonyPattern;
+    MCHarmonyPattern mHarmonyPattern;
     unsigned int iHarmonyPatternPosition;
     
-    MCScalePattern** mImpScalePatternList;
+    MCScalePattern mImpScalePatternList[SCALE_PATTERNS];
     unsigned int iCurrentImpScalePattern;
-    MCScalePattern* mImpScalePattern;
+    MCScalePattern& mImpScalePattern;
     unsigned int iImpScalePatternPosition;
 
-    MCScalePattern* mBassScalePattern;
+    MCScalePattern mBassScalePattern;
     unsigned int iBassScalePatternPosition;
 
     MTNoteMap mNoteMap;
-    MCBand* mBand;
+    MCBand mBand;
 
     MCInstrument* mTrombone;
-    MCScore* mTromboneScore;
+    MCScore mTromboneScore;
 
     MCInstrument* mTenorSax;
-    MCScore* mTenorSaxScore;
+    MCScore mTenorSaxScore;
 
     MCInstrument* mPiano;
     MSRange mPianoRange;
@@ -78,20 +78,22 @@ struct SGlobal
     bool bDamper;
 
     MCInstrument* mBass;
-    MCScore* mBassScore;
+    MCScore mBassScore;
 
     MCInstrument* mDrums;
-    MCScore* mDrumsScore;
+    MCScore mDrumsScore;
 
     MCInstrument* mCount;
-    MCScore* mCountScore;
+    MCScore mCountScore;
 
     int iWalkingMeasureFrom;
     int iWalkingMeasureTo;
-    MCWalkingBassImproviser* mBassImproviser;
+    MCWalkingBassImproviser mBassImproviser;
 
     bool bEndingTheme;
     int iMeasureEndingTheme;
+
+    SGlobal() : mImpScalePattern(mImpScalePatternList[0]) {}
 };
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);

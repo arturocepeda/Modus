@@ -1,6 +1,8 @@
 var struct_m_s_note =
 [
     [ "MSNote", "struct_m_s_note.html#aa223f2d20209462bc2a3525dff2f4f8b", null ],
+    [ "MSNote", "struct_m_s_note.html#ae24101d2acaea00dd806bd88b1c62140", null ],
+    [ "MSNote", "struct_m_s_note.html#ad3aa451ce01325bb3dcdee1fbf3e277b", null ],
     [ "Channel", "struct_m_s_note.html#ac26ed8a6b0604081781b6b1877ff1ba1", null ],
     [ "Duration", "struct_m_s_note.html#af558c59abc8cf11ac44f6207979a7ed8", null ],
     [ "Intensity", "struct_m_s_note.html#ab63276bbcbe4c35b6a0cf6eae3e02a68", null ],

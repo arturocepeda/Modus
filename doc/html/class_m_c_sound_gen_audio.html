@@ -141,9 +141,12 @@ Public Member Functions</h2></td></tr>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_sound_gen_audio.html#a4b96b286488684cf8f9147c65a5e870e">loadSamples</a> ()=0</td></tr>
 <tr class="memdesc:a4b96b286488684cf8f9147c65a5e870e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load all the sample files defined by the list. <br/></td></tr>
 <tr class="separator:a4b96b286488684cf8f9147c65a5e870e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab68cfba0a3fc657fe08b0d9ce454fb30"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_sound_gen_audio.html#ab68cfba0a3fc657fe08b0d9ce454fb30">loadSamplePack</a> (const char *Filename, void(*callback)(unsigned int TotalSamples, unsigned int Loaded, void *Data)=NULL, void *Data=NULL)=0</td></tr>
-<tr class="memdesc:ab68cfba0a3fc657fe08b0d9ce454fb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load sample-sets from a sample-pack file, which contains both information and audio files. These files can be created with the "msamplepack" tool.  <a href="#ab68cfba0a3fc657fe08b0d9ce454fb30">More...</a><br/></td></tr>
-<tr class="separator:ab68cfba0a3fc657fe08b0d9ce454fb30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a975876b686b9cac9800cbfd9f5042745"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_sound_gen_audio.html#a975876b686b9cac9800cbfd9f5042745">loadSamplePack</a> (std::istream &amp;Stream, void(*callback)(unsigned int TotalSamples, unsigned int Loaded, void *Data)=NULL, void *Data=NULL)=0</td></tr>
+<tr class="memdesc:a975876b686b9cac9800cbfd9f5042745"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load sample-sets from a sample-pack file, which contains both information and audio files. These files can be created with the "msamplepack" tool.  <a href="#a975876b686b9cac9800cbfd9f5042745">More...</a><br/></td></tr>
+<tr class="separator:a975876b686b9cac9800cbfd9f5042745"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68b1e7b46454b01e3b728ac47cd41ed8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_sound_gen_audio.html#a68b1e7b46454b01e3b728ac47cd41ed8">loadSamplePack</a> (const char *Filename, void(*callback)(unsigned int TotalSamples, unsigned int Loaded, void *Data)=NULL, void *Data=NULL)</td></tr>
+<tr class="memdesc:a68b1e7b46454b01e3b728ac47cd41ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load sample-sets from a sample-pack file, which contains both information and audio files. These files can be created with the "msamplepack" tool.  <a href="#a68b1e7b46454b01e3b728ac47cd41ed8">More...</a><br/></td></tr>
+<tr class="separator:a68b1e7b46454b01e3b728ac47cd41ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a332813e19e354b1b853c3acbea18b465"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a332813e19e354b1b853c3acbea18b465"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_sound_gen_audio.html#a332813e19e354b1b853c3acbea18b465">unloadSamples</a> ()=0</td></tr>
 <tr class="memdesc:a332813e19e354b1b853c3acbea18b465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unload all the sample files defined by the list and clear the list. <br/></td></tr>
@@ -312,7 +315,7 @@ CUniqueVector&lt; unsigned char &gt;&#160;</td><td class="memItemRight" valign="
 
 </div>
 </div>
-<a class="anchor" id="ab68cfba0a3fc657fe08b0d9ce454fb30"></a>
+<a class="anchor" id="a975876b686b9cac9800cbfd9f5042745"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -322,8 +325,8 @@ CUniqueVector&lt; unsigned char &gt;&#160;</td><td class="memItemRight" valign="
         <tr>
           <td class="memname">virtual void MCSoundGenAudio::loadSamplePack </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>Filename</em>, </td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>Stream</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -353,12 +356,55 @@ CUniqueVector&lt; unsigned char &gt;&#160;</td><td class="memItemRight" valign="
 <p>Load sample-sets from a sample-pack file, which contains both information and audio files. These files can be created with the "msamplepack" tool. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">Stream</td><td>Input file stream attached to the binary data </td></tr>
+    <tr><td class="paramname">callback</td><td>Callback function which will be called each time a sample is loaded, to be able to track the sample loading process (for example, to show a progress bar). This function will receive the total number of samples in the sample-pack and the current number of samples loaded with each call </td></tr>
+    <tr><td class="paramname">Data</td><td>Pointer to pass user data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a68b1e7b46454b01e3b728ac47cd41ed8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MCSoundGenAudio::loadSamplePack </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>Filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(unsigned int TotalSamples, unsigned int Loaded, void *Data)&#160;</td>
+          <td class="paramname"><em>callback</em> = <code>NULL</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>Data</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load sample-sets from a sample-pack file, which contains both information and audio files. These files can be created with the "msamplepack" tool. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
     <tr><td class="paramname">Filename</td><td>Sample-pack file </td></tr>
     <tr><td class="paramname">callback</td><td>Callback function which will be called each time a sample is loaded, to be able to track the sample loading process (for example, to show a progress bar). This function will receive the total number of samples in the sample-pack and the current number of samples loaded with each call </td></tr>
     <tr><td class="paramname">Data</td><td>Pointer to pass user data </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the file could be readed or not </dd></dl>
 
 </div>
 </div>
@@ -457,7 +503,7 @@ CUniqueVector&lt; unsigned char &gt;&#160;</td><td class="memItemRight" valign="
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_m_c_sound_gen_audio.html">MCSoundGenAudio</a></li>
-    <li class="footer">Generated on Sun Jul 7 2013 07:27:15 for Modus by
+    <li class="footer">Generated on Sat Aug 17 2013 15:18:37 for Modus by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

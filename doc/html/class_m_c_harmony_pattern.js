@@ -3,6 +3,8 @@ var class_m_c_harmony_pattern =
     [ "MCHarmonyPattern", "class_m_c_harmony_pattern.html#a71b23129b68911309daaa6a7cbf9d37c", null ],
     [ "~MCHarmonyPattern", "class_m_c_harmony_pattern.html#aea553091696ed61f0ab1db939a906685", null ],
     [ "addEntry", "class_m_c_harmony_pattern.html#a68275212117813d6bb2ef0aed2705a79", null ],
+    [ "loadScriptFromBinaryData", "class_m_c_harmony_pattern.html#a60827f849db0bcf25cf1c05a2267666c", null ],
+    [ "loadScriptFromBinaryFile", "class_m_c_harmony_pattern.html#af0fd58cd2ade556a21674a7d6bac67fc", null ],
     [ "loadScriptFromFile", "class_m_c_harmony_pattern.html#a97a43fb76417bde98ac7469e22a3d4f4", null ],
     [ "loadScriptFromFile", "class_m_c_harmony_pattern.html#ae31f61b16c2f219c38163d40bdfaa049", null ],
     [ "loadScriptFromString", "class_m_c_harmony_pattern.html#aaacc9e7fb0976ceb049fe6e08fd47250", null ],

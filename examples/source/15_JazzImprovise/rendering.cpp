@@ -120,7 +120,7 @@ void CRendering::render(SGlobal* Global)
     drawText(320, 85, sGDI->sBuffer, sGDI->hFontBig, RGB(156, 156, 156));
 
     // current root note
-    MCNotes::whichNote(Global->mHarmonyPattern->getEntry(Global->iHarmonyPatternPosition)->RootNote, sGDI->sNote);
+    MCNotes::whichNote(Global->mHarmonyPattern[Global->iHarmonyPatternPosition]->RootNote, sGDI->sNote);
     sprintf(sGDI->sBuffer, "Root note: %s    ", sGDI->sNote);
     drawText(470, 35, sGDI->sBuffer, sGDI->hFontBig, RGB(156, 156, 156));
 
@@ -291,6 +291,7 @@ void CRendering::render(SGlobal* Global)
         iKeyX = 16 + (WHITEKEY_WIDTH * iOffset);
 
         // black key image
+        
         if(MCNoteMaps::contains(Global->mNoteMap, mCurrentNote))
         {
             drawBMP(iKeyX - (WHITEKEY_WIDTH / 2), PIANO_Y, BLACKKEY_WIDTH, BLACKKEY_HEIGHT, 

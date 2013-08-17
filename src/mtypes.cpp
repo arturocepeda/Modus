@@ -35,6 +35,282 @@
 #include <ctype.h>
 #include <algorithm>
 
+
+//
+//  MSTimePosition
+//
+MSTimePosition::MSTimePosition()
+    : Measure(1)
+    , Beat(1)
+    , Tick(0)
+{
+}
+
+MSTimePosition::MSTimePosition(int Measure)
+    : Measure(Measure)
+    , Beat(1)
+    , Tick(0)
+{
+}
+
+MSTimePosition::MSTimePosition(int Measure, unsigned int Beat)
+    : Measure(Measure)
+    , Beat(Beat)
+    , Tick(0)
+{
+}
+
+MSTimePosition::MSTimePosition(int Measure, unsigned int Beat, unsigned int Tick)
+    : Measure(Measure)
+    , Beat(Beat)
+    , Tick(Tick)
+{
+}
+
+bool MSTimePosition::operator == (const MSTimePosition& TimePosition) const
+{
+    return (Measure == TimePosition.Measure && Beat == TimePosition.Beat && Tick == TimePosition.Tick);
+}
+
+bool MSTimePosition::operator < (const MSTimePosition& TimePosition) const
+{
+    if(Measure < TimePosition.Measure)
+    {
+        return true;
+    }
+    else if(Measure == TimePosition.Measure)
+    {
+        if(Beat < TimePosition.Beat)
+        {
+            return true;
+        }
+        else if(Beat == TimePosition.Beat)
+        {
+            if(Tick < TimePosition.Tick)
+                return true;
+        }
+    }
+
+    return false;
+}
+
+bool MSTimePosition::operator > (const MSTimePosition& TimePosition) const
+{
+    if(Measure > TimePosition.Measure)
+    {
+        return true;
+    }
+    else if(Measure == TimePosition.Measure)
+    {
+        if(Beat > TimePosition.Beat)
+        {
+            return true;
+        }
+        else if(Beat == TimePosition.Beat)
+        {
+            if(Tick > TimePosition.Tick)
+                return true;
+        }
+    }
+
+    return false;
+}
+
+bool MSTimePosition::operator <= (const MSTimePosition& TimePosition) const
+{
+    if(Measure > TimePosition.Measure)
+    {
+        return false;
+    }
+    else if(Measure == TimePosition.Measure)
+    {
+        if(Beat > TimePosition.Beat)
+        {
+            return false;
+        }
+        else if(Beat == TimePosition.Beat)
+        {
+            if(Tick > TimePosition.Tick)
+                return false;
+        }
+    }
+
+    return true;
+}
+
+bool MSTimePosition::operator >= (const MSTimePosition& TimePosition) const
+{
+    if(Measure < TimePosition.Measure)
+    {
+        return false;
+    }
+    else if(Measure == TimePosition.Measure)
+    {
+        if(Beat < TimePosition.Beat)
+        {
+            return false;
+        }
+        else if(Beat == TimePosition.Beat)
+        {
+            if(Tick < TimePosition.Tick)
+                return false;
+        }
+    }
+
+    return true;
+}
+
+void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
+{
+    if(Ticks >= 0)
+    {
+        Tick += Ticks;
+
+        while(Tick >= M_TICKS_PER_BEAT)
+        {
+            Tick -= M_TICKS_PER_BEAT;
+            Beat++;
+
+            if(Beat > BeatsPerMeasure)
+            {
+                Beat = 1;
+                Measure++;
+            }
+        }
+    }
+    else
+    {
+        unsigned int iTicks = abs(Ticks);
+
+        while(iTicks >= M_TICKS_PER_BEAT)
+        {
+            iTicks -= M_TICKS_PER_BEAT;
+            Beat--;
+
+            if(Beat == 0)
+            {
+                Beat = BeatsPerMeasure;
+                Measure--;
+            }
+        }
+
+        if(Tick >= iTicks)
+        {
+            Tick -= iTicks;
+        }
+        else
+        {
+            Tick += M_TICKS_PER_BEAT;
+            Tick -= iTicks;
+            Beat--;
+
+            if(Beat == 0)
+            {
+                Beat = BeatsPerMeasure;
+                Measure--;
+            }
+        }
+    }
+}
+
+int MSTimePosition::getInTicks(unsigned int BeatsPerMeasure) const
+{
+    return ((Measure - 1) * BeatsPerMeasure * M_TICKS_PER_BEAT) + ((Beat - 1) * M_TICKS_PER_BEAT) + Tick;
+}
+
+MSTimePosition MSTimePosition::getWithIncrement(int Ticks, unsigned int BeatsPerMeasure) const
+{
+    MSTimePosition mIncTimePosition;
+
+    mIncTimePosition.Measure = Measure;
+    mIncTimePosition.Beat = Beat;
+    mIncTimePosition.Tick = Tick;
+    mIncTimePosition.add(Ticks, BeatsPerMeasure);
+
+    return mIncTimePosition;
+}
+
+unsigned int MSTimePosition::getDifferenceWith(const MSTimePosition& TimePosition, unsigned int BeatsPerMeasure) const
+{
+    unsigned int iTicks1 = getInTicks(BeatsPerMeasure);
+    unsigned int iTicks2 = TimePosition.getInTicks(BeatsPerMeasure);
+
+    if(iTicks2 > iTicks1)
+        return (iTicks2 - iTicks1);
+    else
+        return (iTicks1 - iTicks2);
+}
+
+
+//
+//  MSNote
+//
+MSNote::MSNote()
+{
+    memset(this, 0, sizeof(MSNote));
+}
+
+MSNote::MSNote(MTNote Pitch, unsigned char Intensity, unsigned char Mode, unsigned char Channel, unsigned char Duration)
+    : Pitch(Pitch)
+    , Intensity(Intensity)
+    , Mode(Mode)
+    , Channel(Channel)
+    , Duration(Duration)
+    , MDA(0)
+    , MDB(0)
+    , MDC(0)
+{
+}
+
+MSNote::MSNote(MTNote Pitch, unsigned char Intensity, unsigned char Mode, unsigned char Channel, unsigned char Duration,
+               unsigned char MDA, unsigned char MDB, unsigned char MDC)
+    : Pitch(Pitch)
+    , Intensity(Intensity)
+    , Mode(Mode)
+    , Channel(Channel)
+    , Duration(Duration)
+    , MDA(MDA)
+    , MDB(MDB)
+    , MDC(MDC)
+{
+}
+
+
+//
+// MSRange
+//
+MSRange::MSRange()
+    : LowestNote(0)
+    , HighestNote(127)
+{
+}
+
+MSRange::MSRange(MTNote LowestNote, MTNote HighestNote)
+    : LowestNote(LowestNote)
+    , HighestNote(HighestNote)
+{
+}
+
+unsigned char MSRange::getSize() const
+{
+    return (HighestNote - LowestNote + 1);
+}
+
+
+//
+// MSSampleSet
+//
+MSSampleSet::MSSampleSet()
+{
+    Path[0] = '\0';
+    Format[0] = '\0';
+    ID = 0;
+    Mode = 0;
+    MinimumIntensity = 0;
+    MaximumIntensity = 127;
+}
+
+
 //
 //  MCNotes
 //
@@ -421,221 +697,3 @@ int MCNoteMaps::getPositionNearestNote(MTNote Note, const MTNoteMap& NoteMap)
 
     return -1;
 }
-
-
-//
-//  MSTimePosition
-//
-MSTimePosition::MSTimePosition()
-{
-    Measure = 1;
-    Beat = 1;
-    Tick = 0;
-}
-
-bool MSTimePosition::operator == (const MSTimePosition& TimePosition) const
-{
-    return (Measure == TimePosition.Measure && Beat == TimePosition.Beat && Tick == TimePosition.Tick);
-}
-
-bool MSTimePosition::operator < (const MSTimePosition& TimePosition) const
-{
-    if(Measure < TimePosition.Measure)
-    {
-        return true;
-    }
-    else if(Measure == TimePosition.Measure)
-    {
-        if(Beat < TimePosition.Beat)
-        {
-            return true;
-        }
-        else if(Beat == TimePosition.Beat)
-        {
-            if(Tick < TimePosition.Tick)
-                return true;
-        }
-    }
-
-    return false;
-}
-
-bool MSTimePosition::operator > (const MSTimePosition& TimePosition) const
-{
-    if(Measure > TimePosition.Measure)
-    {
-        return true;
-    }
-    else if(Measure == TimePosition.Measure)
-    {
-        if(Beat > TimePosition.Beat)
-        {
-            return true;
-        }
-        else if(Beat == TimePosition.Beat)
-        {
-            if(Tick > TimePosition.Tick)
-                return true;
-        }
-    }
-
-    return false;
-}
-
-bool MSTimePosition::operator <= (const MSTimePosition& TimePosition) const
-{
-    if(Measure > TimePosition.Measure)
-    {
-        return false;
-    }
-    else if(Measure == TimePosition.Measure)
-    {
-        if(Beat > TimePosition.Beat)
-        {
-            return false;
-        }
-        else if(Beat == TimePosition.Beat)
-        {
-            if(Tick > TimePosition.Tick)
-                return false;
-        }
-    }
-
-    return true;
-}
-
-bool MSTimePosition::operator >= (const MSTimePosition& TimePosition) const
-{
-    if(Measure < TimePosition.Measure)
-    {
-        return false;
-    }
-    else if(Measure == TimePosition.Measure)
-    {
-        if(Beat < TimePosition.Beat)
-        {
-            return false;
-        }
-        else if(Beat == TimePosition.Beat)
-        {
-            if(Tick < TimePosition.Tick)
-                return false;
-        }
-    }
-
-    return true;
-}
-
-void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
-{
-    if(Ticks >= 0)
-    {
-        Tick += Ticks;
-
-        while(Tick >= M_TICKS_PER_BEAT)
-        {
-            Tick -= M_TICKS_PER_BEAT;
-            Beat++;
-
-            if(Beat > BeatsPerMeasure)
-            {
-                Beat = 1;
-                Measure++;
-            }
-        }
-    }
-    else
-    {
-        unsigned int iTicks = abs(Ticks);
-
-        while(iTicks >= M_TICKS_PER_BEAT)
-        {
-            iTicks -= M_TICKS_PER_BEAT;
-            Beat--;
-
-            if(Beat == 0)
-            {
-                Beat = BeatsPerMeasure;
-                Measure--;
-            }
-        }
-
-        if(Tick >= iTicks)
-        {
-            Tick -= iTicks;
-        }
-        else
-        {
-            Tick += M_TICKS_PER_BEAT;
-            Tick -= iTicks;
-            Beat--;
-
-            if(Beat == 0)
-            {
-                Beat = BeatsPerMeasure;
-                Measure--;
-            }
-        }
-    }
-}
-
-int MSTimePosition::getInTicks(unsigned int BeatsPerMeasure) const
-{
-    return ((Measure - 1) * BeatsPerMeasure * M_TICKS_PER_BEAT) + ((Beat - 1) * M_TICKS_PER_BEAT) + Tick;
-}
-
-MSTimePosition MSTimePosition::getWithIncrement(int Ticks, unsigned int BeatsPerMeasure) const
-{
-    MSTimePosition mIncTimePosition;
-
-    mIncTimePosition.Measure = Measure;
-    mIncTimePosition.Beat = Beat;
-    mIncTimePosition.Tick = Tick;
-    mIncTimePosition.add(Ticks, BeatsPerMeasure);
-
-    return mIncTimePosition;
-}
-
-unsigned int MSTimePosition::getDifferenceWith(const MSTimePosition& TimePosition, unsigned int BeatsPerMeasure) const
-{
-    unsigned int iTicks1 = getInTicks(BeatsPerMeasure);
-    unsigned int iTicks2 = TimePosition.getInTicks(BeatsPerMeasure);
-
-    if(iTicks2 > iTicks1)
-        return (iTicks2 - iTicks1);
-    else
-        return (iTicks1 - iTicks2);
-}
-
-
-//
-//  MSNote
-//
-MSNote::MSNote()
-{
-    memset(this, 0, sizeof(MSNote));
-}
-
-
-//
-// MSRange
-//
-unsigned char MSRange::getSize() const
-{
-    return (HighestNote - LowestNote + 1);
-}
-
-
-//
-// MSSampleSet
-//
-MSSampleSet::MSSampleSet()
-{
-    Path[0] = '\0';
-    Format[0] = '\0';
-    ID = 0;
-    Mode = 0;
-    MinimumIntensity = 0;
-    MaximumIntensity = 127;
-}
-

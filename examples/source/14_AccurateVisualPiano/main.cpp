@@ -77,7 +77,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)&sGlobal);
 
     // instrument
-    MSRange mPianoRange = {21, 108};
+    MSRange mPianoRange(21, 108);
     sGlobal.mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
 
     // score
@@ -86,7 +86,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(sGlobal.mPiano->getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(sGlobal.mPiano->getNumberOfChannels(), false, CAudio::getSoundSystem());
     mSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
 
     // instrument settings
@@ -109,10 +109,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     Timer* mLoopTimer = new Timer();
     mLoopTimer->start();
 
-    long long iTimeInterval = (long long)(1000000.0f / FPS);
-    long long iTimeDelta = 0;
-    long long iTimeBefore = 0;
-    long long iTimeNow;
+    double dTimeInterval = 1000000.0 / FPS;
+    double dTimeDelta = 0;
+    double dTimeBefore = 0;
+    double dTimeNow;
 
     // initialize rendering system
     CRendering::init(&sGDI);
@@ -131,12 +131,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
         }
         
         // update and render
-        iTimeNow = mLoopTimer->getTime();
-        iTimeDelta = iTimeNow - iTimeBefore;
+        dTimeNow = mLoopTimer->getTime();
+        dTimeDelta = dTimeNow - dTimeBefore;
 
-        if(iTimeDelta >= iTimeInterval)
+        if(dTimeDelta >= dTimeInterval)
         {
-            iTimeBefore = iTimeNow;
+            dTimeBefore = dTimeNow;
             RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE);
         }
     }

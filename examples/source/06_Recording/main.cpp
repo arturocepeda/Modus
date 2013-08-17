@@ -26,8 +26,8 @@ MCMIDIReceiver* mMIDIReceiver;
 int main(int argc, char* argv[])
 {
     // instrument
-    MSRange mPianoRange = {21, 108};
-    MCInstrument* mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
+    MSRange mPianoRange(21, 108);
+    MCInstrument mPiano(1, mPianoRange, mPianoRange.getSize());
 
     // header
     cout << "\n  Modus " << MODUS_VERSION;
@@ -43,8 +43,8 @@ int main(int argc, char* argv[])
     unsigned int iSelectedDevice;
     unsigned int i;
     
-    RtMidiIn* mDevice = new RtMidiIn(rtMidiApi, "Modus Sample");
-    iNumDevices = mDevice->getPortCount();
+    RtMidiIn mDevice(rtMidiApi, "Modus Sample");
+    iNumDevices = mDevice.getPortCount();
     
     if(iNumDevices == 0)
     {
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
     
     for(i = 0; i < iNumDevices; i++)
     {
-        sDevice = mDevice->getPortName(i);
+        sDevice = mDevice.getPortName(i);
         cout << "\n  " << i + 1 << ") " << sDevice;
     }
     
@@ -73,34 +73,30 @@ int main(int argc, char* argv[])
     iSelectedDevice--;
 
     // MIDI listener
-    mDevice->openPort(iSelectedDevice);
-    mDevice->setCallback(&MidiInProc);
+    mDevice.openPort(iSelectedDevice);
+    mDevice.setCallback(&MidiInProc);
     
     // Modus MIDI receiver
-    mMIDIReceiver = new MCMIDIReceiver(mPiano);
+    mMIDIReceiver = new MCMIDIReceiver(&mPiano);
     mMIDIReceiver->listenToAllMIDIChannels();
     mMIDIReceiver->attachAllPitchesToDifferentChannels();
 
     // sound generator
     CAudio::init();
-    MCOpenALSourceManager* mALManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenOpenAL* mSoundGen = new MCSoundGenOpenAL(mPiano->getNumberOfChannels(), false, 1, mALManager);
+    MCOpenALSourceManager mALManager(OPENAL_SOURCES);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mPiano.getNumberOfChannels(), false, 1, &mALManager);
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
-    mPiano->setSoundGen(mSoundGen);
-
-    // score to write the notes
-    sGlobal.mScore = new MCScore();
+    mPiano.setSoundGen(mSoundGen);
 
     // timer
-    sGlobal.mTimer = new MCTimer();
-    sGlobal.mTimer->setCallbackTick(TimerTick, mPiano);
-    sGlobal.mTimer->start();
+    sGlobal.mTimer.setCallbackTick(TimerTick, &mPiano);
+    sGlobal.mTimer.start();
 
     // set piano callbacks
-    mPiano->setCallbackPlay(PianoPlayNote, &sGlobal);
-    mPiano->setCallbackRelease(PianoReleaseNote, &sGlobal);
-    mPiano->setCallbackDamper(PianoDamper, &sGlobal);
+    mPiano.setCallbackPlay(PianoPlayNote, &sGlobal);
+    mPiano.setCallbackRelease(PianoReleaseNote, &sGlobal);
+    mPiano.setCallbackDamper(PianoDamper, &sGlobal);
 
     cout << "\n  Press any key to start recording. Press ESC to quit...";
 
@@ -120,38 +116,33 @@ int main(int argc, char* argv[])
             if(iLastKey != 27)
             {
                 sGlobal.bRecordingMode = !sGlobal.bRecordingMode;
-                sGlobal.mTimer->reset();
-                sGlobal.mTimer->start();
+                sGlobal.mTimer.reset();
+                sGlobal.mTimer.start();
 
                 if(sGlobal.bRecordingMode)
                 {
-                    sGlobal.mScore->clear();
-                    mPiano->setScore(NULL);
-                    mPiano->releaseAll();
+                    sGlobal.mScore.clear();
+                    mPiano.setScore(NULL);
+                    mPiano.releaseAll();
                     cout << "\n\n  Recording! Press any key to hear. Press ESC to quit...";
                 }
                 else
                 {
-                    mPiano->setScore(sGlobal.mScore);
+                    mPiano.setScore(&sGlobal.mScore);
                     cout << "\n\n  Playing! Press any key to record again. Press ESC to quit...";
                 }
             }
         }
 
         // timer update
-        sGlobal.mTimer->update();
+        sGlobal.mTimer.update();
     }
 
     Input::close();
 
-    delete sGlobal.mScore;
-    delete sGlobal.mTimer;
-    delete mPiano;
     delete mSoundGen;
-    delete mALManager;
     delete mMIDIReceiver;
 
-    delete mDevice;
     CAudio::release();
 
     cout << "\n\n";
@@ -191,8 +182,8 @@ void PianoPlayNote(unsigned int iInstrID, const MSNote& mNote, void* pData)
     {
         MSScoreEntry se;
         se.Note = mNote;
-        se.TimePosition = sGlobal->mTimer->getTimePosition();
-        sGlobal->mScore->addEntry(se);
+        se.TimePosition = sGlobal->mTimer.getTimePosition();
+        sGlobal->mScore.addEntry(se);
     }
 }
 
@@ -206,8 +197,8 @@ void PianoReleaseNote(unsigned int iInstrID, const MSNote& mNote, void* pData)
         MSScoreEntry se;
         se.Note = mNote;
         se.Note.Intensity = 0;  // note off
-        se.TimePosition = sGlobal->mTimer->getTimePosition();
-        sGlobal->mScore->addEntry(se);
+        se.TimePosition = sGlobal->mTimer.getTimePosition();
+        sGlobal->mScore.addEntry(se);
     }
 }
 
@@ -221,7 +212,7 @@ void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData)
         MSScoreEntry se;        
         se.Note.Pitch = M_CTRL_DAMPER;
         se.Note.Intensity = (unsigned char)bDamperState;
-        se.TimePosition = sGlobal->mTimer->getTimePosition();
-        sGlobal->mScore->addEntry(se);
+        se.TimePosition = sGlobal->mTimer.getTimePosition();
+        sGlobal->mScore.addEntry(se);
     }
 }

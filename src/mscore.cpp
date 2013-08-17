@@ -238,48 +238,6 @@ void MCScore::loadScript(std::istream* sScript)
     }
 }
 
-void MCScore::loadBinaryScript(std::ifstream* sScript)
-{
-    // clear all the previous score entries
-    clear();
-
-    // header
-    char sBuffer[15];
-    sScript->read(sBuffer, 15);
-
-    // metadata fields
-    bool bMetadata;
-    sScript->read(reinterpret_cast<char*>(&bMetadata), 1);
-
-    // number of entries
-    unsigned int iNumberOfEntries;
-    sScript->read(reinterpret_cast<char*>(&iNumberOfEntries), sizeof(unsigned int));
-
-    // entries
-    MSScoreEntry se;
-
-    for(unsigned int i = 0; sScript->good() && i < iNumberOfEntries; i++)
-    {
-        sScript->read(reinterpret_cast<char*>(&se.TimePosition.Measure), sizeof(short));
-        sScript->read(reinterpret_cast<char*>(&se.TimePosition.Beat), 1);
-        sScript->read(reinterpret_cast<char*>(&se.TimePosition.Tick), 1);
-        sScript->read(reinterpret_cast<char*>(&se.Note.Mode), 1);
-        sScript->read(reinterpret_cast<char*>(&se.Note.Channel), 1);
-        sScript->read(reinterpret_cast<char*>(&se.Note.Pitch), 1);
-        sScript->read(reinterpret_cast<char*>(&se.Note.Intensity), 1);
-        sScript->read(reinterpret_cast<char*>(&se.Note.Duration), 1);
-
-        if(bMetadata)
-        {
-            sScript->read(reinterpret_cast<char*>(&se.Note.MDA), 1);
-            sScript->read(reinterpret_cast<char*>(&se.Note.MDB), 1);
-            sScript->read(reinterpret_cast<char*>(&se.Note.MDC), 1);
-        }
-        
-        addEntry(se);
-    }
-}
-
 bool MCScore::loadScriptFromFile(const char* Filename)
 {
     std::ifstream fFile(Filename);
@@ -309,9 +267,50 @@ bool MCScore::loadScriptFromBinaryFile(const char* Filename)
     if(!fFile.is_open())
         return false;
 
-    loadBinaryScript(&fFile);
-
+    loadScriptFromBinaryData(fFile);
     fFile.close();
 
     return true;
+}
+
+void MCScore::loadScriptFromBinaryData(std::istream& Stream)
+{
+    // clear all the previous score entries
+    clear();
+
+    // header
+    char sBuffer[16];
+    Stream.read(sBuffer, 16);
+
+    // metadata fields
+    bool bMetadata;
+    Stream.read((char*)&bMetadata, 1);
+
+    // number of entries
+    unsigned int iNumberOfEntries;
+    Stream.read((char*)&iNumberOfEntries, sizeof(unsigned int));
+
+    // entries
+    MSScoreEntry se;
+
+    for(unsigned int i = 0; Stream.good() && i < iNumberOfEntries; i++)
+    {
+        Stream.read((char*)&se.TimePosition.Measure, sizeof(short));
+        Stream.read((char*)&se.TimePosition.Beat, 1);
+        Stream.read((char*)&se.TimePosition.Tick, 1);
+        Stream.read((char*)&se.Note.Mode, 1);
+        Stream.read((char*)&se.Note.Channel, 1);
+        Stream.read((char*)&se.Note.Pitch, 1);
+        Stream.read((char*)&se.Note.Intensity, 1);
+        Stream.read((char*)&se.Note.Duration, 1);
+
+        if(bMetadata)
+        {
+            Stream.read((char*)&se.Note.MDA, 1);
+            Stream.read((char*)&se.Note.MDB, 1);
+            Stream.read((char*)&se.Note.MDC, 1);
+        }
+        
+        addEntry(se);
+    }
 }

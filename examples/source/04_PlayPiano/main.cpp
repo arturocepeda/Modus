@@ -31,7 +31,7 @@ void MidiInProc(double dTime, std::vector<unsigned char>* vMessage, void* pData)
 int main(int argc, char* argv[])
 {
     // instrument
-    MSRange mPianoRange = {21, 108};
+    MSRange mPianoRange(21, 108);
     MCInstrument mPiano(1, mPianoRange, mPianoRange.getSize());
 
     // header
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
     // sound generator
     CAudio::init();
     MCOpenALSourceManager mALManager(OPENAL_SOURCES);
-    MCSoundGenOpenAL* mSoundGen = new MCSoundGenOpenAL(mPiano.getNumberOfChannels(), false, 1, &mALManager);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mPiano.getNumberOfChannels(), false, 1, &mALManager);
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
     mPiano.setSoundGen(mSoundGen);

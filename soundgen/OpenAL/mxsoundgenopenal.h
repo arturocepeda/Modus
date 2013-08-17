@@ -1,11 +1,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.52
+//  Modus
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012 Arturo Cepeda
+//  Copyright (c) 2012-2013 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -116,7 +116,7 @@ public:
 
     void addSampleSet(MSSampleSet& SampleSet);
     void loadSamples();
-    void loadSamplePack(const char* Filename, 
+    void loadSamplePack(std::istream& Stream, 
                         void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
                         void* Data = NULL);
     void unloadSamples();

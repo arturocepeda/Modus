@@ -17,6 +17,7 @@
 #include "FMOD/mxsoundgenfmod.h"
 
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -30,17 +31,17 @@ int main(int argc, char* argv[])
     cout << "\n  Sample Application";
 
     // instrument
-    MSRange mPianoRange = {21, 108};
+    MSRange mPianoRange(21, 108);
     MCInstrument mPiano(1, mPianoRange, mPianoRange.getSize());
 
     // score
     MCScore mScore;
-    sprintf(sFilename, ScriptsPath, "score.piano.chopin.mbs");
-    mScore.loadScriptFromBinaryFile(sFilename);
+    sprintf(sFilename, ScriptsPath, "score.piano.chopin.txt");
+    mScore.loadScriptFromFile(sFilename);
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(mPiano.getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mPiano.getNumberOfChannels(), false, CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
 

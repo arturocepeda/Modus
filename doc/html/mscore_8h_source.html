@@ -148,31 +148,31 @@ $(document).ready(function(){initNavTree('mscore_8h_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> loadScript(std::istream* sScript);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> loadBinaryScript(std::ifstream* sScript);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="class_m_c_score.html#aed638e52da0585ee2630ece822616886" title="Constructor. ">MCScore</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    ~<a class="code" href="class_m_c_score.html" title="Represents a score, which consist of a list of notes placed on time positions. ">MCScore</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a49046c5eea22cc490e072661d9e6f580" title="Add a new entry. ">addEntry</a>(<span class="keyword">const</span> <a class="code" href="struct_m_s_score_entry.html" title="Item in a score. ">MSScoreEntry</a>&amp; ScoreEntry);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a0f5341188804601f9a3ae8429edfa358" title="Merge the current entries with another score&#39;s entries. ">addScore</a>(<a class="code" href="class_m_c_score.html" title="Represents a score, which consist of a list of notes placed on time positions. ">MCScore</a>&amp; Score);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a06bceab0fe15a6c13d342151566e30ef" title="Transpose the pitch in all the notes by the specified number of semitones. ">transpose</a>(<span class="keywordtype">char</span> NumberOfSemitones);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a07b4eba9c1b75fb1bacfa96e955c5853" title="Change the intensity in all the notes by the specified increment. ">changeIntensity</a>(<span class="keywordtype">char</span> Increment);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a02b662088914ec7254bcf80ce9c44663" title="Load script with information to fill entries from a string. ">loadScriptFromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Script);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_m_c_score.html#a9c0939510b16c88fab9fe3c6af76a3d8" title="Load script with information to fill entries from a file. ">loadScriptFromFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Filename);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_m_c_score.html#a2b11644bccbb20a31bc2d1665683b38a" title="Load script with information to fill entries from a file. ">loadScriptFromBinaryFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Filename);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;};</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_m_c_score.html#aed638e52da0585ee2630ece822616886" title="Constructor. ">MCScore</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    ~<a class="code" href="class_m_c_score.html" title="Represents a score, which consist of a list of notes placed on time positions. ">MCScore</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a49046c5eea22cc490e072661d9e6f580" title="Add a new entry. ">addEntry</a>(<span class="keyword">const</span> <a class="code" href="struct_m_s_score_entry.html" title="Item in a score. ">MSScoreEntry</a>&amp; ScoreEntry);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a0f5341188804601f9a3ae8429edfa358" title="Merge the current entries with another score&#39;s entries. ">addScore</a>(<a class="code" href="class_m_c_score.html" title="Represents a score, which consist of a list of notes placed on time positions. ">MCScore</a>&amp; Score);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a06bceab0fe15a6c13d342151566e30ef" title="Transpose the pitch in all the notes by the specified number of semitones. ">transpose</a>(<span class="keywordtype">char</span> NumberOfSemitones);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a07b4eba9c1b75fb1bacfa96e955c5853" title="Change the intensity in all the notes by the specified increment. ">changeIntensity</a>(<span class="keywordtype">char</span> Increment);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a02b662088914ec7254bcf80ce9c44663" title="Load script with information to fill entries from a string. ">loadScriptFromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Script);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_m_c_score.html#a9c0939510b16c88fab9fe3c6af76a3d8" title="Load script with information to fill entries from a file. ">loadScriptFromFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Filename);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_m_c_score.html#a46215a1fcfe375d89c6d771d732b076a" title="Load script with information to fill entries from a file. ">loadScriptFromBinaryData</a>(std::istream&amp; Stream);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_m_c_score.html#a2b11644bccbb20a31bc2d1665683b38a" title="Load script with information to fill entries from a file. ">loadScriptFromBinaryFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* Filename);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_5cbf6130ab8421893975497cd2425543.html">Modus</a></li><li class="navelem"><a class="el" href="dir_814a0e2a1e31119df744a0e221030cea.html">include</a></li><li class="navelem"><a class="el" href="mscore_8h.html">mscore.h</a></li>
-    <li class="footer">Generated on Sun Jul 7 2013 07:27:15 for Modus by
+    <li class="footer">Generated on Sat Aug 17 2013 15:18:36 for Modus by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

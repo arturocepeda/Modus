@@ -102,12 +102,20 @@ public:
      *  @brief Returns a pointer to the entry in the specified position
      *  @param Position Position of the entry
      */
-    EntryType* getEntry(unsigned int Position)
+    EntryType* operator[](unsigned int Position)
     {
         if(Position < sEntry.size())
             return &sEntry[Position];
         else
             return NULL;
+    }
+    /**
+     *  @brief Returns a pointer to the entry in the specified position
+     *  @param Position Position of the entry
+     */
+    EntryType* getEntry(unsigned int Position)
+    {
+        return this->operator[](Position);
     }
     /**
      *  @brief Returns a pointer to the first entry

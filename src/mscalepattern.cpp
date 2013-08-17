@@ -298,3 +298,54 @@ void MCScalePattern::loadScriptFromString(const char* Script)
 {
     loadScriptFromString(MCScales::ScalesDefinition, Script);
 }
+
+bool MCScalePattern::loadScriptFromBinaryFile(const char* Filename)
+{
+    std::ifstream fFile(Filename, std::ifstream::binary);
+
+    if(!fFile.is_open())
+        return false;
+
+    loadScriptFromBinaryData(fFile);
+    fFile.close();
+
+    return true;
+}
+
+void MCScalePattern::loadScriptFromBinaryData(std::istream& Stream)
+{
+    // clear all the previous score entries
+    clear();
+
+    // header
+    char sBuffer[16];
+    Stream.read(sBuffer, 16);
+
+    // number of entries
+    unsigned int iNumberOfEntries;
+    Stream.read((char*)&iNumberOfEntries, sizeof(unsigned int));
+
+    // entries
+    MSScalePatternEntry spe;
+    char iNumberOfNotes;
+    MTNote mNote;
+
+    for(unsigned int i = 0; Stream.good() && i < iNumberOfEntries; i++)
+    {
+        spe.Scale.clear();
+
+        Stream.read((char*)&spe.TimePosition.Measure, sizeof(short));
+        Stream.read((char*)&spe.TimePosition.Beat, 1);
+        Stream.read((char*)&spe.TimePosition.Tick, 1);
+        Stream.read((char*)&spe.RootNote, 1);
+        Stream.read(&iNumberOfNotes, 1);
+
+        for(char j = 0; j < iNumberOfNotes; j++)
+        {
+            Stream.read((char*)&mNote, 1);
+            spe.Scale.push_back(mNote);
+        }
+        
+        addEntry(spe);
+    }
+}

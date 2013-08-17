@@ -106,14 +106,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     MCOpenALSourceManager* mALManager = new MCOpenALSourceManager(OPENAL_SOURCES);
 
     // instruments
-    MSRange mTromboneRange = {40, 77};
+    MSRange mTromboneRange(40, 77);
     sGlobal.mTrombone = new MCInstrument(1, mTromboneRange, 1);
     sGlobal.mTrombone->setTranspose(-12);
     MCSoundGenAudio* mTromboneSoundGen = new MCSoundGenOpenAL(sGlobal.mTrombone->getNumberOfChannels(), true, 1, mALManager);
     mTromboneSoundGen->set3DPosition(2.0f, 0.0f, 0.1f);
     sGlobal.mTrombone->setSoundGen(mTromboneSoundGen);
     
-    MSRange mTenorSaxRange = {44, 75};
+    MSRange mTenorSaxRange(44, 75);
     sGlobal.mTenorSax = new MCInstrument(2, mTenorSaxRange, 1);
     sGlobal.mTenorSax->setTranspose(-12);
     MCSoundGenAudio* mTenorSaxSoundGen = new MCSoundGenOpenAL(sGlobal.mTenorSax->getNumberOfChannels(), true, 2, mALManager);
@@ -127,72 +127,40 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     mPianoSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mPiano->setSoundGen(mPianoSoundGen);
     
-    MSRange mBassRange = {28, 60};
+    MSRange mBassRange(28, 60);
     sGlobal.mBass = new MCInstrument(4, mBassRange, 4);
     MCSoundGenAudio* mBassSoundGen = new MCSoundGenOpenAL(sGlobal.mBass->getNumberOfChannels(), true, 4, mALManager);
     mBassSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mBass->setSoundGen(mBassSoundGen);
 
-    MSRange mDrumsRange = {35, 59};
+    MSRange mDrumsRange(35, 59);
     sGlobal.mDrums = new MCInstrument(5, mDrumsRange, 8);
     MCSoundGenAudio* mDrumsSoundGen = new MCSoundGenOpenAL(sGlobal.mDrums->getNumberOfChannels(), true, 5, mALManager);
     mDrumsSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mDrums->setSoundGen(mDrumsSoundGen);
 
-    MSRange mCountRange = {1, 7};
+    MSRange mCountRange(1, 7);
     sGlobal.mCount = new MCInstrument(6, mCountRange, 2);
     MCSoundGenAudio* mCountSoundGen = new MCSoundGenOpenAL(sGlobal.mCount->getNumberOfChannels(), true, 6, mALManager);
     mCountSoundGen->set3DPosition(0.0f, 0.0f, 1.0f);
     sGlobal.mCount->setSoundGen(mCountSoundGen);
 
-    sGlobal.mBand = new MCBand();
-    sGlobal.mBand->addInstrument(sGlobal.mTrombone);
-    sGlobal.mBand->addInstrument(sGlobal.mTenorSax);
-    sGlobal.mBand->addInstrument(sGlobal.mPiano);
-    sGlobal.mBand->addInstrument(sGlobal.mBass);
-    sGlobal.mBand->addInstrument(sGlobal.mDrums);
-    sGlobal.mBand->addInstrument(sGlobal.mCount);
+    sGlobal.mBand.addInstrument(sGlobal.mTrombone);
+    sGlobal.mBand.addInstrument(sGlobal.mTenorSax);
+    sGlobal.mBand.addInstrument(sGlobal.mPiano);
+    sGlobal.mBand.addInstrument(sGlobal.mBass);
+    sGlobal.mBand.addInstrument(sGlobal.mDrums);
+    sGlobal.mBand.addInstrument(sGlobal.mCount);
     
     // MIDI receiver
     mMIDIReceiver = new MCMIDIReceiver(sGlobal.mPiano);
     mMIDIReceiver->listenToAllMIDIChannels();
     mMIDIReceiver->attachAllPitchesToDifferentChannels();
     
-    // samples
-    mTromboneSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Trombone.msp");
-    mTromboneSoundGen->setVolume(0.3f);
+    // set range for the bass improviser
+    sGlobal.mBassImproviser.setRange(mBassRange);
 
-    mTenorSaxSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\TenorSax.msp");
-    mTenorSaxSoundGen->setVolume(0.2f);
-
-    mPianoSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
-    mPianoSoundGen->setVolume(1.0f);
-
-    mBassSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\DoubleBass.msp");
-    mBassSoundGen->setVolume(1.0f);
-
-    mDrumsSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Drums.msp");
-    mDrumsSoundGen->setVolume(1.0f);
-
-    mCountSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Count.msp");
-    mCountSoundGen->setVolume(1.0f);
-    
-    // create list objects
-    sGlobal.mHarmonyPattern = new MCHarmonyPattern();
-    sGlobal.mImpScalePatternList = new MCScalePattern*[SCALE_PATTERNS];
-
-    for(i = 0; i < SCALE_PATTERNS; i++)
-        sGlobal.mImpScalePatternList[i] = new MCScalePattern();
-
-    sGlobal.mBassScalePattern = new MCScalePattern();
-    sGlobal.mTromboneScore = new MCScore();
-    sGlobal.mTenorSaxScore = new MCScore();
-    sGlobal.mDrumsScore = new MCScore();
-    sGlobal.mCountScore = new MCScore();
-    sGlobal.mBassImproviser = new MCWalkingBassImproviser();
-    sGlobal.mBassImproviser->setRange(mBassRange);
-    sGlobal.mBassScore = new MCScore();
-
+    // load all the scripts
     LoadScripts(&sGlobal);
 
     // set piano callbacks
@@ -201,8 +169,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     sGlobal.mPiano->setCallbackDamper(PianoDamper, &sGlobal);
 
     // cursor initial position
-    MTNote mTonic = sGlobal.mImpScalePattern->getEntry(0)->RootNote;
-    sGlobal.mNoteMap = MCNoteMaps::createNoteMap(mTonic, sGlobal.mImpScalePattern->getEntry(0)->Scale, sGlobal.mPianoRange);
+    MTNote mTonic = sGlobal.mImpScalePattern[0]->RootNote;
+    sGlobal.mNoteMap = MCNoteMaps::createNoteMap(mTonic, sGlobal.mImpScalePattern[0]->Scale, sGlobal.mPianoRange);
     sGlobal.iCursor = MCNoteMaps::getPositionNearestNote(60 + mTonic, sGlobal.mNoteMap);
     sGlobal.iLastPosition = sGlobal.iCursor;
     sGlobal.mNote.Pitch = 60 + mTonic;
@@ -212,15 +180,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     mLoopTimer->start();
     sGlobal.mStructure = NULL;
 
-    long long iTimeInterval = (long long)(1000000.0f / FPS);
-    long long iTimeDelta = 0;
-    long long iTimeBefore = 0;
-    long long iTimeNow;
+    double dTimeInterval = 1000000.0 / FPS;
+    double dTimeDelta = 0;
+    double dTimeBefore = 0;
+    double dTimeNow;
 
     // music timer
     sGlobal.mMusicTimer = new MCTimer(TEMPO, 4);
 
-    // set timer callback
+    // set timer callbacks
     sGlobal.mMusicTimer->setCallbackTick(CallbackTick, &sGlobal);
     sGlobal.mMusicTimer->setCallbackEnd(CallbackEnd, &sGlobal);
 
@@ -234,6 +202,33 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     // show window
     ShowWindow(hWnd, iCmdShow);
 
+    // samples
+    SetWindowText(hWnd, "Loading trombone samples...");
+    mTromboneSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Trombone.msp");
+    mTromboneSoundGen->setVolume(0.3f);
+
+    SetWindowText(hWnd, "Loading tenor sax samples...");
+    mTenorSaxSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\TenorSax.msp");
+    mTenorSaxSoundGen->setVolume(0.2f);
+
+    SetWindowText(hWnd, "Loading piano samples...");
+    mPianoSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
+    mPianoSoundGen->setVolume(1.0f);
+
+    SetWindowText(hWnd, "Loading double bass samples...");
+    mBassSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\DoubleBass.msp");
+    mBassSoundGen->setVolume(1.0f);
+
+    SetWindowText(hWnd, "Loading drums samples...");
+    mDrumsSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Drums.msp");
+    mDrumsSoundGen->setVolume(1.0f);
+
+    SetWindowText(hWnd, "Loading count samples...");
+    mCountSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Count.msp");
+    mCountSoundGen->setVolume(1.0f);
+
+    SetWindowText(hWnd, "Modus - C++ Music Library");
+
     // main loop
     while(!sGlobal.bEnd)
     {
@@ -245,12 +240,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
         }
         
         // render
-        iTimeNow = mLoopTimer->getTime();
-        iTimeDelta = iTimeNow - iTimeBefore;
+        dTimeNow = mLoopTimer->getTime();
+        dTimeDelta = dTimeNow - dTimeBefore;
 
-        if(iTimeDelta >= iTimeInterval)
+        if(dTimeDelta >= dTimeInterval)
         {
-            iTimeBefore = iTimeNow;
+            dTimeBefore = dTimeNow;
             RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE);
         }
     }
@@ -270,41 +265,26 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     // release objects
     delete mMIDIReceiver;
 
-    delete sGlobal.mBand;
-
     delete sGlobal.mTrombone;
-    delete sGlobal.mTromboneScore;
-    delete (MCSoundGenOpenAL*)mTromboneSoundGen;
+    delete mTromboneSoundGen;
 
     delete sGlobal.mTenorSax;
-    delete sGlobal.mTenorSaxScore;
-    delete (MCSoundGenOpenAL*)mTenorSaxSoundGen;
+    delete mTenorSaxSoundGen;
 
     delete sGlobal.mPiano;
-    delete (MCSoundGenOpenAL*)mPianoSoundGen;
+    delete mPianoSoundGen;
 
     delete sGlobal.mBass;
-    delete sGlobal.mBassScore;
-    delete (MCSoundGenOpenAL*)mBassSoundGen;
+    delete mBassSoundGen;
 
     delete sGlobal.mDrums;
-    delete sGlobal.mDrumsScore;
-    delete (MCSoundGenOpenAL*)mDrumsSoundGen;
+    delete mDrumsSoundGen;
 
     delete sGlobal.mCount;
-    delete sGlobal.mCountScore;
-    delete (MCSoundGenOpenAL*)mCountSoundGen;
+    delete mCountSoundGen;
 
     delete mALManager;
-
-    delete sGlobal.mHarmonyPattern;
-    delete sGlobal.mBassScalePattern;
-
-    for(i = 0; i < SCALE_PATTERNS; i++)
-        delete sGlobal.mImpScalePatternList[i];
-
-    delete[] sGlobal.mImpScalePatternList;
-
+    
     delete mLoopTimer;
     delete sGlobal.mMusicTimer;
 
@@ -407,6 +387,14 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
                 EnterCriticalSection(&sGlobal->cSection);
                 sGlobal->mMusicTimer->reset();
                 LoadScripts(sGlobal);
+
+                if(sGlobal->mStructure)
+                {
+                    delete sGlobal->mStructure;
+                    sGlobal->mStructure = NULL;
+                    sGlobal->mMusicTimer->setSongStructure(NULL);
+                }
+
                 sGlobal->mMusicTimer->setCountoff(2);
                 sGlobal->mMusicTimer->start();
                 LeaveCriticalSection(&sGlobal->cSection);
@@ -490,53 +478,53 @@ void LoadScripts(SGlobal* sGlobal)
     sGlobal->bEndingTheme = false;
 
     // harmony pattern definition
-    sGlobal->mHarmonyPattern->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\harmony.txt");
+    sGlobal->mHarmonyPattern.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\harmony.txt");
     sGlobal->iHarmonyPatternPosition = 0;
 
     // scale pattern definition 
     for(int i = 0; i < SCALE_PATTERNS; i++)
     {
         sprintf(sGDI.sBuffer, ".\\..\\..\\common\\scripts\\bags\\scales.improvisation.%d.txt", i);
-        sGlobal->mImpScalePatternList[i]->loadScriptFromFile(sGDI.sBuffer);
+        sGlobal->mImpScalePatternList[i].loadScriptFromFile(sGDI.sBuffer);
     }
 
     sGlobal->mImpScalePattern = sGlobal->mImpScalePatternList[0];
     sGlobal->iCurrentImpScalePattern = 0;
     sGlobal->iImpScalePatternPosition = 0;
 
-    sGlobal->mBassScalePattern->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\scales.bass.txt");
+    sGlobal->mBassScalePattern.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\scales.bass.txt");
     sGlobal->iBassScalePatternPosition = 0;
 
     // trombone score definition
-    sGlobal->mTromboneScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.trombone.txt");
-    MCHumanizer::humanizeRandom(sGlobal->mTromboneScore, 1, 16, 0, 1, 12, 4);
-    sGlobal->mTrombone->setScore(sGlobal->mTromboneScore); 
+    sGlobal->mTromboneScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.trombone.txt");
+    MCHumanizer::humanizeRandom(&sGlobal->mTromboneScore, 1, 16, 0, 1, 12, 4);
+    sGlobal->mTrombone->setScore(&sGlobal->mTromboneScore); 
 
     // tenor sax score definition
-    sGlobal->mTenorSaxScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.sax.txt");
-    MCHumanizer::humanizeRandom(sGlobal->mTenorSaxScore, 1, 16, 0, 1, 12, 4);
-    sGlobal->mTenorSax->setScore(sGlobal->mTenorSaxScore);
+    sGlobal->mTenorSaxScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.sax.txt");
+    MCHumanizer::humanizeRandom(&sGlobal->mTenorSaxScore, 1, 16, 0, 1, 12, 4);
+    sGlobal->mTenorSax->setScore(&sGlobal->mTenorSaxScore);
 
     // drums score definition
-    sGlobal->mDrumsScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.drums.txt");
-    MCHumanizer::humanizeRandom(sGlobal->mDrumsScore, 0, 8, 0, 1, 12, 4);
-    sGlobal->mDrums->setScore(sGlobal->mDrumsScore);
+    sGlobal->mDrumsScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.drums.txt");
+    MCHumanizer::humanizeRandom(&sGlobal->mDrumsScore, 0, 8, 0, 1, 12, 4);
+    sGlobal->mDrums->setScore(&sGlobal->mDrumsScore);
 
     // count score definition
-    sGlobal->mCountScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.count.txt");
-    sGlobal->mCountScore->displace(-2);
-    sGlobal->mCount->setScore(sGlobal->mCountScore);
+    sGlobal->mCountScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.count.txt");
+    sGlobal->mCountScore.displace(-2);
+    sGlobal->mCount->setScore(&sGlobal->mCountScore);
 
     // bass improvisation definition
     sGlobal->iWalkingMeasureFrom = 1;
     sGlobal->iWalkingMeasureTo = LOOP;
         
-    sGlobal->mBassImproviser->setHarmonyPattern(sGlobal->mHarmonyPattern);
-    sGlobal->mBassImproviser->setScalePattern(sGlobal->mBassScalePattern);
+    sGlobal->mBassImproviser.setHarmonyPattern(&sGlobal->mHarmonyPattern);
+    sGlobal->mBassImproviser.setScalePattern(&sGlobal->mBassScalePattern);
 
-    sGlobal->mBassScore->clear();
-    sGlobal->mBassImproviser->improvise(sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, sGlobal->iWalkingMeasureTo);
-    sGlobal->mBass->setScore(sGlobal->mBassScore);
+    sGlobal->mBassScore.clear();
+    sGlobal->mBassImproviser.improvise(&sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, sGlobal->iWalkingMeasureTo);
+    sGlobal->mBass->setScore(&sGlobal->mBassScore);
 }
 
 
@@ -573,7 +561,7 @@ void PlayPianoVoicing(SGlobal* sGlobal)
         return;
 
     // create voicing
-    MSHarmonyPatternEntry* mCurrentChord = sGlobal->mHarmonyPattern->getEntry(sGlobal->iHarmonyPatternPosition);
+    MSHarmonyPatternEntry* mCurrentChord = sGlobal->mHarmonyPattern[sGlobal->iHarmonyPatternPosition];
     MTNoteMap mVoicing = MCChords::createClosedVoicing(mCurrentChord->RootNote, 
                                                        mCurrentChord->Chord,
                                                        mCurrentChord->BassNote,
@@ -612,13 +600,13 @@ void GoToEndingTheme(SGlobal* sGlobal)
     sGlobal->iMeasureEndingTheme = sGlobal->mMusicTimer->getTimePosition().Measure;
     sGlobal->iMeasureEndingTheme += LOOP - (sGlobal->iMeasureEndingTheme % LOOP);
 
-    sGlobal->mTromboneScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.trombone.end.txt");
-    sGlobal->mTromboneScore->displace(sGlobal->iMeasureEndingTheme);
-    MCHumanizer::humanizeRandom(sGlobal->mTromboneScore, 1, 16, 0, 1, 12, 4);
+    sGlobal->mTromboneScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.trombone.end.txt");
+    sGlobal->mTromboneScore.displace(sGlobal->iMeasureEndingTheme);
+    MCHumanizer::humanizeRandom(&sGlobal->mTromboneScore, 1, 16, 0, 1, 12, 4);
 
-    sGlobal->mTenorSaxScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.sax.end.txt");
-    sGlobal->mTenorSaxScore->displace(sGlobal->iMeasureEndingTheme);
-    MCHumanizer::humanizeRandom(sGlobal->mTenorSaxScore, 1, 16, 0, 1, 12, 4);
+    sGlobal->mTenorSaxScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.theme.sax.end.txt");
+    sGlobal->mTenorSaxScore.displace(sGlobal->iMeasureEndingTheme);
+    MCHumanizer::humanizeRandom(&sGlobal->mTenorSaxScore, 1, 16, 0, 1, 12, 4);
 
     // ending theme flag
     sGlobal->bEndingTheme = true;
@@ -655,12 +643,12 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
     {
         if(!sGlobal->bEndingTheme)
         {
-            sGlobal->mDrumsScore->displace(LOOP);
+            sGlobal->mDrumsScore.displace(LOOP);
         }
         else
         {
-            sGlobal->mDrumsScore->loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.drums.end.txt");
-            sGlobal->mDrumsScore->displace(sGlobal->iMeasureEndingTheme);
+            sGlobal->mDrumsScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.drums.end.txt");
+            sGlobal->mDrumsScore.displace(sGlobal->iMeasureEndingTheme);
 
             // song structure
             sGlobal->mStructure = new MCSongStructure();
@@ -675,11 +663,11 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
             sGlobal->mMusicTimer->setSongStructure(sGlobal->mStructure);
         }
 
-        sGlobal->mHarmonyPattern->displace(LOOP);
-        sGlobal->mBassScalePattern->displace(LOOP);
+        sGlobal->mHarmonyPattern.displace(LOOP);
+        sGlobal->mBassScalePattern.displace(LOOP);
 
         for(unsigned int i = 0; i < SCALE_PATTERNS; i++)
-            sGlobal->mImpScalePatternList[i]->displace(LOOP);
+            sGlobal->mImpScalePatternList[i].displace(LOOP);
 
         sGlobal->iBassScalePatternPosition = 0;
         sGlobal->iHarmonyPatternPosition = 0;
@@ -691,27 +679,27 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
             sGlobal->iWalkingMeasureFrom += LOOP;
             sGlobal->iWalkingMeasureTo += LOOP;
 
-            sGlobal->mBassImproviser->setPreviousNote(sGlobal->mBassScore->getLastEntry()->Note.Pitch);
-            sGlobal->mBassImproviser->improvise(sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, 
-                                                sGlobal->iWalkingMeasureTo);
-            MCHumanizer::humanizeRandom(sGlobal->mBassScore, 4, 32, 0, 1, LOOP, 4);
-            sGlobal->mBass->setScore(sGlobal->mBassScore);
+            sGlobal->mBassImproviser.setPreviousNote(sGlobal->mBassScore.getLastEntry()->Note.Pitch);
+            sGlobal->mBassImproviser.improvise(&sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, 
+                                               sGlobal->iWalkingMeasureTo);
+            MCHumanizer::humanizeRandom(&sGlobal->mBassScore, 4, 32, 0, 1, LOOP, 4);
+            sGlobal->mBass->setScore(&sGlobal->mBassScore);
         }
         else if(mPos.Measure == (sGlobal->iMeasureEndingTheme + 1))
         {
             sGlobal->iWalkingMeasureFrom += LOOP;
             sGlobal->iWalkingMeasureTo += LOOP - BASS_ENDING;
 
-            sGlobal->mBassImproviser->setPreviousNote(sGlobal->mBassScore->getLastEntry()->Note.Pitch);
-            sGlobal->mBassImproviser->improvise(sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, 
-                                                sGlobal->iWalkingMeasureTo);
-            MCHumanizer::humanizeRandom(sGlobal->mBassScore, 4, 32, 0, 1, LOOP, 4);
+            sGlobal->mBassImproviser.setPreviousNote(sGlobal->mBassScore.getLastEntry()->Note.Pitch);
+            sGlobal->mBassImproviser.improvise(&sGlobal->mBassScore, sGlobal->iWalkingMeasureFrom, 
+                                               sGlobal->iWalkingMeasureTo);
+            MCHumanizer::humanizeRandom(&sGlobal->mBassScore, 4, 32, 0, 1, LOOP, 4);
 
             MCScore mAuxScore;
             mAuxScore.loadScriptFromFile(".\\..\\..\\common\\scripts\\bags\\score.bass.end.txt");
             mAuxScore.displace(sGlobal->iMeasureEndingTheme);
-            sGlobal->mBassScore->addScore(mAuxScore);
-            sGlobal->mBass->setScore(sGlobal->mBassScore);
+            sGlobal->mBassScore.addScore(mAuxScore);
+            sGlobal->mBass->setScore(&sGlobal->mBassScore);
         }
     }
 
@@ -719,7 +707,7 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
     if(mPos.Tick == 0)
     {
         // check for a new scale
-        MSScalePatternEntry* spe = sGlobal->mImpScalePattern->getEntry(sGlobal->iImpScalePatternPosition);
+        MSScalePatternEntry* spe = sGlobal->mImpScalePattern[sGlobal->iImpScalePatternPosition];
         
         if(spe && spe->TimePosition.Measure == mPos.Measure && spe->TimePosition.Beat == mPos.Beat)
         {
@@ -741,7 +729,7 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
         if(mPos.Beat % 2 == 0)
         {
             // check for a new chord
-            MSHarmonyPatternEntry* hpe = sGlobal->mHarmonyPattern->getEntry(sGlobal->iHarmonyPatternPosition + 1);
+            MSHarmonyPatternEntry* hpe = sGlobal->mHarmonyPattern[sGlobal->iHarmonyPatternPosition + 1];
 
             if(hpe && hpe->TimePosition == mPos.getWithIncrement(M_TICKS_PER_BEAT, 4))
                 sGlobal->iHarmonyPatternPosition++;
@@ -749,7 +737,7 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
     }
 
     // instruments update
-    sGlobal->mBand->update(mPos);
+    sGlobal->mBand.update(mPos);
 }
 
 void CallbackEnd(void* pData)

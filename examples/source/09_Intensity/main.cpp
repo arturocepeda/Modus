@@ -32,12 +32,12 @@ int main(int argc, char* argv[])
     cout << "\n  Sample Application\n\n";
 
     // instrument
-    MSRange mTenorSaxRange = {44, 75};
+    MSRange mTenorSaxRange(44, 75);
     MCInstrument* mTenorSax = new MCInstrument(1, mTenorSaxRange, 1);
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(mTenorSax->getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mTenorSax->getNumberOfChannels(), false, CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "TenorSax.msp");
     mSoundGen->loadSamplePack(sFilename);
 

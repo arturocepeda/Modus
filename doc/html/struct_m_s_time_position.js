@@ -1,6 +1,9 @@
 var struct_m_s_time_position =
 [
     [ "MSTimePosition", "struct_m_s_time_position.html#ab0f786c3809366f981ce67c547936f2e", null ],
+    [ "MSTimePosition", "struct_m_s_time_position.html#af1b04795eb1eb1331415fb0744cf7878", null ],
+    [ "MSTimePosition", "struct_m_s_time_position.html#aeda06dd5976dc5d1ffebdf2e5d72685c", null ],
+    [ "MSTimePosition", "struct_m_s_time_position.html#a9e35b443b214641c5c87637761d288dc", null ],
     [ "add", "struct_m_s_time_position.html#aa7779e0043daceb8bd34641b65957222", null ],
     [ "getDifferenceWith", "struct_m_s_time_position.html#a17fb24bb34e5a6e3591e97bbcaf42d8d", null ],
     [ "getInTicks", "struct_m_s_time_position.html#a51b328f876a42768d7f77e6d6937abd5", null ],

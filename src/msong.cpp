@@ -180,3 +180,44 @@ void MCSongStructure::loadScriptFromString(const char* Script)
 
     loadScript(&sScript);
 }
+
+bool MCSongStructure::loadScriptFromBinaryFile(const char* Filename)
+{
+    std::ifstream fFile(Filename, std::ifstream::binary);
+
+    if(!fFile.is_open())
+        return false;
+
+    loadScriptFromBinaryData(fFile);
+    fFile.close();
+
+    return true;
+}
+
+void MCSongStructure::loadScriptFromBinaryData(std::istream& Stream)
+{
+    // clear all the previous score entries
+    clear();
+
+    // header
+    char sBuffer[16];
+    Stream.read(sBuffer, 16);
+
+    // number of entries
+    unsigned int iNumberOfEntries;
+    Stream.read((char*)&iNumberOfEntries, sizeof(unsigned int));
+
+    // entries
+    MSSongSection mSongSection;
+
+    for(unsigned int i = 0; Stream.good() && i < iNumberOfEntries; i++)
+    {
+        Stream.read((char*)&mSongSection.BeatsPerMeasure, sizeof(unsigned int));
+        Stream.read((char*)&mSongSection.FirstMeasure, sizeof(int));
+        Stream.read((char*)&mSongSection.LastMeasure, sizeof(int));
+        Stream.read((char*)&mSongSection.Tempo, sizeof(float));
+        Stream.read((char*)&mSongSection.TargetTempo, sizeof(float));
+
+        addEntry(mSongSection);
+    }
+}

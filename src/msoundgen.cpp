@@ -33,6 +33,7 @@
 
 #include "msoundgen.h"
 #include "mutils.h"
+#include <fstream>
 
 //
 //  MCSoundGen
@@ -131,6 +132,22 @@ void MCSoundGenAudio::addSampleSet(MSSampleSet& SampleSet)
     sSampleSet.push_back(SampleSet);
     iNumberOfSamples.push_back(iSamples);
 }
+
+bool MCSoundGenAudio::loadSamplePack(const char* Filename, 
+                                     void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data),
+                                     void* Data)
+{
+    std::ifstream fSamplePack(Filename, std::ios::in | std::ios::binary);
+
+    if(!fSamplePack.is_open())
+        return false;
+
+    loadSamplePack(fSamplePack, callback, Data);
+    fSamplePack.close();
+
+    return true;
+}
+
 
 
 //

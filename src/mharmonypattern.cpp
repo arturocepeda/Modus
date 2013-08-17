@@ -327,3 +327,64 @@ void MCHarmonyPattern::loadScriptFromString(const char* Script)
 {
     loadScriptFromString(MCChords::ChordsDefinition, Script);
 }
+
+bool MCHarmonyPattern::loadScriptFromBinaryFile(const char* Filename)
+{
+    std::ifstream fFile(Filename, std::ifstream::binary);
+
+    if(!fFile.is_open())
+        return false;
+
+    loadScriptFromBinaryData(fFile);
+    fFile.close();
+
+    return true;
+}
+
+void MCHarmonyPattern::loadScriptFromBinaryData(std::istream& Stream)
+{
+    // clear all the previous score entries
+    clear();
+
+    // header
+    char sBuffer[16];
+    Stream.read(sBuffer, 16);
+
+    // number of entries
+    unsigned int iNumberOfEntries;
+    Stream.read((char*)&iNumberOfEntries, sizeof(unsigned int));
+
+    // entries
+    MSHarmonyPatternEntry hpe;
+    char iNumberOfNotes;
+    MTNote mNote;
+
+    for(unsigned int i = 0; Stream.good() && i < iNumberOfEntries; i++)
+    {
+        hpe.Chord.clear();
+        hpe.Tensions.clear();
+
+        Stream.read((char*)&hpe.TimePosition.Measure, sizeof(short));
+        Stream.read((char*)&hpe.TimePosition.Beat, 1);
+        Stream.read((char*)&hpe.TimePosition.Tick, 1);
+        Stream.read((char*)&hpe.RootNote, 1);
+        Stream.read(&iNumberOfNotes, 1);
+
+        for(char j = 0; j < iNumberOfNotes; j++)
+        {
+            Stream.read((char*)&mNote, 1);
+            hpe.Chord.push_back(mNote);
+        }
+
+        Stream.read((char*)&hpe.BassNote, 1);
+        Stream.read((char*)&iNumberOfNotes, 1);
+
+        for(int j = 0; j < iNumberOfNotes; j++)
+        {
+            Stream.read((char*)&mNote, 1);
+            hpe.Tensions.push_back(mNote);
+        }
+        
+        addEntry(hpe);
+    }
+}

@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_list.html#a49e716818a3517cf15c8006537000fe1">clear</a> ()</td></tr>
 <tr class="memdesc:a49e716818a3517cf15c8006537000fe1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove all entries. <br/></td></tr>
 <tr class="separator:a49e716818a3517cf15c8006537000fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae9fa4d3dc7748de273e5e747220b07d"><td class="memItemLeft" align="right" valign="top">EntryType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_list.html#aae9fa4d3dc7748de273e5e747220b07d">operator[]</a> (unsigned int Position)</td></tr>
+<tr class="memdesc:aae9fa4d3dc7748de273e5e747220b07d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the entry in the specified position.  <a href="#aae9fa4d3dc7748de273e5e747220b07d">More...</a><br/></td></tr>
+<tr class="separator:aae9fa4d3dc7748de273e5e747220b07d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d4df5e55c4a7daded942134885589b4"><td class="memItemLeft" align="right" valign="top">EntryType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_c_list.html#a9d4df5e55c4a7daded942134885589b4">getEntry</a> (unsigned int Position)</td></tr>
 <tr class="memdesc:a9d4df5e55c4a7daded942134885589b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the entry in the specified position.  <a href="#a9d4df5e55c4a7daded942134885589b4">More...</a><br/></td></tr>
 <tr class="separator:a9d4df5e55c4a7daded942134885589b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,7 +209,7 @@ template&lt;typename EntryType&gt; </div>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_m_c_score.html#a49046c5eea22cc490e072661d9e6f580">MCScore</a>, <a class="el" href="class_m_c_song_structure.html#a54646993226cc91073944d34b2b4c5af">MCSongStructure</a>, <a class="el" href="class_m_c_harmony_pattern.html#a68275212117813d6bb2ef0aed2705a79">MCHarmonyPattern</a>, and <a class="el" href="class_m_c_scale_pattern.html#ad289378f02cd4ac69bde2ec2a950d5d9">MCScalePattern</a>.</p>
+<p>Implemented in <a class="el" href="class_m_c_song_structure.html#a54646993226cc91073944d34b2b4c5af">MCSongStructure</a>, <a class="el" href="class_m_c_harmony_pattern.html#a68275212117813d6bb2ef0aed2705a79">MCHarmonyPattern</a>, <a class="el" href="class_m_c_scale_pattern.html#ad289378f02cd4ac69bde2ec2a950d5d9">MCScalePattern</a>, and <a class="el" href="class_m_c_score.html#a49046c5eea22cc490e072661d9e6f580">MCScore</a>.</p>
 
 </div>
 </div>
@@ -221,6 +224,40 @@ template&lt;typename EntryType&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">EntryType* <a class="el" href="class_m_c_list.html">MCList</a>&lt; EntryType &gt;::getEntry </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>Position</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns a pointer to the entry in the specified position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Position</td><td>Position of the entry </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aae9fa4d3dc7748de273e5e747220b07d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename EntryType&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EntryType* <a class="el" href="class_m_c_list.html">MCList</a>&lt; EntryType &gt;::operator[] </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>Position</em>)</td><td></td>
@@ -287,7 +324,7 @@ template&lt;typename EntryType&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_m_c_list.html">MCList</a></li>
-    <li class="footer">Generated on Sun Jul 7 2013 07:27:15 for Modus by
+    <li class="footer">Generated on Sat Aug 17 2013 15:18:37 for Modus by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

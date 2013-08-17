@@ -4,7 +4,7 @@
 //  Modus v0.53
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2013 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -38,8 +38,20 @@
 //
 Timer::Timer()
 {
-    tStartCount = tEndCount = std::chrono::high_resolution_clock::now();
+#ifdef WIN32
+    QueryPerformanceFrequency(&iFrequency);
+    iStartCount.QuadPart = 0;
+    iEndCount.QuadPart = 0;
+#else
+    iStartCount.tv_sec = 0;
+    iStartCount.tv_usec = 0;
+    iEndCount.tv_sec = 0;
+    iEndCount.tv_usec = 0;
+#endif
+
     bRunning = true;
+    dStartTime = 0;
+    dEndTime = 0;
 }
 
 Timer::~Timer()
@@ -49,21 +61,42 @@ Timer::~Timer()
 void Timer::start()
 {
     bRunning = true;
-    tStartCount = std::chrono::high_resolution_clock::now();
+
+#ifdef WIN32
+    QueryPerformanceCounter(&iStartCount);
+#else
+    gettimeofday(&iStartCount, NULL);
+#endif
 }
 
 void Timer::stop()
 {
     bRunning = false;
-    tEndCount = std::chrono::high_resolution_clock::now();
+
+#ifdef WIN32
+    QueryPerformanceCounter(&iEndCount);
+#else
+    gettimeofday(&iEndCount, NULL);
+#endif
 }
 
-long long Timer::getTime()
+double Timer::getTime()
 {
+#ifdef WIN32
     if(bRunning)
-        tEndCount = std::chrono::high_resolution_clock::now();
+        QueryPerformanceCounter(&iEndCount);
 
-    return std::chrono::duration_cast<std::chrono::microseconds>(tEndCount - tStartCount).count();
+    dStartTime = iStartCount.QuadPart * (1000000.0 / iFrequency.QuadPart);
+    dEndTime = iEndCount.QuadPart * (1000000.0 / iFrequency.QuadPart);
+#else
+    if(bRunning)
+        gettimeofday(&iEndCount, NULL);
+
+    dStartTime = (iStartCount.tv_sec * 1000000.0) + iStartCount.tv_usec;
+    dEndTime = (iEndCount.tv_sec * 1000000.0) + iEndCount.tv_usec;
+#endif
+
+    return (dEndTime - dStartTime);
 }
 
 
@@ -117,8 +150,8 @@ void MCTimer::reset()
     mPosition.Beat = 1;
     mPosition.Tick = 0;
 
-    iTimeNow = 0;
-    iTimeBefore = 0;
+    dTimeNow = 0.0;
+    dTimeBefore = 0.0;
 }
 
 bool MCTimer::update()
@@ -126,55 +159,59 @@ bool MCTimer::update()
     if(!bRunning)
         return false;
 
-    iTimeNow = tTimer.getTime();
-    iTimeDelta = iTimeNow - iTimeBefore;
-	
-	if(iTimeDelta < iTick)
+    dTimeNow = tTimer.getTime();
+    dTimeDelta = dTimeNow - dTimeBefore;
+
+    if(dTimeDelta >= dTick)
+    {
+        dTimeBefore = dTimeNow;
+
+        // update current time position
+        mPosition.Tick++;
+
+        if(mPosition.Tick >= iTicksPerBeat)
+        {
+            mPosition.Tick = 0;
+            mPosition.Beat++;
+        }
+
+        if(mPosition.Beat > iBeatsPerMeasure)
+        {
+            mPosition.Beat = 1;
+            mPosition.Measure++;
+
+            if(mStructure)
+            {
+                // check for a new section
+                if(mStructure->getNumberOfEntries() > (iCurrentSection + 1) && 
+                   mPosition.Measure == mStructure->getEntry(iCurrentSection + 1)->FirstMeasure)
+                {
+                    setSectionSettings(iCurrentSection + 1);
+                }
+
+                // check for the end of the song
+                else if(mStructure->getNumberOfEntries() == (iCurrentSection + 1) && 
+                        mPosition.Measure > mStructure->getEntry(iCurrentSection)->LastMeasure)
+                {
+                    callbackEnd();
+                    stop();
+                }
+            }
+        }
+
+        // tick callback
+        callbackTick();
+
+        // tempo settings
+        if(bAccRit && cTempoLine->can_calculate_y())
+            setTempo((float)cTempoLine->y(mPosition.getInTicks(iBeatsPerMeasure)));
+
+        return true;
+    }
+    else
+    {
         return false;
-
-	iTimeBefore = iTimeNow;
-
-	// update current time position
-	mPosition.Tick++;
-
-	if(mPosition.Tick >= iTicksPerBeat)
-	{
-		mPosition.Tick = 0;
-		mPosition.Beat++;
-	}
-
-	if(mPosition.Beat > iBeatsPerMeasure)
-	{
-		mPosition.Beat = 1;
-		mPosition.Measure++;
-
-		if(mStructure)
-		{
-			// check for a new section
-			if(mStructure->getNumberOfEntries() > (iCurrentSection + 1) && 
-			   mPosition.Measure == mStructure->getEntry(iCurrentSection + 1)->FirstMeasure)
-			{
-				setSectionSettings(iCurrentSection + 1);
-			}
-
-			// check for the end of the song
-			else if(mStructure->getNumberOfEntries() == (iCurrentSection + 1) && 
-					mPosition.Measure > mStructure->getEntry(iCurrentSection)->LastMeasure)
-			{
-				callbackEnd();
-				stop();
-			}
-		}
-	}
-
-	// tick callback
-	callbackTick();
-
-	// tempo settings
-	if(bAccRit && cTempoLine->can_calculate_y())
-		setTempo((float)cTempoLine->y(mPosition.getInTicks(iBeatsPerMeasure)));
-
-	return true;
+    }    
 }
 
 bool MCTimer::isRunning()
@@ -260,7 +297,7 @@ void MCTimer::setTempo(float Tempo)
     if(Tempo > 0)
     {
         fTempo = Tempo;
-        iTick = (long long)(60000000.0f / (fTempo * iTicksPerBeat));
+        dTick = 60000000.0 / (fTempo * iTicksPerBeat);
     }
 }
 
@@ -274,7 +311,7 @@ void MCTimer::setTimePosition(const MSTimePosition& TimePosition)
 {
     mPosition = TimePosition;
 
-    iTimeBefore = 0;
+    dTimeBefore = 0.0;
     callbackTick();
 
     if(bRunning)
@@ -287,7 +324,7 @@ void MCTimer::setTimePosition(int Measure, unsigned int Beat, unsigned int Tick)
     mPosition.Beat = Beat;
     mPosition.Tick = Tick;
 
-    iTimeBefore = 0;
+    dTimeBefore = 0.0;
     callbackTick();
 
     if(bRunning)

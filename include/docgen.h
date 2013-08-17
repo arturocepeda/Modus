@@ -391,7 +391,7 @@
  
  \section samplesets Sample-sets
  
- All the audio-based sound generators work with audio samples. Each time a note is requested to be played, the sound generator find the
+ All the audio-based sound generators work with audio samples. Each time a note is requested to be played, the sound generator finds the
  appropriate sample to make it sound. For the sound generator to know which sample must be played for each note, you 
  need to define a list of sample-sets. In order to define a sample-set, the following parameters must be specified:
 
@@ -1403,7 +1403,7 @@
  <br><br>
 
  <div align="center">
- Copyright (c) 2012 Arturo Cepeda
+ Copyright (c) 2012-2013 Arturo Cepeda P&eacute;rez
  </div>
 
  */

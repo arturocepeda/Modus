@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     SGlobal sGlobal;
 
     // instrument
-    MSRange mDrumsRange = {35, 59};
+    MSRange mDrumsRange(35, 59);
     sGlobal.mDrums = new MCInstrument(1, mDrumsRange, 16);
 
     // score
@@ -55,8 +55,8 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(sGlobal.mDrums->getNumberOfChannels(), false, 
-                                                   CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(sGlobal.mDrums->getNumberOfChannels(), false, 
+                                                    CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "Drums.msp");
     mSoundGen->loadSamplePack(sFilename);
 

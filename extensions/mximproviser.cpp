@@ -1,11 +1,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.50
+//  Modus
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012 Arturo Cepeda
+//  Copyright (c) 2012-2013 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -418,7 +418,7 @@ void MCWalkingBassImproviser::improvise(MCScore* Score, int MeasureFrom, int Mea
         }
 
         // towards down
-        if(mScore.getEntry(i - 2)->Note.Pitch == (mScore.getEntry(i)->Note.Pitch + 2))
+        else if(mScore.getEntry(i - 2)->Note.Pitch == (mScore.getEntry(i)->Note.Pitch + 2))
         {
             mScore.getEntry(i - 1)->Note.Pitch = mScore.getEntry(i)->Note.Pitch + 1;
         }

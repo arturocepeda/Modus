@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
     cout << "\n  Sample Application";
 
     // instrument
-    MSRange mPianoRange = {21, 108};
+    MSRange mPianoRange(21, 108);
     MCInstrument mPiano(1, mPianoRange, mPianoRange.getSize());
 
     // score
@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(mPiano.getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mPiano.getNumberOfChannels(), false, CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
 

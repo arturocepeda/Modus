@@ -1,11 +1,11 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.51
+//  Modus
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012 Arturo Cepeda
+//  Copyright (c) 2012-2013 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -144,24 +144,19 @@ void MCSoundGenFMOD::loadSamples()
     }
 }
 
-void MCSoundGenFMOD::loadSamplePack(const char* Filename, 
+void MCSoundGenFMOD::loadSamplePack(std::istream& Stream, 
                                     void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data),
                                     void* Data)
 {
-    std::ifstream fSamplePack(Filename, std::ios::in | std::ios::binary);
-
-    if(!fSamplePack.is_open())
-        return;
-
     unsigned int iTotalSamples = 0;
     unsigned int iLoaded = 0;
 
     // read total number of samples
     if(callback)
     {
-        fSamplePack.seekg(-(std::ios::off_type)sizeof(unsigned int), std::ios::end);
-        fSamplePack.read((char*)&iTotalSamples, sizeof(unsigned int));
-        fSamplePack.seekg(0, std::ios::beg);
+        Stream.seekg(-(std::ios::off_type)sizeof(unsigned int), std::ios::end);
+        Stream.read((char*)&iTotalSamples, sizeof(unsigned int));
+        Stream.seekg(0, std::ios::beg);
     }
 
     char sVersion[16];
@@ -171,10 +166,10 @@ void MCSoundGenFMOD::loadSamplePack(const char* Filename,
     unsigned int iInput;
     unsigned int iNumSampleSets;
 
-    fSamplePack.read(sVersion, 16);                                     // Version
-    fSamplePack.read(sFormat, 8);                                       // Format
-    fSamplePack.read((char*)&iNumSampleSets, sizeof(unsigned int));     // Number of sample sets
-    fSamplePack.read(sReserved, 4);                                     // (Reserved)
+    Stream.read(sVersion, 16);                                     // Version
+    Stream.read(sFormat, 8);                                       // Format
+    Stream.read((char*)&iNumSampleSets, sizeof(unsigned int));     // Number of sample sets
+    Stream.read(sReserved, 4);                                     // (Reserved)
 
     unsigned int i;
     unsigned int j;
@@ -209,34 +204,34 @@ void MCSoundGenFMOD::loadSamplePack(const char* Filename,
     for(i = 0; i < iNumSampleSets; i++)
     {
         // sample set
-        strcpy(mSampleSet.Path, Filename);
+        strcpy(mSampleSet.Path, "");
         strcpy(mSampleSet.Format, sFormat);
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: ID
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: ID
         mSampleSet.ID = (unsigned char)iInput;
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Mode
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Mode
         mSampleSet.Mode = (unsigned char)iInput;
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Minimum intensity
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Minimum intensity
         mSampleSet.MinimumIntensity = (unsigned char)iInput;
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Maximum intensity
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Maximum intensity
         mSampleSet.MaximumIntensity = (unsigned char)iInput;
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Lowest pitch
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Lowest pitch
         mSampleSet.Range.LowestNote = (unsigned char)iInput;
 
-        fSamplePack.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Highest pitch
+        Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: Highest pitch
         mSampleSet.Range.HighestNote = (unsigned char)iInput;
 
         sSampleSet.push_back(mSampleSet);
 
         // samples inside the sample set
-        fSamplePack.read((char*)&iNumSamples, sizeof(unsigned int));   // SampleSet: Number of samples
+        Stream.read((char*)&iNumSamples, sizeof(unsigned int));   // SampleSet: Number of samples
         iNumberOfSamples.push_back((unsigned char)iNumSamples);
 
-        fSamplePack.read(sReserved, 4);                                // SampleSet: (Reserved)
+        Stream.read(sReserved, 4);                                // SampleSet: (Reserved)
 
         fmodSound[i] = new FMOD::Sound*[iNumSamples];
 
@@ -245,14 +240,14 @@ void MCSoundGenFMOD::loadSamplePack(const char* Filename,
 
         for(j = 0; j < iNumSamples; j++)
         {
-            fSamplePack.read((char*)&iSampleSize, sizeof(unsigned int));
+            Stream.read((char*)&iSampleSize, sizeof(unsigned int));
             fmodSound[i][j] = NULL;
 
             if(iSampleSize == 0)
                 continue;
 
             sSampleData = new char[iSampleSize];
-            fSamplePack.read(sSampleData, iSampleSize);
+            Stream.read(sSampleData, iSampleSize);
 
             fmodExinfo.length = iSampleSize;
             fmodSystem->createSound(sSampleData, fmodMode, &fmodExinfo, &fmodSound[i][j]);
@@ -264,8 +259,6 @@ void MCSoundGenFMOD::loadSamplePack(const char* Filename,
             delete[] sSampleData;
         }
     }
-
-    fSamplePack.close();
 }
 
 void MCSoundGenFMOD::unloadSamples()

@@ -27,13 +27,13 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData);
 int main(int argc, char* argv[])
 {
     // instrument
-    MSRange mPianoRange = {21, 108};
-    MCInstrument* mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
+    MSRange mPianoRange(21, 108);
+    MCInstrument mPiano(1, mPianoRange, mPianoRange.getSize());
 
     // score
-    MCScore* mScore = new MCScore();
+    MCScore mScore;
     sprintf(sFilename, ScriptsPath, "score.piano.chopin.txt");
-    mScore->loadScriptFromFile(sFilename);
+    mScore.loadScriptFromFile(sFilename);
 
     // header
     cout << "\n  Modus " << MODUS_VERSION;
@@ -41,13 +41,12 @@ int main(int argc, char* argv[])
     cout << "\n  Sample Application";
 
     // list of MIDI out devices
-    RtMidiOut* mDevice;
     unsigned int iNumDevices;
     unsigned int iSelectedDevice;
     unsigned int i;
 
-    mDevice = new RtMidiOut(rtMidiApi, "Modus Sample");
-    iNumDevices = mDevice->getPortCount();
+    RtMidiOut mDevice(rtMidiApi, "Modus Sample");
+    iNumDevices = mDevice.getPortCount();
 
     if(iNumDevices == 0)
     {
@@ -60,7 +59,7 @@ int main(int argc, char* argv[])
     cout << "\n\n  Select a MIDI out device:\n";
 
     for(i = 0; i < iNumDevices; i++)
-        cout << "\n  " << i + 1 << ") " << mDevice->getPortName(i);
+        cout << "\n  " << i + 1 << ") " << mDevice.getPortName(i);
 
     cout << "\n\n";
 
@@ -74,17 +73,17 @@ int main(int argc, char* argv[])
     iSelectedDevice--;
 
     // sound generator
-    mDevice->openPort(iSelectedDevice);
-    MCSoundGenMIDI* mSoundGen = new MCSoundGenMIDI(mPiano->getNumberOfChannels(), mDevice, 1, 1);
+    mDevice.openPort(iSelectedDevice);
+    MCSoundGen* mSoundGen = new MCSoundGenMIDI(mPiano.getNumberOfChannels(), &mDevice, 1, 1);
 
     // piano settings
-    mPiano->setScore(mScore);
-    mPiano->setSoundGen(mSoundGen);
+    mPiano.setScore(&mScore);
+    mPiano.setSoundGen(mSoundGen);
 
     // timer
-    MCTimer* mTimer = new MCTimer();
-    mTimer->setCallbackTick(TimerTick, mPiano);
-    mTimer->start();
+    MCTimer mTimer;
+    mTimer.setCallbackTick(TimerTick, &mPiano);
+    mTimer.start();
 
     cout << "\n  Playing! Press any key to quit...";
     fflush(stdout);
@@ -92,17 +91,13 @@ int main(int argc, char* argv[])
     Input::init();
 
     while(!Input::keyPressed())
-        mTimer->update();
+        mTimer.update();
 
     Input::close();
 
-    delete mPiano;
-    delete mScore;
     delete mSoundGen;
-    delete mTimer;
 
-    mDevice->closePort();
-    delete mDevice;
+    mDevice.closePort();
 
     cout << "\n\n";
 

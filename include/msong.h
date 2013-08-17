@@ -72,6 +72,17 @@ public:
      *  @return Whether the file could be readed or not
      */
     bool loadScriptFromFile(const char* Filename);
+    /**
+     *  @brief Load script with information to fill entries from a file
+     *  @param Stream Input file stream attached to the binary data
+     */
+    void loadScriptFromBinaryData(std::istream& Stream);
+    /**
+     *  @brief Load script with information to fill entries from a file
+     *  @param Filename Binary file which contains the song structure data
+     *  @return Whether the file could be readed or not
+     */
+    bool loadScriptFromBinaryFile(const char* Filename);
 };
 
 #endif

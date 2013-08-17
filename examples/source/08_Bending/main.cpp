@@ -33,13 +33,13 @@ int main(int argc, char* argv[])
     cout << "\n  Sample Application\n\n";
 
     // instrument
-    MSRange mDoubleBassRange = {28, 60};
+    MSRange mDoubleBassRange(28, 60);
     MCInstrument* mDoubleBass = new MCInstrument(1, mDoubleBassRange, 1);
 
     // sound generator
     CAudio::init();
     MCOpenALSourceManager* mManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenOpenAL* mSoundGen = new MCSoundGenOpenAL(mDoubleBass->getNumberOfChannels(), false, 1, mManager);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mDoubleBass->getNumberOfChannels(), false, 1, mManager);
     sprintf(sFilename, InstrumentsPath, "DoubleBass.msp");
     mSoundGen->loadSamplePack(sFilename);
 

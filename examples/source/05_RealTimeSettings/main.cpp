@@ -29,7 +29,7 @@ using namespace std;
 struct SGlobal
 {
     MCInstrument* mDrums;
-    MCScore* mScore;
+    MCScore mScore;
 };
 
 void TimerTick(const MSTimePosition& mTimePosition, void* pData);
@@ -45,23 +45,22 @@ int main(int argc, char* argv[])
     SGlobal sGlobal;
 
     // instrument
-    MSRange mDrumsRange = {35, 59};
+    MSRange mDrumsRange(35, 59);
     sGlobal.mDrums = new MCInstrument(1, mDrumsRange, 16);
 
     // score
-    sGlobal.mScore = new MCScore();
     sprintf(sFilename, ScriptsPath, "score.drums.sample.txt");
-    sGlobal.mScore->loadScriptFromFile(sFilename);
+    sGlobal.mScore.loadScriptFromFile(sFilename);
 
     // sound generator
     CAudio::init();
-    MCSoundGenFMOD* mSoundGen = new MCSoundGenFMOD(sGlobal.mDrums->getNumberOfChannels(), false, 
-                                                   CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(sGlobal.mDrums->getNumberOfChannels(), false, 
+                                                    CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "Drums.msp");
     mSoundGen->loadSamplePack(sFilename);
 
     // drums settings
-    sGlobal.mDrums->setScore(sGlobal.mScore);
+    sGlobal.mDrums->setScore(&sGlobal.mScore);
     sGlobal.mDrums->setSoundGen(mSoundGen);
 
     // real time settings
@@ -144,16 +143,16 @@ int main(int argc, char* argv[])
             // play with sticks
             case 'S':
 
-                for(i = 0; i < sGlobal.mScore->getNumberOfEntries(); i++)
-                    sGlobal.mScore->getEntry(i)->Note.Mode = 0;
+                for(i = 0; i < sGlobal.mScore.getNumberOfEntries(); i++)
+                    sGlobal.mScore[i]->Note.Mode = 0;
 
                 break;
 
             // play with brushes
             case 'B':
 
-                for(i = 0; i < sGlobal.mScore->getNumberOfEntries(); i++)
-                    sGlobal.mScore->getEntry(i)->Note.Mode = 1;
+                for(i = 0; i < sGlobal.mScore.getNumberOfEntries(); i++)
+                    sGlobal.mScore[i]->Note.Mode = 1;
 
                 break;
             }
@@ -167,7 +166,6 @@ int main(int argc, char* argv[])
     Input::close();
 
     delete sGlobal.mDrums;
-    delete sGlobal.mScore;
     delete mSoundGen;
 
     CAudio::release();
@@ -185,7 +183,7 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData)
     if(mTimePosition.Measure % LOOP == 1 && mTimePosition.Measure > LOOP && 
        mTimePosition.Beat == 1 && mTimePosition.Tick == 0)
     {
-        sGlobal->mScore->displace(LOOP);
+        sGlobal->mScore.displace(LOOP);
     }
 
     // update

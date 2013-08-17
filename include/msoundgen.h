@@ -63,6 +63,7 @@ protected:
     virtual void releaseResonance() = 0;
 
 public:
+    virtual ~MCSoundGen() {}
     /**
      *  @brief Play a note
      *  @param Note Definition of the note to be played
@@ -158,16 +159,30 @@ public:
     /**
      *  @brief Load sample-sets from a sample-pack file, which contains both information and audio files. 
      *         These files can be created with the "msamplepack" tool
-     *  @param Filename Sample-pack file
+     *  @param Stream Input file stream attached to the binary data
      *  @param callback Callback function which will be called each time a sample is loaded, to be able to 
      *                  track the sample loading process (for example, to show a progress bar). This function
      *                  will receive the total number of samples in the sample-pack and the current number of
      *                  samples loaded with each call
      *  @param Data Pointer to pass user data
      */
-    virtual void loadSamplePack(const char* Filename, 
+    virtual void loadSamplePack(std::istream& Stream, 
                                 void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
                                 void* Data = NULL) = 0;
+    /**
+     *  @brief Load sample-sets from a sample-pack file, which contains both information and audio files. 
+     *         These files can be created with the "msamplepack" tool
+     *  @param Filename Sample-pack file
+     *  @param callback Callback function which will be called each time a sample is loaded, to be able to 
+     *                  track the sample loading process (for example, to show a progress bar). This function
+     *                  will receive the total number of samples in the sample-pack and the current number of
+     *                  samples loaded with each call
+     *  @param Data Pointer to pass user data
+     *  @return Whether the file could be readed or not
+     */
+    bool loadSamplePack(const char* Filename, 
+                        void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                        void* Data = NULL);
     /**
      *  @brief Unload all the sample files defined by the list and clear the list
      */

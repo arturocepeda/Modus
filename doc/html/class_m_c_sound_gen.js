@@ -1,5 +1,6 @@
 var class_m_c_sound_gen =
 [
+    [ "~MCSoundGen", "class_m_c_sound_gen.html#ac635d9fbc9fa59b4f8430d2953ecd5e9", null ],
     [ "playNote", "class_m_c_sound_gen.html#ac6f13e8b1c69a9f980e5fabdbf8f7bf5", null ],
     [ "releaseAllNotes", "class_m_c_sound_gen.html#a56263dcdf620d4471d42958457e61172", null ],
     [ "releaseDamper", "class_m_c_sound_gen.html#a699e61e5e548c7cbd5ce46c1a339a13e", null ],

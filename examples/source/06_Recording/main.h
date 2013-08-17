@@ -19,8 +19,8 @@
 struct SGlobal
 {
     bool bRecordingMode;
-    MCTimer* mTimer;
-    MCScore* mScore;
+    MCTimer mTimer;
+    MCScore mScore;
 };
 
 void TimerTick(const MSTimePosition& mTimePosition, void* pData);

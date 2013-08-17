@@ -107,7 +107,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     SelectMIDIDevice(0, &sGlobal);
 
     // instrument
-    MSRange mPianoRange = {21, 108};
+    MSRange mPianoRange(21, 108);
     sGlobal.mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
 
     // MIDI receiver
@@ -118,7 +118,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     // sound generator
     CAudio::init();
     MCOpenALSourceManager* mALManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenOpenAL* mSoundGen = new MCSoundGenOpenAL(sGlobal.mPiano->getNumberOfChannels(), false, 1, mALManager);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(sGlobal.mPiano->getNumberOfChannels(), false, 1, mALManager);
     mSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
 
     // instrument settings
@@ -139,10 +139,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     Timer* mLoopTimer = new Timer();
     mLoopTimer->start();
 
-    long long iTimeInterval = (long long)(1000000.0f / FPS);
-    long long iTimeDelta = 0;
-    long long iTimeBefore = 0;
-    long long iTimeNow;
+    double dTimeInterval = 1000000.0 / FPS;
+    double dTimeDelta = 0;
+    double dTimeBefore = 0;
+    double dTimeNow;
 
     // initialize rendering system
     CRendering::init(&sGDI);
@@ -161,12 +161,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
         }
         
         // update and render
-        iTimeNow = mLoopTimer->getTime();
-        iTimeDelta = iTimeNow - iTimeBefore;
+        dTimeNow = mLoopTimer->getTime();
+        dTimeDelta = dTimeNow - dTimeBefore;
 
-        if(iTimeDelta >= iTimeInterval)
+        if(dTimeDelta >= dTimeInterval)
         {
-            iTimeBefore = iTimeNow;
+            dTimeBefore = dTimeNow;
             RedrawWindow(hWnd, NULL, NULL, RDW_INVALIDATE);
         }
     }

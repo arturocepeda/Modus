@@ -197,7 +197,7 @@ MTChord MCChords::c7b5()
 MTNoteMap MCChords::createClosedChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
                                       unsigned char NumberOfNotes)
 {
-    MSRange mRange = {LowestNote, 127};
+    MSRange mRange(LowestNote, 127);
     MTNoteMap mNoteMap = MCNoteMaps::createNoteMap(RootNote, Chord, mRange);
     MTNoteMap mClosedChord;
 
@@ -224,7 +224,7 @@ MTNoteMap MCChords::createClosedChord(MTNote RootNote, MTChord& Chord, MTNote Lo
 MTNoteMap MCChords::createOpenChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
                                     unsigned char NumberOfNotes)
 {
-    MSRange mRange = {LowestNote, 127};
+    MSRange mRange(LowestNote, 127);
     MTNoteMap mNoteMap = MCNoteMaps::createNoteMap(RootNote, Chord, mRange);
     MTNoteMap mOpenChord;
 

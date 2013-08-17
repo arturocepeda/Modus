@@ -26,7 +26,7 @@ using namespace std;
 struct SGlobal
 {
     MCInstrument* mTrumpet;
-    MCScore* mScore;
+    MCScore mScore;
 };
 
 bool bThreadEnd = false;
@@ -44,23 +44,22 @@ int main(int argc, char* argv[])
     SGlobal sGlobal;
 
     // instrument
-    MSRange mTrumpetRange = {52, 84};
+    MSRange mTrumpetRange(52, 84);
     sGlobal.mTrumpet = new MCInstrument(1, mTrumpetRange, 1);
 
     // sound generator
     CAudio::init();
     MCOpenALSourceManager* mManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenOpenAL* mSoundGen = new MCSoundGenOpenAL(sGlobal.mTrumpet->getNumberOfChannels(), false, 1, mManager);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(sGlobal.mTrumpet->getNumberOfChannels(), false, 1, mManager);
     sprintf(sFilename, InstrumentsPath, "Trumpet.msp");
     mSoundGen->loadSamplePack(sFilename);
 
     // score
-    sGlobal.mScore = new MCScore();
     sprintf(sFilename, ScriptsPath, "score.trumpet.sample.txt");
-    sGlobal.mScore->loadScriptFromFile(sFilename);
+    sGlobal.mScore.loadScriptFromFile(sFilename);
 
     // instrument settings
-    sGlobal.mTrumpet->setScore(sGlobal.mScore);
+    sGlobal.mTrumpet->setScore(&sGlobal.mScore);
     sGlobal.mTrumpet->setSoundGen(mSoundGen);
 
     // timer
@@ -92,8 +91,8 @@ int main(int argc, char* argv[])
 
         if(iKey == 'M')
         {
-            for(i = 0; i < sGlobal.mScore->getNumberOfEntries(); i++)
-                sGlobal.mScore->getEntry(i)->Note.Mode = (bMode)? 1: 0;
+            for(i = 0; i < sGlobal.mScore.getNumberOfEntries(); i++)
+                sGlobal.mScore[i]->Note.Mode = (bMode)? 1: 0;
 
             bMode = !bMode;
         }
@@ -114,7 +113,6 @@ int main(int argc, char* argv[])
 #endif
 
     delete sGlobal.mTrumpet;
-    delete sGlobal.mScore;
     delete mSoundGen;
     delete mManager;
 
@@ -153,7 +151,7 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData)
     if(mTimePosition.Measure % LOOP == 1 && mTimePosition.Measure > LOOP && 
        mTimePosition.Beat == 1 && mTimePosition.Tick == 0)
     {    
-        sGlobal->mScore->displace(LOOP);
+        sGlobal->mScore.displace(LOOP);
     }
 
     // update instrument

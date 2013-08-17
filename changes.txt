@@ -1,17 +1,17 @@
 
 
 
-  v0.53 (July 2013)
+  v0.53 (August 2013)
  =======================
 
- * Sample applications have been improved and cleaned. Now there is a common code for
-   all the platforms
+ * Sample applications have been improved and cleaned. Now there is a common source
+   code for all the platforms
+   
+ * Scripts can be loaded from binary data (both disk and memory)
  
- * New timer based on std::chrono (platform-independent code)
-
- * Score scripts can be saved and loaded from binary files
+ * New tool to generate binary files from scripts included
  
- * All the projects and scripts are configured to compile with C++11
+ * All the projects are configured to compile with C++11
  
  * Now the clang compiler is used in MacOSX instead of gcc
 
