@@ -505,9 +505,7 @@ Project Settings</h1>
 <p class="endli"></p>
 </li>
 <li>
-<p class="startli">Add Modus library. You will find the appropriate library file in the Modus/lib/[platform] directory. <br/>
-<br/>
- <b>Note for iOS:</b> use "libModus.a" for iPhone/iPad and "libModus_sim.a" for iOS Simulator </p>
+<p class="startli">Add Modus library. You will find the appropriate library file in the Modus/lib/[platform] directory. </p>
 <p class="endli"></p>
 </li>
 <li>
@@ -545,7 +543,7 @@ Note maps</h1>
 </p>
 <h1><a class="anchor" id="scripts"></a>
 Scripts</h1>
-<p>They can be written either in strings or text files and then loaded from some of the objects, through the <em>loadScriptFromString()</em> and the <em>loadScriptFromFile()</em> methods, respectively. <br/>
+<p>They can be written either in strings or text files and then loaded from some of the objects, through the <em>loadScriptFromString()</em> and the <em>loadScriptFromFile()</em> methods, respectively. In addition, you have the possibility of creating binary files from previously written text files using the included <b>mscript2bin</b> tool, and load them with the <em>loadScriptFromBinaryData()</em> and the <em>loadScriptFromBinaryFile()</em> methods. Scripts in binary format are smaller and faster to load than scripts in text format, but they cannot be modified once generated.<br/>
 <br/>
 </p>
 <p><b><a class="el" href="class_m_c_score.html" title="Represents a score, which consist of a list of notes placed on time positions. ">MCScore</a></b><br/>
@@ -978,7 +976,8 @@ Callbacks</h1>
 <tr>
 <th>Called when </th><td>A note is being played and there are more notes in the score  </td></tr>
 <tr>
-<th>Information </th><td>First note that comes after the current note or chord, current time moment and next note's time moment  </td></tr>
+<th>Information </th><td>Note that comes after the current note or chord, current time moment and next note's time moment<br/>
+ (in case several notes are coming together this method will be called once for each note)  </td></tr>
 <tr>
 <th>Method to register </th><td><em>setCallbackNextNote()</em>  </td></tr>
 </table>
@@ -1185,7 +1184,7 @@ Tips and tricks</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Aug 17 2013 15:18:37 for Modus by
+    <li class="footer">Generated on Sun Aug 18 2013 17:46:07 for Modus by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.4 </li>
   </ul>

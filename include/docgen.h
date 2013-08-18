@@ -4,7 +4,7 @@
 //  Modus v0.53
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2013 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -452,8 +452,6 @@
  
  <li>
  Add Modus library. You will find the appropriate library file in the Modus/lib/[platform] directory.
- <br><br>
- <b>Note for iOS:</b> use "libModus.a" for iPhone/iPad and "libModus_sim.a" for iOS Simulator
  </li>
  
  <li>
@@ -498,7 +496,10 @@
  \section scripts Scripts
  
  They can be written either in strings or text files and then loaded from some of the objects, through the <i>loadScriptFromString()</i>
- and the <i>loadScriptFromFile()</i> methods, respectively. <br><br>
+ and the <i>loadScriptFromFile()</i> methods, respectively. In addition, you have the possibility of creating binary files from previously
+ written text files using the included <b>mscript2bin</b> tool, and load them with the <i>loadScriptFromBinaryData()</i> and the
+ <i>loadScriptFromBinaryFile()</i> methods. Scripts in binary format are smaller and faster to load than scripts in text format, but they
+ cannot be modified once generated.<br><br>
  
  <b>MCScore</b><br>
  
@@ -1108,7 +1109,8 @@
   </tr>
   <tr>
    <th>Information</th>
-   <td>First note that comes after the current note or chord, current time moment and next note's time moment</td>
+   <td>Note that comes after the current note or chord, current time moment and next note's time moment<br>
+   (in case several notes are coming together this method will be called once for each note)</td>
   </tr>
   <tr>
    <th>Method to register</th>

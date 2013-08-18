@@ -7,9 +7,9 @@
  * Sample applications have been improved and cleaned. Now there is a common source
    code for all the platforms
    
- * Next note callback is called once per note when several notes are coming at the
-   same time, and is triggered only when at least one note is played in the current
-   time position
+ * Next note callback is called once for each note when several notes are coming at
+   the same time, and will be only triggered when at least one note is played in the
+   current time position
    
  * Scripts can be loaded from binary data (both disk and memory)
  
