@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
     if(argc < 4)
     {
         cout << "\n  Usage: mscript2bin <Script_type> <Script_filename> <Binary_filename> [-def:<Definition_filename>]\n";
-        cout << "\n  Script type: -score, -harmony, -scales, -song\n";
+        cout << "\n  Script type: -score, -harmony, -scales, -song\n\n";
         return -1;
     }
 
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
     {
         cout << "\n  Invalid parameter: " << sScriptType << "\n";
         cout << "\n  Usage: mscript2bin <Script_type> <Script_filename> <Binary_filename> [-def:<Definition_filename>]\n";
-        cout << "\n  Script type: -score, -harmony, -scales, -song\n";
+        cout << "\n  Script type: -score, -harmony, -scales, -song\n\n";
         return -1;
     }
 
@@ -100,7 +100,7 @@ bool generateScore(char* sScriptFile, char* sBinaryFile)
 
     if(!mScore.loadScriptFromFile(sScriptFile))
     {
-        cerr << "\n  The script file \"" << sScriptFile << "\" could not be readed\n";
+        cerr << "\n  The script file \"" << sScriptFile << "\" could not be readed\n\n";
         return false;
     }
 
