@@ -34,21 +34,21 @@ int main(int argc, char* argv[])
 
     // instrument
     MSRange mDoubleBassRange(28, 60);
-    MCInstrument* mDoubleBass = new MCInstrument(1, mDoubleBassRange, 1);
+    MCInstrument mDoubleBass(1, mDoubleBassRange, 1);
 
     // sound generator
     CAudio::init();
     MCOpenALSourceManager* mManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mDoubleBass->getNumberOfChannels(), false, 1, mManager);
+    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mDoubleBass.getNumberOfChannels(), false, 1, mManager);
     sprintf(sFilename, InstrumentsPath, "DoubleBass.msp");
     mSoundGen->loadSamplePack(sFilename);
 
     // double bass settings
-    mDoubleBass->setSoundGen(mSoundGen);
+    mDoubleBass.setSoundGen(mSoundGen);
 
     // timer
     MCTimer mTimer;
-    mTimer.setCallbackTick(TimerTick, mDoubleBass);
+    mTimer.setCallbackTick(TimerTick, &mDoubleBass);
     mTimer.start();
 
     // create music timer thread
@@ -89,8 +89,8 @@ int main(int argc, char* argv[])
         mNote.Pitch = 40;
         mNote.Intensity = 127;
 
-        mDoubleBass->playNote(mNote);
-        mDoubleBass->bend(0, iBendingCents, iBendingTicks);
+        mDoubleBass.playNote(mNote);
+        mDoubleBass.bend(0, iBendingCents, iBendingTicks);
     }
 
     // wait until the music timer thread finishes
@@ -103,7 +103,6 @@ int main(int argc, char* argv[])
     pthread_join(hMusicTimerThread, NULL);
 #endif
 
-    delete mDoubleBass;
     delete mSoundGen;
     delete mManager;
 

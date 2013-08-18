@@ -27,9 +27,9 @@ using namespace std;
 struct SGlobal
 {
     MCInstrument* mDrums;
-    MCScore* mScore;
-    MCTimer* mTimer;
-    MCSongStructure* mStructure;
+    MCScore mScore;
+    MCTimer mTimer;
+    MCSongStructure mStructure;
 };
 
 void TimerTick(const MSTimePosition& mTimePosition, void* pData);
@@ -49,9 +49,8 @@ int main(int argc, char* argv[])
     sGlobal.mDrums = new MCInstrument(1, mDrumsRange, 16);
 
     // score
-    sGlobal.mScore = new MCScore();
     sprintf(sFilename, ScriptsPath, "score.drums.sample.txt");
-    sGlobal.mScore->loadScriptFromFile(sFilename);
+    sGlobal.mScore.loadScriptFromFile(sFilename);
 
     // sound generator
     CAudio::init();
@@ -61,12 +60,10 @@ int main(int argc, char* argv[])
     mSoundGen->loadSamplePack(sFilename);
 
     // drums settings
-    sGlobal.mDrums->setScore(sGlobal.mScore);
+    sGlobal.mDrums->setScore(&sGlobal.mScore);
     sGlobal.mDrums->setSoundGen(mSoundGen);
 
     // song structure object
-    sGlobal.mStructure = new MCSongStructure();
-
     MSSongSection mFirstSection;
     mFirstSection.FirstMeasure = 1;
     mFirstSection.LastMeasure = LOOP;
@@ -74,13 +71,12 @@ int main(int argc, char* argv[])
     mFirstSection.TargetTempo = TEMPO_B;
     mFirstSection.BeatsPerMeasure = 4;
 
-    sGlobal.mStructure->addEntry(mFirstSection);
+    sGlobal.mStructure.addEntry(mFirstSection);
 
     // timer
-    sGlobal.mTimer = new MCTimer();
-    sGlobal.mTimer->setSongStructure(sGlobal.mStructure);
-    sGlobal.mTimer->setCallbackTick(TimerTick, &sGlobal);
-    sGlobal.mTimer->start();
+    sGlobal.mTimer.setSongStructure(&sGlobal.mStructure);
+    sGlobal.mTimer.setCallbackTick(TimerTick, &sGlobal);
+    sGlobal.mTimer.start();
 
     cout << "\n  Playing! Press any key to quit\n";
     cout << "\n  Accelerando...";
@@ -90,17 +86,14 @@ int main(int argc, char* argv[])
 
     while(!Input::keyPressed())
     {
-        if(sGlobal.mTimer->update())
+        if(sGlobal.mTimer.update())
             CAudio::update();
     }
 
     Input::close();
 
     delete sGlobal.mDrums;
-    delete sGlobal.mScore;
     delete mSoundGen;
-    delete sGlobal.mTimer;
-    delete sGlobal.mStructure;
 
     CAudio::release();
 
@@ -118,7 +111,7 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData)
     // loop management
     if(mTimePosition.Measure % LOOP == 0 && mTimePosition.Beat == 4 && mTimePosition.Tick == M_LAST_TICK)
     {
-        sGlobal->mScore->displace(LOOP);
+        sGlobal->mScore.displace(LOOP);
 
         MSSongSection mSection;
         mSection.FirstMeasure = mTimePosition.Measure + 1;
@@ -145,7 +138,7 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData)
             fflush(stdout);
         }
 
-        sGlobal->mStructure->addEntry(mSection);
+        sGlobal->mStructure.addEntry(mSection);
         bAccelRit = !bAccelRit;
     }
 

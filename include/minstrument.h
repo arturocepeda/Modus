@@ -253,7 +253,7 @@ public:
                          void* Data = NULL);
     /**
      *  @brief Set up a callback function which will be called each time a note is played with information
-     *         about the next note to be played, only if the instrument has an attached score
+     *         about the next notes to be played, only if the instrument has an attached score
      *  @param function Function to be called
      *  @param Data Pointer to pass user data
      */ 

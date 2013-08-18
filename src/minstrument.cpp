@@ -459,11 +459,13 @@ void MCInstrument::checkScore(const MSTimePosition& TimePosition)
     
     // 3) play the note(s)
     se = mScore->getEntry(iScorePosition);
+    bool bPlayed = false;
 
     while(se->TimePosition == TimePosition)
     {
         playNote(se->Note);
         iScorePosition++;
+        bPlayed = true;
 
         if(iScorePosition == iScoreEntries)
             break;
@@ -472,8 +474,17 @@ void MCInstrument::checkScore(const MSTimePosition& TimePosition)
     }
 
     // next note callback
-    if(fCallbackNextNote && iScorePosition < iScoreEntries)
+    if(!bPlayed || !fCallbackNextNote)
+        return;
+
+    unsigned int iNextNoteScorePosition = iScorePosition;
+    MSTimePosition& mNextNoteTimePosition = se->TimePosition;
+
+    while(iNextNoteScorePosition < iScoreEntries && se->TimePosition == mNextNoteTimePosition)
+    {
         fCallbackNextNote(iID, se->Note, TimePosition, se->TimePosition, fCallbackNextNoteData);
+        se = mScore->getEntry(++iNextNoteScorePosition);
+    }
 }
 
 unsigned int MCInstrument::getID()

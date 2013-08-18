@@ -33,20 +33,20 @@ int main(int argc, char* argv[])
 
     // instrument
     MSRange mTenorSaxRange(44, 75);
-    MCInstrument* mTenorSax = new MCInstrument(1, mTenorSaxRange, 1);
+    MCInstrument mTenorSax(1, mTenorSaxRange, 1);
 
     // sound generator
     CAudio::init();
-    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mTenorSax->getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mTenorSax.getNumberOfChannels(), false, CAudio::getSoundSystem());
     sprintf(sFilename, InstrumentsPath, "TenorSax.msp");
     mSoundGen->loadSamplePack(sFilename);
 
     // sax settings
-    mTenorSax->setSoundGen(mSoundGen);
+    mTenorSax.setSoundGen(mSoundGen);
 
     // timer
     MCTimer mTimer(120, 4);
-    mTimer.setCallbackTick(TimerTick, mTenorSax);
+    mTimer.setCallbackTick(TimerTick, &mTenorSax);
     mTimer.start();
 
     // create music timer thread
@@ -98,8 +98,8 @@ int main(int argc, char* argv[])
         mNote.Pitch = 48;
         mNote.Intensity = iIntensityA;
 
-        mTenorSax->playNote(mNote);
-        mTenorSax->changeIntensity(0, iIntensityB, iChangeTicks);
+        mTenorSax.playNote(mNote);
+        mTenorSax.changeIntensity(0, iIntensityB, iChangeTicks);
     }
 
     // wait until the music timer thread finishes
@@ -112,7 +112,6 @@ int main(int argc, char* argv[])
     pthread_join(hMusicTimerThread, NULL);
 #endif
 
-    delete mTenorSax;
     delete mSoundGen;
 
     CAudio::release();

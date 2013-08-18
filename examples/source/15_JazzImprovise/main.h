@@ -100,6 +100,7 @@ LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void CALLBACK MidiInProc(HMIDIIN mHandle, UINT iMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2);
 DWORD WINAPI MusicTimerThread(LPVOID lp);
 
+void ResetCursor(SGlobal* sGlobal);
 void LoadScripts(SGlobal* sGlobal);
 void SelectMIDIDevice(unsigned int iNumDevice, SGlobal* sGlobal);
 

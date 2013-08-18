@@ -75,15 +75,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     sGlobal.mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
 
     // scores
-    int i;
-    sGlobal.mScores = new MCScore*[SCORES];
+    sGlobal.mScores = new MCScore[SCORES];
 
-    for(i = 0; i < SCORES; i++)
-        sGlobal.mScores[i] = new MCScore();
-
-    sGlobal.mScores[0]->loadScriptFromFile(".\\..\\..\\common\\scripts\\score.piano.chopin.txt");
-    sGlobal.mScores[1]->loadScriptFromFile(".\\..\\..\\common\\scripts\\score.piano.chopin2.txt");
-    sGlobal.mScores[1]->displace(1);
+    sGlobal.mScores[0].loadScriptFromFile(".\\..\\..\\common\\scripts\\score.piano.chopin.txt");
+    sGlobal.mScores[1].loadScriptFromFile(".\\..\\..\\common\\scripts\\score.piano.chopin2.txt");
+    sGlobal.mScores[1].displace(1);
 
     sGlobal.iCurrentScore = 0;
 
@@ -93,7 +89,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     mSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
 
     // instrument settings
-    sGlobal.mPiano->setScore(sGlobal.mScores[sGlobal.iCurrentScore]);
+    sGlobal.mPiano->setScore(&sGlobal.mScores[sGlobal.iCurrentScore]);
     sGlobal.mPiano->setSoundGen(mSoundGen);
 
     sGlobal.mPiano->setCallbackPlay(PianoPlayNote, &sGlobal);
@@ -154,10 +150,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     DeleteCriticalSection(&sGlobal.cSection);
 
     delete sGlobal.mPiano;
-
-    for(i = 0; i < SCORES; i++)
-        delete sGlobal.mScores[i];
-
     delete[] sGlobal.mScores;
     delete mSoundGen;
     delete sGlobal.mMusicTimer;
@@ -205,7 +197,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
                 sGlobal->iCurrentScore = 0;
 
             sGlobal->mPiano->releaseAll();
-            sGlobal->mPiano->setScore(sGlobal->mScores[sGlobal->iCurrentScore]);
+            sGlobal->mPiano->setScore(&sGlobal->mScores[sGlobal->iCurrentScore]);
             sGlobal->bDamper = false;
 
             // synchronized section

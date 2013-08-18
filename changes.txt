@@ -7,11 +7,20 @@
  * Sample applications have been improved and cleaned. Now there is a common source
    code for all the platforms
    
+ * Next note callback is called once per note when several notes are coming at the
+   same time, and is triggered only when at least one note is played in the current
+   time position
+   
  * Scripts can be loaded from binary data (both disk and memory)
  
  * New tool to generate binary files from scripts included
  
  * All the projects are configured to compile with C++11
+ 
+ * The iOS Modus library project generates now an unique library file, valid both
+   for simulator and for devices
+   
+ * Updated iOS rendering system to OpenGL ES 2.0
  
  * Now the clang compiler is used in MacOSX instead of gcc
 

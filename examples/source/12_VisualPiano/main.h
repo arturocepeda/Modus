@@ -27,7 +27,7 @@ struct SGlobal
 {
     MCTimer* mMusicTimer;
     MCInstrument* mPiano;
-    MCScore** mScores;
+    MCScore* mScores;
     unsigned int iCurrentScore;
 
     bool bKeyPressed[88];

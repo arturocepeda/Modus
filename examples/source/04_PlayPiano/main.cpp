@@ -79,9 +79,9 @@ int main(int argc, char* argv[])
     mDevice.setCallback(&MidiInProc);
     
     // Modus MIDI receiver
-    MCMIDIReceiver mMIDIReceiver(&mPiano);
-    mMIDIReceiver.listenToAllMIDIChannels();
-    mMIDIReceiver.attachAllPitchesToDifferentChannels();
+    mMIDIReceiver = new MCMIDIReceiver(&mPiano);
+    mMIDIReceiver->listenToAllMIDIChannels();
+    mMIDIReceiver->attachAllPitchesToDifferentChannels();
 
     // sound generator
     CAudio::init();
@@ -106,6 +106,7 @@ int main(int argc, char* argv[])
 
     Input::close();
 
+    delete mMIDIReceiver;
     delete mSoundGen;
     CAudio::release();
 

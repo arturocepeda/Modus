@@ -169,11 +169,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     sGlobal.mPiano->setCallbackDamper(PianoDamper, &sGlobal);
 
     // cursor initial position
-    MTNote mTonic = sGlobal.mImpScalePattern[0]->RootNote;
-    sGlobal.mNoteMap = MCNoteMaps::createNoteMap(mTonic, sGlobal.mImpScalePattern[0]->Scale, sGlobal.mPianoRange);
-    sGlobal.iCursor = MCNoteMaps::getPositionNearestNote(60 + mTonic, sGlobal.mNoteMap);
-    sGlobal.iLastPosition = sGlobal.iCursor;
-    sGlobal.mNote.Pitch = 60 + mTonic;
+    ResetCursor(&sGlobal);
 
     // main loop timer
     Timer* mLoopTimer = new Timer();
@@ -384,6 +380,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
         case 'S':
             if(!sGlobal->mMusicTimer->isRunning())
             {
+                ResetCursor(sGlobal);
                 EnterCriticalSection(&sGlobal->cSection);
                 sGlobal->mMusicTimer->reset();
                 LoadScripts(sGlobal);
@@ -467,6 +464,19 @@ DWORD WINAPI MusicTimerThread(LPVOID lp)
     }
 
     return 0;
+}
+
+
+//
+//  reset keyboard scope cursor
+//
+void ResetCursor(SGlobal* sGlobal)
+{
+    MTNote mTonic = sGlobal->mImpScalePattern[0]->RootNote;
+    sGlobal->mNoteMap = MCNoteMaps::createNoteMap(mTonic, sGlobal->mImpScalePattern[0]->Scale, sGlobal->mPianoRange);
+    sGlobal->iCursor = MCNoteMaps::getPositionNearestNote(60 + mTonic, sGlobal->mNoteMap);
+    sGlobal->iLastPosition = sGlobal->iCursor;
+    sGlobal->mNote.Pitch = 60 + mTonic;
 }
 
 
