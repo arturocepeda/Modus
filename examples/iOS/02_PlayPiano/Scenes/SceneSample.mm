@@ -28,9 +28,9 @@ bool bThreadEnd = false;
 void* GESceneSampleThreads::LoadSamplesThread(void* lp)
 {
    GESceneSample* cScene = (GESceneSample*)lp;
-   MCSoundGenOpenAL* mSoundGen = cScene->getSoundGen();
+   MCSoundGenAudio* mSoundGen = cScene->getSoundGen();
 
-   mSoundGen->loadSamplePack(GEDevice::getResourcePath(@"PianoAAC.msp"), 
+   mSoundGen->loadSamplePack(GEDevice::getResourcePath(@"PianoAAC.msp"),
                              GESceneSampleCallbacks::SampleLoaded, lp);
 
    mTimer->start();
@@ -96,7 +96,7 @@ void GESceneSample::init()
 {   
    iNextScene = -1;
    cRender->setBackgroundColor(0.8f, 0.8f, 1.0f);
-   cRender->set2D(bPortrait);
+   cRender->set2D(false);
    
    iTotalSamples = 0;
    iSamplesLoaded = 0;
@@ -116,48 +116,52 @@ void GESceneSample::init()
    cRender->loadTexture(Textures.Loading, @"note.png");
    
    // sprites
-   cSpriteKeyWhite = new GESprite(cRender->getTexture(Textures.KeyWhite),
-                                  cRender->getTextureSize(Textures.KeyWhite));
+   cSpriteUnused = new GESprite();
    
-   cSpriteKeyBlack = new GESprite(cRender->getTexture(Textures.KeyBlack),
-                                  cRender->getTextureSize(Textures.KeyBlack));
+   cSpriteKeyWhite = new GESprite();   
+   cSpriteKeyWhite->setTexture(cRender->getTexture(Textures.KeyWhite));
+   
+   cSpriteKeyBlack = new GESprite();
+   cSpriteKeyBlack->setTexture(cRender->getTexture(Textures.KeyBlack));
    cSpriteKeyBlack->setScale(1.0f, 0.75f);
    
-   cSpriteKeyWhitePressed = new GESprite(cRender->getTexture(Textures.KeyWhitePressed),
-                                         cRender->getTextureSize(Textures.KeyWhitePressed));
+   cSpriteKeyWhitePressed = new GESprite();
+   cSpriteKeyWhitePressed->setTexture(cRender->getTexture(Textures.KeyWhitePressed));
    
-   cSpriteKeyBlackPressed = new GESprite(cRender->getTexture(Textures.KeyBlackPressed),
-                                         cRender->getTextureSize(Textures.KeyBlackPressed));
+   cSpriteKeyBlackPressed = new GESprite();
+   cSpriteKeyBlackPressed->setTexture(cRender->getTexture(Textures.KeyBlackPressed));
    cSpriteKeyBlackPressed->setScale(1.0f, 0.75f);
    
-   cSpritePedal[0] = new GESprite(cRender->getTexture(Textures.PedalOff),
-                                  cRender->getTextureSize(Textures.PedalOff));
+   cSpritePedal[0] = new GESprite();
+   cSpritePedal[0]->setTexture(cRender->getTexture(Textures.PedalOff));
    cSpritePedal[0]->setScale(0.6f, 0.6f);
    
-   cSpritePedal[1] = new GESprite(cRender->getTexture(Textures.PedalOn),
-                                 cRender->getTextureSize(Textures.PedalOn));
+   cSpritePedal[1] = new GESprite();
+   cSpritePedal[1]->setTexture(cRender->getTexture(Textures.PedalOn));
    cSpritePedal[1]->setScale(0.6f, 0.6f);
    
-   cSpritePadlock[0] = new GESprite(cRender->getTexture(Textures.PadlockClosed),
-                                    cRender->getTextureSize(Textures.PadlockClosed));
+   cSpritePadlock[0] = new GESprite();
+   cSpritePadlock[0]->setTexture(cRender->getTexture(Textures.PadlockClosed));
    cSpritePadlock[0]->setScale(0.15f, 0.15f);
    
-   cSpritePadlock[1] = new GESprite(cRender->getTexture(Textures.PadlockOpen),
-                                    cRender->getTextureSize(Textures.PadlockOpen));
+   cSpritePadlock[1] = new GESprite();
+   cSpritePadlock[1]->setTexture(cRender->getTexture(Textures.PadlockOpen));
    cSpritePadlock[1]->setScale(0.15f, 0.15f);
    
-   cSpriteLoading = new GESprite(cRender->getTexture(Textures.Loading),
-                                 cRender->getTextureSize(Textures.Loading));
+   cSpriteLoading = new GESprite();
+   cSpriteLoading->setTexture(cRender->getTexture(Textures.Loading));
    
-   cSpriteKeyWhite->setRotation(0.0f, 0.0f, 90.0f);
-   cSpriteKeyBlack->setRotation(0.0f, 0.0f, 90.0f);
-   cSpriteKeyWhitePressed->setRotation(0.0f, 0.0f, 90.0f);
-   cSpriteKeyBlackPressed->setRotation(0.0f, 0.0f, 90.0f);
-   cSpritePedal[0]->setRotation(0.0f, 0.0f, 90.0f);
-   cSpritePedal[1]->setRotation(0.0f, 0.0f, 90.0f);
-   cSpritePadlock[0]->setRotation(0.0f, 0.0f, 90.0f);
-   cSpritePadlock[1]->setRotation(0.0f, 0.0f, 90.0f);
-   cSpriteLoading->setRotation(0.0f, 0.0f, 90.0f);
+   const float fHalfPi = 1.5708f;
+   
+   cSpriteKeyWhite->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpriteKeyBlack->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpriteKeyWhitePressed->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpriteKeyBlackPressed->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpritePedal[0]->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpritePedal[1]->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpritePadlock[0]->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpritePadlock[1]->setRotation(0.0f, 0.0f, fHalfPi);
+   cSpriteLoading->setRotation(0.0f, 0.0f, fHalfPi);
 
    // labels
    cTextModus = new GELabel(@"Modus\nC++ Music Library\nSample Application", @"Optima-ExtraBlack", 
@@ -177,7 +181,7 @@ void GESceneSample::init()
    cAudio = new CAudio();
    
    // Modus objects
-   MSRange mPianoRange = {21, 108};
+   MSRange mPianoRange(21, 108);
    mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
    
    mSourceManager = new MCOpenALSourceManager(OPENAL_SOURCES);
@@ -236,7 +240,8 @@ void GESceneSample::release()
    // release audio system
    delete cAudio;
    
-   // release sprites   
+   // release sprites
+   delete cSpriteUnused;
    delete cSpriteKeyWhite;
    delete cSpriteKeyBlack;
    delete cSpriteKeyWhitePressed;
@@ -297,6 +302,7 @@ void GESceneSample::setDamper(bool On)
 void GESceneSample::render()
 {
    // labels
+   cRender->useProgram(GEPrograms.Text);
    cRender->renderLabel(cTextModus);
   
    if(!bSamplesLoaded)
@@ -308,7 +314,9 @@ void GESceneSample::render()
       cRender->renderLabel(cTextLoading);
       
       float fPosY = 0.0f;
-      float fPosX = -1.25f;
+      float fPosX = -1.25f;      
+      
+      cRender->useProgram(GEPrograms.HUD);
       
       for(unsigned int i = 1; i <= iPercentage / 5; i++)
       {
@@ -319,7 +327,9 @@ void GESceneSample::render()
       
       cRender->renderEnd();
       return;
-   }
+   }   
+   
+   cRender->useProgram(GEPrograms.HUD);
    
    // piano keyboard   
    float fPosY = -0.1f;
@@ -458,8 +468,8 @@ void GESceneSample::inputTouchBegin(int ID, CGPoint* Point)
    fSlideSpeed = 0.0f;
 
    // check position
-   float fTouchX = cPixelToPositionX->y(Point->x);
-   float fTouchY = cPixelToPositionY->y(Point->y);
+   float fTouchX = -cPixelToPositionY->y(Point->x);
+   float fTouchY = -cPixelToPositionX->y(Point->y);
    
    // padlock
    if(fTouchY < 0.9f && fTouchY > 0.5f && fTouchX < 1.3f && fTouchX > 0.9f)
@@ -501,8 +511,8 @@ void GESceneSample::inputTouchMove(int ID, CGPoint* PreviousPoint, CGPoint* Curr
    else
    {
       // check position
-      float fTouchX = cPixelToPositionX->y(CurrentPoint->x);
-      float fTouchY = cPixelToPositionY->y(CurrentPoint->y);
+      float fTouchX = -cPixelToPositionY->y(CurrentPoint->x);
+      float fTouchY = -cPixelToPositionX->y(CurrentPoint->y);
        
       if(fTouchY > BOUNDS_TOP || fTouchY < BOUNDS_BOTTOM)
          return;

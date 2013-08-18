@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE88FD751674A91500DDB960 /* libModus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE88FD741674A91500DDB960 /* libModus.a */; };
+		690067E517C0CFAD00B091D5 /* GERenderingShaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 690067E417C0CFAD00B091D5 /* GERenderingShaders.mm */; };
+		690067EB17C0CFF500B091D5 /* hud.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067E717C0CFF500B091D5 /* hud.fsh */; };
+		690067EC17C0CFF500B091D5 /* hud.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067E817C0CFF500B091D5 /* hud.vsh */; };
+		690067ED17C0CFF500B091D5 /* text.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067E917C0CFF500B091D5 /* text.fsh */; };
+		690067EE17C0CFF500B091D5 /* text.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067EA17C0CFF500B091D5 /* text.vsh */; };
+		690067EF17C0D00900B091D5 /* hud.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067E717C0CFF500B091D5 /* hud.fsh */; };
+		690067F017C0D00900B091D5 /* hud.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067E817C0CFF500B091D5 /* hud.vsh */; };
+		690067F117C0D00900B091D5 /* text.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067E917C0CFF500B091D5 /* text.fsh */; };
+		690067F217C0D00900B091D5 /* text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067EA17C0CFF500B091D5 /* text.vsh */; };
+		6930863317C0C664004248EF /* libModus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6930863217C0C664004248EF /* libModus.a */; };
 		CEB852171668E77000DAE29C /* audio.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852161668E77000DAE29C /* audio.mm */; };
 		CEB8521A1668E7B700DAE29C /* SceneSample.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852191668E7B700DAE29C /* SceneSample.mm */; };
 		CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */; };
 		CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */; };
-		CEB852461668E87000DAE29C /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523B1668E87000DAE29C /* Texture2D.m */; };
 		CEB852471668E87000DAE29C /* GEDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523D1668E87000DAE29C /* GEDevice.mm */; };
 		CEB852481668E87000DAE29C /* GERendering.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523F1668E87000DAE29C /* GERendering.mm */; };
 		CEB852491668E87000DAE29C /* GERenderingObjects.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852411668E87000DAE29C /* GERenderingObjects.mm */; };
@@ -45,8 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690067E217C0CC8100B091D5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		690067E317C0CFAD00B091D5 /* GERenderingShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GERenderingShaders.h; path = ../rendering/GERenderingShaders.h; sourceTree = "<group>"; };
+		690067E417C0CFAD00B091D5 /* GERenderingShaders.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GERenderingShaders.mm; path = ../rendering/GERenderingShaders.mm; sourceTree = "<group>"; };
+		690067E717C0CFF500B091D5 /* hud.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = hud.fsh; path = ../rendering/shaders/hud.fsh; sourceTree = "<group>"; };
+		690067E817C0CFF500B091D5 /* hud.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = hud.vsh; path = ../rendering/shaders/hud.vsh; sourceTree = "<group>"; };
+		690067E917C0CFF500B091D5 /* text.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = text.fsh; path = ../rendering/shaders/text.fsh; sourceTree = "<group>"; };
+		690067EA17C0CFF500B091D5 /* text.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = text.vsh; path = ../rendering/shaders/text.vsh; sourceTree = "<group>"; };
+		6930863217C0C664004248EF /* libModus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libModus.a; path = ../../../lib/iOS/libModus.a; sourceTree = "<group>"; };
 		CE25611A16682CFC00611968 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CE88FD741674A91500DDB960 /* libModus.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libModus.a; path = ../../../lib/iOS/libModus.a; sourceTree = "<group>"; };
 		CEB852151668E77000DAE29C /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = audio.h; path = ../audio/audio.h; sourceTree = "<group>"; };
 		CEB852161668E77000DAE29C /* audio.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = audio.mm; path = ../audio/audio.mm; sourceTree = "<group>"; };
 		CEB852181668E7B700DAE29C /* SceneSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneSample.h; path = Scenes/SceneSample.h; sourceTree = "<group>"; };
@@ -72,8 +87,6 @@
 		CEB852341668E84A00DAE29C /* mxopenalsourcemanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxopenalsourcemanager.h; path = ../../../soundgen/OpenAL/mxopenalsourcemanager.h; sourceTree = "<group>"; };
 		CEB852361668E85200DAE29C /* mxsoundgenopenal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxsoundgenopenal.h; path = ../../../soundgen/OpenAL/mxsoundgenopenal.h; sourceTree = "<group>"; };
 		CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = mxsoundgenopenal.mm; path = ../../../soundgen/OpenAL/mxsoundgenopenal.mm; sourceTree = "<group>"; };
-		CEB8523A1668E87000DAE29C /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
-		CEB8523B1668E87000DAE29C /* Texture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture2D.m; sourceTree = "<group>"; };
 		CEB8523C1668E87000DAE29C /* GEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEDevice.h; path = ../rendering/GEDevice.h; sourceTree = "<group>"; };
 		CEB8523D1668E87000DAE29C /* GEDevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEDevice.mm; path = ../rendering/GEDevice.mm; sourceTree = "<group>"; };
 		CEB8523E1668E87000DAE29C /* GERendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GERendering.h; path = ../rendering/GERendering.h; sourceTree = "<group>"; };
@@ -127,13 +140,24 @@
 				CEE82F7016679399004FBB96 /* CoreGraphics.framework in Frameworks */,
 				CEE82F7216679399004FBB96 /* GLKit.framework in Frameworks */,
 				CEE82F7416679399004FBB96 /* OpenGLES.framework in Frameworks */,
-				CE88FD751674A91500DDB960 /* libModus.a in Frameworks */,
+				6930863317C0C664004248EF /* libModus.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		690067E617C0CFE800B091D5 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				690067E717C0CFF500B091D5 /* hud.fsh */,
+				690067E817C0CFF500B091D5 /* hud.vsh */,
+				690067E917C0CFF500B091D5 /* text.fsh */,
+				690067EA17C0CFF500B091D5 /* text.vsh */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 		CEB852141668E75F00DAE29C /* OpenAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +180,9 @@
 		CEB8521C1668E7E200DAE29C /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				CEB852391668E87000DAE29C /* externals */,
+				690067E617C0CFE800B091D5 /* shaders */,
+				690067E317C0CFAD00B091D5 /* GERenderingShaders.h */,
+				690067E417C0CFAD00B091D5 /* GERenderingShaders.mm */,
 				CEB8523C1668E87000DAE29C /* GEDevice.h */,
 				CEB8523D1668E87000DAE29C /* GEDevice.mm */,
 				CEB8523E1668E87000DAE29C /* GERendering.h */,
@@ -198,7 +224,7 @@
 		CEB8521E1668E7FC00DAE29C /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				CE88FD741674A91500DDB960 /* libModus.a */,
+				6930863217C0C664004248EF /* libModus.a */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -212,16 +238,6 @@
 				CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */,
 			);
 			name = soundgen;
-			sourceTree = "<group>";
-		};
-		CEB852391668E87000DAE29C /* externals */ = {
-			isa = PBXGroup;
-			children = (
-				CEB8523A1668E87000DAE29C /* Texture2D.h */,
-				CEB8523B1668E87000DAE29C /* Texture2D.m */,
-			);
-			name = externals;
-			path = ../rendering/externals;
 			sourceTree = "<group>";
 		};
 		CEB8524C1668E89200DAE29C /* Sprites */ = {
@@ -295,6 +311,7 @@
 		CEE82F7516679399004FBB96 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				690067E217C0CC8100B091D5 /* config.h */,
 				CEE82F7B16679399004FBB96 /* main.m */,
 				CE25611A16682CFC00611968 /* AppDelegate.h */,
 				CEE82F7F16679399004FBB96 /* AppDelegate.m */,
@@ -387,6 +404,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				690067EF17C0D00900B091D5 /* hud.fsh in Resources */,
+				690067F017C0D00900B091D5 /* hud.vsh in Resources */,
+				690067F117C0D00900B091D5 /* text.fsh in Resources */,
+				690067F217C0D00900B091D5 /* text.vsh in Resources */,
 				CEE82F7A16679399004FBB96 /* InfoPlist.strings in Resources */,
 				CEE82F8316679399004FBB96 /* iPhone.storyboard in Resources */,
 				CEE82F8616679399004FBB96 /* iPad.storyboard in Resources */,
@@ -419,12 +440,16 @@
 				CEB8521A1668E7B700DAE29C /* SceneSample.mm in Sources */,
 				CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */,
 				CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */,
-				CEB852461668E87000DAE29C /* Texture2D.m in Sources */,
 				CEB852471668E87000DAE29C /* GEDevice.mm in Sources */,
 				CEB852481668E87000DAE29C /* GERendering.mm in Sources */,
 				CEB852491668E87000DAE29C /* GERenderingObjects.mm in Sources */,
 				CEB8524A1668E87000DAE29C /* GEScene.mm in Sources */,
 				CEB8524B1668E87000DAE29C /* GEUtils.mm in Sources */,
+				690067E517C0CFAD00B091D5 /* GERenderingShaders.mm in Sources */,
+				690067EB17C0CFF500B091D5 /* hud.fsh in Sources */,
+				690067EC17C0CFF500B091D5 /* hud.vsh in Sources */,
+				690067ED17C0CFF500B091D5 /* text.fsh in Sources */,
+				690067EE17C0CFF500B091D5 /* text.vsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

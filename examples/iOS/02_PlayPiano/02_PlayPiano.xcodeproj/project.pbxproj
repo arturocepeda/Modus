@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		690067F617C0D62B00B091D5 /* GERenderingShaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 690067F517C0D62B00B091D5 /* GERenderingShaders.mm */; };
+		690067FC17C0D63C00B091D5 /* hud.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067F817C0D63C00B091D5 /* hud.fsh */; };
+		690067FD17C0D63C00B091D5 /* hud.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067F917C0D63C00B091D5 /* hud.vsh */; };
+		690067FE17C0D63C00B091D5 /* text.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067FA17C0D63C00B091D5 /* text.fsh */; };
+		690067FF17C0D63C00B091D5 /* text.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067FB17C0D63C00B091D5 /* text.vsh */; };
+		6900680017C0D64E00B091D5 /* hud.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067F817C0D63C00B091D5 /* hud.fsh */; };
+		6900680117C0D64E00B091D5 /* hud.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067F917C0D63C00B091D5 /* hud.vsh */; };
+		6900680217C0D64E00B091D5 /* text.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067FA17C0D63C00B091D5 /* text.fsh */; };
+		6900680317C0D64E00B091D5 /* text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067FB17C0D63C00B091D5 /* text.vsh */; };
+		6900680717C0DAE000B091D5 /* GEUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6900680617C0DAE000B091D5 /* GEUtils.mm */; };
 		CEA2D7C31669213F000BE572 /* SceneSample.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D7C21669213F000BE572 /* SceneSample.mm */; };
 		CEA2D7C61669229A000BE572 /* padlock_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D7C41669229A000BE572 /* padlock_closed.png */; };
 		CEA2D7C71669229A000BE572 /* padlock_open.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D7C51669229A000BE572 /* padlock_open.png */; };
@@ -16,12 +26,10 @@
 		CEB852321668E83100DAE29C /* libModus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB852311668E83100DAE29C /* libModus.a */; };
 		CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */; };
 		CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */; };
-		CEB852461668E87000DAE29C /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523B1668E87000DAE29C /* Texture2D.m */; };
 		CEB852471668E87000DAE29C /* GEDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523D1668E87000DAE29C /* GEDevice.mm */; };
 		CEB852481668E87000DAE29C /* GERendering.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523F1668E87000DAE29C /* GERendering.mm */; };
 		CEB852491668E87000DAE29C /* GERenderingObjects.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852411668E87000DAE29C /* GERenderingObjects.mm */; };
 		CEB8524A1668E87000DAE29C /* GEScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852431668E87000DAE29C /* GEScene.mm */; };
-		CEB8524B1668E87000DAE29C /* GEUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852451668E87000DAE29C /* GEUtils.mm */; };
 		CEB852501668E8C800DAE29C /* PianoAAC.msp in Resources */ = {isa = PBXBuildFile; fileRef = CEB8524F1668E8C800DAE29C /* PianoAAC.msp */; };
 		CEB852681668E90100DAE29C /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB852551668E90100DAE29C /* note.png */; };
 		CEB8526F1668E90100DAE29C /* pianokey_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB8525C1668E90100DAE29C /* pianokey_black.png */; };
@@ -45,6 +53,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		690067F417C0D62B00B091D5 /* GERenderingShaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GERenderingShaders.h; path = ../rendering/GERenderingShaders.h; sourceTree = "<group>"; };
+		690067F517C0D62B00B091D5 /* GERenderingShaders.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GERenderingShaders.mm; path = ../rendering/GERenderingShaders.mm; sourceTree = "<group>"; };
+		690067F817C0D63C00B091D5 /* hud.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = hud.fsh; path = ../rendering/shaders/hud.fsh; sourceTree = "<group>"; };
+		690067F917C0D63C00B091D5 /* hud.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = hud.vsh; path = ../rendering/shaders/hud.vsh; sourceTree = "<group>"; };
+		690067FA17C0D63C00B091D5 /* text.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = text.fsh; path = ../rendering/shaders/text.fsh; sourceTree = "<group>"; };
+		690067FB17C0D63C00B091D5 /* text.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = text.vsh; path = ../rendering/shaders/text.vsh; sourceTree = "<group>"; };
+		6900680417C0D66100B091D5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		6900680517C0DAE000B091D5 /* GEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEUtils.h; path = ../rendering/GEUtils.h; sourceTree = "<group>"; };
+		6900680617C0DAE000B091D5 /* GEUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEUtils.mm; path = ../rendering/GEUtils.mm; sourceTree = "<group>"; };
 		CE25611A16682CFC00611968 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEA2D7C11669213F000BE572 /* SceneSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneSample.h; path = Scenes/SceneSample.h; sourceTree = "<group>"; };
 		CEA2D7C21669213F000BE572 /* SceneSample.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SceneSample.mm; path = Scenes/SceneSample.mm; sourceTree = "<group>"; };
@@ -76,8 +93,6 @@
 		CEB852341668E84A00DAE29C /* mxopenalsourcemanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxopenalsourcemanager.h; path = ../../../soundgen/OpenAL/mxopenalsourcemanager.h; sourceTree = "<group>"; };
 		CEB852361668E85200DAE29C /* mxsoundgenopenal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxsoundgenopenal.h; path = ../../../soundgen/OpenAL/mxsoundgenopenal.h; sourceTree = "<group>"; };
 		CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = mxsoundgenopenal.mm; path = ../../../soundgen/OpenAL/mxsoundgenopenal.mm; sourceTree = "<group>"; };
-		CEB8523A1668E87000DAE29C /* Texture2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Texture2D.h; sourceTree = "<group>"; };
-		CEB8523B1668E87000DAE29C /* Texture2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Texture2D.m; sourceTree = "<group>"; };
 		CEB8523C1668E87000DAE29C /* GEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEDevice.h; path = ../rendering/GEDevice.h; sourceTree = "<group>"; };
 		CEB8523D1668E87000DAE29C /* GEDevice.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEDevice.mm; path = ../rendering/GEDevice.mm; sourceTree = "<group>"; };
 		CEB8523E1668E87000DAE29C /* GERendering.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GERendering.h; path = ../rendering/GERendering.h; sourceTree = "<group>"; };
@@ -86,8 +101,6 @@
 		CEB852411668E87000DAE29C /* GERenderingObjects.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GERenderingObjects.mm; path = ../rendering/GERenderingObjects.mm; sourceTree = "<group>"; };
 		CEB852421668E87000DAE29C /* GEScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEScene.h; path = ../rendering/GEScene.h; sourceTree = "<group>"; };
 		CEB852431668E87000DAE29C /* GEScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEScene.mm; path = ../rendering/GEScene.mm; sourceTree = "<group>"; };
-		CEB852441668E87000DAE29C /* GEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEUtils.h; path = ../rendering/GEUtils.h; sourceTree = "<group>"; };
-		CEB852451668E87000DAE29C /* GEUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEUtils.mm; path = ../rendering/GEUtils.mm; sourceTree = "<group>"; };
 		CEB8524F1668E8C800DAE29C /* PianoAAC.msp */ = {isa = PBXFileReference; lastKnownFileType = file; name = PianoAAC.msp; path = ../../common/instruments/PianoAAC.msp; sourceTree = "<group>"; };
 		CEB852551668E90100DAE29C /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note.png; path = ../../common/images/note.png; sourceTree = "<group>"; };
 		CEB8525C1668E90100DAE29C /* pianokey_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pianokey_black.png; path = ../../common/images/pianokey_black.png; sourceTree = "<group>"; };
@@ -134,6 +147,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		690067F717C0D62F00B091D5 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				690067F817C0D63C00B091D5 /* hud.fsh */,
+				690067F917C0D63C00B091D5 /* hud.vsh */,
+				690067FA17C0D63C00B091D5 /* text.fsh */,
+				690067FB17C0D63C00B091D5 /* text.vsh */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 		CEB852141668E75F00DAE29C /* OpenAL */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,7 +180,11 @@
 		CEB8521C1668E7E200DAE29C /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
-				CEB852391668E87000DAE29C /* externals */,
+				690067F717C0D62F00B091D5 /* shaders */,
+				6900680517C0DAE000B091D5 /* GEUtils.h */,
+				6900680617C0DAE000B091D5 /* GEUtils.mm */,
+				690067F417C0D62B00B091D5 /* GERenderingShaders.h */,
+				690067F517C0D62B00B091D5 /* GERenderingShaders.mm */,
 				CEB8523C1668E87000DAE29C /* GEDevice.h */,
 				CEB8523D1668E87000DAE29C /* GEDevice.mm */,
 				CEB8523E1668E87000DAE29C /* GERendering.h */,
@@ -165,8 +193,6 @@
 				CEB852411668E87000DAE29C /* GERenderingObjects.mm */,
 				CEB852421668E87000DAE29C /* GEScene.h */,
 				CEB852431668E87000DAE29C /* GEScene.mm */,
-				CEB852441668E87000DAE29C /* GEUtils.h */,
-				CEB852451668E87000DAE29C /* GEUtils.mm */,
 			);
 			name = Rendering;
 			sourceTree = "<group>";
@@ -212,16 +238,6 @@
 				CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */,
 			);
 			name = soundgen;
-			sourceTree = "<group>";
-		};
-		CEB852391668E87000DAE29C /* externals */ = {
-			isa = PBXGroup;
-			children = (
-				CEB8523A1668E87000DAE29C /* Texture2D.h */,
-				CEB8523B1668E87000DAE29C /* Texture2D.m */,
-			);
-			name = externals;
-			path = ../rendering/externals;
 			sourceTree = "<group>";
 		};
 		CEB8524C1668E89200DAE29C /* Sprites */ = {
@@ -288,6 +304,7 @@
 		CEE82F7516679399004FBB96 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				6900680417C0D66100B091D5 /* config.h */,
 				CEE82F7B16679399004FBB96 /* main.m */,
 				CE25611A16682CFC00611968 /* AppDelegate.h */,
 				CEE82F7F16679399004FBB96 /* AppDelegate.m */,
@@ -379,6 +396,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6900680017C0D64E00B091D5 /* hud.fsh in Resources */,
+				6900680117C0D64E00B091D5 /* hud.vsh in Resources */,
+				6900680217C0D64E00B091D5 /* text.fsh in Resources */,
+				6900680317C0D64E00B091D5 /* text.vsh in Resources */,
 				CEE82F7A16679399004FBB96 /* InfoPlist.strings in Resources */,
 				CEE82F8316679399004FBB96 /* iPhone.storyboard in Resources */,
 				CEE82F8616679399004FBB96 /* iPad.storyboard in Resources */,
@@ -399,6 +420,7 @@
 
 
 
+
 /* Begin PBXSourcesBuildPhase section */
 		CEE82F6316679399004FBB96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -410,13 +432,17 @@
 				CEB852171668E77000DAE29C /* audio.mm in Sources */,
 				CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */,
 				CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */,
-				CEB852461668E87000DAE29C /* Texture2D.m in Sources */,
 				CEB852471668E87000DAE29C /* GEDevice.mm in Sources */,
 				CEB852481668E87000DAE29C /* GERendering.mm in Sources */,
 				CEB852491668E87000DAE29C /* GERenderingObjects.mm in Sources */,
 				CEB8524A1668E87000DAE29C /* GEScene.mm in Sources */,
-				CEB8524B1668E87000DAE29C /* GEUtils.mm in Sources */,
 				CEA2D7C31669213F000BE572 /* SceneSample.mm in Sources */,
+				690067F617C0D62B00B091D5 /* GERenderingShaders.mm in Sources */,
+				690067FC17C0D63C00B091D5 /* hud.fsh in Sources */,
+				690067FD17C0D63C00B091D5 /* hud.vsh in Sources */,
+				690067FE17C0D63C00B091D5 /* text.fsh in Sources */,
+				690067FF17C0D63C00B091D5 /* text.vsh in Sources */,
+				6900680717C0DAE000B091D5 /* GEUtils.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

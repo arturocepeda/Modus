@@ -46,22 +46,4 @@ public:
 	double x(double y);
 };
 
-
-//
-//  Some simple numerical functions
-//
-int max(int a, int b);
-int min(int a, int b);
-
-float max(float a, float b);
-float min(float a, float b);
-
-int round(float Value);
-
-
-//
-//  Random functions
-//
-int random(int Min, int Max);
-
 #endif

@@ -55,6 +55,7 @@ class GESceneSample : public GEScene
 {
 private:
    // sprites
+   GESprite* cSpriteUnused;
    GESprite* cSpriteKeyWhite;
    GESprite* cSpriteKeyBlack;
    GESprite* cSpriteKeyWhitePressed;
@@ -70,7 +71,7 @@ private:
    // textures
    struct
    {
-      enum {KeyWhite, KeyBlack, KeyWhitePressed, KeyBlackPressed, PedalOn, PedalOff, 
+      enum {KeyWhite, KeyBlack, KeyWhitePressed, KeyBlackPressed, PedalOn, PedalOff,
             PadlockOpen, PadlockClosed, Loading};      
    } 
    Textures;

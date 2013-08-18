@@ -2,7 +2,7 @@
 //////////////////////////////////////////////////////////////////
 //
 //  Arturo Cepeda Pérez
-//  Modus - C++ Music Library
+//  iOS Game Engine
 //
 //  Sample application
 //
@@ -21,8 +21,6 @@
 
 @interface ViewController () <UIAccelerometerDelegate>
 {
-   GLuint _program;
-   
    // Rendering system
    GERendering* cRender;
    
@@ -51,16 +49,16 @@
 
 -(void) dealloc
 {
-    [_context release];
-    [_effect release];
-    [super dealloc];
+   [_context release];
+   [_effect release];
+   [super dealloc];
 }
 
 -(void) viewDidLoad
 {
    [super viewDidLoad];
     
-   self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+   self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
 
    if(!self.context) 
        NSLog(@"Failed to create ES context");
@@ -93,9 +91,10 @@
    
    // initialize rendering system
    cRender = new GERendering(self.context);
+   cRender->setBackgroundColor(0.5f, 0.5f, 1.0f);
    
    // create scenes
-   cScenes[0] = (GEScene*)new GESceneSample(cRender, false);
+   cScenes[0] = (GEScene*)new GESceneSample(cRender, NULL);
    // ...
    // ...
    
@@ -109,22 +108,19 @@
    [super viewDidUnload];
    
    [EAGLContext setCurrentContext:self.context];
-   
-   if(_program) 
-   {
-      glDeleteProgram(_program);
-      _program = 0;
-   }
     
    if([EAGLContext currentContext] == self.context) 
       [EAGLContext setCurrentContext:nil];
 
    self.context = nil;
+   
+   // release rendering system
+   delete cRender;
 }
 
 -(void) didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
+   [super didReceiveMemoryWarning];
 }
 
 -(BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

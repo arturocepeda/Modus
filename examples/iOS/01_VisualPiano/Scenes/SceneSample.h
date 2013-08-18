@@ -44,6 +44,7 @@ class GESceneSample : public GEScene
 {
 private:
    // sprites
+   GESprite* cSpriteUnused;
    GESprite* cSpriteKeyWhite;
    GESprite* cSpriteKeyBlack;
    GESprite* cSpriteKeyPress;  

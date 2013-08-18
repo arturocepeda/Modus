@@ -1,0 +1,384 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE461A7F16749FF300913867 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE461A7E16749FF300913867 /* Foundation.framework */; };
+		CE461A9E1674A03F00913867 /* mband.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A8D1674A03F00913867 /* mband.h */; };
+		CE461A9F1674A03F00913867 /* mchords.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A8E1674A03F00913867 /* mchords.h */; };
+		CE461AA01674A03F00913867 /* mconstants.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A8F1674A03F00913867 /* mconstants.h */; };
+		CE461AA11674A03F00913867 /* mharmonypattern.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A901674A03F00913867 /* mharmonypattern.h */; };
+		CE461AA21674A03F00913867 /* minstrument.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A911674A03F00913867 /* minstrument.h */; };
+		CE461AA31674A03F00913867 /* mlist.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A921674A03F00913867 /* mlist.h */; };
+		CE461AA41674A03F00913867 /* mmidireceiver.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A931674A03F00913867 /* mmidireceiver.h */; };
+		CE461AA51674A03F00913867 /* modus.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A941674A03F00913867 /* modus.h */; };
+		CE461AA61674A03F00913867 /* mscalepattern.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A951674A03F00913867 /* mscalepattern.h */; };
+		CE461AA71674A03F00913867 /* mscales.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A961674A03F00913867 /* mscales.h */; };
+		CE461AA81674A03F00913867 /* mscore.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A971674A03F00913867 /* mscore.h */; };
+		CE461AA91674A03F00913867 /* mscript.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A981674A03F00913867 /* mscript.h */; };
+		CE461AAA1674A03F00913867 /* msong.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A991674A03F00913867 /* msong.h */; };
+		CE461AAB1674A03F00913867 /* msoundgen.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A9A1674A03F00913867 /* msoundgen.h */; };
+		CE461AAC1674A03F00913867 /* mtimer.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A9B1674A03F00913867 /* mtimer.h */; };
+		CE461AAD1674A03F00913867 /* mtypes.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A9C1674A03F00913867 /* mtypes.h */; };
+		CE461AAE1674A03F00913867 /* mutils.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A9D1674A03F00913867 /* mutils.h */; };
+		CE461ABD1674A04800913867 /* mband.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AAF1674A04800913867 /* mband.cpp */; };
+		CE461ABE1674A04800913867 /* mchords.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB01674A04800913867 /* mchords.cpp */; };
+		CE461ABF1674A04800913867 /* mharmonypattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB11674A04800913867 /* mharmonypattern.cpp */; };
+		CE461AC01674A04800913867 /* minstrument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB21674A04800913867 /* minstrument.cpp */; };
+		CE461AC11674A04800913867 /* mmidireceiver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB31674A04800913867 /* mmidireceiver.cpp */; };
+		CE461AC21674A04800913867 /* mscalepattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB41674A04800913867 /* mscalepattern.cpp */; };
+		CE461AC31674A04800913867 /* mscales.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB51674A04800913867 /* mscales.cpp */; };
+		CE461AC41674A04800913867 /* mscore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB61674A04800913867 /* mscore.cpp */; };
+		CE461AC51674A04800913867 /* mscript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB71674A04800913867 /* mscript.cpp */; };
+		CE461AC61674A04800913867 /* msong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB81674A04800913867 /* msong.cpp */; };
+		CE461AC71674A04800913867 /* msoundgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461AB91674A04800913867 /* msoundgen.cpp */; };
+		CE461AC81674A04800913867 /* mtimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461ABA1674A04800913867 /* mtimer.cpp */; };
+		CE461AC91674A04800913867 /* mtypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461ABB1674A04800913867 /* mtypes.cpp */; };
+		CE461ACA1674A04800913867 /* mutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE461ABC1674A04800913867 /* mutils.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE461A7B16749FF300913867 /* libModus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModus.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE461A7E16749FF300913867 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CE461A8D1674A03F00913867 /* mband.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mband.h; path = ../../../../include/mband.h; sourceTree = "<group>"; };
+		CE461A8E1674A03F00913867 /* mchords.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mchords.h; path = ../../../../include/mchords.h; sourceTree = "<group>"; };
+		CE461A8F1674A03F00913867 /* mconstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mconstants.h; path = ../../../../include/mconstants.h; sourceTree = "<group>"; };
+		CE461A901674A03F00913867 /* mharmonypattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mharmonypattern.h; path = ../../../../include/mharmonypattern.h; sourceTree = "<group>"; };
+		CE461A911674A03F00913867 /* minstrument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = minstrument.h; path = ../../../../include/minstrument.h; sourceTree = "<group>"; };
+		CE461A921674A03F00913867 /* mlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mlist.h; path = ../../../../include/mlist.h; sourceTree = "<group>"; };
+		CE461A931674A03F00913867 /* mmidireceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mmidireceiver.h; path = ../../../../include/mmidireceiver.h; sourceTree = "<group>"; };
+		CE461A941674A03F00913867 /* modus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = modus.h; path = ../../../../include/modus.h; sourceTree = "<group>"; };
+		CE461A951674A03F00913867 /* mscalepattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mscalepattern.h; path = ../../../../include/mscalepattern.h; sourceTree = "<group>"; };
+		CE461A961674A03F00913867 /* mscales.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mscales.h; path = ../../../../include/mscales.h; sourceTree = "<group>"; };
+		CE461A971674A03F00913867 /* mscore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mscore.h; path = ../../../../include/mscore.h; sourceTree = "<group>"; };
+		CE461A981674A03F00913867 /* mscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mscript.h; path = ../../../../include/mscript.h; sourceTree = "<group>"; };
+		CE461A991674A03F00913867 /* msong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msong.h; path = ../../../../include/msong.h; sourceTree = "<group>"; };
+		CE461A9A1674A03F00913867 /* msoundgen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msoundgen.h; path = ../../../../include/msoundgen.h; sourceTree = "<group>"; };
+		CE461A9B1674A03F00913867 /* mtimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mtimer.h; path = ../../../../include/mtimer.h; sourceTree = "<group>"; };
+		CE461A9C1674A03F00913867 /* mtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mtypes.h; path = ../../../../include/mtypes.h; sourceTree = "<group>"; };
+		CE461A9D1674A03F00913867 /* mutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mutils.h; path = ../../../../include/mutils.h; sourceTree = "<group>"; };
+		CE461AAF1674A04800913867 /* mband.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mband.cpp; path = ../../../../src/mband.cpp; sourceTree = "<group>"; };
+		CE461AB01674A04800913867 /* mchords.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mchords.cpp; path = ../../../../src/mchords.cpp; sourceTree = "<group>"; };
+		CE461AB11674A04800913867 /* mharmonypattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mharmonypattern.cpp; path = ../../../../src/mharmonypattern.cpp; sourceTree = "<group>"; };
+		CE461AB21674A04800913867 /* minstrument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = minstrument.cpp; path = ../../../../src/minstrument.cpp; sourceTree = "<group>"; };
+		CE461AB31674A04800913867 /* mmidireceiver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mmidireceiver.cpp; path = ../../../../src/mmidireceiver.cpp; sourceTree = "<group>"; };
+		CE461AB41674A04800913867 /* mscalepattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mscalepattern.cpp; path = ../../../../src/mscalepattern.cpp; sourceTree = "<group>"; };
+		CE461AB51674A04800913867 /* mscales.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mscales.cpp; path = ../../../../src/mscales.cpp; sourceTree = "<group>"; };
+		CE461AB61674A04800913867 /* mscore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mscore.cpp; path = ../../../../src/mscore.cpp; sourceTree = "<group>"; };
+		CE461AB71674A04800913867 /* mscript.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mscript.cpp; path = ../../../../src/mscript.cpp; sourceTree = "<group>"; };
+		CE461AB81674A04800913867 /* msong.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = msong.cpp; path = ../../../../src/msong.cpp; sourceTree = "<group>"; };
+		CE461AB91674A04800913867 /* msoundgen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = msoundgen.cpp; path = ../../../../src/msoundgen.cpp; sourceTree = "<group>"; };
+		CE461ABA1674A04800913867 /* mtimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mtimer.cpp; path = ../../../../src/mtimer.cpp; sourceTree = "<group>"; };
+		CE461ABB1674A04800913867 /* mtypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mtypes.cpp; path = ../../../../src/mtypes.cpp; sourceTree = "<group>"; };
+		CE461ABC1674A04800913867 /* mutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mutils.cpp; path = ../../../../src/mutils.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE461A7816749FF300913867 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE461A7F16749FF300913867 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE461A7016749FF200913867 = {
+			isa = PBXGroup;
+			children = (
+				CE461A8016749FF300913867 /* Modus */,
+				CE461A7D16749FF300913867 /* Frameworks */,
+				CE461A7C16749FF300913867 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE461A7C16749FF300913867 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE461A7B16749FF300913867 /* libModus.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE461A7D16749FF300913867 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE461A7E16749FF300913867 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE461A8016749FF300913867 /* Modus */ = {
+			isa = PBXGroup;
+			children = (
+				CE461A8C1674A01700913867 /* include */,
+				CE461A8B1674A01000913867 /* src */,
+			);
+			path = Modus;
+			sourceTree = "<group>";
+		};
+		CE461A8B1674A01000913867 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				CE461AAF1674A04800913867 /* mband.cpp */,
+				CE461AB01674A04800913867 /* mchords.cpp */,
+				CE461AB11674A04800913867 /* mharmonypattern.cpp */,
+				CE461AB21674A04800913867 /* minstrument.cpp */,
+				CE461AB31674A04800913867 /* mmidireceiver.cpp */,
+				CE461AB41674A04800913867 /* mscalepattern.cpp */,
+				CE461AB51674A04800913867 /* mscales.cpp */,
+				CE461AB61674A04800913867 /* mscore.cpp */,
+				CE461AB71674A04800913867 /* mscript.cpp */,
+				CE461AB81674A04800913867 /* msong.cpp */,
+				CE461AB91674A04800913867 /* msoundgen.cpp */,
+				CE461ABA1674A04800913867 /* mtimer.cpp */,
+				CE461ABB1674A04800913867 /* mtypes.cpp */,
+				CE461ABC1674A04800913867 /* mutils.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		CE461A8C1674A01700913867 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				CE461A8D1674A03F00913867 /* mband.h */,
+				CE461A8E1674A03F00913867 /* mchords.h */,
+				CE461A8F1674A03F00913867 /* mconstants.h */,
+				CE461A901674A03F00913867 /* mharmonypattern.h */,
+				CE461A911674A03F00913867 /* minstrument.h */,
+				CE461A921674A03F00913867 /* mlist.h */,
+				CE461A931674A03F00913867 /* mmidireceiver.h */,
+				CE461A941674A03F00913867 /* modus.h */,
+				CE461A951674A03F00913867 /* mscalepattern.h */,
+				CE461A961674A03F00913867 /* mscales.h */,
+				CE461A971674A03F00913867 /* mscore.h */,
+				CE461A981674A03F00913867 /* mscript.h */,
+				CE461A991674A03F00913867 /* msong.h */,
+				CE461A9A1674A03F00913867 /* msoundgen.h */,
+				CE461A9B1674A03F00913867 /* mtimer.h */,
+				CE461A9C1674A03F00913867 /* mtypes.h */,
+				CE461A9D1674A03F00913867 /* mutils.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CE461A7916749FF300913867 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE461A9E1674A03F00913867 /* mband.h in Headers */,
+				CE461A9F1674A03F00913867 /* mchords.h in Headers */,
+				CE461AA01674A03F00913867 /* mconstants.h in Headers */,
+				CE461AA11674A03F00913867 /* mharmonypattern.h in Headers */,
+				CE461AA21674A03F00913867 /* minstrument.h in Headers */,
+				CE461AA31674A03F00913867 /* mlist.h in Headers */,
+				CE461AA41674A03F00913867 /* mmidireceiver.h in Headers */,
+				CE461AA51674A03F00913867 /* modus.h in Headers */,
+				CE461AA61674A03F00913867 /* mscalepattern.h in Headers */,
+				CE461AA71674A03F00913867 /* mscales.h in Headers */,
+				CE461AA81674A03F00913867 /* mscore.h in Headers */,
+				CE461AA91674A03F00913867 /* mscript.h in Headers */,
+				CE461AAA1674A03F00913867 /* msong.h in Headers */,
+				CE461AAB1674A03F00913867 /* msoundgen.h in Headers */,
+				CE461AAC1674A03F00913867 /* mtimer.h in Headers */,
+				CE461AAD1674A03F00913867 /* mtypes.h in Headers */,
+				CE461AAE1674A03F00913867 /* mutils.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CE461A7A16749FF300913867 /* Modus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE461A8816749FF300913867 /* Build configuration list for PBXNativeTarget "Modus" */;
+			buildPhases = (
+				CE461A7716749FF300913867 /* Sources */,
+				CE461A7816749FF300913867 /* Frameworks */,
+				CE461A7916749FF300913867 /* Headers */,
+				6930863117C0C530004248EF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Modus;
+			productName = Modus;
+			productReference = CE461A7B16749FF300913867 /* libModus.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE461A7216749FF200913867 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = CE461A7516749FF200913867 /* Build configuration list for PBXProject "Modus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CE461A7016749FF200913867;
+			productRefGroup = CE461A7C16749FF300913867 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE461A7A16749FF300913867 /* Modus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6930863117C0C530004248EF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -o pipefail\n\nSDK_VERSION=$(echo ${SDK_NAME} | grep -o '.\\{3\\}$')\n\nif [ ${PLATFORM_NAME} = \"iphonesimulator\" ]\nthen\nOTHER_SDK_TO_BUILD=iphoneos${SDK_VERSION}\nelse\nOTHER_SDK_TO_BUILD=iphonesimulator${SDK_VERSION}\nfi\n\nif [ \"true\" != ${ALREADYINVOKED:-false} ]\nthen\nexport ALREADYINVOKED=\"true\"\nxcodebuild -configuration \"${CONFIGURATION}\" -project \"${PROJECT_NAME}.xcodeproj\" -target \"${TARGET_NAME}\" -sdk \"${OTHER_SDK_TO_BUILD}\" ${ACTION} RUN_CLANG_STATIC_ANALYZER=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\"\nACTION=\"build\"\nCURRENTCONFIG_DEVICE_DIR=${SYMROOT}/${CONFIGURATION}-iphoneos\nCURRENTCONFIG_SIMULATOR_DIR=${SYMROOT}/${CONFIGURATION}-iphonesimulator\nCREATING_UNIVERSAL_DIR=${SYMROOT}/${CONFIGURATION}-universal\nrm -rf \"${CREATING_UNIVERSAL_DIR}\"\nmkdir \"${CREATING_UNIVERSAL_DIR}\"\nxcrun -sdk iphoneos lipo -create -output \"${CREATING_UNIVERSAL_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_DEVICE_DIR}/${EXECUTABLE_NAME}\" \"${CURRENTCONFIG_SIMULATOR_DIR}/${EXECUTABLE_NAME}\"\nfi\n\nopen \"${CREATING_UNIVERSAL_DIR}\"";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE461A7716749FF300913867 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE461ABD1674A04800913867 /* mband.cpp in Sources */,
+				CE461ABE1674A04800913867 /* mchords.cpp in Sources */,
+				CE461ABF1674A04800913867 /* mharmonypattern.cpp in Sources */,
+				CE461AC01674A04800913867 /* minstrument.cpp in Sources */,
+				CE461AC11674A04800913867 /* mmidireceiver.cpp in Sources */,
+				CE461AC21674A04800913867 /* mscalepattern.cpp in Sources */,
+				CE461AC31674A04800913867 /* mscales.cpp in Sources */,
+				CE461AC41674A04800913867 /* mscore.cpp in Sources */,
+				CE461AC51674A04800913867 /* mscript.cpp in Sources */,
+				CE461AC61674A04800913867 /* msong.cpp in Sources */,
+				CE461AC71674A04800913867 /* msoundgen.cpp in Sources */,
+				CE461AC81674A04800913867 /* mtimer.cpp in Sources */,
+				CE461AC91674A04800913867 /* mtypes.cpp in Sources */,
+				CE461ACA1674A04800913867 /* mutils.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CE461A8616749FF300913867 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CE461A8716749FF300913867 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE461A8916749FF300913867 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Modus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Modus/Modus-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE461A8A16749FF300913867 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Modus.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Modus/Modus-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE461A7516749FF200913867 /* Build configuration list for PBXProject "Modus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE461A8616749FF300913867 /* Debug */,
+				CE461A8716749FF300913867 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE461A8816749FF300913867 /* Build configuration list for PBXNativeTarget "Modus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE461A8916749FF300913867 /* Debug */,
+				CE461A8A16749FF300913867 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE461A7216749FF200913867 /* Project object */;
+}

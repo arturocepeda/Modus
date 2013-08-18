@@ -15,11 +15,8 @@
 #define _GERENDERINGOBJECTS_H_
 
 #include "GEDevice.h"
-#include "Texture2D.h"
 
-#include <OpenGLES/EAGL.h>
-#include <OpenGLES/ES1/gl.h>
-#include <OpenGLES/ES1/glext.h>
+#include <GLKit/GLKit.h>
 
 #define ZNEAR     0.1f
 #define ZFAR      1000.0f
@@ -28,22 +25,25 @@
 #define DEG2RAD   57.2958f    // (180/PI)
 
 
+//
+//  GEColor
+//
 struct GEColor
 {
    float R;
    float G;
    float B;
-
+   
    GEColor()
    {
       set(1.0f, 1.0f, 1.0f);
    }
-
+   
    GEColor(float cR, float cG, float cB)
    {
       set(cR, cG, cB);
    }
-
+   
    void set(float cR, float cG, float cB)
    {
       R = cR;
@@ -53,22 +53,25 @@ struct GEColor
 };
 
 
+//
+//  GEVector
+//
 struct GEVector
 {
    float X;
    float Y;
    float Z;
-
+   
    GEVector()
    {
       set(0.0f, 0.0f, 0.0f);
    }
-
+   
    GEVector(float vX, float vY, float vZ)
    {
       set(vX, vY, vZ);
    }
-
+   
    void set(float vX, float vY, float vZ)
    {
       X = vX;
@@ -81,7 +84,17 @@ struct GEVector
       return GEVector(X + vVector.X, Y + vVector.Y, Z + vVector.Z);
    }
    
+   const GEVector operator +=(const GEVector& vVector)
+   {
+      return GEVector(X + vVector.X, Y + vVector.Y, Z + vVector.Z);
+   }
+   
    const GEVector operator -(const GEVector& vVector)
+   {
+      return GEVector(X - vVector.X, Y - vVector.Y, Z - vVector.Z);
+   }
+
+   const GEVector operator -=(const GEVector& vVector)
    {
       return GEVector(X - vVector.X, Y - vVector.Y, Z - vVector.Z);
    }
@@ -108,6 +121,20 @@ struct GEVector
 };
 
 
+//
+//  GELight
+//
+struct GELight
+{
+   GEVector Position;
+   GEColor Color;
+   float Intensity;
+};
+
+
+//
+//  GETextureSize
+//
 struct GETextureSize
 {
    unsigned int Width;
@@ -115,6 +142,61 @@ struct GETextureSize
 };
 
 
+//
+//  Shader uniforms
+//
+struct
+{
+   enum
+   {
+      ModelViewProjection, 
+      ModelView,
+      Normal,
+      ObjectColor,
+      Texture0,
+      
+      Count
+   };
+} 
+GEUniforms;
+
+
+//
+//  Vertex attributes
+//
+struct
+{
+   enum
+   {
+      Position,
+      TextureCoord0,
+      Normal,
+      
+      Count
+   };
+}
+GEVertexAttributes;
+
+
+//
+//  Shader programs
+//
+struct 
+{
+   enum
+   {
+      HUD,
+      Text,
+      
+      Count
+   };
+}
+GEPrograms;
+
+
+//
+//  GERenderingObject
+//
 class GERenderingObject
 {
 protected:
@@ -143,25 +225,28 @@ public:
 };
 
 
-class GECamera : public GERenderingObject
-{
-public:
-   GECamera();
-   ~GECamera();
-   
-   void lookAt(float X, float Y, float Z);
-   void lookAt(const GEVector& LookAt);
-};
 
-
+//
+//  GERenderingObjectVisible
+//
 class GERenderingObjectVisible : public GERenderingObject
 {
 protected:
-   GEColor cColor;
+   unsigned int iNumVertices;
+   
    float fOpacity;
    bool bVisible;
+   GEColor cColor;
+   GLuint iTexture;
    
-   void loadTexture(GLuint iTexture, NSString* sName);
+   // vertex attributes pointers
+   float* fVertex;
+   float* fNormals;
+   float* fTextureCoordinate;
+   
+   // vertex array and vertex buffers
+   GLuint iVertexArray;
+   GLuint iVertexBuffers[GEVertexAttributes.Count];
    
 public:
    void show();
@@ -169,68 +254,47 @@ public:
    
    virtual void render() = 0;
    
+   void getModelMatrix(GLKMatrix4* ModelMatrix);
+   void getColor(GEColor* Color);
    float getOpacity();
-   bool getVisible(); 
-   
+   bool getVisible();
+   GLuint getTexture();
+      
    void setColor(float R, float G, float B);
    void setColor(const GEColor& Color);
    void setOpacity(float Opacity);
    void setVisible(bool Visible);
+   void setTexture(GLuint Texture);
 };
 
 
-class GEMesh : public GERenderingObjectVisible
-{
-private:
-   unsigned int iNumVertices;
-   float* fVertex;
-   float* fNormals;
-   
-   GLuint tTexture;
-   float* fTextureCoordinate;
-   
-   GEVector vCenter;
-   
-public:
-   GEMesh();
-   ~GEMesh();
 
-   void loadFromHeader(unsigned int NumVertices, float* Vertex, float* Normals);
-   void loadFromHeader(unsigned int NumVertices, float* Vertex, float* Normals, 
-                       GLuint Texture, float* TextureCoordinate);
-   void unload();
-
-   void render();
-};
-
-
+//
+//  GESprite
+//
 class GESprite : public GERenderingObjectVisible
 {
-private:
-   GLuint tTexture;
-   GEVector vCenter;   
-   float fTextureCoordinates[8];
-
 public:
-   GESprite(GLuint Texture, const GETextureSize& TextureSize);
+   GESprite();
    ~GESprite();
 
    void loadFromFile(const char* Filename);
    void unload();
 
    void render();
-
+   
    void setCenter(float X, float Y, float Z);
    void setTextureCoordinates(float Ax, float Ay, float Bx, float By,
                               float Cx, float Cy, float Dx, float Dy);
 };
 
 
+//
+//  GELabel
+//
 class GELabel : public GERenderingObjectVisible
 {
 private:
-   Texture2D* tTexture;
-   
    NSString* sText;
    NSString* sFont;
    UITextAlignment tAligment;
@@ -239,8 +303,11 @@ private:
    unsigned int iWidth;
    unsigned int iHeight;
    
-   void create();
-   void release();
+   float fMaxS;
+   float fMaxT;
+   
+   void createTexture();
+   void releaseTexture();
    
 public:
    GELabel(NSString* Text, NSString* FontName, float FontSize, UITextAlignment TextAligment,
@@ -251,5 +318,6 @@ public:
    
    void setText(NSString* Text);
 };
+
 
 #endif
