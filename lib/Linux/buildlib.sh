@@ -2,11 +2,11 @@
 cp ./../../src/*.* ./
 cp ./../../include/*.* ./
 
-g++ -std=c++11 -w -c *.cpp
+g++ -std=c++0x -w -c *.cpp
 ar rvs modus.a *.o
 
-rm *.o
-rm *.cpp
-rm *.h
-rm *.*~
+rm -f *.o
+rm -f *.cpp
+rm -f *.h
+rm -f *.*~
 
