@@ -49,7 +49,7 @@ class MCList
 protected:
     std::vector<EntryType> sEntry;
 
-    int readScriptValue(char* sLine, char* sField)
+    int readScriptValue(char* sLine, const char* sField)
     {
         char* sSegment = strstr(sLine, sField);
 
