@@ -39,13 +39,11 @@
 //  CLine
 //
 CLine::CLine(double x0, double y0, double x1, double y1)
+    : Dx(x1 - x0)
+    , Dy(y1 - y0)
+    , vertical(false)
+    , horizontal(false)
 {
-    Dx = x1 - x0;
-    Dy = y1 - y0;
-
-    vertical = false;
-    horizontal = false;
-
     if(Dx == 0.0)
     {
         vertical = true;

@@ -210,7 +210,7 @@ public:
  *  @brief Abstract class intended to provide an interface to create sound generators that work with
  *         digital audio samples. This particular kind of audio sound generator utilizes two real audio
  *         channels per instrument channel so that each time a note is released, it is referenced from
- *         the secondary channel and faded out whereas the primary channel is set free immediately
+ *         the secondary channel and faded out whereas the primary channel is immediately set free
  */
 class MCSoundGenAudioDoubleChannel : public MCSoundGenAudio
 {

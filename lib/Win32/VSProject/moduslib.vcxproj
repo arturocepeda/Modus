@@ -22,6 +22,7 @@
     <ClCompile Include="..\..\..\src\mscript.cpp" />
     <ClCompile Include="..\..\..\src\msong.cpp" />
     <ClCompile Include="..\..\..\src\msoundgen.cpp" />
+    <ClCompile Include="..\..\..\src\mstringinstrument.cpp" />
     <ClCompile Include="..\..\..\src\mtimer.cpp" />
     <ClCompile Include="..\..\..\src\mtypes.cpp" />
     <ClCompile Include="..\..\..\src\mutils.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="..\..\..\include\mscript.h" />
     <ClInclude Include="..\..\..\include\msong.h" />
     <ClInclude Include="..\..\..\include\msoundgen.h" />
+    <ClInclude Include="..\..\..\include\mstringinstrument.h" />
     <ClInclude Include="..\..\..\include\mtimer.h" />
     <ClInclude Include="..\..\..\include\mtypes.h" />
     <ClInclude Include="..\..\..\include\mutils.h" />

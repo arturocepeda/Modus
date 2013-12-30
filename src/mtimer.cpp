@@ -37,6 +37,9 @@
 //  Timer
 //
 Timer::Timer()
+    : bRunning(true)
+    , dStartTime(0.0)
+    , dEndTime(0.0)
 {
 #ifdef WIN32
     QueryPerformanceFrequency(&iFrequency);
@@ -48,10 +51,6 @@ Timer::Timer()
     iEndCount.tv_sec = 0;
     iEndCount.tv_usec = 0;
 #endif
-
-    bRunning = true;
-    dStartTime = 0;
-    dEndTime = 0;
 }
 
 Timer::~Timer()
@@ -104,19 +103,16 @@ double Timer::getTime()
 //  MCTimer
 //
 MCTimer::MCTimer(float Tempo, unsigned int BeatsPerMeasure)
+    : mStructure(NULL)
+    , iCurrentSection(0)
+    , bAccRit(false)
+    , cTempoLine(NULL)
+    , fCallbackTick(NULL)
+    , fCallbackSection(NULL)
+    , fCallbackEnd(NULL)
+    , iBeatsPerMeasure(BeatsPerMeasure)
+    , iTicksPerBeat(M_TICKS_PER_BEAT)
 {
-    mStructure = NULL;
-    iCurrentSection = 0;
-    bAccRit = false;
-    cTempoLine = NULL;
-
-    fCallbackTick = NULL;
-    fCallbackSection = NULL;
-    fCallbackEnd = NULL;
-
-    iBeatsPerMeasure = BeatsPerMeasure;
-    iTicksPerBeat = M_TICKS_PER_BEAT;
-
     setTempo(Tempo);
     reset();
 }

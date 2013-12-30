@@ -35,14 +35,12 @@
 #include "mutils.h"
 
 MCMIDIReceiver::MCMIDIReceiver(MCInstrument* Instrument)
+    : mInstrument(Instrument)
+    , iMinPitch(Instrument->getRange().LowestNote)
+    , iMaxPitch(Instrument->getRange().HighestNote)
+    , iMode(0)
+    , iRangeSize(Instrument->getRangeSize())
 {
-    mInstrument = Instrument;
-
-    iMinPitch = mInstrument->getRange().LowestNote;
-    iMaxPitch = mInstrument->getRange().HighestNote;
-    iMode = 0;
-
-    iRangeSize = mInstrument->getRangeSize();
     iAttachedChannel = new unsigned char[iRangeSize];
 
     memset(iAttachedChannel, 0, iRangeSize);
@@ -50,9 +48,9 @@ MCMIDIReceiver::MCMIDIReceiver(MCInstrument* Instrument)
 }
 
 MCMIDIReceiver::MCMIDIReceiver(MCInstrument* Instrument, unsigned char LowestPitch, unsigned char HighestPitch)
+    : mInstrument(Instrument)
+    , iMode(0)
 {
-    mInstrument = Instrument;
-
     if(LowestPitch < HighestPitch)
     {
         iMinPitch = LowestPitch;
@@ -64,7 +62,6 @@ MCMIDIReceiver::MCMIDIReceiver(MCInstrument* Instrument, unsigned char LowestPit
         iMaxPitch = LowestPitch;
     }
 
-    iMode = 0;
     iRangeSize = iMaxPitch - iMinPitch + 1;
     iAttachedChannel = new unsigned char[iRangeSize];
 

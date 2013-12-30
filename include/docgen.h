@@ -158,9 +158,9 @@
  who are used to the MIDI protocol, Modus was intended to work with the same range of values to define musical notes:
  
  <ul>
-   <li>Pitch. Defined by the MIDI pitch value, where the corresponding value for the middle C (C4) is 60. Pitch 0 means "rest".</li>
+   <li>Pitch. Defined by the MIDI pitch value, where the corresponding value for the middle C (C4) is 60.</li>
    
-   <li>Intensity. Similar to the velocity in the MIDI's world (1-127). Intensity 0 means "rest" too.</li>
+   <li>Intensity. Similar to the velocity in the MIDI's world (1-127). Intensity 0 means "rest".</li>
  </ul>
  
  <br> The rest of the values that define a musical note in Modus are:

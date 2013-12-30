@@ -40,6 +40,7 @@
 #include "mtypes.h"
 #include "mchords.h"
 #include "minstrument.h"
+#include "mstringinstrument.h"
 #include "mband.h"
 #include "mlist.h"
 #include "mmidireceiver.h"

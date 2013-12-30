@@ -37,25 +37,22 @@
 #include <algorithm>
 
 MCInstrument::MCInstrument(unsigned int ID, const MSRange& Range, unsigned char NumberOfChannels)
+    : iID(ID)
+    , mRange(Range)
+    , iNumberOfChannels(NumberOfChannels)
+    , iCurrentMoment(0)
+    , iScorePosition(0)
+    , iTranspose(0)
+    , iIntensityVariation(0)
+    , mSoundGen(NULL)
+    , mScore(NULL)
+    , fCallbackPlay(NULL)
+    , fCallbackNextNote(NULL)
+    , fCallbackRelease(NULL)
+    , fCallbackBending(NULL)
+    , fCallbackDamper(NULL)
+    , fCallbackIntensity(NULL)
 {
-    iID = ID;
-    mRange = Range;
-    iNumberOfChannels = NumberOfChannels;
-    iCurrentMoment = 0;
-    iScorePosition = 0;
-    iTranspose = 0;
-    iIntensityVariation = 0;
-
-    mSoundGen = NULL;
-    mScore = NULL;
-
-    fCallbackPlay = NULL;
-    fCallbackNextNote = NULL;
-    fCallbackRelease = NULL;
-    fCallbackBending = NULL;
-    fCallbackDamper = NULL;
-    fCallbackIntensity = NULL;
-
     mCurrentNote = new MSNote[iNumberOfChannels];
     iReleaseMoment = new unsigned int[iNumberOfChannels];
     fBendingState = new float[iNumberOfChannels];
@@ -235,7 +232,7 @@ void MCInstrument::releaseAll()
 
 void MCInstrument::bend(unsigned char Channel, int Cents)
 {
-    if(Channel >= iNumberOfChannels || mCurrentNote[Channel].Pitch == 0)
+    if(Channel >= iNumberOfChannels)
         return;
 
     fBendingState[Channel] = (float)Cents;
@@ -251,7 +248,7 @@ void MCInstrument::bend(unsigned char Channel, int Cents)
 
 void MCInstrument::bend(unsigned char Channel, int Cents, unsigned int NumberOfTicks)
 {
-    if(Channel >= iNumberOfChannels || mCurrentNote[Channel].Pitch == 0)
+    if(Channel >= iNumberOfChannels)
         return;
 
     if(NumberOfTicks <= 1)
@@ -273,7 +270,7 @@ void MCInstrument::bend(unsigned char Channel, int Cents, unsigned int NumberOfT
 
 void MCInstrument::vibrato(unsigned char Channel, int Cents, unsigned int NumberOfTicksPerCycle)
 {
-    if(Channel >= iNumberOfChannels || mCurrentNote[Channel].Pitch == 0)
+    if(Channel >= iNumberOfChannels)
         return;
 
     // vibrato settings (channel, amplitude, current value, increment)
@@ -290,7 +287,7 @@ void MCInstrument::vibrato(unsigned char Channel, int Cents, unsigned int Number
 
 void MCInstrument::changeIntensity(unsigned char Channel, unsigned char Intensity)
 {
-    if(Channel >= iNumberOfChannels || mCurrentNote[Channel].Pitch == 0)
+    if(Channel >= iNumberOfChannels)
         return;
 
     mCurrentNote[Channel].Intensity = Intensity;
@@ -306,7 +303,7 @@ void MCInstrument::changeIntensity(unsigned char Channel, unsigned char Intensit
 
 void MCInstrument::changeIntensity(unsigned char Channel, unsigned char Intensity, unsigned int NumberOfTicks)
 {
-    if(Channel >= iNumberOfChannels || mCurrentNote[Channel].Pitch == 0)
+    if(Channel >= iNumberOfChannels)
         return;
 
     if(NumberOfTicks <= 1)
@@ -328,7 +325,8 @@ void MCInstrument::update(const MSTimePosition& TimePosition)
     iCurrentMoment++;
 
     // check for notes to play on the score
-    checkScore(TimePosition);
+    if(mScore && mScore->getNumberOfEntries() > 0)
+        checkScore(TimePosition);
 
     // check for channels to release
     for(i = 0; i < vChannelsToRelease.size(); i++)
@@ -393,9 +391,6 @@ void MCInstrument::update(const MSTimePosition& TimePosition)
 
 void MCInstrument::checkScore(const MSTimePosition& TimePosition)
 {
-    if(!mScore || mScore->getNumberOfEntries() == 0)
-        return;
-
     MSScoreEntry* se;
     unsigned int iScoreEntries = mScore->getNumberOfEntries();
 

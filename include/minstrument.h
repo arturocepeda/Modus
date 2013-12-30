@@ -71,7 +71,7 @@ struct MSNoteChange
  */
 class MCInstrument
 {
-private:
+protected:
     unsigned int iID;
     MSRange mRange;
     unsigned char iNumberOfChannels;
