@@ -151,6 +151,11 @@ class MCListMusic : public MCList<EntryType>
 protected:
     unsigned int iBeatsPerMeasure;
 
+    MCListMusic()
+        : iBeatsPerMeasure(4)
+    {
+    }
+
     MTNoteMap readScriptNoteList(char* sList)
     {
         MTNoteMap mNoteMap;

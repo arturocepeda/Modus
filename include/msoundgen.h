@@ -38,7 +38,6 @@
 
 #include "mtypes.h"
 #include "mutils.h"
-#include <set>
 
 #define M_DEFAULT_RELEASE   0.1f
 #define M_QUICK_RELEASE     0.25f
@@ -58,7 +57,7 @@ protected:
     float fReleaseSpeed;
 
     bool bDamper;
-    std::set<unsigned char> vChannelsSustained;
+    CUniqueVector<unsigned char> vChannelsSustained;
     
     void releaseDamper();
     virtual void releaseResonance() = 0;
@@ -216,8 +215,8 @@ public:
 class MCSoundGenAudioDoubleChannel : public MCSoundGenAudio
 {
 protected:
-    std::set<unsigned int> vChannelsToRelease;
-    std::set<unsigned int> vSustainedChannelsToRelease;
+    CUniqueVector<unsigned int> vChannelsToRelease;
+    CUniqueVector<unsigned int> vSustainedChannelsToRelease;
 
     bool* bRelease;
     bool* bQuickRelease;

@@ -43,7 +43,6 @@
 //
 MCHarmonyPattern::MCHarmonyPattern()
 {
-    iBeatsPerMeasure = 4;
 }
 
 MCHarmonyPattern::~MCHarmonyPattern()

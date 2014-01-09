@@ -39,6 +39,22 @@
 #include <stdlib.h>
 #include <vector>
 
+
+//
+//  CNonCopyable
+//
+class CNonCopyable
+{
+protected:
+    CNonCopyable() {}
+    ~CNonCopyable() {}
+
+private:
+    CNonCopyable(const CNonCopyable&);
+    CNonCopyable& operator = (const CNonCopyable&);
+};
+
+
 //
 //  CUniqueVector
 //

@@ -42,7 +42,7 @@
 /**
  *  @brief Receives MIDI messages, interpret them and tells the attached instrument what to do
  */
-class MCMIDIReceiver
+class MCMIDIReceiver : private CNonCopyable
 {
 private:
     MCInstrument* mInstrument;

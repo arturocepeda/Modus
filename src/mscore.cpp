@@ -39,7 +39,6 @@
 
 MCScore::MCScore()
 {
-    iBeatsPerMeasure = 4;
 }
 
 MCScore::~MCScore()

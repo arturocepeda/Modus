@@ -69,7 +69,7 @@ struct MSNoteChange
 /**
  *  @brief Represents an entity that is able to play notes
  */
-class MCInstrument
+class MCInstrument : private CNonCopyable
 {
 protected:
     unsigned int iID;
@@ -81,7 +81,7 @@ protected:
     unsigned int iCurrentMoment;
     unsigned int iScorePosition;
 
-    std::set<unsigned char> vChannelsToRelease;
+    CUniqueVector<unsigned char> vChannelsToRelease;
     std::vector<MSNoteChange> vBending;
     std::vector<MSNoteChange> vVibrato;
     std::vector<MSNoteChange> vIntensityChange;    

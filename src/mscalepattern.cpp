@@ -40,7 +40,6 @@
 
 MCScalePattern::MCScalePattern()
 {
-    iBeatsPerMeasure = 4;
 }
 
 MCScalePattern::~MCScalePattern()
