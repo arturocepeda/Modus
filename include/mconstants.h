@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.53
+//  Modus v0.54
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2014 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -36,7 +36,7 @@
 #ifndef _MCONSTANTS_H_
 #define _MCONSTANTS_H_
 
-#define MODUS_VERSION "v0.53"
+#define MODUS_VERSION "v0.54"
 
 #define Cf  11
 #define C   0

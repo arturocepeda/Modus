@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.53
+//  Modus v0.54
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -81,7 +81,7 @@ protected:
     unsigned int iCurrentMoment;
     unsigned int iScorePosition;
 
-    CUniqueVector<unsigned char> vChannelsToRelease;
+    std::set<unsigned char> vChannelsToRelease;
     std::vector<MSNoteChange> vBending;
     std::vector<MSNoteChange> vVibrato;
     std::vector<MSNoteChange> vIntensityChange;    

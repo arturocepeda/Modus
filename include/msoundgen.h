@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.53
+//  Modus v0.54
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -38,6 +38,7 @@
 
 #include "mtypes.h"
 #include "mutils.h"
+#include <set>
 
 #define M_DEFAULT_RELEASE   0.1f
 #define M_QUICK_RELEASE     0.25f
@@ -57,7 +58,7 @@ protected:
     float fReleaseSpeed;
 
     bool bDamper;
-    CUniqueVector<unsigned char> vChannelsSustained;
+    std::set<unsigned char> vChannelsSustained;
     
     void releaseDamper();
     virtual void releaseResonance() = 0;
@@ -215,8 +216,8 @@ public:
 class MCSoundGenAudioDoubleChannel : public MCSoundGenAudio
 {
 protected:
-    CUniqueVector<unsigned int> vChannelsToRelease;
-    CUniqueVector<unsigned int> vSustainedChannelsToRelease;
+    std::set<unsigned int> vChannelsToRelease;
+    std::set<unsigned int> vSustainedChannelsToRelease;
 
     bool* bRelease;
     bool* bQuickRelease;
