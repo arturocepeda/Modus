@@ -37,7 +37,7 @@
 #define _MUTILS_H_
 
 #include <stdlib.h>
-#include <vector>
+#include <set>
 
 
 //
@@ -62,134 +62,56 @@ template<typename T>
 class CUniqueVector
 {
 private:
-    std::vector<T> vVector;
+    std::set<T> vSet;
+    typename std::set<T>::iterator vIterator;
 
 public:
-    T& operator[](const unsigned int Index)
+    T operator[](const unsigned int Index)
     {
-        return vVector[Index];
+        vIterator = vSet.begin();
+        std::advance(vIterator, Index);
+        return *vIterator;
     }
 
     void add(const T& Value)
     {
-        // the vector is empty
-        if(vVector.empty())
-        {
-            vVector.push_back(Value);
-            return;    
-        }
-
-        int iFirst = 0;
-        int iLast = vVector.size() - 1;
-
-        if(Value == vVector[iFirst] || Value == vVector[iLast])
-            return;
-
-        // first element
-        if(Value < vVector[iFirst])
-        {
-            vVector.insert(vVector.begin(), Value);
-        }
-
-        // last element
-        else if(Value > vVector[iLast])
-        {
-            vVector.push_back(Value);
-        }
-       
-        // another position in the middle
-        else
-        {
-            int iMiddle;
-
-            do
-            {
-                iMiddle = (iFirst + iLast) / 2;
-
-                if(Value == vVector[iMiddle])
-                    return;
-                else if(Value < vVector[iMiddle])
-                    iLast = iMiddle - 1;
-                else
-                    iFirst = iMiddle + 1;
-
-            } while(iFirst <= iLast);
-
-            vVector.insert(vVector.begin() + iFirst, Value);
-        }
+        vSet.insert(Value);
     }
 
     void remove(unsigned int Index)
     {
-        vVector.erase(vVector.begin() + Index);
+        vIterator = vSet.begin();
+        std::advance(vIterator, Index);
+        vSet.erase(vIterator);
     }
 
     void removeLast()
     {
-        vVector.pop_back();
+        vIterator = vSet.end();
+        vSet.erase(--vIterator);
     }
 
     void removeValue(const T& Value)
     {
-        // the vector is empty
-        if(vVector.empty())
-            return;    
+        vIterator = vSet.find(Value);
 
-        int iFirst = 0;
-        int iLast = vVector.size() - 1;
-
-        // first element
-        if(Value == vVector[iFirst])
-        {
-            vVector.erase(vVector.begin());
-        }
-
-        // last element
-        else if(Value == vVector[iLast])
-        {
-            vVector.pop_back();
-        }
-       
-        // another position in the middle
-        else
-        {
-            int iMiddle;
-
-            do
-            {
-                iMiddle = (iFirst + iLast) / 2;
-
-                if(Value == vVector[iMiddle])
-                {
-                    vVector.erase(vVector.begin() + iMiddle);
-                    return;
-                }
-                else if(Value < vVector[iMiddle])
-                {
-                    iLast = iMiddle - 1;
-                }
-                else
-                {
-                    iFirst = iMiddle + 1;
-                }
-
-            } while(iFirst <= iLast);
-        }
+        if(vIterator != vSet.end())
+            vSet.erase(vIterator);
     }
 
     void clear()
     {
-        vVector.clear();
+        vSet.clear();
     }
 
     bool empty()
     {
-        return (vVector.size() == 0);
+        return vSet.empty();
     }
 
     unsigned int size()
     {
-        return vVector.size();
+        return vSet.size();
     }
 };
 
