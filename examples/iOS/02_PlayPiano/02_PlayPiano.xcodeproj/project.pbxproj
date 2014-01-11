@@ -8,15 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		690067F617C0D62B00B091D5 /* GERenderingShaders.mm in Sources */ = {isa = PBXBuildFile; fileRef = 690067F517C0D62B00B091D5 /* GERenderingShaders.mm */; };
-		690067FC17C0D63C00B091D5 /* hud.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067F817C0D63C00B091D5 /* hud.fsh */; };
-		690067FD17C0D63C00B091D5 /* hud.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067F917C0D63C00B091D5 /* hud.vsh */; };
-		690067FE17C0D63C00B091D5 /* text.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067FA17C0D63C00B091D5 /* text.fsh */; };
-		690067FF17C0D63C00B091D5 /* text.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 690067FB17C0D63C00B091D5 /* text.vsh */; };
 		6900680017C0D64E00B091D5 /* hud.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067F817C0D63C00B091D5 /* hud.fsh */; };
 		6900680117C0D64E00B091D5 /* hud.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067F917C0D63C00B091D5 /* hud.vsh */; };
 		6900680217C0D64E00B091D5 /* text.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067FA17C0D63C00B091D5 /* text.fsh */; };
 		6900680317C0D64E00B091D5 /* text.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 690067FB17C0D63C00B091D5 /* text.vsh */; };
 		6900680717C0DAE000B091D5 /* GEUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6900680617C0DAE000B091D5 /* GEUtils.mm */; };
+		69CF99A4188165AF00548B8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF999F188165AF00548B8B /* AppDelegate.m */; };
+		69CF99A5188165AF00548B8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69CF99A0188165AF00548B8B /* Default-568h@2x.png */; };
+		69CF99A6188165AF00548B8B /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CF99A1188165AF00548B8B /* iPad.storyboard */; };
+		69CF99A7188165AF00548B8B /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CF99A2188165AF00548B8B /* iPhone.storyboard */; };
+		69CF99A8188165AF00548B8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF99A3188165AF00548B8B /* main.m */; };
 		CEA2D7C31669213F000BE572 /* SceneSample.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D7C21669213F000BE572 /* SceneSample.mm */; };
 		CEA2D7C61669229A000BE572 /* padlock_closed.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D7C41669229A000BE572 /* padlock_closed.png */; };
 		CEA2D7C71669229A000BE572 /* padlock_open.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D7C51669229A000BE572 /* padlock_open.png */; };
@@ -42,10 +43,6 @@
 		CEE82F7216679399004FBB96 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE82F7116679399004FBB96 /* GLKit.framework */; };
 		CEE82F7416679399004FBB96 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE82F7316679399004FBB96 /* OpenGLES.framework */; };
 		CEE82F7A16679399004FBB96 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEE82F7816679399004FBB96 /* InfoPlist.strings */; };
-		CEE82F7C16679399004FBB96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE82F7B16679399004FBB96 /* main.m */; };
-		CEE82F8016679399004FBB96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE82F7F16679399004FBB96 /* AppDelegate.m */; };
-		CEE82F8316679399004FBB96 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE82F8116679399004FBB96 /* iPhone.storyboard */; };
-		CEE82F8616679399004FBB96 /* iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE82F8416679399004FBB96 /* iPad.storyboard */; };
 		CEE82F8D16679399004FBB96 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEE82F8C16679399004FBB96 /* ViewController.mm */; };
 		CEE82F98166794A2004FBB96 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE82F97166794A2004FBB96 /* CoreAudio.framework */; };
 		CEE82F9B166794AA004FBB96 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE82F9A166794AA004FBB96 /* OpenAL.framework */; };
@@ -62,7 +59,13 @@
 		6900680417C0D66100B091D5 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		6900680517C0DAE000B091D5 /* GEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEUtils.h; path = ../rendering/GEUtils.h; sourceTree = "<group>"; };
 		6900680617C0DAE000B091D5 /* GEUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = GEUtils.mm; path = ../rendering/GEUtils.mm; sourceTree = "<group>"; };
-		CE25611A16682CFC00611968 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		69CF999D188165A200548B8B /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix.pch; path = ../../common/Prefix.pch; sourceTree = "<group>"; };
+		69CF999E188165AF00548B8B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../common/AppDelegate.h; sourceTree = "<group>"; };
+		69CF999F188165AF00548B8B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../common/AppDelegate.m; sourceTree = "<group>"; };
+		69CF99A0188165AF00548B8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../common/Default-568h@2x.png"; sourceTree = "<group>"; };
+		69CF99A1188165AF00548B8B /* iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPad.storyboard; path = ../../common/iPad.storyboard; sourceTree = "<group>"; };
+		69CF99A2188165AF00548B8B /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = ../../common/iPhone.storyboard; sourceTree = "<group>"; };
+		69CF99A3188165AF00548B8B /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../../common/main.m; sourceTree = "<group>"; };
 		CEA2D7C11669213F000BE572 /* SceneSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneSample.h; path = Scenes/SceneSample.h; sourceTree = "<group>"; };
 		CEA2D7C21669213F000BE572 /* SceneSample.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SceneSample.mm; path = Scenes/SceneSample.mm; sourceTree = "<group>"; };
 		CEA2D7C41669229A000BE572 /* padlock_closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = padlock_closed.png; path = ../../common/images/padlock_closed.png; sourceTree = "<group>"; };
@@ -115,11 +118,6 @@
 		CEE82F7316679399004FBB96 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CEE82F7716679399004FBB96 /* 02_PlayPiano-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "02_PlayPiano-Info.plist"; sourceTree = "<group>"; };
 		CEE82F7916679399004FBB96 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CEE82F7B16679399004FBB96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CEE82F7D16679399004FBB96 /* 02_PlayPiano-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "02_PlayPiano-Prefix.pch"; sourceTree = "<group>"; };
-		CEE82F7F16679399004FBB96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CEE82F8216679399004FBB96 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPhone.storyboard; sourceTree = "<group>"; };
-		CEE82F8516679399004FBB96 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/iPad.storyboard; sourceTree = "<group>"; };
 		CEE82F8B16679399004FBB96 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CEE82F8C16679399004FBB96 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		CEE82F97166794A2004FBB96 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -304,14 +302,15 @@
 		CEE82F7516679399004FBB96 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				69CF999E188165AF00548B8B /* AppDelegate.h */,
+				69CF999F188165AF00548B8B /* AppDelegate.m */,
+				69CF99A0188165AF00548B8B /* Default-568h@2x.png */,
+				69CF99A1188165AF00548B8B /* iPad.storyboard */,
+				69CF99A2188165AF00548B8B /* iPhone.storyboard */,
+				69CF99A3188165AF00548B8B /* main.m */,
 				6900680417C0D66100B091D5 /* config.h */,
-				CEE82F7B16679399004FBB96 /* main.m */,
-				CE25611A16682CFC00611968 /* AppDelegate.h */,
-				CEE82F7F16679399004FBB96 /* AppDelegate.m */,
 				CEE82F8B16679399004FBB96 /* ViewController.h */,
 				CEE82F8C16679399004FBB96 /* ViewController.mm */,
-				CEE82F8116679399004FBB96 /* iPhone.storyboard */,
-				CEE82F8416679399004FBB96 /* iPad.storyboard */,
 				CEE82F7616679399004FBB96 /* Supporting Files */,
 			);
 			path = Main;
@@ -320,8 +319,8 @@
 		CEE82F7616679399004FBB96 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				69CF999D188165A200548B8B /* Prefix.pch */,
 				CEE82F7716679399004FBB96 /* 02_PlayPiano-Info.plist */,
-				CEE82F7D16679399004FBB96 /* 02_PlayPiano-Prefix.pch */,
 				CEE82F7816679399004FBB96 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -355,7 +354,6 @@
 				CEE82F6316679399004FBB96 /* Sources */,
 				CEE82F6416679399004FBB96 /* Frameworks */,
 				CEE82F6516679399004FBB96 /* Resources */,
-				50524F424C454D533F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -401,8 +399,6 @@
 				6900680217C0D64E00B091D5 /* text.fsh in Resources */,
 				6900680317C0D64E00B091D5 /* text.vsh in Resources */,
 				CEE82F7A16679399004FBB96 /* InfoPlist.strings in Resources */,
-				CEE82F8316679399004FBB96 /* iPhone.storyboard in Resources */,
-				CEE82F8616679399004FBB96 /* iPad.storyboard in Resources */,
 				CEB852501668E8C800DAE29C /* PianoAAC.msp in Resources */,
 				CEB852681668E90100DAE29C /* note.png in Resources */,
 				CEB8526F1668E90100DAE29C /* pianokey_black.png in Resources */,
@@ -413,21 +409,19 @@
 				CEA2D7C71669229A000BE572 /* padlock_open.png in Resources */,
 				CEA2D7C9166922AD000BE572 /* pianokey_white_root.png in Resources */,
 				CEA2D7CB166922B4000BE572 /* pianokey_black_root.png in Resources */,
+				69CF99A5188165AF00548B8B /* Default-568h@2x.png in Resources */,
+				69CF99A6188165AF00548B8B /* iPad.storyboard in Resources */,
+				69CF99A7188165AF00548B8B /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-
-
 
 /* Begin PBXSourcesBuildPhase section */
 		CEE82F6316679399004FBB96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE82F7C16679399004FBB96 /* main.m in Sources */,
-				CEE82F8016679399004FBB96 /* AppDelegate.m in Sources */,
 				CEE82F8D16679399004FBB96 /* ViewController.mm in Sources */,
 				CEB852171668E77000DAE29C /* audio.mm in Sources */,
 				CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */,
@@ -438,11 +432,9 @@
 				CEB8524A1668E87000DAE29C /* GEScene.mm in Sources */,
 				CEA2D7C31669213F000BE572 /* SceneSample.mm in Sources */,
 				690067F617C0D62B00B091D5 /* GERenderingShaders.mm in Sources */,
-				690067FC17C0D63C00B091D5 /* hud.fsh in Sources */,
-				690067FD17C0D63C00B091D5 /* hud.vsh in Sources */,
-				690067FE17C0D63C00B091D5 /* text.fsh in Sources */,
-				690067FF17C0D63C00B091D5 /* text.vsh in Sources */,
 				6900680717C0DAE000B091D5 /* GEUtils.mm in Sources */,
+				69CF99A4188165AF00548B8B /* AppDelegate.m in Sources */,
+				69CF99A8188165AF00548B8B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,22 +447,6 @@
 				CEE82F7916679399004FBB96 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CEE82F8116679399004FBB96 /* iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEE82F8216679399004FBB96 /* en */,
-			);
-			name = iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		CEE82F8416679399004FBB96 /* iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEE82F8516679399004FBB96 /* en */,
-			);
-			name = iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -525,7 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Main/02_PlayPiano-Prefix.pch";
+				GCC_PREFIX_HEADER = ../common/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "Main/02_PlayPiano-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -541,7 +517,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Main/02_PlayPiano-Prefix.pch";
+				GCC_PREFIX_HEADER = ../common/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = "Main/02_PlayPiano-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

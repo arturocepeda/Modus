@@ -20,48 +20,32 @@ bool GEDevice::iPhone()
 
 bool GEDevice::displayRetina()
 {
-   return ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && 
-           [[UIScreen mainScreen] scale] == 2.0);
+   return ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2.0);
 }
 
 int GEDevice::getScreenSizeX()
 {
-   if(iPhone())
-      return 640;
-   else 
-      return displayRetina()? 1536: 768;  
+   return (int)([[UIScreen mainScreen] bounds].size.width * [[UIScreen mainScreen] scale]);
 }
 
 int GEDevice::getScreenSizeY()
 {
-   if(iPhone())
-      return 960;
-   else
-      return displayRetina()? 2048: 1024;
+   return (int)([[UIScreen mainScreen] bounds].size.height * [[UIScreen mainScreen] scale]);
 }
 
 int GEDevice::getTouchPadSizeX()
 {
-   if(iPhone())
-      return 320;
-   else
-      return 768;
+   return [[UIScreen mainScreen] bounds].size.width;
 }
 
 int GEDevice::getTouchPadSizeY()
 {
-   if(iPhone())
-      return 480;
-   else
-      return 1024;
+   return [[UIScreen mainScreen] bounds].size.height;
 }
 
 float GEDevice::getAspectRatio()
 {
-   if(iPhone())
-      return 1.5f;
-   else
-      return 1.33f;
+   return [[UIScreen mainScreen] bounds].size.height / [[UIScreen mainScreen] bounds].size.width;
 }
 
 const char* GEDevice::getResourcePath(NSString* ResourceName)
