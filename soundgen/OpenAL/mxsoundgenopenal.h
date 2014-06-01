@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2014 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -86,19 +86,19 @@ long ovTell(void* pDataSource);
 //
 //  Sound generator
 //
-class MCSoundGenOpenAL : public MCSoundGenAudioDoubleChannel
+class MCSoundGenOpenAL : public MCSoundGenAudioMultipleChannel
 {
 private:
     int iID;
     MCOpenALSourceManager* alManager;
 
     ALuint** alBuffer;
-    int** iSource;
 
     ALfloat al3DPosition[3];
     ALfloat al3DDirection[3];
 
     void releaseChannel(unsigned char iChannel, bool bQuickly);
+
 #ifndef __iOS__
     void loadWAVData(const char* sData, unsigned int iSize, ALuint alBuffer);
     void loadWAVFile(const char* sFilename, ALuint alBuffer);

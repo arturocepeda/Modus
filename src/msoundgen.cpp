@@ -45,10 +45,6 @@ void MCSoundGen::releaseDamper()
         releaseNote(vChannelsSustained[vChannelsSustained.size() - 1]);
         vChannelsSustained.removeLast();
     }
-
-    // in case the derived class implements some kind of resonance when the damper is used, we must
-    // release it
-    releaseResonance();
 }
 
 void MCSoundGen::releaseAllNotes()
@@ -149,40 +145,20 @@ bool MCSoundGenAudio::loadSamplePack(const char* Filename,
 }
 
 
-
 //
-//  MCSoundGenAudioDoubleChannel
+//  MCSoundGenAudioMultipleChannel
 //
-void MCSoundGenAudioDoubleChannel::initChannelData()
+void MCSoundGenAudioMultipleChannel::initChannelData()
 {
-    bRelease = new bool[iNumberOfChannels];
-    bQuickRelease = new bool[iNumberOfChannels];
-
-    memset(bRelease, 0, iNumberOfChannels);
-    memset(bQuickRelease, 0, iNumberOfChannels);
-
-    fInitialReleaseVolume = new float[iNumberOfChannels];
-    fCurrentReleaseVolume = new float[iNumberOfChannels];
+    sInstrumentChannels = new InstrumentChannel[iNumberOfChannels];
 }
 
-void MCSoundGenAudioDoubleChannel::releaseChannelData()
+void MCSoundGenAudioMultipleChannel::releaseChannelData()
 {
-    delete[] bRelease;
-    delete[] bQuickRelease;
-    delete[] fInitialReleaseVolume;
-    delete[] fCurrentReleaseVolume;
+    delete[] sInstrumentChannels;
 }
 
-void MCSoundGenAudioDoubleChannel::releaseResonance()
-{
-    while(!vSustainedChannelsToRelease.empty())
-    {
-        vChannelsToRelease.add(vSustainedChannelsToRelease[vSustainedChannelsToRelease.size() - 1]);
-        vSustainedChannelsToRelease.removeLast();
-    }
-}
-
-void MCSoundGenAudioDoubleChannel::releaseNote(unsigned char Channel)
+void MCSoundGenAudioMultipleChannel::releaseNote(unsigned char Channel)
 {
     // damper on: don't release the note, but put it in the sustained list
     if(bDamper)

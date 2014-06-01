@@ -60,7 +60,6 @@ protected:
     CUniqueVector<unsigned char> vChannelsSustained;
     
     void releaseDamper();
-    virtual void releaseResonance() = 0;
 
 public:
     virtual ~MCSoundGen() {}
@@ -208,27 +207,37 @@ public:
 
 /**
  *  @brief Abstract class intended to provide an interface to create sound generators that work with
- *         digital audio samples. This particular kind of audio sound generator utilizes two real audio
- *         channels per instrument channel so that each time a note is released, it is referenced from
- *         the secondary channel and faded out whereas the primary channel is immediately set free
+ *         digital audio samples. This particular kind of audio sound generator utilizes multiple real
+ *         audio channels per instrument channel so that each time a note is released, it is put on
+ *         the background whereas the note that was most recently played always sounds through the first
+ *         audio channel in the list of audio channels attached to the instrument channel
  */
-class MCSoundGenAudioDoubleChannel : public MCSoundGenAudio
+class MCSoundGenAudioMultipleChannel : public MCSoundGenAudio
 {
 protected:
+    struct AudioChannel
+    {
+        unsigned int Index;
+        bool Release;
+        bool QuickRelease;
+        float InitialReleaseVolume;
+        float CurrentReleaseState;
+
+        AudioChannel() : Release(false), QuickRelease(false) {}
+    };
+
+    struct InstrumentChannel
+    {
+        std::vector<AudioChannel> AudioChannels;
+    };
+
+    InstrumentChannel* sInstrumentChannels;
     CUniqueVector<unsigned int> vChannelsToRelease;
-    CUniqueVector<unsigned int> vSustainedChannelsToRelease;
-
-    bool* bRelease;
-    bool* bQuickRelease;
-
-    float* fInitialReleaseVolume;
-    float* fCurrentReleaseVolume;
 
     void initChannelData();
     void releaseChannelData();
 
     virtual void releaseChannel(unsigned char iChannel, bool bQuickly) = 0;
-    void releaseResonance();
 
 public:
     /**

@@ -138,18 +138,9 @@ void MCMIDIReceiver::message(unsigned char Byte0, unsigned char Byte1, unsigned 
         if(iPitch < iMinPitch || iPitch > iMaxPitch)
             return;
 
-        unsigned char iVelocity = Byte2;
-
-        // note on with velocity 0 --> note off
-        if(iVelocity == 0)
-        {
-            mInstrument->release(iAttachedChannel[iPitch - iMinPitch]);
-            return;
-        }
-
         mNote.Pitch = iPitch;
         mNote.Channel = iAttachedChannel[iPitch - iMinPitch];
-        mNote.Intensity = iVelocity;
+        mNote.Intensity = Byte2;
         mNote.Mode = iMode;
         mNote.Duration = 0;
 
@@ -160,7 +151,17 @@ void MCMIDIReceiver::message(unsigned char Byte0, unsigned char Byte1, unsigned 
     else if(Byte0 == 0x80)
     {
         unsigned char iPitch = Byte1;
-        mInstrument->release(iAttachedChannel[iPitch - iMinPitch]);
+
+        if(iPitch < iMinPitch || iPitch > iMaxPitch)
+            return;
+
+        mNote.Pitch = iPitch;
+        mNote.Channel = iAttachedChannel[iPitch - iMinPitch];
+        mNote.Intensity = 0;
+        mNote.Mode = iMode;
+        mNote.Duration = 0;
+
+        mInstrument->playNote(mNote);
     }
     
     // CONTROL

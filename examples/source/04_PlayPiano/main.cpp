@@ -42,37 +42,41 @@ int main(int argc, char* argv[])
     // list of MIDI in devices
     std::string sDevice;
     unsigned int iNumDevices;
-    unsigned int iSelectedDevice;
+    unsigned int iSelectedDevice = 0;
 
     RtMidiIn mDevice(rtMidiApi, "Modus Sample");
     iNumDevices = mDevice.getPortCount();
 
+    cout << endl;
+
     if(iNumDevices == 0)
     {
-        cout << "\n\n  ERROR: no MIDI in devices found\n\n";
+        cout << "\n  ERROR: no MIDI in devices found\n\n";
         cin.get();
 
         return 0;
-    }
-    
-    cout << "\n\n  Select a MIDI in device:\n";
-
-    for(unsigned int i = 0; i < iNumDevices; i++)
+    }    
+    else if(iNumDevices > 1)
     {
-        sDevice = mDevice.getPortName(i);
-        cout << "\n  " << i + 1 << ") " << sDevice;
+        cout << "\n  Select a MIDI in device:\n";
+
+        for(unsigned int i = 0; i < iNumDevices; i++)
+        {
+            sDevice = mDevice.getPortName(i);
+            cout << "\n  " << i + 1 << ") " << sDevice;
+        }
+
+        cout << "\n\n";
+
+        do
+        {
+            cout << "  -> ";
+            cin >> iSelectedDevice;
+
+        } while(iSelectedDevice < 1 || iSelectedDevice > iNumDevices);
+
+        iSelectedDevice--;
     }
-
-    cout << "\n\n";
-
-    do
-    {
-        cout << "  -> ";
-        cin >> iSelectedDevice;
-
-    } while(iSelectedDevice < 1 || iSelectedDevice > iNumDevices);
-
-    iSelectedDevice--;
 
     // MIDI listener
     mDevice.openPort(iSelectedDevice);

@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2014 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //

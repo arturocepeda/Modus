@@ -122,7 +122,9 @@ void MCInstrument::playNote(const MSNote& Note)
     // note off
     if(Note.Intensity == 0)
     {
-        release(Note.Channel);
+        if(mCurrentNote[Note.Channel].Pitch == Note.Pitch)
+            release(Note.Channel);
+
         return;
     }
 

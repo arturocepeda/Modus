@@ -50,7 +50,7 @@ MCStringInstrument::~MCStringInstrument()
 
 void MCStringInstrument::setOpenStringNote(unsigned char StringNumber, MTNote Note)
 {
-    if (StringNumber <= iNumberOfChannels && StringNumber > 0)
+    if(StringNumber <= iNumberOfChannels && StringNumber > 0)
         mStrings[StringNumber - 1] = Note;
 }
 
