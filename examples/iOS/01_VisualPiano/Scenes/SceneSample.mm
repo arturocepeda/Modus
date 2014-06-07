@@ -236,7 +236,6 @@ void GESceneSample::release()
    
    // release Modus objects
    delete mSoundGen;
-   delete mSourceManager;
    delete mPiano;
    delete mTimer;
    

@@ -84,7 +84,6 @@ private:
    
    // Modus objects
    MCInstrument* mPiano;
-   MCOpenALSourceManager* mSourceManager;
    MCSoundGenOpenAL* mSoundGen;
    
    // sample-pack

@@ -70,7 +70,6 @@ private:
    // Modus objects
    MCInstrument* mPiano;
    MCScore mScore[SCORES];
-   MCOpenALSourceManager* mSourceManager;
    MCSoundGenOpenAL* mSoundGen;
    
    // sample-pack
