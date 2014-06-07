@@ -42,7 +42,10 @@
 #define _MXSOUNDGENOPENAL_H_
 
 #include "msoundgen.h"
-#include "mxopenalsourcemanager.h"
+
+#include "./../externals/OpenAL/include/al.h"
+#include "./../externals/OpenAL/include/alc.h"
+
 
 #ifdef __APPLE__
 #include "TargetConditionals.h"
@@ -54,13 +57,16 @@
 #endif
 
 
+#define OPENAL_SOURCES 24
+
+
 //
 //  Ogg Vorbis (Win32, MacOSX, Linux)
 //
 #ifndef __iOS__
 #include "./../externals/OggVorbis/include/vorbisfile.h"
 
-#define OV_BUFFER_SIZE 1024
+#define OV_BUFFER_SIZE 4096
 
 struct SOGGFile
 {
@@ -83,21 +89,41 @@ long ovTell(void* pDataSource);
 #endif
 
 
+
+//
+//  Audio source manager
+//
+class MCOpenALSourceManager : public MCAudioSourceManager
+{
+public:
+    MCOpenALSourceManager(unsigned int NumSources);
+
+    virtual void allocateSources() override;
+    virtual void releaseSources() override;
+
+    virtual void playSource(unsigned int SourceIndex, void* Sound) override;
+    virtual void stopSource(unsigned int SourceIndex) override;
+
+    virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+
+    virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+    virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+    virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+    virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+    virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+};
+
+
+
 //
 //  Sound generator
 //
 class MCSoundGenOpenAL : public MCSoundGenAudioMultipleChannel
 {
 private:
-    int iID;
-    MCOpenALSourceManager* alManager;
+    ALuint** alBuffers;
 
-    ALuint** alBuffer;
-
-    ALfloat al3DPosition[3];
-    ALfloat al3DDirection[3];
-
-    void releaseChannel(unsigned char iChannel, bool bQuickly);
+    static unsigned int iNumberOfInstances;
 
 #ifndef __iOS__
     void loadWAVData(const char* sData, unsigned int iSize, ALuint alBuffer);
@@ -110,8 +136,11 @@ private:
     void loadAudioFile(NSString* sFilename, ALuint alBuffer, bool bFromResources = true);
 #endif
 
+protected:
+    void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+
 public:
-    MCSoundGenOpenAL(unsigned int NumberOfChannels, bool Sound3D, int ID, MCOpenALSourceManager* OpenALSourceManager);
+    MCSoundGenOpenAL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
     ~MCSoundGenOpenAL();
 
     void addSampleSet(MSSampleSet& SampleSet);
@@ -120,17 +149,6 @@ public:
                         void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
                         void* Data = NULL);
     void unloadSamples();
-
-    void playNote(MSNote& Note);
-    void update();
-
-    void get3DPosition(float* X, float* Y, float* Z);
-    void get3DDirection(float* X, float* Y, float* Z);
-
-    void setBending(unsigned char Channel, int Cents);
-    void setIntensity(unsigned char Channel, unsigned char Intensity);
-    void set3DPosition(float X, float Y, float Z);
-    void set3DDirection(float X, float Y, float Z);
 };
 
 #endif

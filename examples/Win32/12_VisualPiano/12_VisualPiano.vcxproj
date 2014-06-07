@@ -58,7 +58,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -80,14 +80,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.cpp" />
-    <ClCompile Include="..\..\source\audio\audio.fmod.cpp" />
+    <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp" />
     <ClCompile Include="..\..\source\12_VisualPiano\main.cpp" />
     <ClCompile Include="..\..\source\12_VisualPiano\rendering.cpp" />
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.h" />
-    <ClInclude Include="..\..\source\audio\audio.fmod.h" />
+    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
     <ClInclude Include="..\..\source\12_VisualPiano\main.h" />
     <ClInclude Include="..\..\source\12_VisualPiano\rendering.h" />
   </ItemGroup>

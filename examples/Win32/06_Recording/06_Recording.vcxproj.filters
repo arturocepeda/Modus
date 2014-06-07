@@ -11,9 +11,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -28,9 +25,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h">
       <Filter>Header files</Filter>
     </ClInclude>

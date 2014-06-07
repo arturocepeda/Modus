@@ -21,11 +21,7 @@
 #ifndef _AUDIO_OPENAL_H_
 #define _AUDIO_OPENAL_H_
 
-#include "externals/OpenAL/include/al.h"
-#include "externals/OpenAL/include/alc.h"
-
-// try with a lower value in case it doesn't work properly
-#define OPENAL_SOURCES 32
+#include "OpenAL/mxsoundgenopenal.h"
 
 #ifdef _MSC_VER
 #pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OpenAL\\lib.win32\\OpenAL32.lib")
@@ -49,6 +45,8 @@ private:
 public:
     static void init();
     static void release();
+
+    static MCSoundGenAudio* createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
 };
 
 #endif

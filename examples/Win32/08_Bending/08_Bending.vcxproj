@@ -86,13 +86,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.cpp" />
     <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp" />
     <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
     <ClCompile Include="..\..\source\08_Bending\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.h" />
     <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
     <ClInclude Include="..\..\source\audio\audio.openal.h" />
   </ItemGroup>

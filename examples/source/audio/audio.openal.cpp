@@ -44,3 +44,8 @@ void CAudio::release()
     alcDestroyContext(alContext);
     alcCloseDevice(alDevice);
 }
+
+MCSoundGenAudio* CAudio::createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
+{
+    return new MCSoundGenOpenAL(ID, NumberOfChannels, Sound3D);
+}

@@ -11,30 +11,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="..\..\source\12_VisualPiano\main.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="rendering.cpp">
+    <ClCompile Include="..\..\source\12_VisualPiano\rendering.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="..\audio\audio.fmod.cpp">
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.cpp">
+    <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main.h">
+    <ClInclude Include="..\..\source\12_VisualPiano\main.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="rendering.h">
+    <ClInclude Include="..\..\source\12_VisualPiano\rendering.h">
       <Filter>Header files</Filter>
     </ClInclude>
-    <ClInclude Include="..\audio\audio.fmod.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.h">
+    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

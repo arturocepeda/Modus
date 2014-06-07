@@ -11,29 +11,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\audio\audio.openal.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\soundgen\externals\RtMidi\RtMidi.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\04_PlayPiano\main.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\audio\audio.openal.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxopenalsourcemanager.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h">
       <Filter>Header files</Filter>
     </ClInclude>
@@ -41,6 +32,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\soundgen\externals\RtMidi\RtMidi.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\audio\audio.openal.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -92,41 +92,135 @@ long ovTell(void* pDataSource)
 }
 
 
+
+//
+//  Audio source manager
+//
+MCOpenALSourceManager::MCOpenALSourceManager(unsigned int NumSources)
+    : MCAudioSourceManager(nullptr, NumSources)
+{
+}
+
+void MCOpenALSourceManager::allocateSources()
+{
+    for(unsigned int i = 0; i < iNumSources; i++)
+    {
+        sSources[i].Source = new ALuint();
+        alGenSources(1, reinterpret_cast<ALuint*>(sSources[i].Source));
+    }
+}
+
+void MCOpenALSourceManager::releaseSources()
+{
+    for(unsigned int i = 0; i < iNumSources; i++)
+    {
+        ALuint* alSourceAlloc = reinterpret_cast<ALuint*>(sSources[i].Source);
+        alDeleteSources(1, alSourceAlloc);
+        delete alSourceAlloc;
+    }
+}
+
+void MCOpenALSourceManager::playSource(unsigned int SourceIndex, void* Sound)
+{
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    ALint alBuffer = *(reinterpret_cast<ALint*>(Sound));
+
+    alSourcei(alSource, AL_BUFFER, alBuffer);
+    alSourcef(alSource, AL_PITCH, 1.0f);
+    alSourcePlay(alSource);
+}
+
+void MCOpenALSourceManager::stopSource(unsigned int SourceIndex)
+{
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSourceStop(alSource);
+}
+
+bool MCOpenALSourceManager::isSourcePlaying(unsigned int SourceIndex)
+{
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    ALint alSourceState;
+
+    alGetSourcei(alSource, AL_SOURCE_STATE, &alSourceState);
+
+    return alSourceState == AL_PLAYING;
+}
+
+void MCOpenALSourceManager::setSourceVolume(unsigned int SourceIndex, float Volume)
+{
+    sSources[SourceIndex].Volume = Volume;
+
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSourcef(alSource, AL_GAIN, Volume);
+}
+
+void MCOpenALSourceManager::setSourcePitch(unsigned int SourceIndex, int Cents)
+{
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSourcef(alSource, AL_PITCH, (float)pow(2, Cents / 1200.0f));
+}
+
+void MCOpenALSourceManager::setSourcePan(unsigned int SourceIndex, float Pan)
+{
+    sSources[SourceIndex].Position[0] = Pan;
+
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSource3f(alSource, AL_POSITION, Pan, 0.0f, 0.0f);
+}
+
+void MCOpenALSourceManager::setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z)
+{
+    sSources[SourceIndex].Position[0] = X;
+    sSources[SourceIndex].Position[1] = Y;
+    sSources[SourceIndex].Position[2] = Z;
+
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSource3f(alSource, AL_POSITION, X, Y, Z);
+}
+
+void MCOpenALSourceManager::setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z)
+{
+    sSources[SourceIndex].Direction[0] = X;
+    sSources[SourceIndex].Direction[1] = Y;
+    sSources[SourceIndex].Direction[2] = Z;
+
+    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
+    alSource3f(alSource, AL_DIRECTION, X, Y, Z);
+}
+
+
+
 //
 //  Sound generator
 //
-MCSoundGenOpenAL::MCSoundGenOpenAL(unsigned int NumberOfChannels, bool Sound3D, int ID, 
-                                   MCOpenALSourceManager* OpenALSourceManager)
+unsigned int MCSoundGenOpenAL::iNumberOfInstances = 0;
+
+MCSoundGenOpenAL::MCSoundGenOpenAL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
+    : MCSoundGenAudioMultipleChannel(ID, NumberOfChannels, Sound3D)
 {
-    iID = ID;
-    alManager = OpenALSourceManager;
+    if(!cManager)
+    {
+        cManager = new MCOpenALSourceManager(OPENAL_SOURCES);
+        cManager->allocateSources();
+    }
 
-    iNumberOfChannels = NumberOfChannels;
-    b3DSound = Sound3D;
-    alBuffer = NULL;
-    fVolume = 1.0f;
-    fPan = 0.0f;
-    fReleaseSpeed = M_DEFAULT_RELEASE;
-    bDamper = false;
+    iNumberOfInstances++;
 
-    al3DPosition[0] = 0.0f;
-    al3DPosition[1] = 0.0f;
-    al3DPosition[2] = 0.0f;
-
-    iSampleSet = new int[iNumberOfChannels];
-
-    for(unsigned int i = 0; i < iNumberOfChannels; i++)
-        iSampleSet[i] = -1;
-
-    initChannelData();
+    alBuffers = NULL;
 }
 
 MCSoundGenOpenAL::~MCSoundGenOpenAL()
 {
-    delete[] iSampleSet;
-
     unloadSamples();
-    releaseChannelData();
+
+    iNumberOfInstances--;
+
+    if(iNumberOfInstances == 0)
+    {
+        cManager->releaseSources();
+        delete cManager;
+        cManager = NULL;
+    }
 }
 
 void MCSoundGenOpenAL::loadSamples()
@@ -137,12 +231,12 @@ void MCSoundGenOpenAL::loadSamples()
     char sFilename[512];
     unsigned int i, j;
 
-    alBuffer = new ALuint*[sSampleSet.size()];
+    alBuffers = new ALuint*[sSampleSet.size()];
 
     for(i = 0; i < sSampleSet.size(); i++)
     {
-        alBuffer[i] = new ALuint[iNumberOfSamples[i]];
-        alGenBuffers(iNumberOfSamples[i], &alBuffer[i][0]);
+        alBuffers[i] = new ALuint[iNumberOfSamples[i]];
+        alGenBuffers(iNumberOfSamples[i], &alBuffers[i][0]);
 
         for(j = 0; j < iNumberOfSamples[i]; j++)
         {
@@ -155,11 +249,11 @@ void MCSoundGenOpenAL::loadSamples()
 
             // OGG Vorbis format
             if(strcmp(sSampleSet[i].Format, "ogg") == 0)
-                loadOGGFile(sFilename, alBuffer[i][j]);
+                loadOGGFile(sFilename, alBuffers[i][j]);
 
             // WAV format
             else if(strcmp(sSampleSet[i].Format, "wav") == 0)
-                loadWAVFile(sFilename, alBuffer[i][j]);
+                loadWAVFile(sFilename, alBuffers[i][j]);
         }
     }
 }
@@ -208,7 +302,7 @@ void MCSoundGenOpenAL::loadSamplePack(std::istream& Stream,
     MSSampleSet mSampleSet;
     unsigned int iNumSamples;
 
-    alBuffer = new ALuint*[iNumSampleSets];
+    alBuffers = new ALuint*[iNumSampleSets];
 
     for(i = 0; i < iNumSampleSets; i++)
     {
@@ -242,8 +336,8 @@ void MCSoundGenOpenAL::loadSamplePack(std::istream& Stream,
 
         Stream.read(sReserved, 4);                                 // SampleSet: (Reserved)
 
-        alBuffer[i] = new ALuint[iNumSamples];
-        alGenBuffers(iNumSamples, &alBuffer[i][0]);
+        alBuffers[i] = new ALuint[iNumSamples];
+        alGenBuffers(iNumSamples, &alBuffers[i][0]);
 
         unsigned int iSampleSize;
         char *sSampleData;
@@ -261,9 +355,9 @@ void MCSoundGenOpenAL::loadSamplePack(std::istream& Stream,
             strtolower(sFormat);
 
             if(strcmp(sFormat, "wav") == 0)
-                loadWAVData(sSampleData, iSampleSize, alBuffer[i][j]);
+                loadWAVData(sSampleData, iSampleSize, alBuffers[i][j]);
             else if(strcmp(sFormat, "ogg") == 0)
-                loadOGGData(sSampleData, iSampleSize, alBuffer[i][j]);
+                loadOGGData(sSampleData, iSampleSize, alBuffers[i][j]);
 
             // callback
             if(callback)
@@ -276,331 +370,25 @@ void MCSoundGenOpenAL::loadSamplePack(std::istream& Stream,
 
 void MCSoundGenOpenAL::unloadSamples()
 {
-    if(!alBuffer)
+    if(!alBuffers)
         return;
 
     for(unsigned int i = 0; i < sSampleSet.size(); i++)
     {
-        alDeleteBuffers(iNumberOfSamples[i], &alBuffer[i][0]);
-        delete[] alBuffer[i];
+        alDeleteBuffers(iNumberOfSamples[i], &alBuffers[i][0]);
+        delete[] alBuffers[i];
     }
 
     sSampleSet.clear();
     iNumberOfSamples.clear();
 
-    delete[] alBuffer;
-    alBuffer = NULL;
+    delete[] alBuffers;
+    alBuffers = NULL;
 }
 
-void MCSoundGenOpenAL::playNote(MSNote& Note)
+void MCSoundGenOpenAL::playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex)
 {
-    if(!alBuffer)
-        return;
-
-    // find the appropriate sample set for this note
-    iSampleSet[Note.Channel] = findSampleSet(Note);
-
-    if(iSampleSet[Note.Channel] == -1)
-        return;
-
-    // calculate sample number
-    int iSample = Note.Pitch - sSampleSet[iSampleSet[Note.Channel]].Range.LowestNote;
-
-    // release current primary audio channel
-    releaseChannel(Note.Channel, true);
-
-    // if the channel is in the sustained list, remove it
-    vChannelsSustained.removeValue(Note.Channel);
-
-    // put the new audio channel at the beginning of the list
-    AudioChannel sNewChannel;
-    sNewChannel.Index = alManager->assignSource(iID, Note.Channel);
-
-    if(sInstrumentChannels[Note.Channel].AudioChannels.empty())
-        sInstrumentChannels[Note.Channel].AudioChannels.push_back(sNewChannel);
-    else
-        sInstrumentChannels[Note.Channel].AudioChannels.insert(sInstrumentChannels[Note.Channel].AudioChannels.begin(), sNewChannel);
-
-    // play the note
-    ALuint alSource = alManager->getSource(sNewChannel.Index);
-
-    alSourcei(alSource, AL_BUFFER, alBuffer[iSampleSet[Note.Channel]][iSample]);
-
-    if(b3DSound)
-        alSource3f(alSource, AL_POSITION, al3DPosition[0], al3DPosition[1], al3DPosition[2]);
-    else
-        alSource3f(alSource, AL_POSITION, fPan, 0.0f, 0.0f);
-
-    alSourcef(alSource, AL_PITCH, 1.0f);
-    alSourcef(alSource, AL_GAIN, calculateNoteVolume(Note.Intensity, iSampleSet[Note.Channel]));
-    alSourcePlay(alSource);
-}
-
-void MCSoundGenOpenAL::releaseChannel(unsigned char iChannel, bool bQuickly)
-{
-    if(!alBuffer || iChannel >= iNumberOfChannels || sInstrumentChannels[iChannel].AudioChannels.empty())
-        return;
-
-    // make sure that the source is still ours
-    unsigned int iAudioChannelIndex = sInstrumentChannels[iChannel].AudioChannels[0].Index;
-
-    if(alManager->getEntityID(iAudioChannelIndex) != iID || alManager->getEntityChannel(iAudioChannelIndex) != iChannel)
-    {
-        sInstrumentChannels[iChannel].AudioChannels.clear();
-        return;
-    }
-
-    // update the "quickly" flag, make sure that the channel is in the list of channels to release
-    // and leave in case the audio channel is already marked to be released
-    if(sInstrumentChannels[iChannel].AudioChannels[0].Release)
-    {
-        sInstrumentChannels[iChannel].AudioChannels[0].QuickRelease = bQuickly;
-        vChannelsToRelease.add(iChannel);
-        return;
-    }
-
-    // get primary audio source
-    ALuint alSource = alManager->getSource(sInstrumentChannels[iChannel].AudioChannels[0].Index);
-
-    // check whether the primary audio channel is playing a sound
-    ALint alSourceState;
-    alGetSourcei(alSource, AL_SOURCE_STATE, &alSourceState);
-
-    // if the primary channel is playing a sound, change the handler to the secondary channel and notify
-    // the generator to apply a fade out to it
-    if(alSourceState == AL_PLAYING)
-    {
-        // we need two values: the volume of the channel at the moment (initial) and another value that
-        // always goes from 1.0f to 0.0f, in order to apply a fade out which doesn't depend on the initial
-        // volume
-        alGetSourcef(alSource, AL_GAIN, &sInstrumentChannels[iChannel].AudioChannels[0].InitialReleaseVolume);
-        sInstrumentChannels[iChannel].AudioChannels[0].CurrentReleaseState = 1.0f;
-        sInstrumentChannels[iChannel].AudioChannels[0].Release = true;
-        sInstrumentChannels[iChannel].AudioChannels[0].QuickRelease = bQuickly;
-
-        // add the current channel to the list to be released
-        if(bDamper)
-            vChannelsSustained.add(iChannel);
-        else
-            vChannelsToRelease.add(iChannel);
-    }
-
-    // if not, just release the source
-    else
-    {
-        alManager->releaseSource(sInstrumentChannels[iChannel].AudioChannels[0].Index);
-        sInstrumentChannels[iChannel].AudioChannels.clear();
-    }
-}
-
-void MCSoundGenOpenAL::update()
-{
-    unsigned int iChannel;
-
-    // a fade out will be done to the secondary channels that must be released
-    unsigned int iCurrentChannelToRelease = 0;
-
-    while(iCurrentChannelToRelease < vChannelsToRelease.size())
-    {
-        iChannel = vChannelsToRelease[iCurrentChannelToRelease];
-
-        // no audio channels to fade/release
-        if(sInstrumentChannels[iChannel].AudioChannels.empty())
-        {
-            vChannelsToRelease.removeValue(iChannel);
-            continue;
-        }
-
-        // check damper
-        if(bDamper)
-        {
-            vChannelsToRelease.removeValue(iChannel);
-            vChannelsSustained.add(iChannel);
-            continue;
-        }
-
-        unsigned int iCurrentAudioChannel = 0;
-
-        while(iCurrentAudioChannel < sInstrumentChannels[iChannel].AudioChannels.size())
-        {
-            AudioChannel& sAudioChannel = sInstrumentChannels[iChannel].AudioChannels[iCurrentAudioChannel];
-
-            // the source manager has given this source to another sample
-            if(alManager->getEntityID(sAudioChannel.Index) != iID || alManager->getEntityChannel(sAudioChannel.Index) != iChannel)
-            {
-                sInstrumentChannels[iChannel].AudioChannels.erase(sInstrumentChannels[iChannel].AudioChannels.begin() + iCurrentAudioChannel);
-                continue;
-            }
-
-            // the current audio channel must not be released
-            if(!sAudioChannel.Release)
-            {
-                iCurrentAudioChannel++;
-                continue;
-            }
-
-            // next step for the fade-out
-            if(sAudioChannel.CurrentReleaseState > 0.0f)
-            {
-                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? M_QUICK_RELEASE : fReleaseSpeed;
-                float fCurrentGain = std::max(sAudioChannel.CurrentReleaseState * sAudioChannel.InitialReleaseVolume, 0.0f);
-                alSourcef(alManager->getSource(sAudioChannel.Index), AL_GAIN, fCurrentGain);
-            }
-
-            // fade-out completed: stop and release the source
-            else
-            {
-                alSourceStop(alManager->getSource(sAudioChannel.Index));
-                alManager->releaseSource(sAudioChannel.Index);
-                sInstrumentChannels[iChannel].AudioChannels.erase(sInstrumentChannels[iChannel].AudioChannels.begin() + iCurrentAudioChannel);
-                continue;
-            }
-
-            iCurrentAudioChannel++;
-        }
-
-        iCurrentChannelToRelease++;
-    }
-
-    // and the same for all the secondary audio channels that are sustained (only the primary ones must stay sounding)
-    unsigned int iCurrentChannelToSustain = 0;
-    
-    while(iCurrentChannelToSustain < vChannelsSustained.size())
-    {
-        iChannel = vChannelsSustained[iCurrentChannelToSustain];
-
-        unsigned int iCurrentAudioChannel = 1;
-
-        while(iCurrentAudioChannel < sInstrumentChannels[iChannel].AudioChannels.size())
-        {
-            AudioChannel& sAudioChannel = sInstrumentChannels[iChannel].AudioChannels[iCurrentAudioChannel];
-
-            // the source manager has given this source to another sample
-            if(alManager->getEntityID(sAudioChannel.Index) != iID || alManager->getEntityChannel(sAudioChannel.Index) != iChannel)
-            {
-                sInstrumentChannels[iChannel].AudioChannels.erase(sInstrumentChannels[iChannel].AudioChannels.begin() + iCurrentAudioChannel);
-                continue;
-            }
-
-            // next step for the fade-out
-            if(sAudioChannel.CurrentReleaseState > 0.0f)
-            {
-                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? M_QUICK_RELEASE : fReleaseSpeed;
-                float fCurrentGain = std::max(sAudioChannel.CurrentReleaseState * sAudioChannel.InitialReleaseVolume, 0.0f);
-                alSourcef(alManager->getSource(sAudioChannel.Index), AL_GAIN, fCurrentGain);
-            }
-
-            // fade-out completed: stop and release the source
-            else
-            {
-                alSourceStop(alManager->getSource(sAudioChannel.Index));
-                alManager->releaseSource(sAudioChannel.Index);
-                sInstrumentChannels[iChannel].AudioChannels.erase(sInstrumentChannels[iChannel].AudioChannels.begin() + iCurrentAudioChannel);
-                continue;
-            }
-
-            iCurrentAudioChannel++;
-        }
-
-        iCurrentChannelToSustain++;
-    }
-}
-
-void MCSoundGenOpenAL::get3DPosition(float* X, float* Y, float* Z)
-{
-    *X = al3DPosition[0];
-    *Y = al3DPosition[1];
-    *Z = al3DPosition[2];
-}
-
-void MCSoundGenOpenAL::get3DDirection(float* X, float* Y, float* Z)
-{
-    *X = al3DDirection[0];
-    *Y = al3DDirection[1];
-    *Z = al3DDirection[2];
-}
-
-void MCSoundGenOpenAL::setBending(unsigned char Channel, int Cents)
-{
-    unsigned int iAudioChannelIndex = sInstrumentChannels[Channel].AudioChannels[0].Index;
-
-    if(alManager->getEntityID(iAudioChannelIndex) == iID && alManager->getEntityChannel(iAudioChannelIndex) == Channel)
-        alSourcef(alManager->getSource(iAudioChannelIndex), AL_PITCH, (float)pow(2, Cents / 1200.0f));
-}
-
-void MCSoundGenOpenAL::setIntensity(unsigned char Channel, unsigned char Intensity)
-{
-    unsigned int iAudioChannelIndex = sInstrumentChannels[Channel].AudioChannels[0].Index;
-
-    if(alManager->getEntityID(iAudioChannelIndex) == iID &&
-       alManager->getEntityChannel(iAudioChannelIndex) == Channel &&
-       iSampleSet[Channel] > -1)
-    {
-        alSourcef(alManager->getSource(iAudioChannelIndex), AL_GAIN, 
-                  calculateNoteVolume(Intensity, iSampleSet[Channel]));
-    }
-}
-
-void MCSoundGenOpenAL::set3DPosition(float X, float Y, float Z)
-{
-    unsigned int i;
-    unsigned int j;
-
-    ALuint alSource;
-    ALint alSourceState;
-
-    al3DPosition[0] = X;
-    al3DPosition[1] = Y;
-    al3DPosition[2] = Z;
-
-    // take effect on the channels that are sounding
-    for(i = 0; i < iNumberOfChannels; i++)
-    {
-        for(j = 0; j < sInstrumentChannels[i].AudioChannels.size(); j++)
-        {
-            AudioChannel& sAudioChannel = sInstrumentChannels[i].AudioChannels[j];
-
-            if(alManager->getEntityID(sAudioChannel.Index) == iID && alManager->getEntityChannel(sAudioChannel.Index) == i)
-            {
-                alSource = alManager->getSource(sAudioChannel.Index);
-                alGetSourcei(alSource, AL_SOURCE_STATE, &alSourceState);
-
-                if(alSourceState == AL_PLAYING)
-                    alSource3f(alSource, AL_POSITION, al3DPosition[0], al3DPosition[1], al3DPosition[2]);
-            }
-        }
-    }
-}
-
-void MCSoundGenOpenAL::set3DDirection(float X, float Y, float Z)
-{
-    unsigned int i;
-    unsigned int j;
-
-    ALuint alSource;
-    ALint alSourceState;
-
-    al3DDirection[0] = X;
-    al3DDirection[1] = Y;
-    al3DDirection[2] = Z;
-
-    // take effect on the channels that are sounding
-    for(i = 0; i < iNumberOfChannels; i++)
-    {
-        for(j = 0; j < sInstrumentChannels[i].AudioChannels.size(); j++)
-        {
-            AudioChannel& sAudioChannel = sInstrumentChannels[i].AudioChannels[j];
-
-            if(alManager->getEntityID(sAudioChannel.Index) == iID && alManager->getEntityChannel(sAudioChannel.Index) == i)
-            {
-                alSource = alManager->getSource(sAudioChannel.Index);
-                alGetSourcei(alSource, AL_SOURCE_STATE, &alSourceState);
-
-                if(alSourceState == AL_PLAYING)
-                    alSource3f(alSource, AL_DIRECTION, al3DDirection[0], al3DDirection[1], al3DDirection[2]);
-            }
-        }
-    }
+    cManager->playSource(SourceIndex, (ALint*)alBuffers[SampleSet] + SampleIndex);
 }
 
 void MCSoundGenOpenAL::loadWAVData(const char* sData, unsigned int iSize, ALuint alBuffer)
