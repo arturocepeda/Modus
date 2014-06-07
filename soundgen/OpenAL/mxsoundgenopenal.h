@@ -57,7 +57,7 @@
 #endif
 
 
-#define OPENAL_SOURCES 24
+#define OPENAL_SOURCES 32
 
 
 //

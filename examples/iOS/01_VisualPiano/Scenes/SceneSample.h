@@ -18,8 +18,6 @@
 #include "modus.h"
 #include "mxsoundgenopenal.h"
 
-#define OPENAL_SOURCES  32
-
 #define LOWEST_NOTE     21
 #define SCORES          2
 

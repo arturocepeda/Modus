@@ -192,7 +192,7 @@ void MCSoundGenAudio::get3DDirection(float* X, float* Y, float* Z)
 //  MSAudioSource
 //
 MSAudioSource::MSAudioSource()
-    : Source(nullptr)
+    : Source(NULL)
     , EntityID(0)
     , EntityChannel(0)
     , Assignment(0)
@@ -259,7 +259,7 @@ void MCAudioSourceManager::assignSource(unsigned int SourceIndex, unsigned int E
 
 void MCAudioSourceManager::freeSource(unsigned int SourceIndex)
 {
-    if(SourceIndex < iNumSources && SourceIndex >= 0)
+    if(SourceIndex < iNumSources)
     {
         sSources[SourceIndex].EntityID = 0;
         sSources[SourceIndex].EntityChannel = 0;

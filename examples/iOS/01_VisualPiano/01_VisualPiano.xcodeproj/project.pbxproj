@@ -20,7 +20,6 @@
 		69CF999C188164FE00548B8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF9997188164FE00548B8B /* main.m */; };
 		CEB852171668E77000DAE29C /* audio.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852161668E77000DAE29C /* audio.mm */; };
 		CEB8521A1668E7B700DAE29C /* SceneSample.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852191668E7B700DAE29C /* SceneSample.mm */; };
-		CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */; };
 		CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */; };
 		CEB852471668E87000DAE29C /* GEDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523D1668E87000DAE29C /* GEDevice.mm */; };
 		CEB852481668E87000DAE29C /* GERendering.mm in Sources */ = {isa = PBXBuildFile; fileRef = CEB8523F1668E87000DAE29C /* GERendering.mm */; };
@@ -86,8 +85,6 @@
 		CEB8522E1668E81B00DAE29C /* mtimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mtimer.h; path = ../../../include/mtimer.h; sourceTree = "<group>"; };
 		CEB8522F1668E81B00DAE29C /* mtypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mtypes.h; path = ../../../include/mtypes.h; sourceTree = "<group>"; };
 		CEB852301668E81B00DAE29C /* mutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mutils.h; path = ../../../include/mutils.h; sourceTree = "<group>"; };
-		CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mxopenalsourcemanager.cpp; path = ../../../soundgen/OpenAL/mxopenalsourcemanager.cpp; sourceTree = "<group>"; };
-		CEB852341668E84A00DAE29C /* mxopenalsourcemanager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxopenalsourcemanager.h; path = ../../../soundgen/OpenAL/mxopenalsourcemanager.h; sourceTree = "<group>"; };
 		CEB852361668E85200DAE29C /* mxsoundgenopenal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mxsoundgenopenal.h; path = ../../../soundgen/OpenAL/mxsoundgenopenal.h; sourceTree = "<group>"; };
 		CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = mxsoundgenopenal.mm; path = ../../../soundgen/OpenAL/mxsoundgenopenal.mm; sourceTree = "<group>"; };
 		CEB8523C1668E87000DAE29C /* GEDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GEDevice.h; path = ../rendering/GEDevice.h; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 			children = (
 				CEB852361668E85200DAE29C /* mxsoundgenopenal.h */,
 				CEB852371668E85200DAE29C /* mxsoundgenopenal.mm */,
-				CEB852341668E84A00DAE29C /* mxopenalsourcemanager.h */,
-				CEB852331668E84A00DAE29C /* mxopenalsourcemanager.cpp */,
 			);
 			name = soundgen;
 			sourceTree = "<group>";
@@ -433,7 +428,6 @@
 				CEE82F8D16679399004FBB96 /* ViewController.mm in Sources */,
 				CEB852171668E77000DAE29C /* audio.mm in Sources */,
 				CEB8521A1668E7B700DAE29C /* SceneSample.mm in Sources */,
-				CEB852351668E84A00DAE29C /* mxopenalsourcemanager.cpp in Sources */,
 				CEB852381668E85200DAE29C /* mxsoundgenopenal.mm in Sources */,
 				CEB852471668E87000DAE29C /* GEDevice.mm in Sources */,
 				CEB852481668E87000DAE29C /* GERendering.mm in Sources */,

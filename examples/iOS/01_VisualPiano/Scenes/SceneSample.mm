@@ -168,8 +168,7 @@ void GESceneSample::init()
    MSRange mPianoRange(21, 108);
    mPiano = new MCInstrument(1, mPianoRange, mPianoRange.getSize());
    
-   mSourceManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-   mSoundGen = new MCSoundGenOpenAL(mPianoRange.getSize(), false, 1, mSourceManager);
+   mSoundGen = new MCSoundGenOpenAL(1,  mPianoRange.getSize(), false);
    mPiano->setSoundGen(mSoundGen);
    
    mScore[0].loadScriptFromFile(GEDevice::getResourcePath(@"score.piano.chopin.txt"));
