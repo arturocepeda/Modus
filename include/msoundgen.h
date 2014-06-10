@@ -40,7 +40,6 @@
 #include "mutils.h"
 
 #define M_DEFAULT_RELEASE   0.1f
-#define M_QUICK_RELEASE     0.25f
 
 /**
  *  @brief Abstract class intended to provide an interface to create sound generators that are able to
@@ -256,7 +255,6 @@ struct MSAudioSource
 class MCAudioSourceManager
 {
 protected:
-    void* pAudioEngine;
     unsigned int iNumSources;
 
     MSAudioSource* sSources;
@@ -265,7 +263,7 @@ protected:
     void assignSource(unsigned int SourceIndex, unsigned int EntityID, unsigned int EntityChannel);
 
 public:
-    MCAudioSourceManager(void* AudioEngine, unsigned int NumSources);
+    MCAudioSourceManager(unsigned int NumSources);
     virtual ~MCAudioSourceManager();
 
     virtual void allocateSources() = 0;

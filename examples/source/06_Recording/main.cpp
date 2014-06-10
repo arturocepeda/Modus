@@ -13,9 +13,7 @@
 #include "main.h"
 #include "./../midi.h"
 
-#include "./../audio/audio.openal.h"
-#include "OpenAL/mxsoundgenopenal.h"
-#include "OpenAL/mxopenalsourcemanager.h"
+#include "./../audio/audio.h"
 
 #include <iostream>
 
@@ -83,8 +81,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCOpenALSourceManager mALManager(OPENAL_SOURCES);
-    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mPiano.getNumberOfChannels(), false, 1, &mALManager);
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, mPiano.getNumberOfChannels(), false);
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
     mPiano.setSoundGen(mSoundGen);

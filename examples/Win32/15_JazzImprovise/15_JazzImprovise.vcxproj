@@ -96,8 +96,6 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\extensions\mxhumanizer.h" />
     <ClInclude Include="..\..\..\extensions\mximproviser.h" />
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
-    <ClInclude Include="..\..\source\audio\audio.openal.h" />
     <ClInclude Include="..\..\source\15_JazzImprovise\main.h" />
     <ClInclude Include="..\..\source\15_JazzImprovise\rendering.h" />
   </ItemGroup>

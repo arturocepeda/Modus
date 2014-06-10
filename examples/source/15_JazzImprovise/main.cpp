@@ -13,9 +13,7 @@
 #include "main.h"
 #include "rendering.h"
 
-#include "./../audio/audio.openal.h"
-#include "OpenAL/mxsoundgenopenal.h"
-#include "OpenAL/mxopenalsourcemanager.h"
+#include "./../audio/audio.h"
 
 #ifdef _MSC_VER
 #pragma comment(lib, "winmm.lib")
@@ -103,45 +101,44 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
 
     // sound system
     CAudio::init();
-    MCOpenALSourceManager* mALManager = new MCOpenALSourceManager(OPENAL_SOURCES);
 
     // instruments
     MSRange mTromboneRange(40, 77);
     sGlobal.mTrombone = new MCInstrument(1, mTromboneRange, 1);
     sGlobal.mTrombone->setTranspose(-12);
-    MCSoundGenAudio* mTromboneSoundGen = new MCSoundGenOpenAL(sGlobal.mTrombone->getNumberOfChannels(), true, 1, mALManager);
+    MCSoundGenAudio* mTromboneSoundGen = CAudio::createSoundGen(1, sGlobal.mTrombone->getNumberOfChannels(), true);
     mTromboneSoundGen->set3DPosition(2.0f, 0.0f, 0.1f);
     sGlobal.mTrombone->setSoundGen(mTromboneSoundGen);
     
     MSRange mTenorSaxRange(44, 75);
     sGlobal.mTenorSax = new MCInstrument(2, mTenorSaxRange, 1);
     sGlobal.mTenorSax->setTranspose(-12);
-    MCSoundGenAudio* mTenorSaxSoundGen = new MCSoundGenOpenAL(sGlobal.mTenorSax->getNumberOfChannels(), true, 2, mALManager);
+    MCSoundGenAudio* mTenorSaxSoundGen = CAudio::createSoundGen(2, sGlobal.mTenorSax->getNumberOfChannels(), true);
     mTenorSaxSoundGen->set3DPosition(-1.0f, 0.0f, 0.1f);
     sGlobal.mTenorSax->setSoundGen(mTenorSaxSoundGen);
 
     sGlobal.mPianoRange.LowestNote = 21;
     sGlobal.mPianoRange.HighestNote = 108;
     sGlobal.mPiano = new MCInstrument(3, sGlobal.mPianoRange, sGlobal.mPianoRange.getSize());
-    MCSoundGenAudio* mPianoSoundGen = new MCSoundGenOpenAL(sGlobal.mPiano->getNumberOfChannels(), true, 3, mALManager);
+    MCSoundGenAudio* mPianoSoundGen = CAudio::createSoundGen(3, sGlobal.mPiano->getNumberOfChannels(), true);
     mPianoSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mPiano->setSoundGen(mPianoSoundGen);
     
     MSRange mBassRange(28, 60);
     sGlobal.mBass = new MCInstrument(4, mBassRange, 4);
-    MCSoundGenAudio* mBassSoundGen = new MCSoundGenOpenAL(sGlobal.mBass->getNumberOfChannels(), true, 4, mALManager);
+    MCSoundGenAudio* mBassSoundGen = CAudio::createSoundGen(4, sGlobal.mBass->getNumberOfChannels(), true);
     mBassSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mBass->setSoundGen(mBassSoundGen);
 
     MSRange mDrumsRange(35, 59);
     sGlobal.mDrums = new MCInstrument(5, mDrumsRange, 8);
-    MCSoundGenAudio* mDrumsSoundGen = new MCSoundGenOpenAL(sGlobal.mDrums->getNumberOfChannels(), true, 5, mALManager);
+    MCSoundGenAudio* mDrumsSoundGen = CAudio::createSoundGen(5, sGlobal.mDrums->getNumberOfChannels(), true);
     mDrumsSoundGen->set3DPosition(0.0f, 0.0f, 0.0f);
     sGlobal.mDrums->setSoundGen(mDrumsSoundGen);
 
     MSRange mCountRange(1, 7);
     sGlobal.mCount = new MCInstrument(6, mCountRange, 2);
-    MCSoundGenAudio* mCountSoundGen = new MCSoundGenOpenAL(sGlobal.mCount->getNumberOfChannels(), true, 6, mALManager);
+    MCSoundGenAudio* mCountSoundGen = CAudio::createSoundGen(6, sGlobal.mCount->getNumberOfChannels(), true);
     mCountSoundGen->set3DPosition(0.0f, 0.0f, 1.0f);
     sGlobal.mCount->setSoundGen(mCountSoundGen);
 
@@ -278,8 +275,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
 
     delete sGlobal.mCount;
     delete mCountSoundGen;
-
-    delete mALManager;
     
     delete mLoopTimer;
     delete sGlobal.mMusicTimer;

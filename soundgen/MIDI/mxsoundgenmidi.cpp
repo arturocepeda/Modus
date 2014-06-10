@@ -42,10 +42,10 @@
 #include "mxsoundgenmidi.h"
 #include "mutils.h"
 
-MCSoundGenMIDI::MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDevice, 
+MCSoundGenMIDI::MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDevice,
                                unsigned char MIDIChannel, unsigned char MIDIProgram)
+    : MCSoundGen(0, NumberOfChannels)
 {
-    iNumberOfChannels = NumberOfChannels;
     mDevice = MIDIDevice;
     iMIDIChannel = MIDIChannel - 1;
     fVolume = 1.0f;

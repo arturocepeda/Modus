@@ -13,9 +13,7 @@
 #include "main.h"
 #include "rendering.h"
 
-#include "./../audio/audio.openal.h"
-#include "OpenAL/mxsoundgenopenal.h"
-#include "OpenAL/mxopenalsourcemanager.h"
+#include "./../audio/audio.h"
 
 #ifdef _MSC_VER
 #pragma comment(lib, "winmm.lib")
@@ -117,8 +115,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
 
     // sound generator
     CAudio::init();
-    MCOpenALSourceManager* mALManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(sGlobal.mPiano->getNumberOfChannels(), false, 1, mALManager);
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, sGlobal.mPiano->getNumberOfChannels(), false);
     mSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
 
     // instrument settings
@@ -188,7 +185,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
     delete mMIDIReceiver;
     delete sGlobal.mPiano;
     delete mSoundGen;
-    delete mALManager;
     delete mMusicTimer;
     delete mLoopTimer;
 

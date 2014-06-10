@@ -18,11 +18,26 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#include "audio.openal.h"
+#include "audio.h"
 #include <stdio.h>
 
-ALCcontext* CAudio::alContext;
-ALCdevice* CAudio::alDevice;
+#include "OpenAL/mxsoundgenopenal.h"
+
+#ifdef _MSC_VER
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OpenAL\\lib.win32\\OpenAL32.lib")
+#ifdef _DEBUG
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libogg_static_d.lib")
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libvorbis_static_d.lib")
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libvorbisfile_static_d.lib")
+#else
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libogg_static.lib")
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libvorbis_static.lib")
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\OggVorbis\\lib.win32\\libvorbisfile_static.lib")
+#endif
+#endif
+
+ALCcontext* alContext;
+ALCdevice* alDevice;
 
 void CAudio::init()
 {
@@ -43,6 +58,10 @@ void CAudio::release()
     alcMakeContextCurrent(NULL);
     alcDestroyContext(alContext);
     alcCloseDevice(alDevice);
+}
+
+void CAudio::update()
+{
 }
 
 MCSoundGenAudio* CAudio::createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)

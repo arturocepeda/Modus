@@ -208,9 +208,8 @@ MSAudioSource::MSAudioSource()
 //
 //  MCAudioSourceManager
 //
-MCAudioSourceManager::MCAudioSourceManager(void* AudioEngine, unsigned int NumSources)
-    : pAudioEngine(AudioEngine)
-    , iNumSources(NumSources)
+MCAudioSourceManager::MCAudioSourceManager(unsigned int NumSources)
+    : iNumSources(NumSources)
     , iCurrentAssignment(0)
 {
     sSources = new MSAudioSource[iNumSources];
@@ -460,7 +459,7 @@ void MCSoundGenAudioMultipleChannel::update()
             // next step for the fade-out
             if(sAudioChannel.CurrentReleaseState > 0.0f)
             {
-                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? M_QUICK_RELEASE : fReleaseSpeed;
+                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? fReleaseSpeed * 2.0f : fReleaseSpeed;
                 sAudioChannel.CurrentReleaseState = std::max(sAudioChannel.CurrentReleaseState, 0.0f);
                 float fCurrentGain = sAudioChannel.CurrentReleaseState * sAudioChannel.InitialReleaseVolume;
                 cManager->setSourceVolume(sAudioChannel.Index, fCurrentGain);
@@ -505,7 +504,7 @@ void MCSoundGenAudioMultipleChannel::update()
             // next step for the fade-out
             if(sAudioChannel.CurrentReleaseState > 0.0f)
             {
-                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? M_QUICK_RELEASE : fReleaseSpeed;
+                sAudioChannel.CurrentReleaseState -= sAudioChannel.QuickRelease ? fReleaseSpeed * 2.0f : fReleaseSpeed;
                 sAudioChannel.CurrentReleaseState = std::max(sAudioChannel.CurrentReleaseState, 0.0f);
                 float fCurrentGain = sAudioChannel.CurrentReleaseState * sAudioChannel.InitialReleaseVolume;
                 cManager->setSourceVolume(sAudioChannel.Index, fCurrentGain);

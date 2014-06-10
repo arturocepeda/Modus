@@ -97,7 +97,7 @@ long ovTell(void* pDataSource)
 //  Audio source manager
 //
 MCOpenALSourceManager::MCOpenALSourceManager(unsigned int NumSources)
-    : MCAudioSourceManager(nullptr, NumSources)
+    : MCAudioSourceManager(NumSources)
 {
 }
 

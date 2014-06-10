@@ -80,14 +80,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.cpp" />
-    <ClCompile Include="..\..\source\audio\audio.fmod.cpp" />
+    <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp" />
     <ClCompile Include="..\..\source\14_AccurateVisualPiano\main.cpp" />
     <ClCompile Include="..\..\source\14_AccurateVisualPiano\rendering.cpp" />
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.h" />
-    <ClInclude Include="..\..\source\audio\audio.fmod.h" />
     <ClInclude Include="..\..\source\14_AccurateVisualPiano\main.h" />
     <ClInclude Include="..\..\source\14_AccurateVisualPiano\rendering.h" />
   </ItemGroup>

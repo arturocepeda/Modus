@@ -86,8 +86,6 @@
     <ClCompile Include="..\..\source\13_PlayVisualPiano\rendering.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
-    <ClInclude Include="..\..\source\audio\audio.openal.h" />
     <ClInclude Include="..\..\source\13_PlayVisualPiano\main.h" />
     <ClInclude Include="..\..\source\13_PlayVisualPiano\rendering.h" />
   </ItemGroup>

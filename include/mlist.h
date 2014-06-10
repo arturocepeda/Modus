@@ -68,7 +68,10 @@ protected:
         char sValue[iValueSize];
 
         while(i < (iValueSize - 1) && sSegment[i] != '\0' && isdigit(sSegment[0]))
-            sValue[i++] = sSegment[i];
+        {
+            sValue[i] = sSegment[i];
+            i++;
+        }
 
         sValue[i] = 0;
 

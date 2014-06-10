@@ -92,10 +92,6 @@
     <ClCompile Include="..\..\source\06_Recording\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\externals\RtMidi\RtError.h" />
-    <ClInclude Include="..\..\..\soundgen\externals\RtMidi\RtMidi.h" />
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
-    <ClInclude Include="..\..\source\audio\audio.openal.h" />
     <ClInclude Include="..\..\source\06_Recording\main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

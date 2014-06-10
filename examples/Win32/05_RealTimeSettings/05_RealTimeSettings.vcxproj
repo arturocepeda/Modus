@@ -86,13 +86,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.cpp" />
-    <ClCompile Include="..\..\source\audio\audio.fmod.cpp" />
+    <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp" />
     <ClCompile Include="..\..\source\05_RealTimeSettings\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\FMOD\mxsoundgenfmod.h" />
-    <ClInclude Include="..\..\source\audio\audio.fmod.h" />
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

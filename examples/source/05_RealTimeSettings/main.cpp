@@ -13,8 +13,7 @@
 #include "./../platforms.h"
 #include "modus.h"
 
-#include "./../audio/audio.fmod.h"
-#include "FMOD/mxsoundgenfmod.h"
+#include "./../audio/audio.h"
 
 #include <iostream>
 
@@ -54,8 +53,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(sGlobal.mDrums->getNumberOfChannels(), false, 
-                                                    CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, sGlobal.mDrums->getNumberOfChannels(), false);
     sprintf(sFilename, InstrumentsPath, "Drums.msp");
     mSoundGen->loadSamplePack(sFilename);
 

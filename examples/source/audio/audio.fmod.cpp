@@ -19,13 +19,22 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-#include "audio.fmod.h"
+#include "audio.h"
+#include "./../soundgen/FMOD/mxsoundgenfmod.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-FMOD::System* CAudio::fSystem;
+// try with higher values in case it doesn't sound properly
+#define FMOD_DSP_BUFFER_SIZE 512
+#define FMOD_CHANNELS 32
 
-void CAudio::ERRCHECK(FMOD_RESULT result)
+#ifdef _MSC_VER
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\FMOD\\lib.win32\\fmodex_vc.lib")
+#endif
+
+FMOD::System* fSystem;
+
+void ERRCHECK(FMOD_RESULT result)
 {
    if(result != FMOD_OK)
    {
@@ -51,7 +60,7 @@ void CAudio::init()
 #endif
 
     // initialize FMOD system
-    result = fSystem->init(FMOD_MAX_CHANNELS, FMOD_INIT_NORMAL, NULL);
+    result = fSystem->init(FMOD_CHANNELS, FMOD_INIT_NORMAL, NULL);
     ERRCHECK(result);
 }
 
@@ -66,7 +75,7 @@ void CAudio::release()
     fSystem->release();
 }
 
-FMOD::System* CAudio::getSoundSystem()
+MCSoundGenAudio* CAudio::createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
 {
-    return fSystem;
+    return new MCSoundGenFMOD(NumberOfChannels, Sound3D, fSystem);
 }

@@ -13,9 +13,7 @@
 #include "./../platforms.h"
 #include "modus.h"
 
-#include "./../audio/audio.openal.h"
-#include "OpenAL/mxsoundgenopenal.h"
-#include "OpenAL/mxopenalsourcemanager.h"
+#include "./../audio/audio.h"
 
 #include <iostream>
 
@@ -38,8 +36,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCOpenALSourceManager* mManager = new MCOpenALSourceManager(OPENAL_SOURCES);
-    MCSoundGenAudio* mSoundGen = new MCSoundGenOpenAL(mDoubleBass.getNumberOfChannels(), false, 1, mManager);
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, mDoubleBass.getNumberOfChannels(), false);
     sprintf(sFilename, InstrumentsPath, "DoubleBass.msp");
     mSoundGen->loadSamplePack(sFilename);
 
@@ -104,7 +101,6 @@ int main(int argc, char* argv[])
 #endif
 
     delete mSoundGen;
-    delete mManager;
 
     CAudio::release();
 

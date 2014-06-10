@@ -90,10 +90,6 @@
     <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
     <ClCompile Include="..\..\source\08_Bending\main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.h" />
-    <ClInclude Include="..\..\source\audio\audio.openal.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

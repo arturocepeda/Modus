@@ -91,11 +91,6 @@
     <ClCompile Include="..\..\..\soundgen\MIDI\mxsoundgenmidi.cpp" />
     <ClCompile Include="..\..\source\01_PolonaiseMIDI\main.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\soundgen\externals\RtMidi\RtError.h" />
-    <ClInclude Include="..\..\..\soundgen\externals\RtMidi\RtMidi.h" />
-    <ClInclude Include="..\..\..\soundgen\MIDI\mxsoundgenmidi.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

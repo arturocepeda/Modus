@@ -41,7 +41,9 @@
 #include "msoundgen.h"
 #include "mutils.h"
 
+#ifndef PI
 #define PI 3.14159f
+#endif
 
 /**
  *  @brief Represents a progressive change that is applied to a note. Concretely, this is

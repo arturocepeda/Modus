@@ -13,8 +13,7 @@
 #include "main.h"
 #include "rendering.h"
 
-#include "./../audio/audio.fmod.h"
-#include "FMOD/mxsoundgenfmod.h"
+#include "./../audio/audio.h"
 
 // rendering data
 SGDI sGDI;
@@ -86,7 +85,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR sCmdLine, 
 
     // sound generator
     CAudio::init();
-    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(sGlobal.mPiano->getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, sGlobal.mPiano->getNumberOfChannels(), false);
     mSoundGen->loadSamplePack(".\\..\\..\\common\\instruments\\Piano.msp");
 
     // instrument settings

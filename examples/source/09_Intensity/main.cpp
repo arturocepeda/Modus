@@ -13,8 +13,7 @@
 #include "./../platforms.h"
 #include "modus.h"
 
-#include "./../audio/audio.fmod.h"
-#include "FMOD/mxsoundgenfmod.h"
+#include "./../audio/audio.h"
 
 #include <iostream>
 
@@ -37,7 +36,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mTenorSax.getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, mTenorSax.getNumberOfChannels(), false);
     sprintf(sFilename, InstrumentsPath, "TenorSax.msp");
     mSoundGen->loadSamplePack(sFilename);
 

@@ -13,8 +13,7 @@
 #include "./../platforms.h"
 #include "modus.h"
 
-#include "./../audio/audio.fmod.h"
-#include "FMOD/mxsoundgenfmod.h"
+#include "./../audio/audio.h"
 
 #include <iostream>
 #include <fstream>
@@ -41,7 +40,7 @@ int main(int argc, char* argv[])
 
     // sound generator
     CAudio::init();
-    MCSoundGenAudio* mSoundGen = new MCSoundGenFMOD(mPiano.getNumberOfChannels(), false, CAudio::getSoundSystem());
+    MCSoundGenAudio* mSoundGen = CAudio::createSoundGen(1, mPiano.getNumberOfChannels(), false);
     sprintf(sFilename, InstrumentsPath, "Piano.msp");
     mSoundGen->loadSamplePack(sFilename);
 
