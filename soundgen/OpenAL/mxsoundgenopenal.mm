@@ -71,7 +71,7 @@ void MCOpenALSourceManager::releaseSources()
    }
 }
 
-void MCOpenALSourceManager::playSource(unsigned int SourceIndex, void* Sound)
+void MCOpenALSourceManager::playSource(unsigned int SourceIndex, void* Sound, bool Sound3D)
 {
    ALuint alSource = *(reinterpret_cast<ALuint*>(sSources[SourceIndex].Source));
    ALint alBuffer = *(reinterpret_cast<ALint*>(Sound));
@@ -326,7 +326,7 @@ void MCSoundGenOpenAL::unloadSamples()
 
 void MCSoundGenOpenAL::playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex)
 {
-   cManager->playSource(SourceIndex, (ALint*)alBuffers[SampleSet] + SampleIndex);
+   cManager->playSource(SourceIndex, (ALint*)alBuffers[SampleSet] + SampleIndex, b3DSound);
 }
 
 void MCSoundGenOpenAL::loadAudioData(const char* sData, unsigned int iSize, ALuint alBuffer)

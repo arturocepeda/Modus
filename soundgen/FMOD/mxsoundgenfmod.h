@@ -45,41 +45,69 @@
 #include "msoundgen.h"
 #include "./../externals/FMOD/include/fmod.hpp"
 
-class MCSoundGenFMOD : public MCSoundGenAudioDoubleChannel
+#define FMOD_SOURCES 32
+
+
+//
+//  Audio source manager
+//
+class MCFMODSourceManager : public MCAudioSourceManager
 {
 private:
-    FMOD::System* fmodSystem;
-    FMOD::Sound*** fmodSound;
-    FMOD::Channel*** fmodChannel;
-    FMOD::ChannelGroup* fmodChannelGroup;
-    std::vector<FMOD::DSP*> fmodDSP;
+   FMOD::System* fmodSystem;
+   FMOD::Channel** fmodChannels;
+   FMOD::ChannelGroup* fmodChannelGroup;
 
-    float* fFrequency;
-    FMOD_VECTOR fmod3DPosition;
-
-    void releaseChannel(unsigned char iChannel, bool bQuickly);
+   float* fFrequencies;
 
 public:
-    MCSoundGenFMOD(unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem);
-    ~MCSoundGenFMOD();
+   MCFMODSourceManager(FMOD::System* AudioSystem, unsigned int NumSources);
 
-    void addSampleSet(MSSampleSet& SampleSet);
-    unsigned int addEffect(FMOD_DSP_TYPE fmodDSPType);
-    void loadSamples();
-    void loadSamplePack(std::istream& Stream, 
-                        void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                        void* Data = NULL);
-    void unloadSamples();
+   virtual void allocateSources() override;
+   virtual void releaseSources() override;
 
-    void playNote(MSNote& Note);
-    void update();
+   virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+   virtual void stopSource(unsigned int SourceIndex) override;
 
-    void get3DPosition(float* X, float* Y, float* Z);
+   virtual bool isSourcePlaying(unsigned int SourceIndex) override;
 
-    void setBending(unsigned char Channel, int Cents);
-    void setIntensity(unsigned char Channel, unsigned char Intensity);
-    void set3DPosition(float X, float Y, float Z);
-    void setEffectParameter(unsigned int EffectIndex, int ParameterIndex, float Value);
+   virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+   virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+   virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+   virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+   virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+};
+
+
+//
+//  Sound generator
+//
+class MCSoundGenFMOD : public MCSoundGenAudioMultipleChannel
+{
+private:
+   FMOD::System* fmodSystem;
+   FMOD::Sound*** fmodSounds;
+   std::vector<FMOD::DSP*> fmodDSP;
+
+   float* fFrequency;
+   FMOD_VECTOR fmod3DPosition;
+
+   static unsigned int iNumberOfInstances;
+
+   void releaseChannel(unsigned char iChannel, bool bQuickly);
+
+public:
+   MCSoundGenFMOD(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem);
+   ~MCSoundGenFMOD();
+
+   void addSampleSet(MSSampleSet& SampleSet);
+   void loadSamples();
+   void loadSamplePack(std::istream& Stream, 
+                       void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                       void* Data = NULL);
+   void unloadSamples();
+
+   void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
 };
 
 #endif

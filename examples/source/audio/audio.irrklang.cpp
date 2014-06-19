@@ -20,26 +20,32 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
-#include "audio.irrklang.h"
+#include "audio.h"
 
-irrklang::ISoundEngine* CAudio::iEngine;
+#include "irrKlang/mxsoundgenirrklang.h"
+
+#ifdef _MSC_VER
+#pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\irrKlang\\lib.win32\\irrKlang.lib")
+#endif
+
+irrklang::ISoundEngine* ikEngine;
 
 void CAudio::init()
 {
-    iEngine = irrklang::createIrrKlangDevice();
+    ikEngine = irrklang::createIrrKlangDevice();
 }
 
 void CAudio::release()
 {
-    iEngine->drop();
+    ikEngine->drop();
 }
 
 void CAudio::update()
 {
-    iEngine->update();
+    ikEngine->update();
 }
 
-irrklang::ISoundEngine* CAudio::getSoundSystem()
+MCSoundGenAudio* CAudio::createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
 {
-    return iEngine;
+    return new MCSoundGenirrKlang(ID, NumberOfChannels, Sound3D, ikEngine);
 }

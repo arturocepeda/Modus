@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2014 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -45,42 +45,54 @@
 #include "msoundgen.h"
 #include "./../externals/irrKlang/include/irrKlang.h"
 
-#define IRRKLANG_EFFECT_PARAMETERS 12
+#define IRRKLANG_SOURCES 32
 
-enum IRRKLANG_EFFECT
+
+//
+//  Audio source manager
+//
+class MCirrKlangSourceManager : public MCAudioSourceManager
 {
-    IRRKLANG_EFFECT_CHORUS,
-    IRRKLANG_EFFECT_COMPRESSOR,
-    IRRKLANG_EFFECT_DISTORTION,
-    IRRKLANG_EFFECT_ECHO,
-    IRRKLANG_EFFECT_FLANGER,
-    IRRKLANG_EFFECT_GARGLE,
-    IRRKLANG_EFFECT_I3DL2REVERB,
-    IRRKLANG_EFFECT_PARAMEQ,
-    IRRKLANG_EFFECT_WAVESREVERB
+private:
+    irrklang::ISoundEngine* ikEngine;
+
+public:
+    MCirrKlangSourceManager(irrklang::ISoundEngine* AudioSystem, unsigned int NumSources);
+
+    virtual void allocateSources() override;
+    virtual void releaseSources() override;
+
+    virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+    virtual void stopSource(unsigned int SourceIndex) override;
+
+    virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+
+    virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+    virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+    virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+    virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+    virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
 };
 
-class MCSoundGenirrKlang : public MCSoundGenAudioDoubleChannel
+
+//
+//  Sound generator
+//
+class MCSoundGenirrKlang : public MCSoundGenAudioMultipleChannel
 {
 private:
     irrklang::ISoundEngine* iEngine;
     irrklang::ISoundSource*** iSound;
-    irrklang::ISound*** iChannel;
-    irrklang::ISoundEffectControl** iSoundEffectControl;
-    std::vector<IRRKLANG_EFFECT> iEffect;
-    std::vector<irrklang::ik_f32*> iEffectParameter;
 
     irrklang::vec3df i3DPosition;
 
-    void releaseChannel(unsigned char iChannel, bool bQuickly);
-    void applyEffects(unsigned char iNumChannel);
+    static unsigned int iNumberOfInstances;
 
 public:
-    MCSoundGenirrKlang(unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine);
+    MCSoundGenirrKlang(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine);
     ~MCSoundGenirrKlang();
 
     void addSampleSet(MSSampleSet& SampleSet);
-    unsigned int addEffect(IRRKLANG_EFFECT Effect);
 
     void loadSamples();
     void loadSamplePack(std::istream& Stream, 
@@ -88,15 +100,7 @@ public:
                         void* Data = NULL);
     void unloadSamples();
 
-    void playNote(MSNote& Note);
-    void update();
-
-    void get3DPosition(float* X, float* Y, float* Z);
-
-    void setBending(unsigned char Channel, int Cents);
-    void setIntensity(unsigned char Channel, unsigned char Intensity);
-    void set3DPosition(float X, float Y, float Z);
-    void setEffectParameter(unsigned int EffectIndex, unsigned int ParameterIndex, float Value);
+    void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
 };
 
 #endif

@@ -274,7 +274,7 @@ public:
 
     const MSAudioSource& getSource(unsigned int SourceIndex);
 
-    virtual void playSource(unsigned int SourceIndex, void* Sound) = 0;
+    virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) = 0;
     virtual void stopSource(unsigned int SourceIndex) = 0;
 
     virtual bool isSourcePlaying(unsigned int SourceIndex) = 0;

@@ -34,22 +34,12 @@
 
 FMOD::System* fSystem;
 
-void ERRCHECK(FMOD_RESULT result)
-{
-   if(result != FMOD_OK)
-   {
-      printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
-      exit(-1);
-   }
-}
-
 void CAudio::init()
 {
     FMOD_RESULT result;
    
     // create a system object and initialize.
     result = FMOD::System_Create(&fSystem);
-    ERRCHECK(result);
 
     // set a small DSP buffer size to achieve low latency
     fSystem->setDSPBufferSize(FMOD_DSP_BUFFER_SIZE, 4);
@@ -61,7 +51,6 @@ void CAudio::init()
 
     // initialize FMOD system
     result = fSystem->init(FMOD_CHANNELS, FMOD_INIT_NORMAL, NULL);
-    ERRCHECK(result);
 }
 
 void CAudio::update()
@@ -77,5 +66,5 @@ void CAudio::release()
 
 MCSoundGenAudio* CAudio::createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
 {
-    return new MCSoundGenFMOD(NumberOfChannels, Sound3D, fSystem);
+    return new MCSoundGenFMOD(ID, NumberOfChannels, Sound3D, fSystem);
 }

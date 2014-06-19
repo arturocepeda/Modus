@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2013 Arturo Cepeda
+//  Copyright (c) 2012-2014 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -44,170 +44,153 @@
 #include <cmath>
 #include "mutils.h"
 
-MCSoundGenirrKlang::MCSoundGenirrKlang(unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine)
+
+//
+//  Audio source manager
+//
+MCirrKlangSourceManager::MCirrKlangSourceManager(irrklang::ISoundEngine* AudioSystem, unsigned int NumSources)
+   : MCAudioSourceManager(NumSources)
+   , ikEngine(AudioSystem)
 {
-    iEngine = Engine;
-    iNumberOfChannels = NumberOfChannels;
-    iSound = NULL;
-    b3DSound = Sound3D;
-    fVolume = 1.0f;
-    fPan = 0.0f;
-    fReleaseSpeed = M_DEFAULT_RELEASE;
-    bDamper = false;
+}
 
-    i3DPosition.X = 0.0f;
-    i3DPosition.Y = 0.0f;
-    i3DPosition.Z = 0.0f;
+void MCirrKlangSourceManager::allocateSources()
+{
+}
 
-    iChannel = new irrklang::ISound**[iNumberOfChannels];
-    iSoundEffectControl = new irrklang::ISoundEffectControl*[iNumberOfChannels];
-    iSampleSet = new int[iNumberOfChannels];
+void MCirrKlangSourceManager::releaseSources()
+{
+   for(unsigned int i = 0; i < iNumSources; i++)
+   {
+      irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[i].Source);
 
-    for(unsigned int i = 0; i < iNumberOfChannels; i++)
-    {
-        iChannel[i] = new irrklang::ISound*[2];
+      if(ikSound)
+         ikSound->drop();
+   }
+}
 
-        iChannel[i][0] = NULL;
-        iChannel[i][1] = NULL;
+void MCirrKlangSourceManager::playSource(unsigned int SourceIndex, void* Sound, bool Sound3D)
+{
+   irrklang::ISoundSource* ikBuffer = reinterpret_cast<irrklang::ISoundSource*>(Sound);
+   irrklang::ISound* ikSound = 0;
 
-        iSoundEffectControl[i] = NULL;
-        iSampleSet[i] = -1;
-    }
+   if(Sound3D)
+   {
+      irrklang::vec3df ikPosition3D(sSources[SourceIndex].Position[0],
+         sSources[SourceIndex].Position[1], sSources[SourceIndex].Position[2]);
+      sSources[SourceIndex].Source = ikEngine->play3D(ikBuffer, ikPosition3D, false, true);
+      ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+      ikSound->setPosition(ikPosition3D);
+   }
+   else
+   {
+      sSources[SourceIndex].Source = ikEngine->play2D(ikBuffer, false, true);
+      ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+      ikSound->setPan(sSources[SourceIndex].Position[0]);
+   }
 
-    initChannelData();
+   ikSound->setVolume(sSources[SourceIndex].Volume);
+   ikSound->setIsPaused(false);
+}
+
+void MCirrKlangSourceManager::stopSource(unsigned int SourceIndex)
+{
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+   ikSound->stop();
+}
+
+bool MCirrKlangSourceManager::isSourcePlaying(unsigned int SourceIndex)
+{
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+
+   return ikSound && !ikSound->isFinished();
+}
+
+void MCirrKlangSourceManager::setSourceVolume(unsigned int SourceIndex, float Volume)
+{
+   sSources[SourceIndex].Volume = Volume;
+
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+
+   if(ikSound && !ikSound->isFinished())
+      ikSound->setVolume(Volume);
+}
+
+void MCirrKlangSourceManager::setSourcePitch(unsigned int SourceIndex, int Cents)
+{
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+
+   if(ikSound && !ikSound->isFinished())
+      ikSound->setPlaybackSpeed((float)pow(2, Cents / 1200.0f));
+}
+
+void MCirrKlangSourceManager::setSourcePan(unsigned int SourceIndex, float Pan)
+{
+   sSources[SourceIndex].Position[0] = Pan;
+
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+
+   if(ikSound && !ikSound->isFinished())
+      ikSound->setPan(sSources[SourceIndex].Position[0]);
+}
+
+void MCirrKlangSourceManager::setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z)
+{
+   sSources[SourceIndex].Position[0] = X;
+   sSources[SourceIndex].Position[1] = Y;
+   sSources[SourceIndex].Position[2] = Z;
+
+   irrklang::ISound* ikSound = reinterpret_cast<irrklang::ISound*>(sSources[SourceIndex].Source);
+
+   if(ikSound && !ikSound->isFinished())
+   {
+      irrklang::vec3df ikPosition3D(sSources[SourceIndex].Position[0],
+         sSources[SourceIndex].Position[1], sSources[SourceIndex].Position[2]);
+      ikSound->setPosition(ikPosition3D);
+   }
+}
+
+void MCirrKlangSourceManager::setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z)
+{
+}
+
+
+//
+//  Sound generator
+//
+unsigned int MCSoundGenirrKlang::iNumberOfInstances = 0;
+
+MCSoundGenirrKlang::MCSoundGenirrKlang(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine)
+   : MCSoundGenAudioMultipleChannel(ID, NumberOfChannels, Sound3D)
+   , iEngine(Engine)
+{
+   if(!cManager)
+   {
+      cManager = new MCirrKlangSourceManager(Engine, IRRKLANG_SOURCES);
+      cManager->allocateSources();
+   }
+
+   iNumberOfInstances++;
+
+   iSound = NULL;
+   iSampleSet = new int[iNumberOfChannels];
+
+   for(unsigned int i = 0; i < iNumberOfChannels; i++)
+      iSampleSet[i] = -1;
 }
 
 MCSoundGenirrKlang::~MCSoundGenirrKlang()
 {
-    unsigned int i;
-    unsigned int j;
+   unloadSamples();
 
-    for(i = 0; i < iEffectParameter.size(); i++)
-        delete[] iEffectParameter[i];
+   iNumberOfInstances--;
 
-    for(i = 0; i < iNumberOfChannels; i++)
-    {
-        for(j = 0; j < 2; j++)
-        {
-            if(iChannel[i][j])
-                iChannel[i][j]->drop();
-        }
-
-        delete[] iChannel[i];
-    }
-
-    delete[] iChannel;
-    delete[] iSoundEffectControl;
-    delete[] iSampleSet;
-
-    unloadSamples();
-    releaseChannelData();
-}
-
-unsigned int MCSoundGenirrKlang::addEffect(IRRKLANG_EFFECT Effect)
-{
-    unsigned int i;
-
-    for(i = 0; i < iEffect.size(); i++)
-    {
-        if(iEffect[i] == Effect)
-            return i;
-    }
-
-    // effect
-    iEffect.push_back(Effect);
-    
-    // parameters array with their default values
-    irrklang::ik_f32 *fParam;
-    unsigned int iIndex;
-
-    iEffectParameter.push_back(fParam);
-    iIndex = iEffectParameter.size() - 1;
-
-    iEffectParameter[iIndex] = new irrklang::ik_f32[IRRKLANG_EFFECT_PARAMETERS];
-
-    switch(Effect)
-    {
-    case IRRKLANG_EFFECT_CHORUS:
-        iEffectParameter[iIndex][0] = 50;
-        iEffectParameter[iIndex][1] = 10;
-        iEffectParameter[iIndex][2] = 25;
-        iEffectParameter[iIndex][3] = 1.1f;
-        iEffectParameter[iIndex][4] = true;
-        iEffectParameter[iIndex][5] = 16;
-        iEffectParameter[iIndex][6] = 90;
-        break;
-
-    case IRRKLANG_EFFECT_COMPRESSOR:
-        iEffectParameter[iIndex][0] = 0;
-        iEffectParameter[iIndex][1] = 10;
-        iEffectParameter[iIndex][2] = 200;
-        iEffectParameter[iIndex][3] = -20;
-        iEffectParameter[iIndex][4] = 3;
-        iEffectParameter[iIndex][5] = 4;
-        break;
-
-    case IRRKLANG_EFFECT_DISTORTION:
-        iEffectParameter[iIndex][0] = -18;
-        iEffectParameter[iIndex][1] = 15;
-        iEffectParameter[iIndex][2] = 2400;
-        iEffectParameter[iIndex][3] = 2400;
-        iEffectParameter[iIndex][4] = 8000;
-        break;
-
-    case IRRKLANG_EFFECT_ECHO:
-        iEffectParameter[iIndex][0] = 50;
-        iEffectParameter[iIndex][1] = 50;
-        iEffectParameter[iIndex][2] = 500;
-        iEffectParameter[iIndex][3] = 500;
-        iEffectParameter[iIndex][4] = 0;
-        break;
-
-    case IRRKLANG_EFFECT_FLANGER:
-        iEffectParameter[iIndex][0] = 50;
-        iEffectParameter[iIndex][1] = 100;
-        iEffectParameter[iIndex][2] = -50;
-        iEffectParameter[iIndex][3] = 0.25f;
-        iEffectParameter[iIndex][4] = true;
-        iEffectParameter[iIndex][5] = 2;
-        iEffectParameter[iIndex][6] = 0;
-        break;
-
-    case IRRKLANG_EFFECT_GARGLE:
-        iEffectParameter[iIndex][0] = 20;
-        iEffectParameter[iIndex][1] = true;
-        break;
-
-    case IRRKLANG_EFFECT_I3DL2REVERB:
-        iEffectParameter[iIndex][0] = -1000;
-        iEffectParameter[iIndex][1] = -100;
-        iEffectParameter[iIndex][2] = 0;
-        iEffectParameter[iIndex][3] = 1.49f;
-        iEffectParameter[iIndex][4] = 0.83f;
-        iEffectParameter[iIndex][5] = -2602;
-        iEffectParameter[iIndex][6] = 0.007f;
-        iEffectParameter[iIndex][7] = 200;
-        iEffectParameter[iIndex][8] = 0.011f;
-        iEffectParameter[iIndex][9] = 100.0f;
-        iEffectParameter[iIndex][10] = 100.0f;
-        iEffectParameter[iIndex][11] = 5000.0f;
-        break;
-
-    case IRRKLANG_EFFECT_PARAMEQ:
-        iEffectParameter[iIndex][0] = 8000;
-        iEffectParameter[iIndex][1] = 12;
-        iEffectParameter[iIndex][2] = 0;
-        break;
-
-    case IRRKLANG_EFFECT_WAVESREVERB:
-        iEffectParameter[iIndex][0] = 0;
-        iEffectParameter[iIndex][1] = 0;
-        iEffectParameter[iIndex][2] = 1000;
-        iEffectParameter[iIndex][3] = 0.001f;
-        break;
-    }
-    
-    return (iEffect.size() - 1);
+   if(iNumberOfInstances == 0)
+   {
+      cManager->releaseSources();
+      delete cManager;
+      cManager = NULL;
+   }
 }
 
 void MCSoundGenirrKlang::loadSamples()
@@ -286,7 +269,7 @@ void MCSoundGenirrKlang::loadSamplePack(std::istream& Stream,
     for(i = 0; i < iNumSampleSets; i++)
     {
         // sample set
-        strcpy(mSampleSet.Path, Filename);
+        strcpy(mSampleSet.Path, "");
         strcpy(mSampleSet.Format, sFormat);
 
         Stream.read((char*)&iInput, sizeof(unsigned int));        // SampleSet: ID
@@ -331,7 +314,7 @@ void MCSoundGenirrKlang::loadSamplePack(std::istream& Stream,
             sSampleData = new char[iSampleSize];
             Stream.read(sSampleData, iSampleSize);
 
-            sprintf(sSoundName, "%s%02d%02d", Filename, i, j);
+            sprintf(sSoundName, "%02d%02d", i, j);
             iSound[i][j] = iEngine->addSoundSourceFromMemory(sSampleData, iSampleSize, sSoundName);
 
             // callback
@@ -366,262 +349,7 @@ void MCSoundGenirrKlang::unloadSamples()
     iSound = NULL;
 }
 
-void MCSoundGenirrKlang::playNote(MSNote& Note)
+void MCSoundGenirrKlang::playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex)
 {
-    if(!iSound)
-        return;
-
-    // find the appropriate sample set for this note
-    iSampleSet[Note.Channel] = findSampleSet(Note);
-
-    if(iSampleSet[Note.Channel] == -1)
-        return;
-
-    // calculate sample number
-    int iSample = Note.Pitch - sSampleSet[iSampleSet[Note.Channel]].Range.LowestNote;
-
-    // set the channel free
-    releaseChannel(Note.Channel, true);
-
-    // if the channel is in any sustained list, remove it
-    vChannelsSustained.removeValue(Note.Channel);
-    vSustainedChannelsToRelease.removeValue(Note.Channel);
-
-    // play the note
-    if(b3DSound)
-    {
-        iChannel[Note.Channel][0] = iEngine->play3D(iSound[iSampleSet[Note.Channel]][iSample], i3DPosition, false, true, false, true);
-
-        if(!iChannel[Note.Channel][0])
-            return;
-    }
-    else
-    {
-        iChannel[Note.Channel][0] = iEngine->play2D(iSound[iSampleSet[Note.Channel]][iSample], false, true, false, true);
-
-        if(!iChannel[Note.Channel][0])
-            return;
-
-        iChannel[Note.Channel][0]->setPan(fPan);
-    }
-
-    // apply effects
-    if(iEffect.size() > 0)
-    {
-        iSoundEffectControl[Note.Channel] = iChannel[Note.Channel][0]->getSoundEffectControl();
-        applyEffects(Note.Channel);
-    }
-
-    iChannel[Note.Channel][0]->setVolume(calculateNoteVolume(Note.Intensity, iSampleSet[Note.Channel]));
-    iChannel[Note.Channel][0]->setIsPaused(false);
-}
-
-void MCSoundGenirrKlang::releaseChannel(unsigned char iNumChannel, bool bQuickly)
-{
-    if(!iSound || !iChannel[iNumChannel][0])
-        return;
-
-    // if the primary channel is playing a sound, change the pointer to the secondary channel and notify
-    // the generator to release it
-    if(!iChannel[iNumChannel][0]->isFinished())
-    {
-        // we need two values: the volume of the channel at the moment (initial) and another value that
-        // always goes from 1.0f to 0.0f, in order to do a fade out that doesn't depend on the initial
-        // volume
-        fInitialReleaseVolume[iNumChannel] = iChannel[iNumChannel][0]->getVolume();
-        fCurrentReleaseVolume[iNumChannel] = 1.0f;
-
-        // if the secondary channel is already busy, set it free
-        if(iChannel[iNumChannel][1])
-            iChannel[iNumChannel][1]->stop();
-
-        iChannel[iNumChannel][1] = iChannel[iNumChannel][0];
-        iChannel[iNumChannel][0] = NULL;
-
-        bQuickRelease[iNumChannel] = bQuickly;
-        bRelease[iNumChannel] = !bQuickly;
-
-        // add the current channel to the list to be released
-        vChannelsToRelease.add(iNumChannel);
-    }
-}
-
-void MCSoundGenirrKlang::applyEffects(unsigned char iNumChannel)
-{
-    for(unsigned int i = 0; i < iEffect.size(); i++)
-    {
-        switch(iEffect[i])
-        {
-        case IRRKLANG_EFFECT_CHORUS:
-            iSoundEffectControl[iNumChannel]->enableChorusSoundEffect(iEffectParameter[i][0], 
-                                                                      iEffectParameter[i][1],
-                                                                      iEffectParameter[i][2], 
-                                                                      iEffectParameter[i][3],
-                                                                      iEffectParameter[i][4] != 0.0f, 
-                                                                      iEffectParameter[i][5],
-                                                                      (int)iEffectParameter[i][6]);
-            break;
-
-        case IRRKLANG_EFFECT_COMPRESSOR:
-            iSoundEffectControl[iNumChannel]->enableCompressorSoundEffect(iEffectParameter[i][0],
-                                                                          iEffectParameter[i][1],
-                                                                          iEffectParameter[i][2], 
-                                                                          iEffectParameter[i][3], 
-                                                                          iEffectParameter[i][4], 
-                                                                          iEffectParameter[i][5]); 
-            break;
-
-        case IRRKLANG_EFFECT_DISTORTION:
-            iSoundEffectControl[iNumChannel]->enableDistortionSoundEffect(iEffectParameter[i][0],
-                                                                          iEffectParameter[i][1],
-                                                                          iEffectParameter[i][2], 
-                                                                          iEffectParameter[i][3], 
-                                                                          iEffectParameter[i][4]);
-            break;
-
-        case IRRKLANG_EFFECT_ECHO:
-            iSoundEffectControl[iNumChannel]->enableEchoSoundEffect(iEffectParameter[i][0],
-                                                                    iEffectParameter[i][1],
-                                                                    iEffectParameter[i][2], 
-                                                                    iEffectParameter[i][3], 
-                                                                    (int)iEffectParameter[i][4]);
-            break;
-
-        case IRRKLANG_EFFECT_FLANGER:
-            iSoundEffectControl[iNumChannel]->enableFlangerSoundEffect(iEffectParameter[i][0], 
-                                                                       iEffectParameter[i][1],
-                                                                       iEffectParameter[i][2], 
-                                                                       iEffectParameter[i][3],
-                                                                       iEffectParameter[i][4] != 0.0f, 
-                                                                       iEffectParameter[i][5],
-                                                                       (int)iEffectParameter[i][6]);
-            break;
-
-        case IRRKLANG_EFFECT_GARGLE:
-            iSoundEffectControl[iNumChannel]->enableGargleSoundEffect((int)iEffectParameter[i][0], 
-                                                                      iEffectParameter[i][1] != 0.0f);
-            break;
-
-        case IRRKLANG_EFFECT_I3DL2REVERB:
-            iSoundEffectControl[iNumChannel]->enableI3DL2ReverbSoundEffect((int)iEffectParameter[i][0],
-                                                                           (int)iEffectParameter[i][1],
-                                                                           iEffectParameter[i][2], 
-                                                                           iEffectParameter[i][3], 
-                                                                           iEffectParameter[i][4], 
-                                                                           (int)iEffectParameter[i][5],
-                                                                           iEffectParameter[i][6],
-                                                                           (int)iEffectParameter[i][7],
-                                                                           iEffectParameter[i][8],
-                                                                           iEffectParameter[i][9],
-                                                                           iEffectParameter[i][10],
-                                                                           iEffectParameter[i][11]);
-            break;
-
-        case IRRKLANG_EFFECT_PARAMEQ:
-            iSoundEffectControl[iNumChannel]->enableParamEqSoundEffect(iEffectParameter[i][0],
-                                                                       iEffectParameter[i][1],
-                                                                       iEffectParameter[i][2]);
-            break;
-
-        case IRRKLANG_EFFECT_WAVESREVERB:
-            iSoundEffectControl[iNumChannel]->enableWavesReverbSoundEffect(iEffectParameter[i][0],
-                                                                           iEffectParameter[i][1],
-                                                                           iEffectParameter[i][2], 
-                                                                           iEffectParameter[i][3]);
-            break;
-        }
-    }
-}
-
-void MCSoundGenirrKlang::update()
-{
-    unsigned int iNumChannel;
-
-    // a fade out will be done to the secondary channels that must be released
-    for(unsigned int i = 0; i < vChannelsToRelease.size(); i++)
-    {
-        iNumChannel = vChannelsToRelease[i];
-
-        if(!iChannel[iNumChannel][1])
-            continue;
-
-        // next step for the fade-out
-        if(fCurrentReleaseVolume[iNumChannel] > 0.0f)
-        {
-            fCurrentReleaseVolume[iNumChannel] -= (bQuickRelease[iNumChannel])? M_QUICK_RELEASE: fReleaseSpeed;
-            iChannel[iNumChannel][1]->setVolume(fCurrentReleaseVolume[iNumChannel] * fInitialReleaseVolume[iNumChannel]);
-
-            // check damper
-            if(bDamper)
-            {
-                vSustainedChannelsToRelease.add(iNumChannel);
-                vChannelsToRelease.remove(i);
-                i--;
-            }
-        }
-
-        // fade-out completed: stop source
-        else
-        {
-            bRelease[iNumChannel] = false;
-            bQuickRelease[iNumChannel] = false;
-
-            iChannel[iNumChannel][1]->stop();
-            iChannel[iNumChannel][1]->drop();
-            iChannel[iNumChannel][1] = NULL;
-
-            vChannelsToRelease.remove(i);
-            i--;
-        }
-    }
-}
-
-void MCSoundGenirrKlang::get3DPosition(float* X, float* Y, float* Z)
-{
-    *X = i3DPosition.X;
-    *Y = i3DPosition.Y;
-    *Z = i3DPosition.Z;
-}
-
-void MCSoundGenirrKlang::setBending(unsigned char Channel, int Cents)
-{
-    if(!iEngine)
-        return;
-
-    float fFrequencyRatio = (float)pow(2, Cents / 1200.0f);
-
-    if(iChannel[Channel][0])
-        iChannel[Channel][0]->setPlaybackSpeed(fFrequencyRatio);
-}
-
-void MCSoundGenirrKlang::setIntensity(unsigned char Channel, unsigned char Intensity)
-{
-    if(iSampleSet[Channel] > -1)
-        iChannel[Channel][0]->setVolume(calculateNoteVolume(Intensity, iSampleSet[Channel]));
-}
-
-void MCSoundGenirrKlang::set3DPosition(float X, float Y, float Z)
-{
-    unsigned int i;
-    unsigned int j;
-
-    i3DPosition.X = X;
-    i3DPosition.Y = Y;
-    i3DPosition.Z = Z;
-
-    // take effect on the channels that are sounding
-    for(i = 0; i < iNumberOfChannels; i++)
-    {
-        for(j = 0; j < 2 && iChannel[i][j]; j++)
-        {
-            if(!iChannel[i][j]->isFinished())
-                iChannel[i][j]->setPosition(i3DPosition);
-        }
-    }
-}
-
-void MCSoundGenirrKlang::setEffectParameter(unsigned int EffectIndex, unsigned int ParameterIndex, float Value)
-{
-    if(EffectIndex < iEffect.size() && ParameterIndex < IRRKLANG_EFFECT_PARAMETERS)
-        iEffectParameter[EffectIndex][ParameterIndex] = Value;
+   cManager->playSource(SourceIndex, iSound[SampleSet][SampleIndex], b3DSound);
 }

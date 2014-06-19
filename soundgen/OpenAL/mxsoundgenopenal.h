@@ -101,7 +101,7 @@ public:
     virtual void allocateSources() override;
     virtual void releaseSources() override;
 
-    virtual void playSource(unsigned int SourceIndex, void* Sound) override;
+    virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
     virtual void stopSource(unsigned int SourceIndex) override;
 
     virtual bool isSourcePlaying(unsigned int SourceIndex) override;

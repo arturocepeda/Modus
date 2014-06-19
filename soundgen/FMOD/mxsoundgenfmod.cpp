@@ -44,71 +44,188 @@
 #include <cmath>
 #include "mutils.h"
 
-MCSoundGenFMOD::MCSoundGenFMOD(unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem)
+
+//
+//  Audio source manager
+//
+MCFMODSourceManager::MCFMODSourceManager(FMOD::System* AudioSystem, unsigned int NumSources)
+   : MCAudioSourceManager(NumSources)
+   , fmodSystem(AudioSystem)
 {
-    iNumberOfChannels = NumberOfChannels;
-    b3DSound = Sound3D;
-    fmodSystem = FMODSystem;
-    fmodSound = NULL;
-    fVolume = 1.0f;
-    fPan = 0.0f;
-    fReleaseSpeed = M_DEFAULT_RELEASE;
-    bDamper = false;
+}
 
-    fmod3DPosition.x = 0.0f;
-    fmod3DPosition.y = 0.0f;
-    fmod3DPosition.z = 0.0f;
+void MCFMODSourceManager::allocateSources()
+{
+   fmodSystem->createChannelGroup("Modus", &fmodChannelGroup);
 
-    fmodChannel = new FMOD::Channel**[iNumberOfChannels];
-    iSampleSet = new int[iNumberOfChannels];
-    fFrequency = new float[iNumberOfChannels];
+   for(unsigned int i = 0; i < iNumSources; i++)
+      sSources[i].Source = 0;
 
-    fmodSystem->createChannelGroup("Instrument", &fmodChannelGroup);
+   fFrequencies = new float[iNumSources];
+}
 
-    for(unsigned int i = 0; i < iNumberOfChannels; i++)
-    {
-        fmodChannel[i] = new FMOD::Channel*[2];
+void MCFMODSourceManager::releaseSources()
+{
+   for(unsigned int i = 0; i < iNumSources; i++)
+   {
+      FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[i].Source);
+      fmodChannel->stop();
+   }
 
-        fmodChannel[i][0] = NULL;
-        fmodChannel[i][1] = NULL;
+   fmodChannelGroup->release();
+   delete[] fFrequencies;
+}
 
-        iSampleSet[i] = -1;
-    }
+void MCFMODSourceManager::playSource(unsigned int SourceIndex, void* Sound, bool Sound3D)
+{
+   if(fmodSystem->playSound(FMOD_CHANNEL_FREE, reinterpret_cast<FMOD::Sound*>(Sound), true, 
+                            reinterpret_cast<FMOD::Channel**>(&sSources[SourceIndex].Source)) == FMOD_OK)
+   {
+      FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
 
-    initChannelData();
+      if(Sound3D)
+      {
+         fmodChannel->set3DAttributes(reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Position),
+                                      reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Direction));
+      }
+      else
+      {
+         fmodChannel->setPan(sSources[SourceIndex].Position[0]);
+      }
+
+      fmodChannel->getFrequency(&fFrequencies[SourceIndex]);
+      fmodChannel->setChannelGroup(fmodChannelGroup);
+      fmodChannel->setVolume(sSources[SourceIndex].Volume);
+      fmodChannel->setPaused(false);
+   }
+}
+
+void MCFMODSourceManager::stopSource(unsigned int SourceIndex)
+{
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   fmodChannel->stop();
+}
+
+bool MCFMODSourceManager::isSourcePlaying(unsigned int SourceIndex)
+{
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   bool bChannelPlaying;
+
+   fmodChannel->isPlaying(&bChannelPlaying);
+
+   return bChannelPlaying;
+}
+
+void MCFMODSourceManager::setSourceVolume(unsigned int SourceIndex, float Volume)
+{
+   sSources[SourceIndex].Volume = Volume;
+
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   bool bChannelPlaying;
+
+   fmodChannel->isPlaying(&bChannelPlaying);
+
+   if(bChannelPlaying)
+      fmodChannel->setVolume(Volume);
+}
+
+void MCFMODSourceManager::setSourcePitch(unsigned int SourceIndex, int Cents)
+{
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+
+   float fFrequencyRatio = (float)pow(2, Cents / 1200.0f);
+   fmodChannel->setFrequency(fFrequencies[SourceIndex] * fFrequencyRatio);
+}
+
+void MCFMODSourceManager::setSourcePan(unsigned int SourceIndex, float Pan)
+{
+   sSources[SourceIndex].Position[0] = Pan;
+
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   bool bChannelPlaying;
+
+   fmodChannel->isPlaying(&bChannelPlaying);
+
+   if(bChannelPlaying)
+      fmodChannel->setPan(Pan);
+}
+
+void MCFMODSourceManager::setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z)
+{
+   sSources[SourceIndex].Position[0] = X;
+   sSources[SourceIndex].Position[1] = Y;
+   sSources[SourceIndex].Position[2] = Z;
+
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   bool bChannelPlaying;
+
+   fmodChannel->isPlaying(&bChannelPlaying);
+
+   if(bChannelPlaying)
+   {
+      fmodChannel->set3DAttributes(reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Position),
+                                   reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Direction));
+   }
+}
+
+void MCFMODSourceManager::setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z)
+{
+   sSources[SourceIndex].Direction[0] = X;
+   sSources[SourceIndex].Direction[1] = Y;
+   sSources[SourceIndex].Direction[2] = Z;
+
+   FMOD::Channel* fmodChannel = reinterpret_cast<FMOD::Channel*>(sSources[SourceIndex].Source);
+   bool bChannelPlaying;
+
+   fmodChannel->isPlaying(&bChannelPlaying);
+
+   if(bChannelPlaying)
+   {
+      fmodChannel->set3DAttributes(reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Position),
+                                   reinterpret_cast<const FMOD_VECTOR*>(sSources[SourceIndex].Direction));
+   }
+}
+
+
+//
+//  Sound generator
+//
+unsigned int MCSoundGenFMOD::iNumberOfInstances = 0;
+
+MCSoundGenFMOD::MCSoundGenFMOD(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem)
+   : MCSoundGenAudioMultipleChannel(ID, NumberOfChannels, Sound3D)
+   , fmodSystem(FMODSystem)
+   , fmodSounds(0)
+{
+   if(!cManager)
+   {
+      cManager = new MCFMODSourceManager(FMODSystem, FMOD_SOURCES);
+      cManager->allocateSources();
+   }
+
+   iNumberOfInstances++;
+
+   iSampleSet = new int[iNumberOfChannels];
+   fFrequency = new float[iNumberOfChannels];
+
+   for(unsigned int i = 0; i < iNumberOfChannels; i++)
+      iSampleSet[i] = -1;
 }
 
 MCSoundGenFMOD::~MCSoundGenFMOD()
 {
-    unsigned int i;
+   delete[] fFrequency;
 
-    fmodChannelGroup->release();
+   unloadSamples();
 
-    for(i = 0; i < iNumberOfChannels; i++)
-        delete[] fmodChannel[i];
+   iNumberOfInstances--;
 
-    delete[] fmodChannel;
-    delete[] iSampleSet;
-    delete[] fFrequency;
-
-    for(i = 0; i < fmodDSP.size(); i++)
-        fmodDSP[i]->release();
-
-    unloadSamples();
-    releaseChannelData();
-}
-
-unsigned int MCSoundGenFMOD::addEffect(FMOD_DSP_TYPE fmodDSPType)
-{
-    FMOD::DSP* fmodNewDSP;
-    unsigned int iDSPIndex;
-
-    fmodSystem->createDSPByType(fmodDSPType, &fmodNewDSP);
-    fmodDSP.push_back(fmodNewDSP);
-    iDSPIndex = fmodDSP.size() - 1;
-    fmodChannelGroup->addDSP(fmodDSP[iDSPIndex], NULL);
-
-    return iDSPIndex;
+   if(iNumberOfInstances == 0)
+   {
+      cManager->releaseSources();
+      delete cManager;
+      cManager = NULL;
+   }
 }
 
 void MCSoundGenFMOD::loadSamples()
@@ -120,7 +237,7 @@ void MCSoundGenFMOD::loadSamples()
     unsigned int i, j;
     FMOD_MODE fmodMode;
 
-    fmodSound = new FMOD::Sound**[sSampleSet.size()];
+    fmodSounds = new FMOD::Sound**[sSampleSet.size()];
 
     if(b3DSound)
         fmodMode = FMOD_SOFTWARE | FMOD_CREATESAMPLE | FMOD_3D;
@@ -129,7 +246,7 @@ void MCSoundGenFMOD::loadSamples()
 
     for(i = 0; i < sSampleSet.size(); i++)
     {
-        fmodSound[i] = new FMOD::Sound*[iNumberOfSamples[i]];
+        fmodSounds[i] = new FMOD::Sound*[iNumberOfSamples[i]];
 
         for(j = 0; j < iNumberOfSamples[i]; j++)
         {
@@ -138,8 +255,8 @@ void MCSoundGenFMOD::loadSamples()
                                                  j + sSampleSet[i].Range.LowestNote,
                                                  sSampleSet[i].Format);
 
-            if(fmodSystem->createSound(sFilename, fmodMode, NULL, &fmodSound[i][j]) != FMOD_OK)
-                fmodSound[i][j] = NULL;
+            if(fmodSystem->createSound(sFilename, fmodMode, NULL, &fmodSounds[i][j]) != FMOD_OK)
+                fmodSounds[i][j] = NULL;
         }
     }
 }
@@ -199,7 +316,7 @@ void MCSoundGenFMOD::loadSamplePack(std::istream& Stream,
     memset(&fmodExinfo, 0, sizeof(fmodExinfo));
     fmodExinfo.cbsize = sizeof(FMOD_CREATESOUNDEXINFO);
 
-    fmodSound = new FMOD::Sound**[iNumSampleSets];
+    fmodSounds = new FMOD::Sound**[iNumSampleSets];
 
     for(i = 0; i < iNumSampleSets; i++)
     {
@@ -233,7 +350,7 @@ void MCSoundGenFMOD::loadSamplePack(std::istream& Stream,
 
         Stream.read(sReserved, 4);                                // SampleSet: (Reserved)
 
-        fmodSound[i] = new FMOD::Sound*[iNumSamples];
+        fmodSounds[i] = new FMOD::Sound*[iNumSamples];
 
         unsigned int iSampleSize;
         char* sSampleData;
@@ -241,7 +358,7 @@ void MCSoundGenFMOD::loadSamplePack(std::istream& Stream,
         for(j = 0; j < iNumSamples; j++)
         {
             Stream.read((char*)&iSampleSize, sizeof(unsigned int));
-            fmodSound[i][j] = NULL;
+            fmodSounds[i][j] = NULL;
 
             if(iSampleSize == 0)
                 continue;
@@ -250,7 +367,7 @@ void MCSoundGenFMOD::loadSamplePack(std::istream& Stream,
             Stream.read(sSampleData, iSampleSize);
 
             fmodExinfo.length = iSampleSize;
-            fmodSystem->createSound(sSampleData, fmodMode, &fmodExinfo, &fmodSound[i][j]);
+            fmodSystem->createSound(sSampleData, fmodMode, &fmodExinfo, &fmodSounds[i][j]);
 
             // callback
             if(callback)
@@ -263,7 +380,7 @@ void MCSoundGenFMOD::loadSamplePack(std::istream& Stream,
 
 void MCSoundGenFMOD::unloadSamples()
 {
-    if(!fmodSound)
+    if(!fmodSounds)
         return;
 
     unsigned int i;
@@ -273,183 +390,21 @@ void MCSoundGenFMOD::unloadSamples()
     {
         for(j = 0; j < iNumberOfSamples[i]; j++)
         {
-            if(fmodSound[i][j])
-                fmodSound[i][j]->release();
+            if(fmodSounds[i][j])
+                fmodSounds[i][j]->release();
         }
 
-        delete[] fmodSound[i];
+        delete[] fmodSounds[i];
     }
 
     sSampleSet.clear();
     iNumberOfSamples.clear();
 
-    delete[] fmodSound;
-    fmodSound = NULL;
+    delete[] fmodSounds;
+    fmodSounds = NULL;
 }
 
-void MCSoundGenFMOD::playNote(MSNote& Note)
+void MCSoundGenFMOD::playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex)
 {
-    if(!fmodSound)
-        return;
-
-    // find the appropriate sample set for this note
-    iSampleSet[Note.Channel] = findSampleSet(Note);
-
-    if(iSampleSet[Note.Channel] == -1)
-        return;
-
-    // calculate sample number
-    int iSample = Note.Pitch - sSampleSet[iSampleSet[Note.Channel]].Range.LowestNote;
-
-    // set the channel free
-    releaseChannel(Note.Channel, true);
-
-    // if the channel is in any sustained list, remove it
-    vChannelsSustained.removeValue(Note.Channel);
-    vSustainedChannelsToRelease.removeValue(Note.Channel);
-
-    // play the note
-    if(fmodSystem->playSound(FMOD_CHANNEL_FREE, fmodSound[iSampleSet[Note.Channel]][iSample], true, 
-                             &fmodChannel[Note.Channel][0]) == FMOD_OK)
-    {
-        // 3D sound
-        if(b3DSound)
-            fmodChannel[Note.Channel][0]->set3DAttributes(&fmod3DPosition, NULL);
-
-        // 2D sound
-        else
-            fmodChannel[Note.Channel][0]->setPan(fPan);
-
-        fmodChannel[Note.Channel][0]->getFrequency(&fFrequency[Note.Channel]);
-        fmodChannel[Note.Channel][0]->setChannelGroup(fmodChannelGroup);
-        fmodChannel[Note.Channel][0]->setVolume(calculateNoteVolume(Note.Intensity, iSampleSet[Note.Channel]));
-        fmodChannel[Note.Channel][0]->setPaused(false);
-    }
-}
-
-void MCSoundGenFMOD::releaseChannel(unsigned char iChannel, bool bQuickly)
-{
-    if(!fmodSound || iChannel >= iNumberOfChannels || !fmodChannel[iChannel][0])
-        return;
-
-    // check whether the primary channel is playing a sound
-    bool bChannelPlaying;
-    fmodChannel[iChannel][0]->isPlaying(&bChannelPlaying);
-
-    // if the primary channel is playing a sound, change the pointer to the secondary channel and notify
-    // the generator to release it
-    if(bChannelPlaying)
-    {
-        // we need two values: the volume of the channel at the moment (initial) and another value that
-        // always goes from 1.0f to 0.0f, in order to do a fade out that doesn't depend on the initial
-        // volume
-        fmodChannel[iChannel][0]->getVolume(&fInitialReleaseVolume[iChannel]);
-        fCurrentReleaseVolume[iChannel] = 1.0f;
-
-        // if the secondary channel is already busy, set it free
-        if(fmodChannel[iChannel][1])
-            fmodChannel[iChannel][1]->stop();
-
-        fmodChannel[iChannel][1] = fmodChannel[iChannel][0];
-        fmodChannel[iChannel][0] = NULL;
-
-        bQuickRelease[iChannel] = bQuickly;
-        bRelease[iChannel] = !bQuickly;
-
-        // add the current channel to the list to be released
-        vChannelsToRelease.add(iChannel);
-    }
-}
-
-void MCSoundGenFMOD::update()
-{
-    unsigned int iChannel;
-
-    // a fade out will be done to the secondary channels that must be released
-    for(unsigned int i = 0; i < vChannelsToRelease.size(); i++)
-    {
-        iChannel = vChannelsToRelease[i];
-
-        if(!fmodChannel[iChannel][1])
-            continue;
-
-        // next step for the fade-out
-        if(fCurrentReleaseVolume[iChannel] > 0.0f)
-        {
-            fCurrentReleaseVolume[iChannel] -= (bQuickRelease[iChannel])? M_QUICK_RELEASE: fReleaseSpeed;
-            fmodChannel[iChannel][1]->setVolume(fCurrentReleaseVolume[iChannel] * fInitialReleaseVolume[iChannel]);
-            
-            // check damper
-            if(bDamper)
-            {
-                vSustainedChannelsToRelease.add(iChannel);
-                vChannelsToRelease.remove(i);
-                i--;
-            }            
-        }
-
-        // fade-out completed: stop source
-        else
-        {
-            fmodChannel[iChannel][1]->stop();
-            fmodChannel[iChannel][1] = NULL;
-
-            bRelease[iChannel] = false;
-            bQuickRelease[iChannel] = false;
-
-            vChannelsToRelease.remove(i);
-            i--;
-        }
-    }
-}
-
-void MCSoundGenFMOD::get3DPosition(float* X, float* Y, float* Z)
-{
-    *X = fmod3DPosition.x;
-    *Y = fmod3DPosition.y;
-    *Z = fmod3DPosition.z;
-}
-
-void MCSoundGenFMOD::setBending(unsigned char Channel, int Cents)
-{
-    if(!fmodSound || !fmodChannel[Channel][0])
-        return;
-
-    float fFrequencyRatio = (float)pow(2, Cents / 1200.0f);
-    fmodChannel[Channel][0]->setFrequency(fFrequency[Channel] * fFrequencyRatio);
-}
-
-void MCSoundGenFMOD::setIntensity(unsigned char Channel, unsigned char Intensity)
-{
-    if(iSampleSet[Channel] > -1)
-        fmodChannel[Channel][0]->setVolume(calculateNoteVolume(Intensity, iSampleSet[Channel]));
-}
-
-void MCSoundGenFMOD::set3DPosition(float X, float Y, float Z)
-{
-    unsigned int i;
-    unsigned int j;
-    bool bChannelPlaying;
-
-    fmod3DPosition.x = X;
-    fmod3DPosition.y = Y;
-    fmod3DPosition.z = Z;
-
-    // take effect on the channels that are sounding
-    for(i = 0; i < iNumberOfChannels; i++)
-    {
-        for(j = 0; j < 2 && fmodChannel[i][j]; j++)
-        {
-            fmodChannel[i][j]->isPlaying(&bChannelPlaying);
-
-            if(bChannelPlaying)
-                fmodChannel[i][j]->set3DAttributes(&fmod3DPosition, NULL);
-        }
-    }
-}
-
-void MCSoundGenFMOD::setEffectParameter(unsigned int EffectIndex, int ParameterIndex, float Value)
-{
-    if(EffectIndex < fmodDSP.size())
-        fmodDSP[EffectIndex]->setParameter(ParameterIndex, Value);
+   cManager->playSource(SourceIndex, fmodSounds[SampleSet][SampleIndex], b3DSound);
 }
