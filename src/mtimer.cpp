@@ -130,6 +130,7 @@ void MCTimer::start()
 
     tTimer.start();
     bRunning = true;
+    dTimeBefore = tTimer.getTime();
 }
 
 void MCTimer::stop()
