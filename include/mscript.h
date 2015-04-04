@@ -36,7 +36,6 @@
 #ifndef _MSCRIPT_H_
 #define _MSCRIPT_H_
 
-#include "mconstants.h"
 #include "mtypes.h"
 
 /**

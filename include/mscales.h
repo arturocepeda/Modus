@@ -36,7 +36,6 @@
 #ifndef _SCALES_H_
 #define _SCALES_H_
 
-#include "mconstants.h"
 #include "mtypes.h"
 
 /**

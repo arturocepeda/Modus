@@ -119,22 +119,22 @@ void MCInstrument::playNote(const MSNote& Note)
         return;
     }
 
-    // note off
-    if(Note.Intensity == 0)
-    {
-        if(mCurrentNote[Note.Channel].Pitch == Note.Pitch)
-            release(Note.Channel);
-
-        return;
-    }
-
-    // note on
+    // make a copy of the note and apply the transposition to the copy
     MSNote mPlayNote = Note;
     mPlayNote.Pitch += iTranspose;
 
     // if the pitch is out of the instrument range, ignore the note
     if(mPlayNote.Pitch < mRange.LowestNote || mPlayNote.Pitch > mRange.HighestNote)
         return;
+
+    // note off
+    if(Note.Intensity == 0)
+    {
+        if(mCurrentNote[Note.Channel].Pitch == mPlayNote.Pitch)
+            release(Note.Channel);
+
+        return;
+    }
 
     // intensity
     if(iIntensityVariation != 0)

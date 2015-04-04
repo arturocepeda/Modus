@@ -161,7 +161,7 @@ bool MCTimer::update()
 
     if(dTimeDelta >= dTick)
     {
-        dTimeBefore = dTimeNow;
+        dTimeBefore += dTick;
 
         // update current time position
         mPosition.Tick++;
@@ -308,9 +308,6 @@ void MCTimer::setTimePosition(const MSTimePosition& TimePosition)
 {
     mPosition = TimePosition;
 
-    dTimeBefore = 0.0;
-    callbackTick();
-
     if(bRunning)
         locateSection();
 }
@@ -320,9 +317,6 @@ void MCTimer::setTimePosition(int Measure, unsigned int Beat, unsigned int Tick)
     mPosition.Measure = Measure;
     mPosition.Beat = Beat;
     mPosition.Tick = Tick;
-
-    dTimeBefore = 0.0;
-    callbackTick();
 
     if(bRunning)
         locateSection();

@@ -59,7 +59,7 @@
 #define MSemaphore  HANDLE
 #define MInitSemaphore(Semaphore, Value)  Semaphore = CreateSemaphore(NULL, Value, Value, NULL)
 #define MWaitSemaphore(Semaphore)  WaitForSingleObject(Semaphore, INFINITE)
-#define MPostSemaphore(Semaphore)  ReleaseSemaphore(Semaphore, 1, NULL)
+#define MSignalSemaphore(Semaphore)  ReleaseSemaphore(Semaphore, 1, NULL)
 #define MDestroySemaphore(Semaphore)  CloseHandle(Semaphore)
 
 #define MSleep(Milliseconds)  Sleep(Milliseconds)
@@ -89,7 +89,7 @@
 #define MSemaphore  sem_t
 #define MInitSemaphore(Semaphore, Value)  sem_init(&Semaphore, 0, Value)
 #define MWaitSemaphore(Semaphore)  sem_wait(&Semaphore)
-#define MPostSemaphore(Semaphore)  sem_post(&Semaphore)
+#define MSignalSemaphore(Semaphore)  sem_post(&Semaphore)
 #define MDestroySemaphore(Semaphore)  sem_destroy(&Semaphore)
 
 #define MSleep(Milliseconds)  usleep(Milliseconds * 1000)
