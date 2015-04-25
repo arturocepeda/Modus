@@ -37,6 +37,7 @@
 #define _MLIST_H_
 
 #include "mtypes.h"
+#include <cstdlib>
 
 #define LINE_BUFFER 256
 

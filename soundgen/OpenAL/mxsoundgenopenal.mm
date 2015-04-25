@@ -48,7 +48,7 @@
 //  Audio source manager
 //
 MCOpenALSourceManager::MCOpenALSourceManager(unsigned int NumSources)
-: MCAudioSourceManager(NULL, NumSources)
+: MCAudioSourceManager(NumSources)
 {
 }
 
