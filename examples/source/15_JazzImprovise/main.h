@@ -38,7 +38,7 @@ struct SGlobal
     bool bEnd;
     CRITICAL_SECTION cSection;
 
-    MSNote mNote;
+    Modus::MSNote mNote;
     int iCursor;
     int iLastPosition;
 
@@ -47,48 +47,48 @@ struct SGlobal
     unsigned int iMIDINumDevices;
     unsigned int iMIDISelectedDevice;
 
-    MCTimer* mMusicTimer;
-    MCSongStructure* mStructure;
+    Modus::MCTimer* mMusicTimer;
+    Modus::MCSongStructure* mStructure;
 
-    MCHarmonyPattern mHarmonyPattern;
+    Modus::MCHarmonyPattern mHarmonyPattern;
     unsigned int iHarmonyPatternPosition;
     
-    MCScalePattern mImpScalePatternList[SCALE_PATTERNS];
+    Modus::MCScalePattern mImpScalePatternList[SCALE_PATTERNS];
     unsigned int iCurrentImpScalePattern;
-    MCScalePattern& mImpScalePattern;
+    Modus::MCScalePattern& mImpScalePattern;
     unsigned int iImpScalePatternPosition;
 
-    MCScalePattern mBassScalePattern;
+    Modus::MCScalePattern mBassScalePattern;
     unsigned int iBassScalePatternPosition;
 
-    MTNoteMap mNoteMap;
-    MCBand mBand;
+    Modus::MTNoteMap mNoteMap;
+    Modus::MCBand mBand;
 
-    MCInstrument* mTrombone;
-    MCScore mTromboneScore;
+    Modus::MCInstrument* mTrombone;
+    Modus::MCScore mTromboneScore;
 
-    MCInstrument* mTenorSax;
-    MCScore mTenorSaxScore;
+    Modus::MCInstrument* mTenorSax;
+    Modus::MCScore mTenorSaxScore;
 
-    MCInstrument* mPiano;
-    MSRange mPianoRange;
-    MCSoundGenAudio* mPianoSoundGen;
+    Modus::MCInstrument* mPiano;
+    Modus::MSRange mPianoRange;
+    Modus::MCSoundGenAudio* mPianoSoundGen;
     bool bKeyPressed[88];
     unsigned char iKeyIntensity[88];
     bool bDamper;
 
-    MCInstrument* mBass;
-    MCScore mBassScore;
+    Modus::MCInstrument* mBass;
+    Modus::MCScore mBassScore;
 
-    MCInstrument* mDrums;
-    MCScore mDrumsScore;
+    Modus::MCInstrument* mDrums;
+    Modus::MCScore mDrumsScore;
 
-    MCInstrument* mCount;
-    MCScore mCountScore;
+    Modus::MCInstrument* mCount;
+    Modus::MCScore mCountScore;
 
     int iWalkingMeasureFrom;
     int iWalkingMeasureTo;
-    MCWalkingBassImproviser mBassImproviser;
+    Modus::MCWalkingBassImproviser mBassImproviser;
 
     bool bEndingTheme;
     int iMeasureEndingTheme;
@@ -109,10 +109,10 @@ void PlayPianoNote(int iPosition, SGlobal* sGlobal);
 void PlayPianoVoicing(SGlobal* sGlobal);
 void GoToEndingTheme(SGlobal* sGlobal);
 
-void CallbackTick(const MSTimePosition& mPos, void* pData);
+void CallbackTick(const Modus::MSTimePosition& mPos, void* pData);
 void CallbackEnd(void* pData);
-void PianoPlayNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
-void PianoReleaseNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
+void PianoPlayNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
+void PianoReleaseNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
 void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData);
 
 #endif

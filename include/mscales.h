@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -38,50 +38,53 @@
 
 #include "mtypes.h"
 
-/**
- *  @brief Static class to work with scales
- */
-class MCScales
+namespace Modus
 {
-public:
     /**
-     *  @brief Default scales definition string
+     *  @brief Static class to work with scales
      */
-    static const char* ScalesDefinition;
+    class MCScales
+    {
+    public:
+        /**
+         *  @brief Default scales definition string
+         */
+        static const char* ScalesDefinition;
 
-    /**
-     *  @brief Check whether two scales are the same
-     *  @param Scale1 First scale to be compared
-     *  @param Scale2 Second scale to be compared
-     */
-    static bool equal(const MTScale& Scale1, const MTScale& Scale2);
+        /**
+         *  @brief Check whether two scales are the same
+         *  @param Scale1 First scale to be compared
+         *  @param Scale2 Second scale to be compared
+         */
+        static bool equal(const MTScale& Scale1, const MTScale& Scale2);
 
-    static MTScale Major();
-    static MTScale Minor();
-    static MTScale MinorHarmonic();
-    static MTScale MinorMelodic();
-    static MTScale MajorMinor();
+        static MTScale Major();
+        static MTScale Minor();
+        static MTScale MinorHarmonic();
+        static MTScale MinorMelodic();
+        static MTScale MajorMinor();
 
-    static MTScale Dorian();
-    static MTScale Phrygian();
-    static MTScale Lydian();
-    static MTScale Mixolydian();
-    static MTScale Locrian();
-    static MTScale Acoustic();
-    static MTScale Altered();
+        static MTScale Dorian();
+        static MTScale Phrygian();
+        static MTScale Lydian();
+        static MTScale Mixolydian();
+        static MTScale Locrian();
+        static MTScale Acoustic();
+        static MTScale Altered();
 
-    static MTScale PentatonicMajor();
-    static MTScale PentatonicMinor();
-    static MTScale Blues();
-    static MTScale BluesWithSixth();
+        static MTScale PentatonicMajor();
+        static MTScale PentatonicMinor();
+        static MTScale Blues();
+        static MTScale BluesWithSixth();
 
-    static MTScale Gypsy();
-    static MTScale DoubleHarmonic();
+        static MTScale Gypsy();
+        static MTScale DoubleHarmonic();
 
-    static MTScale WholeTone();
-    static MTScale OctatonicHW();
-    static MTScale OctatonicWH();
-    static MTScale Chromatic();
-};
+        static MTScale WholeTone();
+        static MTScale OctatonicHW();
+        static MTScale OctatonicWH();
+        static MTScale Chromatic();
+    };
+}
 
 #endif

@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -32,6 +32,9 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "mtimer.h"
+#include "msettings.h"
+
+using namespace Modus;
 
 //
 //  Timer
@@ -111,7 +114,6 @@ MCTimer::MCTimer(float Tempo, unsigned int BeatsPerMeasure)
     , fCallbackSection(NULL)
     , fCallbackEnd(NULL)
     , iBeatsPerMeasure(BeatsPerMeasure)
-    , iTicksPerBeat(M_TICKS_PER_BEAT)
 {
     setTempo(Tempo);
     reset();
@@ -166,7 +168,7 @@ bool MCTimer::update()
         // update current time position
         mPosition.Tick++;
 
-        if(mPosition.Tick >= iTicksPerBeat)
+        if(mPosition.Tick >= MCSettings::getTicksPerBeat())
         {
             mPosition.Tick = 0;
             mPosition.Beat++;
@@ -294,7 +296,7 @@ void MCTimer::setTempo(float Tempo)
     if(Tempo > 0)
     {
         fTempo = Tempo;
-        dTick = 60000000.0 / (fTempo * iTicksPerBeat);
+        dTick = 60000000.0 / (fTempo * MCSettings::getTicksPerBeat());
     }
 }
 

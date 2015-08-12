@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -89,66 +89,68 @@ long ovTell(void* pDataSource);
 #endif
 
 
-
-//
-//  Audio source manager
-//
-class MCOpenALSourceManager : public MCAudioSourceManager
+namespace Modus
 {
-public:
-    MCOpenALSourceManager(unsigned int NumSources);
+   //
+   //  Audio source manager
+   //
+   class MCOpenALSourceManager : public MCAudioSourceManager
+   {
+   public:
+       MCOpenALSourceManager(unsigned int NumSources);
 
-    virtual void allocateSources() override;
-    virtual void releaseSources() override;
+       virtual void allocateSources() override;
+       virtual void releaseSources() override;
 
-    virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
-    virtual void stopSource(unsigned int SourceIndex) override;
+       virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+       virtual void stopSource(unsigned int SourceIndex) override;
 
-    virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+       virtual bool isSourcePlaying(unsigned int SourceIndex) override;
 
-    virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
-    virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
-    virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
-    virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
-    virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
-};
+       virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+       virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+       virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+       virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+       virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+   };
 
 
 
-//
-//  Sound generator
-//
-class MCSoundGenOpenAL : public MCSoundGenAudioMultipleChannel
-{
-private:
-    ALuint** alBuffers;
+   //
+   //  Sound generator
+   //
+   class MCSoundGenOpenAL : public MCSoundGenAudioMultipleChannel
+   {
+   private:
+       ALuint** alBuffers;
 
-    static unsigned int iNumberOfInstances;
+       static unsigned int iNumberOfInstances;
 
-#ifndef __iOS__
-    void loadWAVData(const char* sData, unsigned int iSize, ALuint alBuffer);
-    void loadWAVFile(const char* sFilename, ALuint alBuffer);
+   #ifndef __iOS__
+       void loadWAVData(const char* sData, unsigned int iSize, ALuint alBuffer);
+       void loadWAVFile(const char* sFilename, ALuint alBuffer);
 
-    void loadOGGData(const char* sData, unsigned int iSize, ALuint alBuffer);
-    void loadOGGFile(const char* sFilename, ALuint alBuffer);
-#else
-    void loadAudioData(const char* sData, unsigned int iSize, ALuint alBuffer);
-    void loadAudioFile(NSString* sFilename, ALuint alBuffer, bool bFromResources = true);
-#endif
+       void loadOGGData(const char* sData, unsigned int iSize, ALuint alBuffer);
+       void loadOGGFile(const char* sFilename, ALuint alBuffer);
+   #else
+       void loadAudioData(const char* sData, unsigned int iSize, ALuint alBuffer);
+       void loadAudioFile(NSString* sFilename, ALuint alBuffer, bool bFromResources = true);
+   #endif
 
-protected:
-    void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+   protected:
+       void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
 
-public:
-    MCSoundGenOpenAL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
-    ~MCSoundGenOpenAL();
+   public:
+       MCSoundGenOpenAL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
+       ~MCSoundGenOpenAL();
 
-    void addSampleSet(MSSampleSet& SampleSet);
-    void loadSamples();
-    void loadSamplePack(std::istream& Stream, 
-                        void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                        void* Data = NULL);
-    void unloadSamples();
-};
+       void addSampleSet(MSSampleSet& SampleSet);
+       void loadSamples();
+       void loadSamplePack(std::istream& Stream, 
+                           void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                           void* Data = NULL);
+       void unloadSamples();
+   };
+}
 
 #endif

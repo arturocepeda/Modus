@@ -19,15 +19,15 @@
 struct SGlobal
 {
     bool bRecordingMode;
-    MCTimer mTimer;
-    MCScore mScore;
+    Modus::MCTimer mTimer;
+    Modus::MCScore mScore;
 };
 
-void TimerTick(const MSTimePosition& mTimePosition, void* pData);
+void TimerTick(const Modus::MSTimePosition& mTimePosition, void* pData);
 void MidiInProc(double dTime, std::vector<unsigned char>* vMessage, void* pData);
 
-void PianoPlayNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
-void PianoReleaseNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
+void PianoPlayNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
+void PianoReleaseNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
 void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData);
 
 #endif

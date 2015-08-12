@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -37,6 +37,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+using namespace Modus;
 
 MCScalePattern::MCScalePattern()
 {
@@ -120,7 +122,7 @@ void MCScalePattern::transpose(char NumberOfSemitones)
 void MCScalePattern::loadScript(std::istream* sScalesDefinition, std::istream* sScript)
 {
     // load the scales list
-    char sLine[LINE_BUFFER];
+    char sLine[MODUS_LINE_BUFFER];
     char* sLinePointer;
     int iValue;
 

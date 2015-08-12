@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -45,27 +45,30 @@
 #include "msoundgen.h"
 #include "externals/RtMidi/RtMidi.h"
 
-class MCSoundGenMIDI : public MCSoundGen
+namespace Modus
 {
-private:
-    RtMidiOut* mDevice;
-    std::vector<unsigned char> mMessage;
-    unsigned char iMIDIChannel;
-    unsigned char* iPitch;
+   class MCSoundGenMIDI : public MCSoundGen
+   {
+   private:
+       RtMidiOut* mDevice;
+       std::vector<unsigned char> mMessage;
+       unsigned char iMIDIChannel;
+       unsigned char* iPitch;
 
-    void releaseResonance();
+       void releaseResonance();
 
-public:
-    MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDevice, 
-                   unsigned char MIDIChannel, unsigned char MIDIProgram);
-    ~MCSoundGenMIDI();
+   public:
+       MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDevice, 
+                      unsigned char MIDIChannel, unsigned char MIDIProgram);
+       ~MCSoundGenMIDI();
 
-    void playNote(MSNote& Note);
-    void releaseNote(unsigned char Channel);
-    void update();
+       void playNote(MSNote& Note);
+       void releaseNote(unsigned char Channel);
+       void update();
 
-    void setBending(unsigned char Channel, int Cents);
-    void setIntensity(unsigned char Channel, unsigned char Intensity);
-};
+       void setBending(unsigned char Channel, int Cents);
+       void setIntensity(unsigned char Channel, unsigned char Intensity);
+   };
+}
 
 #endif

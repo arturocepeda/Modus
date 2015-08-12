@@ -14,6 +14,8 @@
 #include "mconstants.h"
 #include <windows.h>
 
+using namespace Modus;
+
 SGDI* CRendering::sGDI;
 
 char CRendering::sHeader[32];
@@ -112,22 +114,22 @@ void CRendering::render(SGlobal* Global)
 
         switch(iNote)
         {
-        case D:
+        case MODUS_D:
             iOffset += 1;
             break;
-        case E:
+        case MODUS_E:
             iOffset += 2;
             break;
-        case F:
+        case MODUS_F:
             iOffset += 3;
             break;
-        case G:
+        case MODUS_G:
             iOffset += 4;
             break;
-        case A:
+        case MODUS_A:
             iOffset += 5;
             break;
-        case B:
+        case MODUS_B:
             iOffset += 6;
             break;
         }
@@ -158,19 +160,19 @@ void CRendering::render(SGlobal* Global)
                 
         switch(iNote)
         {
-        case Cs:
+        case MODUS_Cs:
             iOffset += 1;
             break;
-        case Ds:
+        case MODUS_Ds:
             iOffset += 2;
             break;
-        case Fs:
+        case MODUS_Fs:
             iOffset += 4;
             break;
-        case Gs:
+        case MODUS_Gs:
             iOffset += 5;
             break;
-        case As:
+        case MODUS_As:
             iOffset += 6;
             break;
         }

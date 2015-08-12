@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -38,77 +38,80 @@
 
 #include "minstrument.h"
 
-/**
- *  @brief Represents a group of instruments
- */
-class MCBand
+namespace Modus
 {
-private:
-    std::vector<MCInstrument*> mInstruments;
-    std::vector<MCBand*> mBands;
+    /**
+    *  @brief Represents a group of instruments
+    */
+    class MCBand
+    {
+    private:
+        std::vector<MCInstrument*> mInstruments;
+        std::vector<MCBand*> mBands;
 
-public:
-    /**
-     *  @brief Add an instrument to the band
-     *  @param Instrument Instrument to be added to the band
-     */
-    void addInstrument(MCInstrument* Instrument);
-    /**
-     *  @brief Remove the instrument in the specified position from the band
-     *  @param Position Position of the instrument in the band
-     */
-    void removeInstrument(unsigned int Position);
-    /**
-     *  @brief Remove the specified instrument from the band
-     *  @param Instrument Instrument to be removed from the band
-     */
-    void removeInstrument(MCInstrument* Instrument);
+    public:
+        /**
+        *  @brief Add an instrument to the band
+        *  @param Instrument Instrument to be added to the band
+        */
+        void addInstrument(MCInstrument* Instrument);
+        /**
+        *  @brief Remove the instrument in the specified position from the band
+        *  @param Position Position of the instrument in the band
+        */
+        void removeInstrument(unsigned int Position);
+        /**
+        *  @brief Remove the specified instrument from the band
+        *  @param Instrument Instrument to be removed from the band
+        */
+        void removeInstrument(MCInstrument* Instrument);
 
-    /**
-     *  @brief Add a band to this band
-     *  @param Band Band to be added to this band
-     */
-    void addBand(MCBand* Band);
-    /**
-     *  @brief Remove the band in the specified position from this band
-     *  @param Position Position of the band in this band
-     */
-    void removeBand(unsigned int Position);
-    /**
-     *  @brief Remove the specified band from this band
-     *  @param Band Band to be removed from this band
-     */
-    void removeBand(MCBand* Band);
+        /**
+        *  @brief Add a band to this band
+        *  @param Band Band to be added to this band
+        */
+        void addBand(MCBand* Band);
+        /**
+        *  @brief Remove the band in the specified position from this band
+        *  @param Position Position of the band in this band
+        */
+        void removeBand(unsigned int Position);
+        /**
+        *  @brief Remove the specified band from this band
+        *  @param Band Band to be removed from this band
+        */
+        void removeBand(MCBand* Band);
 
-    /**
-     *  @brief Update all the instruments in the band
-     *  @param TimePosition Current time position
-     */
-    void update(const MSTimePosition& TimePosition);
-    /**
-     *  @brief Remove all the instruments from the band
-     */
-    void clear();
+        /**
+        *  @brief Update all the instruments in the band
+        *  @param TimePosition Current time position
+        */
+        void update(const MSTimePosition& TimePosition);
+        /**
+        *  @brief Remove all the instruments from the band
+        */
+        void clear();
 
-    /**
-     *  @brief Returns a pointer to the instrument in the specified position
-     *  @param Position Position of the instrument in the band
-     */
-    MCInstrument* getInstrument(unsigned int Position);
-    /**
-     *  @brief Returns the number of instruments in the band
-     */
-    unsigned int getNumberOfInstruments();
+        /**
+        *  @brief Returns a pointer to the instrument in the specified position
+        *  @param Position Position of the instrument in the band
+        */
+        MCInstrument* getInstrument(unsigned int Position);
+        /**
+        *  @brief Returns the number of instruments in the band
+        */
+        unsigned int getNumberOfInstruments();
 
-    /**
-     *  @brief Returns a pointer to the band in the specified position
-     *  @param Position Position of the band in this band
-     */
-    MCBand* getBand(unsigned int Position);
-    /**
-     *  @brief Returns the number of bands in this band
-     */
-    unsigned int getNumberOfBands();
-};
+        /**
+        *  @brief Returns a pointer to the band in the specified position
+        *  @param Position Position of the band in this band
+        */
+        MCBand* getBand(unsigned int Position);
+        /**
+        *  @brief Returns the number of bands in this band
+        */
+        unsigned int getNumberOfBands();
+    };
+}
 
 #endif

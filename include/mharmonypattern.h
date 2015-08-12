@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -39,70 +39,73 @@
 #ifndef _MHARMONYPATTERN_H_
 #define _MHARMONYPATTERN_H_
 
-/**
- *  @brief Represents a harmony pattern, which consist of a list of chords placed on time positions
- */
-class MCHarmonyPattern : public MCListMusic<MSHarmonyPatternEntry>
+namespace Modus
 {
-private:
-    void loadScript(std::istream* sChordsDefinition, std::istream* sScript);
+    /**
+    *  @brief Represents a harmony pattern, which consist of a list of chords placed on time positions
+    */
+    class MCHarmonyPattern : public MCListMusic<MSHarmonyPatternEntry>
+    {
+    private:
+        void loadScript(std::istream* sChordsDefinition, std::istream* sScript);
 
-public:
-    /**
-     *  @brief Constructor
-     */
-    MCHarmonyPattern();
-    ~MCHarmonyPattern();
+    public:
+        /**
+        *  @brief Constructor
+        */
+        MCHarmonyPattern();
+        ~MCHarmonyPattern();
 
-    /**
-     *  @brief Add a new entry
-     *  @param HarmonyPatternEntry Entry to be added to the list
-     */
-    void addEntry(const MSHarmonyPatternEntry& HarmonyPatternEntry);
+        /**
+        *  @brief Add a new entry
+        *  @param HarmonyPatternEntry Entry to be added to the list
+        */
+        void addEntry(const MSHarmonyPatternEntry& HarmonyPatternEntry);
 
-    /**
-     *  @brief Transpose the root and the bass note in all the entries by the specified number of semitones
-     *  @param NumberOfSemitones Number of semitones to add or subtract (it can be negative)
-     */
-    void transpose(char NumberOfSemitones);
+        /**
+        *  @brief Transpose the root and the bass note in all the entries by the specified number of semitones
+        *  @param NumberOfSemitones Number of semitones to add or subtract (it can be negative)
+        */
+        void transpose(char NumberOfSemitones);
 
-    /**
-     *  @brief Load script with information to fill entries from a string
-     *  @param ChordsDefinitionString String in which all the chord patterns are defined. Each chord pattern
-     *                                will have a unique ID number to be referenced from the script
-     *  @param Script String which contains the script
-     */
-    void loadScriptFromString(const char* ChordsDefinitionString, const char* Script);
-    /**
-     *  @brief Load script with information to fill entries from a string
-     *  @param Script String which contains the script
-     */
-    void loadScriptFromString(const char* Script);
-    /**
-     *  @brief Load script with information to fill entries from a file
-     *  @param ChordsDefinitionFilename Text file in which all the chord patterns are defined. Each chord pattern
-     *                                  will have a unique ID number to be referenced from the script
-     *  @param ScriptFilename Text file which contains the script
-     *  @return Whether the file could be readed or not
-     */
-    bool loadScriptFromFile(const char* ChordsDefinitionFilename, const char* ScriptFilename);
-    /**
-     *  @brief Load script with information to fill entries from a file
-     *  @param ScriptFilename Text file which contains the script
-     *  @return Whether the file could be readed or not
-     */
-    bool loadScriptFromFile(const char* ScriptFilename);
-    /**
-     *  @brief Load script with information to fill entries from a file
-     *  @param Stream Input file stream attached to the binary data
-     */
-    void loadScriptFromBinaryData(std::istream& Stream);
-    /**
-     *  @brief Load script with information to fill entries from a file
-     *  @param Filename Binary file which contains the harmony pattern data
-     *  @return Whether the file could be readed or not
-     */
-    bool loadScriptFromBinaryFile(const char* Filename);
-};
+        /**
+        *  @brief Load script with information to fill entries from a string
+        *  @param ChordsDefinitionString String in which all the chord patterns are defined. Each chord pattern
+        *                                will have a unique ID number to be referenced from the script
+        *  @param Script String which contains the script
+        */
+        void loadScriptFromString(const char* ChordsDefinitionString, const char* Script);
+        /**
+        *  @brief Load script with information to fill entries from a string
+        *  @param Script String which contains the script
+        */
+        void loadScriptFromString(const char* Script);
+        /**
+        *  @brief Load script with information to fill entries from a file
+        *  @param ChordsDefinitionFilename Text file in which all the chord patterns are defined. Each chord pattern
+        *                                  will have a unique ID number to be referenced from the script
+        *  @param ScriptFilename Text file which contains the script
+        *  @return Whether the file could be readed or not
+        */
+        bool loadScriptFromFile(const char* ChordsDefinitionFilename, const char* ScriptFilename);
+        /**
+        *  @brief Load script with information to fill entries from a file
+        *  @param ScriptFilename Text file which contains the script
+        *  @return Whether the file could be readed or not
+        */
+        bool loadScriptFromFile(const char* ScriptFilename);
+        /**
+        *  @brief Load script with information to fill entries from a file
+        *  @param Stream Input file stream attached to the binary data
+        */
+        void loadScriptFromBinaryData(std::istream& Stream);
+        /**
+        *  @brief Load script with information to fill entries from a file
+        *  @param Filename Binary file which contains the harmony pattern data
+        *  @return Whether the file could be readed or not
+        */
+        bool loadScriptFromBinaryFile(const char* Filename);
+    };
+}
 
 #endif

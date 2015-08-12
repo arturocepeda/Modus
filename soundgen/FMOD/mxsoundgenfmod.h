@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -48,66 +48,69 @@
 #define FMOD_SOURCES 32
 
 
-//
-//  Audio source manager
-//
-class MCFMODSourceManager : public MCAudioSourceManager
+namespace Modus
 {
-private:
-   FMOD::System* fmodSystem;
-   FMOD::Channel** fmodChannels;
-   FMOD::ChannelGroup* fmodChannelGroup;
+    //
+    //  Audio source manager
+    //
+    class MCFMODSourceManager : public MCAudioSourceManager
+    {
+    private:
+       FMOD::System* fmodSystem;
+       FMOD::Channel** fmodChannels;
+       FMOD::ChannelGroup* fmodChannelGroup;
 
-   float* fFrequencies;
+       float* fFrequencies;
 
-public:
-   MCFMODSourceManager(FMOD::System* AudioSystem, unsigned int NumSources);
+    public:
+       MCFMODSourceManager(FMOD::System* AudioSystem, unsigned int NumSources);
 
-   virtual void allocateSources() override;
-   virtual void releaseSources() override;
+       virtual void allocateSources() override;
+       virtual void releaseSources() override;
 
-   virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
-   virtual void stopSource(unsigned int SourceIndex) override;
+       virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+       virtual void stopSource(unsigned int SourceIndex) override;
 
-   virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+       virtual bool isSourcePlaying(unsigned int SourceIndex) override;
 
-   virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
-   virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
-   virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
-   virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
-   virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
-};
+       virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+       virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+       virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+       virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+       virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+    };
 
 
-//
-//  Sound generator
-//
-class MCSoundGenFMOD : public MCSoundGenAudioMultipleChannel
-{
-private:
-   FMOD::System* fmodSystem;
-   FMOD::Sound*** fmodSounds;
-   std::vector<FMOD::DSP*> fmodDSP;
+    //
+    //  Sound generator
+    //
+    class MCSoundGenFMOD : public MCSoundGenAudioMultipleChannel
+    {
+    private:
+       FMOD::System* fmodSystem;
+       FMOD::Sound*** fmodSounds;
+       std::vector<FMOD::DSP*> fmodDSP;
 
-   float* fFrequency;
-   FMOD_VECTOR fmod3DPosition;
+       float* fFrequency;
+       FMOD_VECTOR fmod3DPosition;
 
-   static unsigned int iNumberOfInstances;
+       static unsigned int iNumberOfInstances;
 
-   void releaseChannel(unsigned char iChannel, bool bQuickly);
+       void releaseChannel(unsigned char iChannel, bool bQuickly);
 
-public:
-   MCSoundGenFMOD(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem);
-   ~MCSoundGenFMOD();
+    public:
+       MCSoundGenFMOD(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, FMOD::System* FMODSystem);
+       ~MCSoundGenFMOD();
 
-   void addSampleSet(MSSampleSet& SampleSet);
-   void loadSamples();
-   void loadSamplePack(std::istream& Stream, 
-                       void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                       void* Data = NULL);
-   void unloadSamples();
+       void addSampleSet(MSSampleSet& SampleSet);
+       void loadSamples();
+       void loadSamplePack(std::istream& Stream, 
+                           void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                           void* Data = NULL);
+       void unloadSamples();
 
-   void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
-};
+       void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+    };
+}
 
 #endif

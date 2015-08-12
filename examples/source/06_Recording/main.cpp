@@ -18,6 +18,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace Modus;
 
 MCMIDIReceiver* mMIDIReceiver;
 
@@ -207,7 +208,7 @@ void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData)
     if(sGlobal->bRecordingMode)
     {
         MSScoreEntry se;        
-        se.Note.Pitch = M_CTRL_DAMPER;
+        se.Note.Pitch = MODUS_CTRL_DAMPER;
         se.Note.Intensity = (unsigned char)bDamperState;
         se.TimePosition = sGlobal->mTimer.getTimePosition();
         sGlobal->mScore.addEntry(se);

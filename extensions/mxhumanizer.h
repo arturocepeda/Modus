@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -37,16 +37,19 @@
 
 #include "mscore.h"
 
-class MCHumanizer
+namespace Modus
 {
-public:
-    static void humanizeRandom(MCScore* Score, unsigned char TimeMaxError, 
-                               unsigned char IntensityMaxError, unsigned char DurationMaxError,
-                               unsigned char BeatsPerMeasure);
+    class MCHumanizer
+    {
+    public:
+        static void humanizeRandom(MCScore* Score, unsigned char TimeMaxError, 
+            unsigned char IntensityMaxError, unsigned char DurationMaxError,
+            unsigned char BeatsPerMeasure);
 
-    static void humanizeRandom(MCScore* Score, unsigned char TimeMaxError, 
-                               unsigned char IntensityMaxError, unsigned char DurationMaxError,
-                               int MeasureFrom, int MeasureTo, unsigned char BeatsPerMeasure);
-};
+        static void humanizeRandom(MCScore* Score, unsigned char TimeMaxError, 
+            unsigned char IntensityMaxError, unsigned char DurationMaxError,
+            int MeasureFrom, int MeasureTo, unsigned char BeatsPerMeasure);
+    };
+}
 
 #endif

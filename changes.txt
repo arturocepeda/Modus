@@ -1,6 +1,25 @@
 
 
 
+  v0.60 (August 2015)
+ =======================
+
+ * Everything has been put into the "Modus" namespace in order to keep the global
+   namespace clean. Also all the defined macros start now with "MODUS_"
+   
+ * Added the MCSettings class to manage Modus settings. The number of ticks per beat
+   can now be set.
+   
+ * Added the MCStringInstrument and MCFrettedInstrument classes to work with string
+   instruments
+   
+ * Added support for Android
+ 
+ * Added support for Windows Phone 8
+   
+   
+
+
   v0.53 (August 2013)
  =======================
 

@@ -24,7 +24,7 @@ public:
     static void release();
     static void update();
 
-    static MCSoundGenAudio* createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
+    static Modus::MCSoundGenAudio* createSoundGen(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
 };
 
 #endif

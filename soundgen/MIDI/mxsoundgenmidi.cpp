@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -41,6 +41,8 @@
 
 #include "mxsoundgenmidi.h"
 #include "mutils.h"
+
+using namespace Modus;
 
 MCSoundGenMIDI::MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDevice,
                                unsigned char MIDIChannel, unsigned char MIDIProgram)

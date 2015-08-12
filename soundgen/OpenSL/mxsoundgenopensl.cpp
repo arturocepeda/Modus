@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -44,61 +44,7 @@
 #include "mutils.h"
 #include <cpu-features.h>
 
-
-//
-//  Ogg Vorbis
-//
-size_t ovRead(void* pDestination, size_t iSize, size_t iNumMembers, void* pDataSource)
-{
-    SOGGFile* sFile = (SOGGFile*)pDataSource;
-
-    // calculate number of bytes to read
-    unsigned int iBytesToRead = std::min((unsigned int)(iSize * iNumMembers), sFile->Size - sFile->Cursor);
-
-    // read the data
-    memcpy(pDestination, sFile->Data + sFile->Cursor, iBytesToRead);
-    sFile->Cursor += iBytesToRead;
-
-    return iBytesToRead;
-}
-
-int ovSeek(void* pDataSource, ogg_int64_t iOffset, int iWhence)
-{
-    SOGGFile* sFile = (SOGGFile*)pDataSource;
-
-    switch(iWhence)
-    {
-    case SEEK_SET:
-        sFile->Cursor = std::min((unsigned int)iOffset, sFile->Size);
-        break;
-
-    case SEEK_CUR:
-        sFile->Cursor = std::min(sFile->Cursor + (unsigned int)iOffset, sFile->Size);
-        break;
-
-    case SEEK_END:
-        sFile->Cursor = sFile->Size;
-        break;
-
-    default:
-        return -1;
-    }
-
-    return 0;
-}
-
-long ovTell(void* pDataSource)
-{
-    SOGGFile* sFile = (SOGGFile*)pDataSource;
-    return sFile->Cursor;
-}
-
-int ovClose(void* pDataSource)
-{
-    return 0;
-}
-
-
+#include "Content/GEAudioData.h"
 
 //
 //  Audio source manager
@@ -167,7 +113,7 @@ void MCOpenSLSourceManager::allocateSources()
       (*slSources[i].AudioPlayer)->GetInterface(slSources[i].AudioPlayer, SL_IID_BUFFERQUEUE, &slSources[i].BufferQueue);
       (*slSources[i].AudioPlayer)->GetInterface(slSources[i].AudioPlayer, SL_IID_VOLUME, &slSources[i].VolumeController);
 
-      (*slSources[i].BufferQueue)->Enqueue(slSources[i].BufferQueue, 0, 0);
+      //(*slSources[i].BufferQueue)->Enqueue(slSources[i].BufferQueue, 0, 0);
 
       (*slSources[i].VolumeController)->EnableStereoPosition(slSources[i].VolumeController, true);
       (*slSources[i].VolumeController)->SetVolumeLevel(slSources[i].VolumeController, 0.0f);
@@ -261,6 +207,7 @@ SLpermille MCOpenSLSourceManager::floatToPermille(float fPanning)
 //  Sound generator
 //
 unsigned int MCSoundGenOpenSL::iNumberOfInstances = 0;
+unsigned int MCSoundGenOpenSL::iFrameBufferSize = 512;
 
 MCSoundGenOpenSL::MCSoundGenOpenSL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D)
     : MCSoundGenAudioMultipleChannel(ID, NumberOfChannels, Sound3D)
@@ -295,6 +242,11 @@ MCSoundGenOpenSL::~MCSoundGenOpenSL()
     }
 }
 
+void MCSoundGenOpenSL::setFrameBufferSize(unsigned int FrameBufferSize)
+{
+    iFrameBufferSize = FrameBufferSize;
+}
+
 void MCSoundGenOpenSL::loadSamples()
 {
 }
@@ -304,9 +256,9 @@ MThreadFunction(MCSoundGenOpenSL::sampleLoadThread)
    SSampleLoadData* sData = static_cast<SSampleLoadData*>(pData);
 
    MWaitSemaphore(sData->SoundGenInstance->mSemaphore);
-   loadOGGData(sData->SampleData, sData->SampleDataSize, sData->AudioBuffer);
+   loadWAVData(sData->SampleData, sData->SampleDataSize, sData->AudioBuffer);
    delete[] sData->SampleData;
-   MPostSemaphore(sData->SoundGenInstance->mSemaphore);
+   MSignalSemaphore(sData->SoundGenInstance->mSemaphore);
 
    MLockMutex(sData->SoundGenInstance->mMutex);
    if(sData->Callback)
@@ -468,45 +420,19 @@ void MCSoundGenOpenSL::playAudioSample(unsigned int SourceIndex, int SampleSet, 
     cManager->playSource(SourceIndex, &slBuffers[SampleSet][SampleIndex], b3DSound);
 }
 
-void MCSoundGenOpenSL::loadOGGData(const char* sData, unsigned int iSize, SAudioBuffer* slBuffer)
+void MCSoundGenOpenSL::loadWAVData(const char* sData, unsigned int iSize, SAudioBuffer* slBuffer)
 {
-    SOGGFile sFile;
-    OggVorbis_File ovFile;
-    ov_callbacks ovCallbacks;
+   GE::Content::AudioData cAudioData;
+   cAudioData.load(iSize, sData);
 
-    // audio file info
-    sFile.Data = (char*)sData;
-    sFile.Size = iSize;
-    sFile.Cursor = 0;
+   unsigned int iDataSize = cAudioData.getDataSize();
+   unsigned int iOptimizedDataSize = iFrameBufferSize;
 
-    // set our functions to handle Vorbis OGG data
-    ovCallbacks.read_func = ovRead;
-    ovCallbacks.seek_func = ovSeek;
-    ovCallbacks.tell_func = ovTell;
-    ovCallbacks.close_func = ovClose;
+   while(iOptimizedDataSize < iDataSize)
+      iOptimizedDataSize += iFrameBufferSize;
 
-    // attach audio file data with the ovFile struct
-    ov_open_callbacks(&sFile, &ovFile, NULL, 0, ovCallbacks);
+   slBuffer->Size = iOptimizedDataSize;
+   slBuffer->Data = new char[iOptimizedDataSize];
 
-    // get info about the audio data
-    vorbis_info* pVorbisInfo = ov_info(&ovFile, -1);
-    unsigned int iPCMSamplesCount = (unsigned int)ov_pcm_total(&ovFile, -1);
-
-    // decode data
-    int iBitStream;
-    int iReadedBytes;
-
-    slBuffer->Size = iPCMSamplesCount * pVorbisInfo->channels * sizeof(short);
-    slBuffer->Data = new char[slBuffer->Size];
-
-    unsigned int iCurrentPosition = 0;
-
-    do
-    {
-        iReadedBytes = ov_read(&ovFile, slBuffer->Data + iCurrentPosition, OV_BUFFER_SIZE, 0);
-        iCurrentPosition += iReadedBytes;
-
-    } while(iReadedBytes > 0);
-
-    ov_clear(&ovFile);
+   memcpy(slBuffer->Data, cAudioData.getData(), cAudioData.getDataSize());
 }

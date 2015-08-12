@@ -28,6 +28,8 @@
 #pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\irrKlang\\lib.win32\\irrKlang.lib")
 #endif
 
+using namespace Modus;
+
 irrklang::ISoundEngine* ikEngine;
 
 void CAudio::init()

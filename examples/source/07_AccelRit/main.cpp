@@ -22,6 +22,7 @@
 #define TEMPO_B     140.0f
 
 using namespace std;
+using namespace Modus;
 
 struct SGlobal
 {
@@ -107,7 +108,7 @@ void TimerTick(const MSTimePosition& mTimePosition, void* pData)
     SGlobal* sGlobal = (SGlobal*)pData;
 
     // loop management
-    if(mTimePosition.Measure % LOOP == 0 && mTimePosition.Beat == 4 && mTimePosition.Tick == M_LAST_TICK)
+    if(mTimePosition.Measure % LOOP == 0 && mTimePosition.Beat == 4 && mTimePosition.Tick == MCSettings::getLastTick())
     {
         sGlobal->mScore.displace(LOOP);
 

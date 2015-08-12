@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -48,59 +48,62 @@
 #define IRRKLANG_SOURCES 32
 
 
-//
-//  Audio source manager
-//
-class MCirrKlangSourceManager : public MCAudioSourceManager
+namespace Modus
 {
-private:
-    irrklang::ISoundEngine* ikEngine;
+    //
+    //  Audio source manager
+    //
+    class MCirrKlangSourceManager : public MCAudioSourceManager
+    {
+    private:
+        irrklang::ISoundEngine* ikEngine;
 
-public:
-    MCirrKlangSourceManager(irrklang::ISoundEngine* AudioSystem, unsigned int NumSources);
+    public:
+        MCirrKlangSourceManager(irrklang::ISoundEngine* AudioSystem, unsigned int NumSources);
 
-    virtual void allocateSources() override;
-    virtual void releaseSources() override;
+        virtual void allocateSources() override;
+        virtual void releaseSources() override;
 
-    virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
-    virtual void stopSource(unsigned int SourceIndex) override;
+        virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+        virtual void stopSource(unsigned int SourceIndex) override;
 
-    virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+        virtual bool isSourcePlaying(unsigned int SourceIndex) override;
 
-    virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
-    virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
-    virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
-    virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
-    virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
-};
+        virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+        virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+        virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+        virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+        virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+    };
 
 
-//
-//  Sound generator
-//
-class MCSoundGenirrKlang : public MCSoundGenAudioMultipleChannel
-{
-private:
-    irrklang::ISoundEngine* iEngine;
-    irrklang::ISoundSource*** iSound;
+    //
+    //  Sound generator
+    //
+    class MCSoundGenirrKlang : public MCSoundGenAudioMultipleChannel
+    {
+    private:
+        irrklang::ISoundEngine* iEngine;
+        irrklang::ISoundSource*** iSound;
 
-    irrklang::vec3df i3DPosition;
+        irrklang::vec3df i3DPosition;
 
-    static unsigned int iNumberOfInstances;
+        static unsigned int iNumberOfInstances;
 
-public:
-    MCSoundGenirrKlang(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine);
-    ~MCSoundGenirrKlang();
+    public:
+        MCSoundGenirrKlang(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, irrklang::ISoundEngine* Engine);
+        ~MCSoundGenirrKlang();
 
-    void addSampleSet(MSSampleSet& SampleSet);
+        void addSampleSet(MSSampleSet& SampleSet);
 
-    void loadSamples();
-    void loadSamplePack(std::istream& Stream, 
-                        void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                        void* Data = NULL);
-    void unloadSamples();
+        void loadSamples();
+        void loadSamplePack(std::istream& Stream, 
+                            void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                            void* Data = NULL);
+        void unloadSamples();
 
-    void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
-};
+        void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+    };
+}
 
 #endif

@@ -19,6 +19,7 @@
 #include <fstream>
 
 using namespace std;
+using namespace Modus;
 
 void TimerTick(const MSTimePosition& mTimePosition, void* pData);
 

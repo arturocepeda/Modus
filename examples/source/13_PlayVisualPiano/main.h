@@ -27,7 +27,7 @@ struct SGlobal
     unsigned int iMIDINumDevices;
     unsigned int iMIDISelectedDevice;
 
-    MCInstrument* mPiano;
+    Modus::MCInstrument* mPiano;
     bool bKeyPressed[88];
     unsigned char iKeyIntensity[88];
     bool bDamper;
@@ -68,9 +68,9 @@ DWORD WINAPI MusicTimerThread(LPVOID lp);
 
 void SelectMIDIDevice(unsigned int iNumDevice, SGlobal* sGlobal);
 
-void TimerTick(const MSTimePosition& mTimePosition, void* pData);
-void PianoPlayNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
-void PianoReleaseNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
+void TimerTick(const Modus::MSTimePosition& mTimePosition, void* pData);
+void PianoPlayNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
+void PianoReleaseNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
 void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData);
 
 #endif

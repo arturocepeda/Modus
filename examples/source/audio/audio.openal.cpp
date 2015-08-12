@@ -36,6 +36,8 @@
 #endif
 #endif
 
+using namespace Modus;
+
 ALCcontext* alContext;
 ALCdevice* alDevice;
 

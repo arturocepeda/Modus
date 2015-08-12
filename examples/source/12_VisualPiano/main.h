@@ -25,9 +25,9 @@
 
 struct SGlobal
 {
-    MCTimer* mMusicTimer;
-    MCInstrument* mPiano;
-    MCScore* mScores;
+    Modus::MCTimer* mMusicTimer;
+    Modus::MCInstrument* mPiano;
+    Modus::MCScore* mScores;
     unsigned int iCurrentScore;
 
     bool bKeyPressed[88];
@@ -69,9 +69,9 @@ struct SGDI
 LRESULT CALLBACK WndProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam);
 DWORD WINAPI MusicTimerThread(LPVOID lp);
 
-void TimerTick(const MSTimePosition& mTimePosition, void* pData);
-void PianoPlayNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
-void PianoReleaseNote(unsigned int iInstrID, const MSNote& mNote, void* pData);
+void TimerTick(const Modus::MSTimePosition& mTimePosition, void* pData);
+void PianoPlayNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
+void PianoReleaseNote(unsigned int iInstrID, const Modus::MSNote& mNote, void* pData);
 void PianoDamper(unsigned int iInstrID, bool bDamperState, void* pData);
 
 #endif

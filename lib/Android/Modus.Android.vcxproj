@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="NsightTegraProject">
+    <NsightTegraProjectRevisionNumber>9</NsightTegraProjectRevisionNumber>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Tegra-Android">
+      <Configuration>Debug</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Tegra-Android">
+      <Configuration>Release</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Tegra-Android">
+      <Configuration>Profile</Configuration>
+      <Platform>Tegra-Android</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\mband.cpp" />
+    <ClCompile Include="..\..\src\mchords.cpp" />
+    <ClCompile Include="..\..\src\mharmonypattern.cpp" />
+    <ClCompile Include="..\..\src\minstrument.cpp" />
+    <ClCompile Include="..\..\src\mmidireceiver.cpp" />
+    <ClCompile Include="..\..\src\mscalepattern.cpp" />
+    <ClCompile Include="..\..\src\mscales.cpp" />
+    <ClCompile Include="..\..\src\mscore.cpp" />
+    <ClCompile Include="..\..\src\mscript.cpp" />
+    <ClCompile Include="..\..\src\msong.cpp" />
+    <ClCompile Include="..\..\src\msoundgen.cpp" />
+    <ClCompile Include="..\..\src\mstringinstrument.cpp" />
+    <ClCompile Include="..\..\src\mtimer.cpp" />
+    <ClCompile Include="..\..\src\mtypes.cpp" />
+    <ClCompile Include="..\..\src\mutils.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{491A2A6B-2445-43CA-9298-644392E03F09}</ProjectGuid>
+    <RootNamespace>Modus</RootNamespace>
+    <ProjectName>Modus</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <AndroidStlType>gnustl_static</AndroidStlType>
+    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+    <AndroidMinAPI>android-15</AndroidMinAPI>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <AndroidStlType>gnustl_static</AndroidStlType>
+    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+    <AndroidMinAPI>android-15</AndroidMinAPI>
+    <NdkToolchainVersion>clang-3.6</NdkToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Profile|Tegra-Android'">
+    <AndroidStlType>gnustl_static</AndroidStlType>
+    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
+    <AndroidMinAPI>android-15</AndroidMinAPI>
+    <NdkToolchainVersion>clang-3.6</NdkToolchainVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Platform)'=='Tegra-Android'">
+    <TargetName>lib$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)lib\$(Configuration)\</OutDir>
+    <NdkToolchainVersion Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">clang-3.6</NdkToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../include</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <GccExceptionHandling>true</GccExceptionHandling>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>-lGLESv1_CM %(AdditionalOptions)</AdditionalOptions>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)../../include</AdditionalIncludeDirectories>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <GccExceptionHandling>true</GccExceptionHandling>
+      <OptimizationLevel>O3</OptimizationLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>-lGLESv1_CM %(AdditionalOptions)</AdditionalOptions>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Tegra-Android'">
+    <ClCompile>
+      <PreprocessorDefinitions>DISABLE_IMPORTGL</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)DeltaEngine;$(SolutionDir)DeltaEngine/ExternalLibs</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>-lGLESv1_CM %(AdditionalOptions)</AdditionalOptions>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Link>
+    <AntBuild>
+      <AntBuildPath>$(ProjectDir)\</AntBuildPath>
+    </AntBuild>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -34,6 +34,8 @@
 #include "mutils.h"
 #include <string.h>
 #include <ctype.h>
+
+using namespace Modus;
 
 //
 //  CLine
@@ -103,12 +105,12 @@ double CLine::x(double y)
 // 
 //  Simple numerical functions
 //
-bool positive(float number)
+bool Modus::positive(float number)
 {
     return (number >= 0)? true: false;
 }
 
-bool same_sign(float a, float b)
+bool Modus::same_sign(float a, float b)
 {
     if(a >= 0.0 && b >= 0.0)
         return true;
@@ -122,13 +124,13 @@ bool same_sign(float a, float b)
 //
 //  String functions
 //
-void strloupper(char* string)
+void Modus::strtoupper(char* string)
 {
     for(unsigned int i = 0; i < strlen(string); i++)
         string[i] = toupper(string[i]);
 }
 
-void strtolower(char* string)
+void Modus::strtolower(char* string)
 {
     for(unsigned int i = 0; i < strlen(string); i++)
         string[i] = tolower(string[i]);
@@ -138,7 +140,7 @@ void strtolower(char* string)
 //
 //  Random functions
 //
-bool eventOccurs(int Percentage)
+bool Modus::eventOccurs(int Percentage)
 {
     return ((rand() % 100) < Percentage);
 }

@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -41,45 +41,48 @@
 #include "mscalepattern.h"
 #include <time.h>
 
-class MCImproviser
+namespace Modus
 {
-protected:
-    MCHarmonyPattern* mHarmonyPattern;
-    MCScalePattern* mScalePattern;
-    MSRange mRange;
+    class MCImproviser
+    {
+    protected:
+        MCHarmonyPattern* mHarmonyPattern;
+        MCScalePattern* mScalePattern;
+        MSRange mRange;
 
-    MTNote mPreviousNote;
-    MTNote mCurrentNote;
-    MSTimePosition mTimePosition;
-    unsigned char iBeatsPerMeasure;
-    unsigned char iIntensity;
+        MTNote mPreviousNote;
+        MTNote mCurrentNote;
+        MSTimePosition mTimePosition;
+        unsigned char iBeatsPerMeasure;
+        unsigned char iIntensity;
 
-    void init();
+        void init();
 
-public:
-    virtual void improvise(MCScore* Score, int MeasureFrom, int MeasureTo) = 0;
+    public:
+        virtual void improvise(MCScore* Score, int MeasureFrom, int MeasureTo) = 0;
 
-    unsigned char getIntensity();
+        unsigned char getIntensity();
 
-    void setHarmonyPattern(MCHarmonyPattern* HarmonyPattern);
-    void setScalePattern(MCScalePattern* ScalePattern);
-    void setRange(const MSRange& Range);
-    void setRange(MTNote NoteFrom, MTNote NoteTo);
-    void setBeatsPerMeasure(unsigned char BeatsPerMeasure);
-    void setIntensity(unsigned char Intensity);
-    void setPreviousNote(MTNote PreviousNote);
-};
+        void setHarmonyPattern(MCHarmonyPattern* HarmonyPattern);
+        void setScalePattern(MCScalePattern* ScalePattern);
+        void setRange(const MSRange& Range);
+        void setRange(MTNote NoteFrom, MTNote NoteTo);
+        void setBeatsPerMeasure(unsigned char BeatsPerMeasure);
+        void setIntensity(unsigned char Intensity);
+        void setPreviousNote(MTNote PreviousNote);
+    };
 
-class MCWalkingBassImproviser : public MCImproviser
-{
-private:
-    void fillLinkPatterns(MTNoteMapList* mLinkPatterns, MTNote mNote);
+    class MCWalkingBassImproviser : public MCImproviser
+    {
+    private:
+        void fillLinkPatterns(MTNoteMapList* mLinkPatterns, MTNote mNote);
 
-public:
-    MCWalkingBassImproviser();
-    ~MCWalkingBassImproviser();
+    public:
+        MCWalkingBassImproviser();
+        ~MCWalkingBassImproviser();
 
-    void improvise(MCScore* Score, int MeasureFrom, int MeasureTo);
-};
+        void improvise(MCScore* Score, int MeasureFrom, int MeasureTo);
+    };
+}
 
 #endif

@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -37,6 +37,7 @@
 #define _MODUS_H_
 
 #include "mconstants.h"
+#include "msettings.h"
 #include "mtypes.h"
 #include "mchords.h"
 #include "minstrument.h"

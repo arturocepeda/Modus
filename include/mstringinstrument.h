@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -39,51 +39,54 @@
 #include "mtypes.h"
 #include "minstrument.h"
 
-/**
- *  @brief Represents a string instrument
- */
-class MCStringInstrument : public MCInstrument
+namespace Modus
 {
-protected:
-    MTNote* mStrings;
-
-public:
     /**
-     *  @brief Constructor
+     *  @brief Represents a string instrument
      */
-    MCStringInstrument(unsigned int ID, unsigned char NumberOfStrings);
-    ~MCStringInstrument();
+    class MCStringInstrument : public MCInstrument
+    {
+    protected:
+        MTNote* mStrings;
 
-    /**
-     *  @brief Set the nth string open note
-     *  @param StringNumber String index starting from 1 (1-n)
-     *  @param Note Note that sounds when the open string is played
-     */
-    void setOpenStringNote(unsigned char StringNumber, MTNote Note);
-};
+    public:
+        /**
+         *  @brief Constructor
+         */
+        MCStringInstrument(unsigned int ID, unsigned char NumberOfStrings);
+        ~MCStringInstrument();
 
-/**
- *  @brief Represents a fretted instrument
- */
-class MCFrettedInstrument : public MCStringInstrument
-{
-protected:
-    unsigned char iNumberOfFrets;
-
-public:
-    /**
-     *  @brief Constructor
-     */
-    MCFrettedInstrument(unsigned int ID, unsigned char NumberOfStrings, unsigned char NumberOfFrets);
-    ~MCFrettedInstrument();
+        /**
+         *  @brief Set the nth string open note
+         *  @param StringNumber String index starting from 1 (1-n)
+         *  @param Note Note that sounds when the open string is played
+         */
+        void setOpenStringNote(unsigned char StringNumber, MTNote Note);
+    };
 
     /**
-     *  @brief Get the fret number corresponding to a note on a string
-     *  @param Note Desired note
-     *  @param String String index starting from 1 (1-n)	 
-     *  @return Fret number
+     *  @brief Represents a fretted instrument
      */
-    char getFret(MTNote Note, unsigned char String);
-};
+    class MCFrettedInstrument : public MCStringInstrument
+    {
+    protected:
+        unsigned char iNumberOfFrets;
+
+    public:
+        /**
+         *  @brief Constructor
+         */
+        MCFrettedInstrument(unsigned int ID, unsigned char NumberOfStrings, unsigned char NumberOfFrets);
+        ~MCFrettedInstrument();
+
+        /**
+         *  @brief Get the fret number corresponding to a note on a string
+         *  @param Note Desired note
+         *  @param String String index starting from 1 (1-n)	 
+         *  @return Fret number
+         */
+        char getFret(MTNote Note, unsigned char String);
+    };
+}
 
 #endif

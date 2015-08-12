@@ -15,6 +15,8 @@
 
 #include "./../audio/audio.h"
 
+using namespace Modus;
+
 // rendering data
 SGDI sGDI;
 

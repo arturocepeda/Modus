@@ -32,6 +32,8 @@
 #pragma comment(lib, ".\\..\\..\\..\\soundgen\\externals\\FMOD\\lib.win32\\fmodex_vc.lib")
 #endif
 
+using namespace Modus;
+
 FMOD::System* fSystem;
 
 void CAudio::init()

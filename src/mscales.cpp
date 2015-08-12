@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -32,6 +32,8 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "mscales.h"
+
+using namespace Modus;
 
 const char* MCScales::ScalesDefinition = "0: 0,2,4,5,7,9,11 \n"                 // Major
                                          "1: 0,2,3,5,7,8,10 \n"                 // Minor
@@ -69,7 +71,7 @@ bool MCScales::equal(const MTScale& Scale1, const MTScale& Scale2)
 MTScale MCScales::Major()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, F, G, A, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_F, MODUS_G, MODUS_A, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -77,7 +79,7 @@ MTScale MCScales::Major()
 MTScale MCScales::Minor()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, Ef, F, G, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_Ef, MODUS_F, MODUS_G, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -85,7 +87,7 @@ MTScale MCScales::Minor()
 MTScale MCScales::MinorHarmonic()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, Ef, F, G, Af, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_Ef, MODUS_F, MODUS_G, MODUS_Af, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -93,7 +95,7 @@ MTScale MCScales::MinorHarmonic()
 MTScale MCScales::MinorMelodic()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, Ef, F, G, A, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_Ef, MODUS_F, MODUS_G, MODUS_A, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -101,7 +103,7 @@ MTScale MCScales::MinorMelodic()
 MTScale MCScales::MajorMinor()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, F, G, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_F, MODUS_G, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -109,7 +111,7 @@ MTScale MCScales::MajorMinor()
 MTScale MCScales::Dorian()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, Ef, F, G, A, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_Ef, MODUS_F, MODUS_G, MODUS_A, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -117,7 +119,7 @@ MTScale MCScales::Dorian()
 MTScale MCScales::Phrygian()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Df, Ef, F, G, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Df, MODUS_Ef, MODUS_F, MODUS_G, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -125,7 +127,7 @@ MTScale MCScales::Phrygian()
 MTScale MCScales::Lydian()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, Fs, G, A, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_Fs, MODUS_G, MODUS_A, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -133,7 +135,7 @@ MTScale MCScales::Lydian()
 MTScale MCScales::Mixolydian()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, F, G, A, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_F, MODUS_G, MODUS_A, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -141,7 +143,7 @@ MTScale MCScales::Mixolydian()
 MTScale MCScales::Locrian()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Df, Ef, F, Gf, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Df, MODUS_Ef, MODUS_F, MODUS_Gf, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -149,7 +151,7 @@ MTScale MCScales::Locrian()
 MTScale MCScales::Acoustic()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, Fs, G, A, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_Fs, MODUS_G, MODUS_A, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -157,7 +159,7 @@ MTScale MCScales::Acoustic()
 MTScale MCScales::Altered()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Df, Ef, Ff, Gf, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Df, MODUS_Ef, MODUS_Ff, MODUS_Gf, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -165,7 +167,7 @@ MTScale MCScales::Altered()
 MTScale MCScales::PentatonicMajor()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, G, A};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_G, MODUS_A };
     mScale.assign(mNoteSet, mNoteSet + 5);
     return mScale;
 }
@@ -173,7 +175,7 @@ MTScale MCScales::PentatonicMajor()
 MTScale MCScales::PentatonicMinor()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Ef, F, G, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Ef, MODUS_F, MODUS_G, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 5);
     return mScale;
 }
@@ -181,7 +183,7 @@ MTScale MCScales::PentatonicMinor()
 MTScale MCScales::Blues()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Ef, F, Fs, G, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Ef, MODUS_F, MODUS_Fs, MODUS_G, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 6);
     return mScale;
 }
@@ -189,7 +191,7 @@ MTScale MCScales::Blues()
 MTScale MCScales::BluesWithSixth()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Ef, F, Fs, G, A, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Ef, MODUS_F, MODUS_Fs, MODUS_G, MODUS_A, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -197,7 +199,7 @@ MTScale MCScales::BluesWithSixth()
 MTScale MCScales::Gypsy()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Df, E, F, G, Af, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Df, MODUS_E, MODUS_F, MODUS_G, MODUS_Af, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -205,7 +207,7 @@ MTScale MCScales::Gypsy()
 MTScale MCScales::DoubleHarmonic()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Df, E, F, G, Af, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Df, MODUS_E, MODUS_F, MODUS_G, MODUS_Af, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 7);
     return mScale;
 }
@@ -213,7 +215,7 @@ MTScale MCScales::DoubleHarmonic()
 MTScale MCScales::WholeTone()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, E, Fs, Gs, As};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_E, MODUS_Fs, MODUS_Gs, MODUS_As };
     mScale.assign(mNoteSet, mNoteSet + 6);
     return mScale;
 }
@@ -221,7 +223,7 @@ MTScale MCScales::WholeTone()
 MTScale MCScales::OctatonicHW()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Cs, Ds, E, Fs, G, A, Bf};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Cs, MODUS_Ds, MODUS_E, MODUS_Fs, MODUS_G, MODUS_A, MODUS_Bf };
     mScale.assign(mNoteSet, mNoteSet + 8);
     return mScale;
 }
@@ -229,7 +231,7 @@ MTScale MCScales::OctatonicHW()
 MTScale MCScales::OctatonicWH()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, D, Ef, F, Fs, Gs, A, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_D, MODUS_Ef, MODUS_F, MODUS_Fs, MODUS_Gs, MODUS_A, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 8);
     return mScale;
 }
@@ -237,7 +239,7 @@ MTScale MCScales::OctatonicWH()
 MTScale MCScales::Chromatic()
 {
     MTScale mScale;
-    MTNote mNoteSet[] = {C, Cs, D, Ds, E, F, Fs, G, Gs, A, As, B};
+    MTNote mNoteSet[] = { MODUS_C, MODUS_Cs, MODUS_D, MODUS_Ds, MODUS_E, MODUS_F, MODUS_Fs, MODUS_G, MODUS_Gs, MODUS_A, MODUS_As, MODUS_B };
     mScale.assign(mNoteSet, mNoteSet + 12);
     return mScale;
 }

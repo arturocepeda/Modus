@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -140,6 +140,7 @@ private:
     MMutex mMutex;
 
     static unsigned int iNumberOfInstances;
+    static unsigned int iFrameBufferSize;
 
     static MThreadFunction(sampleLoadThread);
     static void loadOGGData(const char* sData, unsigned int iSize, SAudioBuffer* slBuffer);
@@ -150,7 +151,9 @@ protected:
 public:
     MCSoundGenOpenSL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
     ~MCSoundGenOpenSL();
-
+    
+    static void setFrameBufferSize(unsigned int FrameBufferSize);
+    
     void addSampleSet(MSSampleSet& SampleSet);
     void loadSamples();
     void loadSamplePack(std::istream& Stream, 

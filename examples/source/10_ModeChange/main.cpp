@@ -20,6 +20,7 @@
 #define LOOP 24
 
 using namespace std;
+using namespace Modus;
 
 struct SGlobal
 {

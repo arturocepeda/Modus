@@ -24,6 +24,7 @@
 #define MAX_TEMPO   180.0f
 
 using namespace std;
+using namespace Modus;
 
 struct SGlobal
 {

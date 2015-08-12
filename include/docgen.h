@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -31,7 +31,7 @@
 //
 ////////////////////////////////////////////////////////////////////////
 
-/** \mainpage Modus v0.54 - C++ Music Library
+/** \mainpage Modus v0.60 - C++ Music Library
 
  <div align="center"><img src="modus.jpg"></div>
 
@@ -1405,7 +1405,7 @@
  <br><br>
 
  <div align="center">
- Copyright (c) 2012-2014 Arturo Cepeda P&eacute;rez
+ Copyright (c) 2012-2015 Arturo Cepeda P&eacute;rez
  </div>
 
  */

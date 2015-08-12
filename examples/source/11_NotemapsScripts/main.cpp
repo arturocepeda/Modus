@@ -21,6 +21,7 @@
 #define NOTE_DURATION   6
 
 using namespace std;
+using namespace Modus;
 
 bool bThreadEnd = false;
 

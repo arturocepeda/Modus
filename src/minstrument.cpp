@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -35,6 +35,8 @@
 #include "mutils.h"
 #include <math.h>
 #include <algorithm>
+
+using namespace Modus;
 
 MCInstrument::MCInstrument(unsigned int ID, const MSRange& Range, unsigned char NumberOfChannels)
     : iID(ID)
@@ -80,28 +82,28 @@ void MCInstrument::control(const MSNote& mNote)
     switch(mNote.Pitch)
     {
     // bending: Mode 0 --> up, Mode 1 --> down, Intensity --> semitones, MDA --> cents
-    case M_CTRL_BEND:
+    case MODUS_CTRL_BEND:
         bend(mNote.Channel, ((mNote.Mode == 0)? 1: -1) * (mNote.Intensity * 100 + mNote.MDA), mNote.Duration);
         break;
 
     // damper: Intensity 0 --> off, Intensity 1 --> on
-    case M_CTRL_DAMPER:
+    case MODUS_CTRL_DAMPER:
         setDamper(mNote.Intensity > 0);
         break;
 
     // intensity change: Channel, Intensity, Duration
-    case M_CTRL_INTENSITY:
+    case MODUS_CTRL_INTENSITY:
         changeIntensity(mNote.Channel, mNote.Intensity, mNote.Duration);
         break;
 
     // release speed: Intensity
-    case M_CTRL_RELEASE:
+    case MODUS_CTRL_RELEASE:
         if(mSoundGen)
             mSoundGen->setReleaseSpeed(mNote.Intensity * 0.001f);
         break;
 
     // vibrato: Channel, Intensity --> cents, Duration --> cycle length in number of ticks
-    case M_CTRL_VIBRATO:
+    case MODUS_CTRL_VIBRATO:
         vibrato(mNote.Channel, mNote.Intensity, mNote.Duration);
         break;
     }
@@ -275,13 +277,15 @@ void MCInstrument::vibrato(unsigned char Channel, int Cents, unsigned int Number
     if(Channel >= iNumberOfChannels)
         return;
 
+    const float Pi = 3.14159f;
+
     // vibrato settings (channel, amplitude, current value, increment)
     MSNoteChange mVibrato;
 
     mVibrato.Channel = Channel;
     mVibrato.Amplitude = (float)Cents;
-    mVibrato.CurrentPosition = PI;
-    mVibrato.Increment = 2.0f * PI / (float)NumberOfTicksPerCycle;
+    mVibrato.CurrentPosition = Pi;
+    mVibrato.Increment = 2.0f * Pi / (float)NumberOfTicksPerCycle;
 
     vVibrato.push_back(mVibrato);
     bVibrato[Channel] = true;

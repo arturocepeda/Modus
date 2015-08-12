@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -32,9 +32,12 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "mtypes.h"
+#include "msettings.h"
 #include <ctype.h>
 #include <algorithm>
 #include <cstdlib>
+
+using namespace Modus;
 
 
 //
@@ -167,9 +170,9 @@ void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
     {
         Tick += Ticks;
 
-        while(Tick >= M_TICKS_PER_BEAT)
+        while(Tick >= MCSettings::getTicksPerBeat())
         {
-            Tick -= M_TICKS_PER_BEAT;
+            Tick -= MCSettings::getTicksPerBeat();
             Beat++;
 
             if(Beat > BeatsPerMeasure)
@@ -183,9 +186,9 @@ void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
     {
         unsigned int iTicks = abs(Ticks);
 
-        while(iTicks >= M_TICKS_PER_BEAT)
+        while(iTicks >= MCSettings::getTicksPerBeat())
         {
-            iTicks -= M_TICKS_PER_BEAT;
+            iTicks -= MCSettings::getTicksPerBeat();
             Beat--;
 
             if(Beat == 0)
@@ -201,7 +204,7 @@ void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
         }
         else
         {
-            Tick += M_TICKS_PER_BEAT;
+            Tick += MCSettings::getTicksPerBeat();
             Tick -= iTicks;
             Beat--;
 
@@ -216,7 +219,7 @@ void MSTimePosition::add(int Ticks, unsigned int BeatsPerMeasure)
 
 int MSTimePosition::getInTicks(unsigned int BeatsPerMeasure) const
 {
-    return ((Measure - 1) * BeatsPerMeasure * M_TICKS_PER_BEAT) + ((Beat - 1) * M_TICKS_PER_BEAT) + Tick;
+    return ((Measure - 1) * BeatsPerMeasure * MCSettings::getTicksPerBeat()) + ((Beat - 1) * MCSettings::getTicksPerBeat()) + Tick;
 }
 
 MSTimePosition MSTimePosition::getWithIncrement(int Ticks, unsigned int BeatsPerMeasure) const
@@ -319,13 +322,13 @@ bool MCNotes::isNatural(MTNote Note)
 {
     switch(whichNote(Note))
     {
-    case C:
-    case D:
-    case E:
-    case F:
-    case G:
-    case A:
-    case B:
+    case MODUS_C:
+    case MODUS_D:
+    case MODUS_E:
+    case MODUS_F:
+    case MODUS_G:
+    case MODUS_A:
+    case MODUS_B:
         return true;
 
     default:
@@ -477,31 +480,31 @@ MTNote MCNotes::fromString(const char* String)
     switch(toupper(String[0]))
     {
     case 'C':
-        mNote = C;
+        mNote = MODUS_C;
         break;
 
     case 'D':
-        mNote = D;
+        mNote = MODUS_D;
         break;
 
     case 'E':
-        mNote = E;
+        mNote = MODUS_E;
         break;
 
     case 'F':
-        mNote = F;
+        mNote = MODUS_F;
         break;
 
     case 'G':
-        mNote = G;
+        mNote = MODUS_G;
         break;
 
     case 'A':
-        mNote = A;
+        mNote = MODUS_A;
         break;
 
     case 'B':
-        mNote = B;
+        mNote = MODUS_B;
         break;
     }
 
@@ -512,8 +515,8 @@ MTNote MCNotes::fromString(const char* String)
     case 'B':
     case 'F':
 
-        if(mNote == C)
-            mNote = B;
+        if(mNote == MODUS_C)
+            mNote = MODUS_B;
         else
             mNote--;
 
@@ -523,8 +526,8 @@ MTNote MCNotes::fromString(const char* String)
     case '#':
     case 'S':
 
-        if(mNote == B)
-            mNote = C;
+        if(mNote == MODUS_B)
+            mNote = MODUS_C;
         else
             mNote++;
 

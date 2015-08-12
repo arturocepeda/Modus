@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -35,6 +35,8 @@
 #include "mxhumanizer.h"
 #include <time.h>
 #include <iostream>
+
+using namespace Modus;
 
 void MCHumanizer::humanizeRandom(MCScore* Score, unsigned char TimeMaxError, 
                                  unsigned char IntensityMaxError, unsigned char DurationMaxError,

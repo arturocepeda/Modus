@@ -20,6 +20,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace Modus;
 
 MCMIDIReceiver* mMIDIReceiver;
 

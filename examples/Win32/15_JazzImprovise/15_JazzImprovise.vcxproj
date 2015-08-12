@@ -89,9 +89,9 @@
     <ClCompile Include="..\..\..\extensions\mxhumanizer.cpp" />
     <ClCompile Include="..\..\..\extensions\mximproviser.cpp" />
     <ClCompile Include="..\..\..\soundgen\OpenAL\mxsoundgenopenal.cpp" />
-    <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
     <ClCompile Include="..\..\source\15_JazzImprovise\main.cpp" />
     <ClCompile Include="..\..\source\15_JazzImprovise\rendering.cpp" />
+    <ClCompile Include="..\..\source\audio\audio.openal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\extensions\mxhumanizer.h" />

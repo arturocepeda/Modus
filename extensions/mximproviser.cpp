@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [eXtension]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -34,6 +34,8 @@
 
 #include "mximproviser.h"
 #include "mutils.h"
+
+using namespace Modus;
 
 //
 //  MCImproviser

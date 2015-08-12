@@ -19,6 +19,8 @@
 #pragma comment(lib, "winmm.lib")
 #endif
 
+using namespace Modus;
+
 // rendering data
 SGDI sGDI;
 

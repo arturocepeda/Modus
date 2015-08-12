@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -32,6 +32,8 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "mscript.h"
+
+using namespace Modus;
 
 void MCScript::writeBMP(char* String, unsigned int BeatsPerMeasure)
 {

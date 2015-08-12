@@ -17,6 +17,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace Modus;
 
 bool bThreadEnd = false;
 

@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -36,45 +36,44 @@
 #ifndef _MCONSTANTS_H_
 #define _MCONSTANTS_H_
 
-#define MODUS_VERSION "v0.54"
+#define MODUS_VERSION "v0.60"
 
-#define Cf  11
-#define C   0
-#define Cs  1
-#define Df  1
-#define D   2
-#define Ds  3
-#define Ef  3
-#define E   4
-#define Es  5
-#define Ff  4
-#define F   5
-#define Fs  6
-#define Gf  6
-#define G   7
-#define Gs  8
-#define Af  8
-#define A   9
-#define As  10
-#define Bf  10
-#define B   11
-#define Bs  0
+#define MODUS_Cf  11
+#define MODUS_C   0
+#define MODUS_Cs  1
+#define MODUS_Df  1
+#define MODUS_D   2
+#define MODUS_Ds  3
+#define MODUS_Ef  3
+#define MODUS_E   4
+#define MODUS_Es  5
+#define MODUS_Ff  4
+#define MODUS_F   5
+#define MODUS_Fs  6
+#define MODUS_Gf  6
+#define MODUS_G   7
+#define MODUS_Gs  8
+#define MODUS_Af  8
+#define MODUS_A   9
+#define MODUS_As  10
+#define MODUS_Bf  10
+#define MODUS_B   11
+#define MODUS_Bs  0
 
-#define M_TICKS_PER_BEAT    24
-#define M_LAST_TICK         (M_TICKS_PER_BEAT - 1)
+#define MODUS_DEFAULT_TICKS_PER_BEAT    24
 
-#define M_CTRL_BEND         128
-#define M_CTRL_DAMPER       129
-#define M_CTRL_INTENSITY    130
-#define M_CTRL_RELEASE      131
-#define M_CTRL_VIBRATO      132
+#define MODUS_CTRL_BEND         128
+#define MODUS_CTRL_DAMPER       129
+#define MODUS_CTRL_INTENSITY    130
+#define MODUS_CTRL_RELEASE      131
+#define MODUS_CTRL_VIBRATO      132
 
-#define M_TENSION_f9        13
-#define M_TENSION_9         14
-#define M_TENSION_s9        15
-#define M_TENSION_11        17
-#define M_TENSION_s11       18
-#define M_TENSION_f13       20
-#define M_TENSION_13        21
+#define MODUS_TENSION_f9        13
+#define MODUS_TENSION_9         14
+#define MODUS_TENSION_s9        15
+#define MODUS_TENSION_11        17
+#define MODUS_TENSION_s11       18
+#define MODUS_TENSION_f13       20
+#define MODUS_TENSION_13        21
 
 #endif

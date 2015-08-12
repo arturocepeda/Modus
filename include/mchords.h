@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -38,93 +38,96 @@
 
 #include "mtypes.h"
 
-/**
- *  @brief Static class to work with chords
- */
-class MCChords
+namespace Modus
 {
-public:
     /**
-     *  @brief Default chords definition string
-     */
-    static const char* ChordsDefinition;
+    *  @brief Static class to work with chords
+    */
+    class MCChords
+    {
+    public:
+        /**
+        *  @brief Default chords definition string
+        */
+        static const char* ChordsDefinition;
 
-    /**
-     *  @brief Check whether two chords are the same
-     *  @param Chord1 First chord to be compared
-     *  @param Chord2 Second chord to be compared
-     */
-    static bool equal(const MTChord& Chord1, const MTChord& Chord2);
+        /**
+        *  @brief Check whether two chords are the same
+        *  @param Chord1 First chord to be compared
+        *  @param Chord2 Second chord to be compared
+        */
+        static bool equal(const MTChord& Chord1, const MTChord& Chord2);
 
-    static MTChord cM();
-    static MTChord cM6();
-    static MTChord cM7();
-    static MTChord cMaug5();
+        static MTChord cM();
+        static MTChord cM6();
+        static MTChord cM7();
+        static MTChord cMaug5();
 
-    static MTChord cm();
-    static MTChord cm7();
-    static MTChord cm7b5();
-    static MTChord cm6();
-    static MTChord cmM7();
+        static MTChord cm();
+        static MTChord cm7();
+        static MTChord cm7b5();
+        static MTChord cm6();
+        static MTChord cmM7();
 
-    static MTChord c7();
-    static MTChord c9();
-    static MTChord c7m9();
+        static MTChord c7();
+        static MTChord c9();
+        static MTChord c7m9();
 
-    static MTChord cdis();
-    static MTChord cdis7();
+        static MTChord cdis();
+        static MTChord cdis7();
 
-    static MTChord csus4();
-    static MTChord c7sus4();
-    static MTChord c7b5();
+        static MTChord csus4();
+        static MTChord c7sus4();
+        static MTChord c7b5();
 
-    /**
-     *  @brief Creates a note map with a closed chord from a root note and a chord pattern
-     *  @param RootNote Root note of the chord
-     *  @param Chord Chord pattern, where 0 will be the root note
-     *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
-     *  @param NumberOfNotes Size of the resulting note map
-     *  @return Note map with the closed chord
-     */
-    static MTNoteMap createClosedChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
-                                       unsigned char NumberOfNotes);
-    /**
-     *  @brief Creates a note map with an open chord from a root note and a chord pattern
-     *  @param RootNote Root note of the chord
-     *  @param Chord Chord pattern, where 0 will be the root note
-     *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
-     *  @param NumberOfNotes Size of the resulting note map
-     *  @return Note map with the open chord
-     */
-    static MTNoteMap createOpenChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
-                                     unsigned char NumberOfNotes);
+        /**
+        *  @brief Creates a note map with a closed chord from a root note and a chord pattern
+        *  @param RootNote Root note of the chord
+        *  @param Chord Chord pattern, where 0 will be the root note
+        *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
+        *  @param NumberOfNotes Size of the resulting note map
+        *  @return Note map with the closed chord
+        */
+        static MTNoteMap createClosedChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
+                                            unsigned char NumberOfNotes);
+        /**
+        *  @brief Creates a note map with an open chord from a root note and a chord pattern
+        *  @param RootNote Root note of the chord
+        *  @param Chord Chord pattern, where 0 will be the root note
+        *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
+        *  @param NumberOfNotes Size of the resulting note map
+        *  @return Note map with the open chord
+        */
+        static MTNoteMap createOpenChord(MTNote RootNote, MTChord& Chord, MTNote LowestNote, 
+                                        unsigned char NumberOfNotes);
 
-    /**
-     *  @brief Creates a note map with a closed voicing from a root note and a chord pattern
-     *  @param RootNote Root note of the chord
-     *  @param Chord Chord pattern, where 0 will be the root note
-     *  @param BassNote Bass note, which may be different than the root note (ex: Cm7/G)
-     *  @param Tensions Notes to be added to the basic chord
-     *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
-     *  @param RemoveBassNote Indicates whether the bass note must be included in the voicing or not
-     *  @param RemovePerfectFifth Indicates whether the perfect fifth must be included in the voicing or not
-     *  @return Note map with the closed voicing
-     */
-    static MTNoteMap createClosedVoicing(MTNote RootNote, MTChord& Chord, MTNote BassNote, MTChord& Tensions, 
-                                         MTNote LowestNote, bool RemoveBassNote, bool RemovePerfectFifth);
-    /**
-     *  @brief Creates a note map with a open voicing from a root note and a chord pattern
-     *  @param RootNote Root note of the chord
-     *  @param Chord Chord pattern, where 0 will be the root note
-     *  @param BassNote Bass note, which may be different than the root note (ex: Cm7/G)
-     *  @param Tensions Notes to be added to the basic chord
-     *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
-     *  @param RemoveBassNote Indicates whether the bass note must be included in the voicing or not
-     *  @param RemovePerfectFifth Indicates whether the perfect fifth must be included in the voicing or not
-     *  @return Note map with the open voicing
-     */
-    static MTNoteMap createOpenVoicing(MTNote RootNote, MTChord& Chord, MTNote BassNote, MTChord& Tensions, 
-                                       MTNote LowestNote, bool RemoveBassNote, bool RemovePerfectFifth);
-};
+        /**
+        *  @brief Creates a note map with a closed voicing from a root note and a chord pattern
+        *  @param RootNote Root note of the chord
+        *  @param Chord Chord pattern, where 0 will be the root note
+        *  @param BassNote Bass note, which may be different than the root note (ex: Cm7/G)
+        *  @param Tensions Notes to be added to the basic chord
+        *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
+        *  @param RemoveBassNote Indicates whether the bass note must be included in the voicing or not
+        *  @param RemovePerfectFifth Indicates whether the perfect fifth must be included in the voicing or not
+        *  @return Note map with the closed voicing
+        */
+        static MTNoteMap createClosedVoicing(MTNote RootNote, MTChord& Chord, MTNote BassNote, MTChord& Tensions, 
+                                            MTNote LowestNote, bool RemoveBassNote, bool RemovePerfectFifth);
+        /**
+        *  @brief Creates a note map with a open voicing from a root note and a chord pattern
+        *  @param RootNote Root note of the chord
+        *  @param Chord Chord pattern, where 0 will be the root note
+        *  @param BassNote Bass note, which may be different than the root note (ex: Cm7/G)
+        *  @param Tensions Notes to be added to the basic chord
+        *  @param LowestNote The chord will be created from the first note equal or higher than this pitch value
+        *  @param RemoveBassNote Indicates whether the bass note must be included in the voicing or not
+        *  @param RemovePerfectFifth Indicates whether the perfect fifth must be included in the voicing or not
+        *  @return Note map with the open voicing
+        */
+        static MTNoteMap createOpenVoicing(MTNote RootNote, MTChord& Chord, MTNote BassNote, MTChord& Tensions, 
+                                            MTNote LowestNote, bool RemoveBassNote, bool RemovePerfectFifth);
+    };
+}
 
 #endif

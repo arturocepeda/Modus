@@ -20,6 +20,7 @@
     <ClCompile Include="..\..\..\src\mscales.cpp" />
     <ClCompile Include="..\..\..\src\mscore.cpp" />
     <ClCompile Include="..\..\..\src\mscript.cpp" />
+    <ClCompile Include="..\..\..\src\msettings.cpp" />
     <ClCompile Include="..\..\..\src\msong.cpp" />
     <ClCompile Include="..\..\..\src\msoundgen.cpp" />
     <ClCompile Include="..\..\..\src\mstringinstrument.cpp" />
@@ -40,9 +41,11 @@
     <ClInclude Include="..\..\..\include\mscales.h" />
     <ClInclude Include="..\..\..\include\mscore.h" />
     <ClInclude Include="..\..\..\include\mscript.h" />
+    <ClInclude Include="..\..\..\include\msettings.h" />
     <ClInclude Include="..\..\..\include\msong.h" />
     <ClInclude Include="..\..\..\include\msoundgen.h" />
     <ClInclude Include="..\..\..\include\mstringinstrument.h" />
+    <ClInclude Include="..\..\..\include\mthreads.h" />
     <ClInclude Include="..\..\..\include\mtimer.h" />
     <ClInclude Include="..\..\..\include\mtypes.h" />
     <ClInclude Include="..\..\..\include\mutils.h" />

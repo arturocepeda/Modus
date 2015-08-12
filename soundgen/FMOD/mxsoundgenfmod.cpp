@@ -5,7 +5,7 @@
 //  C++ Music Library
 //  [Sound Generator]
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda
+//  Copyright (c) 2012-2015 Arturo Cepeda
 //
 //  --------------------------------------------------------------------
 //
@@ -44,6 +44,7 @@
 #include <cmath>
 #include "mutils.h"
 
+using namespace Modus;
 
 //
 //  Audio source manager

@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -36,6 +36,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
+using namespace Modus;
 
 MCSongStructure::MCSongStructure()
 {
@@ -93,7 +95,7 @@ void MCSongStructure::addEntry(const MSSongSection& Section)
 
 void MCSongStructure::loadScript(std::istream* sScript)
 {
-    char sLine[LINE_BUFFER];
+    char sLine[MODUS_LINE_BUFFER];
     int iValue;
 
     MSSongSection ss;

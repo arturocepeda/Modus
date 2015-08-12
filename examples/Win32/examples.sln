@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "01_PolonaiseMIDI", "01_PolonaiseMIDI\01_PolonaiseMIDI.vcxproj", "{C0CE851C-5CA5-4933-A8F4-9904F8007834}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_PolonaiseAudio", "02_PolonaiseAudio\02_PolonaiseAudio.vcxproj", "{C2E13B1D-DCAB-4699-9870-EE3D88E85F7A}"

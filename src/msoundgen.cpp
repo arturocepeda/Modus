@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -35,6 +35,8 @@
 #include "mutils.h"
 #include <fstream>
 
+using namespace Modus;
+
 //
 //  MCSoundGen
 //
@@ -43,7 +45,7 @@ MCSoundGen::MCSoundGen(unsigned int ID, unsigned char NumberOfChannels)
     , iNumberOfChannels(NumberOfChannels)
     , fVolume(1.0f)
     , fPan(0.0f)
-    , fReleaseSpeed(M_DEFAULT_RELEASE)
+    , fReleaseSpeed(MODUS_DEFAULT_RELEASE)
     , bDamper(false)
 {
 }

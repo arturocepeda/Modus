@@ -1,10 +1,10 @@
 
 ////////////////////////////////////////////////////////////////////////
 //
-//  Modus v0.54
+//  Modus v0.60
 //  C++ Music Library
 //
-//  Copyright (c) 2012-2014 Arturo Cepeda Pérez
+//  Copyright (c) 2012-2015 Arturo Cepeda Pérez
 //
 //  --------------------------------------------------------------------
 //
@@ -40,129 +40,132 @@
 #include <set>
 
 
-//
-//  CNonCopyable
-//
-class CNonCopyable
+namespace Modus
 {
-protected:
-    CNonCopyable() {}
-    ~CNonCopyable() {}
-
-private:
-    CNonCopyable(const CNonCopyable&);
-    CNonCopyable& operator = (const CNonCopyable&);
-};
-
-
-//
-//  CUniqueVector
-//
-template<typename T>
-class CUniqueVector
-{
-private:
-    std::set<T> vSet;
-    typename std::set<T>::iterator vIterator;
-
-public:
-    T operator[](const unsigned int Index)
+    //
+    //  CNonCopyable
+    //
+    class CNonCopyable
     {
-        vIterator = vSet.begin();
-        std::advance(vIterator, Index);
-        return *vIterator;
-    }
+    protected:
+        CNonCopyable() {}
+        ~CNonCopyable() {}
 
-    void add(const T& Value)
+    private:
+        CNonCopyable(const CNonCopyable&);
+        CNonCopyable& operator = (const CNonCopyable&);
+    };
+
+
+    //
+    //  CUniqueVector
+    //
+    template<typename T>
+    class CUniqueVector
     {
-        vSet.insert(Value);
-    }
+    private:
+        std::set<T> vSet;
+        typename std::set<T>::iterator vIterator;
 
-    void remove(unsigned int Index)
-    {
-        vIterator = vSet.begin();
-        std::advance(vIterator, Index);
-        vSet.erase(vIterator);
-    }
+    public:
+        T operator[](const unsigned int Index)
+        {
+            vIterator = vSet.begin();
+            std::advance(vIterator, Index);
+            return *vIterator;
+        }
 
-    void removeLast()
-    {
-        vIterator = vSet.end();
-        vSet.erase(--vIterator);
-    }
+        void add(const T& Value)
+        {
+            vSet.insert(Value);
+        }
 
-    void removeValue(const T& Value)
-    {
-        vIterator = vSet.find(Value);
-
-        if(vIterator != vSet.end())
+        void remove(unsigned int Index)
+        {
+            vIterator = vSet.begin();
+            std::advance(vIterator, Index);
             vSet.erase(vIterator);
-    }
+        }
 
-    void clear()
+        void removeLast()
+        {
+            vIterator = vSet.end();
+            vSet.erase(--vIterator);
+        }
+
+        void removeValue(const T& Value)
+        {
+            vIterator = vSet.find(Value);
+
+            if(vIterator != vSet.end())
+                vSet.erase(vIterator);
+        }
+
+        void clear()
+        {
+            vSet.clear();
+        }
+
+        bool empty()
+        {
+            return vSet.empty();
+        }
+
+        unsigned int size()
+        {
+            return vSet.size();
+        }
+    };
+
+
+    // 
+    //  CLine
+    //
+    class CLine
     {
-        vSet.clear();
-    }
+    private:
+        double px0;
+        double py0;
 
-    bool empty()
-    {
-        return vSet.empty();
-    }
+        double Dx;
+        double Dy;
 
-    unsigned int size()
-    {
-        return vSet.size();
-    }
-};
+        double m;
+        double b;
 
+        bool vertical;
+        bool horizontal;
 
-// 
-//  CLine
-//
-class CLine
-{
-private:
-    double px0;
-    double py0;
+    public:
+        CLine(double x0, double y0, double x1, double y1);
+        ~CLine();
 
-    double Dx;
-    double Dy;
+        bool can_calculate_y();
+        double y(double x);
 
-    double m;
-    double b;
-
-    bool vertical;
-    bool horizontal;
-
-public:
-    CLine(double x0, double y0, double x1, double y1);
-    ~CLine();
-
-    bool can_calculate_y();
-    double y(double x);
-
-    bool can_calculate_x();
-    double x(double y);
-};
+        bool can_calculate_x();
+        double x(double y);
+    };
 
 
-//
-//  Simple numerical functions
-//
-bool positive(float number);
-bool same_sign(float a, float b);
+    //
+    //  Simple numerical functions
+    //
+    bool positive(float number);
+    bool same_sign(float a, float b);
 
 
-//
-//  String functions
-//
-void strtolower(char* string);
+    //
+    //  String functions
+    //
+    void strtoupper(char* string);
+    void strtolower(char* string);
 
 
-//
-//  Random functions
-//
-bool eventOccurs(int Percentage);
-
+    //
+    //  Random functions
+    //
+    bool eventOccurs(int Percentage);
+}
 
 #endif

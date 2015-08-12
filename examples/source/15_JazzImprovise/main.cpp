@@ -19,6 +19,8 @@
 #pragma comment(lib, "winmm.lib")
 #endif
 
+using namespace Modus;
+
 // rendering data
 SGDI sGDI;
 
@@ -736,7 +738,7 @@ void CallbackTick(const MSTimePosition& mPos, void* pData)
             // check for a new chord
             MSHarmonyPatternEntry* hpe = sGlobal->mHarmonyPattern[sGlobal->iHarmonyPatternPosition + 1];
 
-            if(hpe && hpe->TimePosition == mPos.getWithIncrement(M_TICKS_PER_BEAT, 4))
+            if(hpe && hpe->TimePosition == mPos.getWithIncrement(MCSettings::getTicksPerBeat(), 4))
                 sGlobal->iHarmonyPatternPosition++;
         }
     }
