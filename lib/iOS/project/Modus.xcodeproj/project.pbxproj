@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6900845B1B80CB440035864E /* msettings.h in Headers */ = {isa = PBXBuildFile; fileRef = 6900845A1B80CB440035864E /* msettings.h */; };
+		6900845E1B80CB5B0035864E /* msettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6900845C1B80CB5B0035864E /* msettings.cpp */; };
+		6900845F1B80CB5B0035864E /* mstringinstrument.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6900845D1B80CB5B0035864E /* mstringinstrument.cpp */; };
+		690084621B80CB6A0035864E /* mstringinstrument.h in Headers */ = {isa = PBXBuildFile; fileRef = 690084601B80CB6A0035864E /* mstringinstrument.h */; };
+		690084631B80CB6A0035864E /* mthreads.h in Headers */ = {isa = PBXBuildFile; fileRef = 690084611B80CB6A0035864E /* mthreads.h */; };
 		CE461A7F16749FF300913867 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE461A7E16749FF300913867 /* Foundation.framework */; };
 		CE461A9E1674A03F00913867 /* mband.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A8D1674A03F00913867 /* mband.h */; };
 		CE461A9F1674A03F00913867 /* mchords.h in Headers */ = {isa = PBXBuildFile; fileRef = CE461A8E1674A03F00913867 /* mchords.h */; };
@@ -42,6 +47,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6900845A1B80CB440035864E /* msettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = msettings.h; path = ../../../../include/msettings.h; sourceTree = "<group>"; };
+		6900845C1B80CB5B0035864E /* msettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = msettings.cpp; path = ../../../../src/msettings.cpp; sourceTree = "<group>"; };
+		6900845D1B80CB5B0035864E /* mstringinstrument.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mstringinstrument.cpp; path = ../../../../src/mstringinstrument.cpp; sourceTree = "<group>"; };
+		690084601B80CB6A0035864E /* mstringinstrument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mstringinstrument.h; path = ../../../../include/mstringinstrument.h; sourceTree = "<group>"; };
+		690084611B80CB6A0035864E /* mthreads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mthreads.h; path = ../../../../include/mthreads.h; sourceTree = "<group>"; };
 		CE461A7B16749FF300913867 /* libModus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModus.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE461A7E16749FF300913867 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CE461A8D1674A03F00913867 /* mband.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mband.h; path = ../../../../include/mband.h; sourceTree = "<group>"; };
@@ -126,6 +136,8 @@
 		CE461A8B1674A01000913867 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				6900845C1B80CB5B0035864E /* msettings.cpp */,
+				6900845D1B80CB5B0035864E /* mstringinstrument.cpp */,
 				CE461AAF1674A04800913867 /* mband.cpp */,
 				CE461AB01674A04800913867 /* mchords.cpp */,
 				CE461AB11674A04800913867 /* mharmonypattern.cpp */,
@@ -147,6 +159,9 @@
 		CE461A8C1674A01700913867 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				690084601B80CB6A0035864E /* mstringinstrument.h */,
+				690084611B80CB6A0035864E /* mthreads.h */,
+				6900845A1B80CB440035864E /* msettings.h */,
 				CE461A8D1674A03F00913867 /* mband.h */,
 				CE461A8E1674A03F00913867 /* mchords.h */,
 				CE461A8F1674A03F00913867 /* mconstants.h */,
@@ -175,9 +190,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				690084631B80CB6A0035864E /* mthreads.h in Headers */,
 				CE461A9E1674A03F00913867 /* mband.h in Headers */,
 				CE461A9F1674A03F00913867 /* mchords.h in Headers */,
 				CE461AA01674A03F00913867 /* mconstants.h in Headers */,
+				6900845B1B80CB440035864E /* msettings.h in Headers */,
 				CE461AA11674A03F00913867 /* mharmonypattern.h in Headers */,
 				CE461AA21674A03F00913867 /* minstrument.h in Headers */,
 				CE461AA31674A03F00913867 /* mlist.h in Headers */,
@@ -189,6 +206,7 @@
 				CE461AA91674A03F00913867 /* mscript.h in Headers */,
 				CE461AAA1674A03F00913867 /* msong.h in Headers */,
 				CE461AAB1674A03F00913867 /* msoundgen.h in Headers */,
+				690084621B80CB6A0035864E /* mstringinstrument.h in Headers */,
 				CE461AAC1674A03F00913867 /* mtimer.h in Headers */,
 				CE461AAD1674A03F00913867 /* mtypes.h in Headers */,
 				CE461AAE1674A03F00913867 /* mutils.h in Headers */,
@@ -266,11 +284,13 @@
 				CE461ABD1674A04800913867 /* mband.cpp in Sources */,
 				CE461ABE1674A04800913867 /* mchords.cpp in Sources */,
 				CE461ABF1674A04800913867 /* mharmonypattern.cpp in Sources */,
+				6900845F1B80CB5B0035864E /* mstringinstrument.cpp in Sources */,
 				CE461AC01674A04800913867 /* minstrument.cpp in Sources */,
 				CE461AC11674A04800913867 /* mmidireceiver.cpp in Sources */,
 				CE461AC21674A04800913867 /* mscalepattern.cpp in Sources */,
 				CE461AC31674A04800913867 /* mscales.cpp in Sources */,
 				CE461AC41674A04800913867 /* mscore.cpp in Sources */,
+				6900845E1B80CB5B0035864E /* msettings.cpp in Sources */,
 				CE461AC51674A04800913867 /* mscript.cpp in Sources */,
 				CE461AC61674A04800913867 /* msong.cpp in Sources */,
 				CE461AC71674A04800913867 /* msoundgen.cpp in Sources */,

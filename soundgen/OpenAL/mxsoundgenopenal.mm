@@ -43,6 +43,7 @@
 #include <cmath>
 #include "mutils.h"
 
+using namespace Modus;
 
 //
 //  Audio source manager
