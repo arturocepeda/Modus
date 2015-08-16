@@ -43,6 +43,7 @@
 #include <cmath>
 #include "mutils.h"
 
+using namespace Modus;
 
 //
 //  Audio source manager
@@ -85,7 +86,7 @@ void MCOpenSLSourceManager::releaseSources()
 
 void MCOpenSLSourceManager::playSource(unsigned int SourceIndex, void* Sound, bool Sound3D)
 {
-   AudioBuffer* slBuffer = reinterpret_cast<AudioBuffer*>(Sound);
+   MSAudioBuffer* slBuffer = reinterpret_cast<MSAudioBuffer*>(Sound);
 
    SLDataLocator_AndroidFD slDataLocatorFD = { SL_DATALOCATOR_ANDROIDFD, slBuffer->FileDescriptor, slBuffer->Start, slBuffer->Length };
    SLDataFormat_MIME slDataFormat = { SL_DATAFORMAT_MIME, NULL, SL_CONTAINERTYPE_UNSPECIFIED };
@@ -216,11 +217,11 @@ void MCSoundGenOpenSL::loadSamples()
     char sFilename[512];
     unsigned int i, j;
 
-    slBuffers = new AudioBuffer*[sSampleSet.size()];
+    slBuffers = new MSAudioBuffer*[sSampleSet.size()];
 
     for(i = 0; i < sSampleSet.size(); i++)
     {
-        slBuffers[i] = new AudioBuffer[iNumberOfSamples[i]];
+        slBuffers[i] = new MSAudioBuffer[iNumberOfSamples[i]];
 
         for(j = 0; j < iNumberOfSamples[i]; j++)
         {

@@ -50,90 +50,92 @@
 #define OPENSL_SOURCES 24
 #define MSOUNDGEN_STREAMING
 
-
-//
-//  Audio buffer
-//
-struct AudioBuffer
+namespace Modus
 {
-   int FileDescriptor;
-   off_t Start;
-   off_t Length;
-
-   AudioBuffer() : FileDescriptor(-1), Start(0), Length(0) {}
-};
-
-
-//
-//  Audio source manager
-//
-class MCOpenSLSourceManager : public MCAudioSourceManager
-{
-private:
-   SLObjectItf slEngineObject;
-   SLEngineItf slEngine;
-   SLObjectItf slOutputMix;
-
-   struct OpenSLSource
+   //
+   //  Audio buffer
+   //
+   struct MSAudioBuffer
    {
-      SLObjectItf AudioPlayer;
-      SLPlayItf PlaybackState;
-      SLVolumeItf VolumeController;
+      int FileDescriptor;
+      off_t Start;
+      off_t Length;
 
-      OpenSLSource() : AudioPlayer(0) {}
+      MSAudioBuffer() : FileDescriptor(-1), Start(0), Length(0) {}
    };
 
-   OpenSLSource* slSources;
 
-   SLmillibel linearToMillibel(float fGain);
-   SLpermille floatToPermille(float fPanning);
+   //
+   //  Audio source manager
+   //
+   class MCOpenSLSourceManager : public MCAudioSourceManager
+   {
+   private:
+      SLObjectItf slEngineObject;
+      SLEngineItf slEngine;
+      SLObjectItf slOutputMix;
 
-public:
-   MCOpenSLSourceManager(unsigned int NumSources);
-   ~MCOpenSLSourceManager();
+      struct OpenSLSource
+      {
+         SLObjectItf AudioPlayer;
+         SLPlayItf PlaybackState;
+         SLVolumeItf VolumeController;
 
-   virtual void allocateSources() override;
-   virtual void releaseSources() override;
+         OpenSLSource() : AudioPlayer(0) {}
+      };
 
-   virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
-   virtual void stopSource(unsigned int SourceIndex) override;
+      OpenSLSource* slSources;
 
-   virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+      SLmillibel linearToMillibel(float fGain);
+      SLpermille floatToPermille(float fPanning);
 
-   virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
-   virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
-   virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
-   virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
-   virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
-};
+   public:
+      MCOpenSLSourceManager(unsigned int NumSources);
+      ~MCOpenSLSourceManager();
+
+      virtual void allocateSources() override;
+      virtual void releaseSources() override;
+
+      virtual void playSource(unsigned int SourceIndex, void* Sound, bool Sound3D) override;
+      virtual void stopSource(unsigned int SourceIndex) override;
+
+      virtual bool isSourcePlaying(unsigned int SourceIndex) override;
+
+      virtual void setSourceVolume(unsigned int SourceIndex, float Volume) override;
+      virtual void setSourcePitch(unsigned int SourceIndex, int Cents) override;
+      virtual void setSourcePan(unsigned int SourceIndex, float Pan) override;
+      virtual void setSourcePosition(unsigned int SourceIndex, float X, float Y, float Z) override;
+      virtual void setSourceDirection(unsigned int SourceIndex, float X, float Y, float Z) override;
+   };
 
 
 
-//
-//  Sound generator
-//
-class MCSoundGenOpenSL : public MCSoundGenAudioMultipleChannel
-{
-private:
-    AudioBuffer** slBuffers;
+   //
+   //  Sound generator
+   //
+   class MCSoundGenOpenSL : public MCSoundGenAudioMultipleChannel
+   {
+   private:
+       MSAudioBuffer** slBuffers;
 
-    static unsigned int iNumberOfInstances;
+       static unsigned int iNumberOfInstances;
 
-    int getFileDescriptor(const char* sFileName, off_t* iStart, off_t* iLength);
+       int getFileDescriptor(const char* sFileName, off_t* iStart, off_t* iLength);
 
-protected:
-    void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+   protected:
+       void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
 
-public:
-    MCSoundGenOpenSL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
-    ~MCSoundGenOpenSL();
+   public:
+       MCSoundGenOpenSL(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D);
+       ~MCSoundGenOpenSL();
 
-    void addSampleSet(MSSampleSet& SampleSet);
-    void loadSamples();
-    void loadSamplePack(std::istream& Stream, 
-                        void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                        void* Data = NULL);
-    void unloadSamples();
-};
+       void addSampleSet(MSSampleSet& SampleSet);
+       void loadSamples();
+       void loadSamplePack(std::istream& Stream, 
+                           void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                           void* Data = NULL);
+       void unloadSamples();
+   };
+}
 
 #endif

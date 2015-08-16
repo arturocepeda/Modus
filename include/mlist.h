@@ -37,6 +37,7 @@
 #define _MLIST_H_
 
 #include "mtypes.h"
+#include "msettings.h"
 #include <cstdlib>
 
 #define MODUS_LINE_BUFFER 256
@@ -219,7 +220,7 @@ namespace Modus
                 displace(NumberOfMeasures);
 
             for(unsigned int i = 0; i < this->sEntry.size(); i++)
-                this->sEntry[i].TimePosition.add((NumberOfBeats * M_TICKS_PER_BEAT) + NumberOfTicks, BeatsPerMeasure);
+                this->sEntry[i].TimePosition.add((NumberOfBeats * MCSettings::getTicksPerBeat()) + NumberOfTicks, BeatsPerMeasure);
         }
         /**
         *  @brief Transpose the note(s) in all the entries by the specified number of semitones

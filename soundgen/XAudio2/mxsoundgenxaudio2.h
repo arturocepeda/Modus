@@ -92,6 +92,8 @@ namespace Modus
 
         float* fFrequencies;
 
+        static const UINT32 InputSampleRate = 44100;
+
     public:
         MCXAudio2SourceManager(IXAudio2* Engine, unsigned int NumSources);
         ~MCXAudio2SourceManager();
@@ -118,26 +120,34 @@ namespace Modus
     class MCSoundGenXAudio2 : public MCSoundGenAudioMultipleChannel
     {
     private:
-       XAUDIO2_BUFFER* xaBuffers;
+        XAUDIO2_BUFFER** xaBuffers;
 
-       float* fFrequency;
+        float* fFrequency;
 
-       static unsigned int iNumberOfInstances;
+        static unsigned int iNumberOfInstances;
 
-       void releaseChannel(unsigned char iChannel, bool bQuickly);
+        void releaseChannel(unsigned char iChannel, bool bQuickly);
+
+        wchar_t* charToWChar(const char* text);
+        std::wstring getFullPath(const char* Filename);
+        unsigned int getFileLength(const char* Filename);
+        unsigned int readFile(const char* Filename, unsigned char* ReadBuffer, unsigned int BufferSize);
+
+        void loadWAVFile(unsigned int iSampleSetIndex, unsigned int iSampleIndex, const char* sFileName);
+        void loadWAVData(unsigned int iSampleSetIndex, unsigned int iSampleIndex, unsigned int iDataSize, const char* pData);
 
     public:
-       MCSoundGenXAudio2(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, IXAudio2* Engine);
-       ~MCSoundGenXAudio2();
+        MCSoundGenXAudio2(unsigned int ID, unsigned int NumberOfChannels, bool Sound3D, IXAudio2* Engine);
+        ~MCSoundGenXAudio2();
 
-       void addSampleSet(MSSampleSet& SampleSet);
-       void loadSamples();
-       void loadSamplePack(std::istream& Stream, 
-                           void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
-                           void* Data = NULL);
-       void unloadSamples();
+        void addSampleSet(MSSampleSet& SampleSet);
+        void loadSamples();
+        void loadSamplePack(std::istream& Stream, 
+                            void (*callback)(unsigned int TotalSamples, unsigned int Loaded, void* Data) = NULL,
+                            void* Data = NULL);
+        void unloadSamples();
 
-       void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
+        void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);
     };
 }
 

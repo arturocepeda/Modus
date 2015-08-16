@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="NsightTegraProject">
-    <NsightTegraProjectRevisionNumber>9</NsightTegraProjectRevisionNumber>
+    <NsightTegraProjectRevisionNumber>11</NsightTegraProjectRevisionNumber>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Tegra-Android">
@@ -16,23 +16,6 @@
       <Configuration>Profile</Configuration>
       <Platform>Tegra-Android</Platform>
     </ProjectConfiguration>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\mband.cpp" />
-    <ClCompile Include="..\..\src\mchords.cpp" />
-    <ClCompile Include="..\..\src\mharmonypattern.cpp" />
-    <ClCompile Include="..\..\src\minstrument.cpp" />
-    <ClCompile Include="..\..\src\mmidireceiver.cpp" />
-    <ClCompile Include="..\..\src\mscalepattern.cpp" />
-    <ClCompile Include="..\..\src\mscales.cpp" />
-    <ClCompile Include="..\..\src\mscore.cpp" />
-    <ClCompile Include="..\..\src\mscript.cpp" />
-    <ClCompile Include="..\..\src\msong.cpp" />
-    <ClCompile Include="..\..\src\msoundgen.cpp" />
-    <ClCompile Include="..\..\src\mstringinstrument.cpp" />
-    <ClCompile Include="..\..\src\mtimer.cpp" />
-    <ClCompile Include="..\..\src\mtypes.cpp" />
-    <ClCompile Include="..\..\src\mutils.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{491A2A6B-2445-43CA-9298-644392E03F09}</ProjectGuid>
@@ -117,6 +100,24 @@
       <AntBuildPath>$(ProjectDir)\</AntBuildPath>
     </AntBuild>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\mband.cpp" />
+    <ClCompile Include="..\..\src\mchords.cpp" />
+    <ClCompile Include="..\..\src\mharmonypattern.cpp" />
+    <ClCompile Include="..\..\src\minstrument.cpp" />
+    <ClCompile Include="..\..\src\mmidireceiver.cpp" />
+    <ClCompile Include="..\..\src\mscalepattern.cpp" />
+    <ClCompile Include="..\..\src\mscales.cpp" />
+    <ClCompile Include="..\..\src\mscore.cpp" />
+    <ClCompile Include="..\..\src\mscript.cpp" />
+    <ClCompile Include="..\..\src\msettings.cpp" />
+    <ClCompile Include="..\..\src\msong.cpp" />
+    <ClCompile Include="..\..\src\msoundgen.cpp" />
+    <ClCompile Include="..\..\src\mstringinstrument.cpp" />
+    <ClCompile Include="..\..\src\mtimer.cpp" />
+    <ClCompile Include="..\..\src\mtypes.cpp" />
+    <ClCompile Include="..\..\src\mutils.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -46,6 +46,8 @@
 
 #include "Content/GEAudioData.h"
 
+using namespace Modus;
+
 //
 //  Audio source manager
 //
@@ -131,7 +133,7 @@ void MCOpenSLSourceManager::releaseSources()
 
 void MCOpenSLSourceManager::playSource(unsigned int SourceIndex, void* Sound, bool Sound3D)
 {
-   SAudioBuffer* slBuffer = reinterpret_cast<SAudioBuffer*>(Sound);
+   MSAudioBuffer* slBuffer = reinterpret_cast<MSAudioBuffer*>(Sound);
 
    (*slSources[SourceIndex].BufferQueue)->Clear(slSources[SourceIndex].BufferQueue);
    (*slSources[SourceIndex].BufferQueue)->Enqueue(slSources[SourceIndex].BufferQueue, slBuffer->Data, slBuffer->Size);
@@ -313,7 +315,7 @@ void MCSoundGenOpenSL::loadSamplePack(std::istream& Stream,
     MSSampleSet mSampleSet;
     unsigned int iNumSamples;
 
-    slBuffers = new SAudioBuffer*[iNumSampleSets];
+    slBuffers = new MSAudioBuffer*[iNumSampleSets];
 
     MThread** mSampleLoadThreads = new MThread*[iNumSampleSets];
     SSampleLoadData** sSampleLoadData = new SSampleLoadData*[iNumSampleSets];
@@ -350,7 +352,7 @@ void MCSoundGenOpenSL::loadSamplePack(std::istream& Stream,
 
         Stream.read(sReserved, 4);                                 // SampleSet: (Reserved)
 
-        slBuffers[i] = new SAudioBuffer[iNumSamples];
+        slBuffers[i] = new MSAudioBuffer[iNumSamples];
         mSampleLoadThreads[i] = new MThread[iNumSamples];
         sSampleLoadData[i] = new SSampleLoadData[iNumSamples];
 
@@ -420,7 +422,7 @@ void MCSoundGenOpenSL::playAudioSample(unsigned int SourceIndex, int SampleSet, 
     cManager->playSource(SourceIndex, &slBuffers[SampleSet][SampleIndex], b3DSound);
 }
 
-void MCSoundGenOpenSL::loadWAVData(const char* sData, unsigned int iSize, SAudioBuffer* slBuffer)
+void MCSoundGenOpenSL::loadWAVData(const char* sData, unsigned int iSize, MSAudioBuffer* slBuffer)
 {
    GE::Content::AudioData cAudioData;
    cAudioData.load(iSize, sData);
