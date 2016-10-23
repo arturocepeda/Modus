@@ -160,12 +160,6 @@ namespace Modus
     //
     void strtoupper(char* string);
     void strtolower(char* string);
-
-
-    //
-    //  Random functions
-    //
-    bool eventOccurs(int Percentage);
 }
 
 #endif

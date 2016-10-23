@@ -34,6 +34,7 @@
 #include "msoundgen.h"
 #include "mutils.h"
 #include <fstream>
+#include <algorithm>
 
 using namespace Modus;
 

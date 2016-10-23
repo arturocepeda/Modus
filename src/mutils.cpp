@@ -135,12 +135,3 @@ void Modus::strtolower(char* string)
     for(unsigned int i = 0; i < strlen(string); i++)
         string[i] = tolower(string[i]);
 }
-
-
-//
-//  Random functions
-//
-bool Modus::eventOccurs(int Percentage)
-{
-    return ((rand() % 100) < Percentage);
-}
