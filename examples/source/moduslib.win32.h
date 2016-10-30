@@ -16,9 +16,9 @@
 
 #ifdef _MSC_VER
 #ifdef _DEBUG
-#pragma comment(lib, ".\\..\\..\\..\\lib\\Win32\\modusd.lib")
+#pragma comment(lib, ".\\..\\..\\..\\lib\\Windows\\x86\\modusd.lib")
 #else
-#pragma comment(lib, ".\\..\\..\\..\\lib\\Win32\\modus.lib")
+#pragma comment(lib, ".\\..\\..\\..\\lib\\Windows\\x86\\modus.lib")
 #endif
 #endif
 
