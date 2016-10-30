@@ -113,7 +113,7 @@ namespace Modus
 
         unsigned int size()
         {
-            return vSet.size();
+            return (unsigned int)vSet.size();
         }
     };
 

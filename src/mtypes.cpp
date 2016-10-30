@@ -674,7 +674,7 @@ bool MCNoteMaps::contains(const MTNoteMap& Notemap, const MTNoteMap& Notes)
 
 int MCNoteMaps::getPositionNearestNote(MTNote Note, const MTNoteMap& NoteMap)
 {
-    unsigned int iNoteMapSize = NoteMap.size();
+    unsigned int iNoteMapSize = (unsigned int)NoteMap.size();
 
     // lower than the first note
     if(iNoteMapSize == 0 || Note < NoteMap[0])

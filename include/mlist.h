@@ -136,14 +136,14 @@ namespace Modus
         */
         EntryType* getLastEntry()
         {
-            return getEntry(sEntry.size() - 1);
+            return getEntry((unsigned int)sEntry.size() - 1);
         }
         /**
         *  @brief Returns the number of entries
         */
         unsigned int getNumberOfEntries()
         {
-            return sEntry.size();
+            return (unsigned int)sEntry.size();
         }
     };
 

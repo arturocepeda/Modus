@@ -145,7 +145,7 @@ namespace Modus
        static unsigned int iFrameBufferSize;
 
        static MThreadFunction(sampleLoadThread);
-       static void loadOGGData(const char* sData, unsigned int iSize, MSAudioBuffer* slBuffer);
+       static void loadWAVData(const char* sData, unsigned int iSize, MSAudioBuffer* slBuffer);
 
    protected:
        void playAudioSample(unsigned int SourceIndex, int SampleSet, int SampleIndex);

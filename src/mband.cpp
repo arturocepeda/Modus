@@ -130,7 +130,7 @@ MCInstrument* MCBand::getInstrument(unsigned int Position)
 
 unsigned int MCBand::getNumberOfInstruments()
 {
-    return mInstruments.size();
+    return (unsigned int)mInstruments.size();
 }
 
 MCBand* MCBand::getBand(unsigned int Position)
@@ -143,5 +143,5 @@ MCBand* MCBand::getBand(unsigned int Position)
 
 unsigned int MCBand::getNumberOfBands()
 {
-    return mBands.size();
+    return (unsigned int)mBands.size();
 }

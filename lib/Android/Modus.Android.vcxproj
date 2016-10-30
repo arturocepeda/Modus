@@ -25,26 +25,26 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
     <AndroidStlType>gnustl_static</AndroidStlType>
-    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <AndroidTargetAPI>android-24</AndroidTargetAPI>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
     <AndroidMinAPI>android-15</AndroidMinAPI>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Tegra-Android'">
     <AndroidStlType>gnustl_static</AndroidStlType>
-    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <AndroidTargetAPI>android-24</AndroidTargetAPI>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
     <AndroidMinAPI>android-15</AndroidMinAPI>
-    <NdkToolchainVersion>clang-3.6</NdkToolchainVersion>
+    <NdkToolchainVersion>Default</NdkToolchainVersion>
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Profile|Tegra-Android'">
     <AndroidStlType>gnustl_static</AndroidStlType>
-    <AndroidTargetAPI>android-22</AndroidTargetAPI>
+    <AndroidTargetAPI>android-24</AndroidTargetAPI>
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <AndroidNativeAPI>UseTarget</AndroidNativeAPI>
     <AndroidMinAPI>android-15</AndroidMinAPI>
-    <NdkToolchainVersion>clang-3.6</NdkToolchainVersion>
+    <NdkToolchainVersion>Default</NdkToolchainVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -53,7 +53,7 @@
   <PropertyGroup Condition="'$(Platform)'=='Tegra-Android'">
     <TargetName>lib$(ProjectName)</TargetName>
     <OutDir>$(SolutionDir)lib\$(Configuration)\</OutDir>
-    <NdkToolchainVersion Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">clang-3.6</NdkToolchainVersion>
+    <NdkToolchainVersion Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">Default</NdkToolchainVersion>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Tegra-Android'">
     <ClCompile>

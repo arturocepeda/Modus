@@ -41,6 +41,7 @@
 #include "mxsoundgenopenal.h"
 #include <fstream>
 #include <cmath>
+#include <algorithm>
 #include "mutils.h"
 
 using namespace Modus;

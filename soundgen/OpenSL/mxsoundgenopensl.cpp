@@ -39,10 +39,10 @@
 ////////////////////////////////////////////////////////////////////////
 
 #include "mxsoundgenopensl.h"
+#include "cpu-features.h"
 #include <fstream>
 #include <cmath>
 #include "mutils.h"
-#include <cpu-features.h>
 
 #include "Content/GEAudioData.h"
 

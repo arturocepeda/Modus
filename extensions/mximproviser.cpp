@@ -318,7 +318,7 @@ void MCWalkingBassImproviser::improvise(MCScore* Score, int MeasureFrom, int Mea
         iFirstNoteIndex = MCNoteMaps::getPositionNearestNote(mPreviousNote, mBassNoteMap);
 
         // the line tends to go high naturally
-        if(iFirstNoteIndex > 0 && eventOccurs(75))
+        if(iFirstNoteIndex > 0 && ((rand() % 4) < 3))
             iFirstNoteIndex--;
 
         se.TimePosition = mTimePosition;

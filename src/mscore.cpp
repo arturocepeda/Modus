@@ -57,7 +57,7 @@ void MCScore::addEntry(const MSScoreEntry& ScoreEntry)
     }
 
     int iFirst = 0;
-    int iLast = sEntry.size() - 1;
+    int iLast = (int)sEntry.size() - 1;
     int iEntryPosition = ScoreEntry.TimePosition.getInTicks(iBeatsPerMeasure);
 
     // first element
