@@ -231,7 +231,11 @@ void CRendering::render(SGlobal* Global)
         iKeyX = 16 + (WHITEKEY_WIDTH / 2) + (WHITEKEY_WIDTH * iOffset);
 
         // white key image
-        if(MCNoteMaps::contains(Global->mNoteMap, mCurrentNote))
+        EnterCriticalSection(&Global->cSection);
+        bool bCurrentNodeContainedInNoteMap = MCNoteMaps::contains(Global->mNoteMap, mCurrentNote);
+        LeaveCriticalSection(&Global->cSection);
+
+        if(bCurrentNodeContainedInNoteMap)
         {
             drawBMP(iKeyX - (WHITEKEY_WIDTH / 2), PIANO_Y, WHITEKEY_WIDTH, WHITEKEY_HEIGHT, 
                     sGDI->hdcWhiteKey, sGDI->bmpWhiteKey);
@@ -293,8 +297,11 @@ void CRendering::render(SGlobal* Global)
         iKeyX = 16 + (WHITEKEY_WIDTH * iOffset);
 
         // black key image
-        
-        if(MCNoteMaps::contains(Global->mNoteMap, mCurrentNote))
+        EnterCriticalSection(&Global->cSection);
+        bool bCurrentNodeContainedInNoteMap = MCNoteMaps::contains(Global->mNoteMap, mCurrentNote);
+        LeaveCriticalSection(&Global->cSection);
+
+        if(bCurrentNodeContainedInNoteMap)
         {
             drawBMP(iKeyX - (WHITEKEY_WIDTH / 2), PIANO_Y, BLACKKEY_WIDTH, BLACKKEY_HEIGHT, 
                     sGDI->hdcBlackKey, sGDI->bmpBlackKey);
