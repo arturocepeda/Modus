@@ -325,6 +325,7 @@ namespace Modus
     protected:
         MSInstrumentChannel* sInstrumentChannels;
         CUniqueVector<unsigned int> vChannelsToRelease;
+        bool bMakeQuickReleaseImmediate;
 
         static MCAudioSourceManager* cManager;
 

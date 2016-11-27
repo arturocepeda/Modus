@@ -231,7 +231,7 @@ unsigned int MCAudioSourceManager::assignSource(unsigned int EntityID, unsigned 
     for(unsigned int i = 0; i < iNumSources; i++)
     {
         // this source is free
-        if(sSources[i].Free)
+        if(sSources[i].Free || !isSourcePlaying(i))
         {
             assignSource(i, EntityID, EntityChannel);
             return i;
@@ -307,6 +307,7 @@ MCAudioSourceManager* MCSoundGenAudioMultipleChannel::cManager = NULL;
 
 MCSoundGenAudioMultipleChannel::MCSoundGenAudioMultipleChannel(unsigned int ID, unsigned char NumberOfChannels, bool Sound3D)
     : MCSoundGenAudio(ID, NumberOfChannels, Sound3D)
+    , bMakeQuickReleaseImmediate(false)
 {
     sInstrumentChannels = new MSInstrumentChannel[iNumberOfChannels];
 }
@@ -375,6 +376,14 @@ void MCSoundGenAudioMultipleChannel::releaseChannel(unsigned char iChannel, bool
     {
         sInstrumentChannels[iChannel].AudioChannels.clear();
         return;
+    }
+
+    // immediate channel release
+    if(bMakeQuickReleaseImmediate && bQuickly)
+    {
+       cManager->freeSource(iAudioChannelIndex);
+       sInstrumentChannels[iChannel].AudioChannels.clear();
+       return;
     }
 
     // update the "quickly" flag, make sure that the channel is in the list of channels to release
