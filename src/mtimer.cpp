@@ -127,11 +127,12 @@ MCTimer::~MCTimer()
 
 void MCTimer::start()
 {
+    bRunning = true;
+
     locateSection();
     callbackTick();
 
     tTimer.start();
-    bRunning = true;
     dTimeBefore = tTimer.getTime();
 }
 
