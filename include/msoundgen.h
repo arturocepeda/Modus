@@ -55,7 +55,7 @@ namespace Modus
         unsigned char iNumberOfChannels;
 
         float fVolume;
-        float fPan;
+        float* fPan;
         float fReleaseSpeed;
 
         bool bDamper;
@@ -68,7 +68,7 @@ namespace Modus
          *  @brief Constructor
          */
         MCSoundGen(unsigned int ID, unsigned char NumberOfChannels);
-        virtual ~MCSoundGen() {}
+        virtual ~MCSoundGen();
 
         /**
          *  @brief Play a note
@@ -97,10 +97,15 @@ namespace Modus
          */
         void setVolume(float Volume);
         /**
-         *  @brief Set the pan of the sound generator
+         *  @brief Set the pan of all channels of the sound generator
          *  @param Pan Pan (value between -1.0f and 1.0f)
          */
         void setPan(float Pan);
+        /**
+        *  @brief Set the pan of the specified channel
+        *  @param Pan Pan (value between -1.0f and 1.0f)
+        */
+        void setPan(unsigned char Channel, float Pan);
         /**
          *  @brief Bend the note that is currently sounding through the specified channel
          *  @param Channel The note that is sounding through this channel will be bended

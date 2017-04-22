@@ -45,10 +45,16 @@ MCSoundGen::MCSoundGen(unsigned int ID, unsigned char NumberOfChannels)
     : iID(ID)
     , iNumberOfChannels(NumberOfChannels)
     , fVolume(1.0f)
-    , fPan(0.0f)
     , fReleaseSpeed(MODUS_DEFAULT_RELEASE)
     , bDamper(false)
 {
+   fPan = new float[NumberOfChannels];
+   memset(fPan, 0, sizeof(float) * NumberOfChannels);
+}
+
+MCSoundGen::~MCSoundGen()
+{
+   delete[] fPan;
 }
 
 void MCSoundGen::releaseDamper()
@@ -78,7 +84,16 @@ void MCSoundGen::setVolume(float Volume)
 void MCSoundGen::setPan(float Pan)
 {
     if(Pan >= -1.0f && Pan <= 1.0f)
-        fPan = Pan;
+    {
+        for(unsigned char i = 0; i < iNumberOfChannels; i++)
+            fPan[i] = Pan;
+    }
+}
+
+void MCSoundGen::setPan(unsigned char Channel, float Pan)
+{
+   if(Pan >= -1.0f && Pan <= 1.0f)
+      fPan[Channel] = Pan;
 }
 
 void MCSoundGen::setReleaseSpeed(float ReleaseSpeed)
@@ -349,7 +364,7 @@ void MCSoundGenAudioMultipleChannel::playNote(MSNote& Note)
     if(b3DSound)
         cManager->setSourcePosition(sNewChannel.Index, f3DPosition[0], f3DPosition[1], f3DPosition[2]);
     else
-        cManager->setSourcePan(sNewChannel.Index, fPan);
+        cManager->setSourcePan(sNewChannel.Index, fPan[Note.Channel]);
 
     playAudioSample(sNewChannel.Index, iSampleSet[Note.Channel], iSample);
 }
