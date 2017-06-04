@@ -51,7 +51,6 @@ MCSoundGenMIDI::MCSoundGenMIDI(unsigned int NumberOfChannels, RtMidiOut* MIDIDev
     mDevice = MIDIDevice;
     iMIDIChannel = MIDIChannel - 1;
     fVolume = 1.0f;
-    fPan = 0.0f;
     bDamper = false;
 
     // initialize vector for MIDI messages (3 bytes)
@@ -101,7 +100,7 @@ void MCSoundGenMIDI::playNote(MSNote& Note)
 
     // pan -> value [-1.0f, 1.0f]
     mMessage[1] = 0x0A;                     // pan
-    mMessage[2] = (unsigned char)((fPan + 1.0f) * 63.5f);
+    mMessage[2] = (unsigned char)((fPan[Note.Channel] + 1.0f) * 63.5f);
     mDevice->sendMessage(&mMessage);
 
     // play the note

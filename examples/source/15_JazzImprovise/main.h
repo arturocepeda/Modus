@@ -104,7 +104,6 @@ void ResetCursor(SGlobal* sGlobal);
 void LoadScripts(SGlobal* sGlobal);
 void SelectMIDIDevice(unsigned int iNumDevice, SGlobal* sGlobal);
 
-void ScaleManagement(SGlobal* sGlobal);
 void PlayPianoNote(int iPosition, SGlobal* sGlobal);
 void PlayPianoVoicing(SGlobal* sGlobal);
 void GoToEndingTheme(SGlobal* sGlobal);

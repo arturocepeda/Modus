@@ -11,5 +11,5 @@
  
  This way the .a files will be generated in /usr/local/lib
 
- Feel free to contact me in case you need some help: acepeda@usal.es
+ Feel free to contact me in case you need some help: arturocepedaperez@gmail.com
 
