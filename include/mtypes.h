@@ -40,9 +40,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <iostream>
 #endif
 
+#include <iostream>
 #include <vector>
 #include "mconstants.h"
 
